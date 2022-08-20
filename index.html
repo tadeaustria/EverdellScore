@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en" manifest="fantasy-realms.appcache">
+
+<head>
+    <meta charset="utf-8">
+    <title>Everdell: App of Scoring</title>
+    <meta name="description" content="Everdell: App of Scoring">
+    <meta name="author" content="Tade Barthler">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <!-- <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png"> -->
+    <meta name="theme-color" content="#ffffff">
+    <!-- <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+  <link rel="manifest" href="manifest.json">-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/8.1.0/i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-i18next/1.2.1/jquery-i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.3.1/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/6.1.5/i18nextBrowserLanguageDetector.min.js"
+        integrity="sha512-Ih6s+CnuvIm8c0ve1oyco5GwQHRTKK7rvDdg8Vr99RWtE+llPXU9ieKm9J8NimyUAJoGrnV0k88fG0uUsCQh2w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="src/deck.js"></script>
+    <script src="src/player.js"></script>
+</head>
+
+<body>
+    <header>
+        <img src="img/everdell_logo.png" style="height: 4.8rem; max-width: 100%;"></img>
+        <div id="header-right">
+            <button id="dropdownMenu" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" data-i18n="gen.lang">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button" onclick="app.setLanguage('en')">English</button>
+                <button class="dropdown-item" type="button" onclick="app.setLanguage('de')">Deutsch</button>
+            </div>
+            <button id="clear" type="button" class="btn btn-danger" onclick="app.reset()"
+                data-i18n="gen.reset"></button>
+        </div>
+    </header>
+    <main class="container-fluid">
+        <script id="cards-template" type="text/x-handlebars-template">
+        {{#each suits}}
+        <div class="card">
+            <div class="card-header" role="tab" id="{{@key}}-header" data-bs-toggle="collapse" data-bs-target="#{{@key}}"
+                data-bs-parent="#cards" href="#{{@key}}" aria-expanded="false" aria-controls="{{@key}}">
+                <img src="img/{{@key}}.png" width="48" height="48"><a data-i18n="types.{{@key}}"></a>
+            </div>
+            <div id="{{@key}}" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="{{@key}}-header">
+                <ul class="list-group">
+                    {{#each this}}
+                    <li id="card_{{name}}" class="list-group-item" onclick="app.addToActivePlayer('{{name}}')"
+                        data-i18n="card.{{name}}">{{name}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        {{/each}}
+        {{#if basicEvents}}
+        <div class="card">
+            <div class="card-header" role="tab" id="basicevent-header" data-bs-toggle="collapse" data-bs-target="#basicevent"
+                data-bs-parent="#cards" href="#basicevent" aria-expanded="false" aria-controls="basicevent">
+                <img src="img/basicevent.png" width="48" height="48"><a data-i18n="gen.basicevent"></a>
+            </div>
+            <div id="basicevent" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="basicevent-header">
+                <ul class="list-group">
+                    {{#each basicEvents}}
+                    <li id="event_{{@key}}" class="list-group-item" onclick="app.addEventToActivePlayer('{{@key}}')"
+                        data-i18n="event.{{@key}}"></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        {{/if}}
+        <div class="card">
+            <div class="card-header" role="tab" id="specialevent-header" data-bs-toggle="collapse" data-bs-target="#specialevent"
+                data-bs-parent="#cards" href="#specialevent" aria-expanded="false" aria-controls="specialevent">
+                <img src="img/specialevent.png" width="48" height="48"><a data-i18n="gen.specialevent"></a>
+            </div>
+            <div id="specialevent" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="specialevent-header">
+                <ul class="list-group">
+                    {{#each specialEvents}}
+                    <li id="event_{{name}}" class="list-group-item" onclick="app.addEventToActivePlayer('{{name}}')"
+                        data-i18n="event.{{name}}">{{name}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" role="tab" id="journey-header" data-bs-toggle="collapse" data-bs-target="#journey"
+                data-bs-parent="#cards" href="#journey" aria-expanded="false" aria-controls="journey">
+                <img src="img/journey.png" width="48" height="48"><a data-i18n="gen.journey"></a>
+            </div>
+            <div id="journey" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="journey-header">
+                <ul class="list-group">
+                    {{#each journeys}}
+                    <li id="journey_{{this}}" class="list-group-item text-bg-warning" onclick="app.addJourneyToActivePlayer('{{@index}}')">
+                        {{this}}
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        </script>
+        <script id="player-template" type="text/x-handlebars-template">
+            <div id="hand-info">
+                <span class="progress">
+                    <div class="progress-bar bg-warning text-dark" style="width: {{cardCountPerc}}%" role="progressbar" aria-valuenow="{{cardCount}}" aria-valuemin="0" aria-valuemax="15">{{cardCount}}/15</div>
+                </span>
+            </div>
+            <div class="d-flex flex-wrap">
+                <h3 data-i18n="gen.town" class="w-100"></h3>
+                {{#each cards}}
+                <div class="playercard card p-2" role="tab" onclick="app.removeFromActivePlayer('{{@index}}')">
+                    <div class="d-flex">
+                        <div class="flex-grow-1" data-i18n="card.{{name}}"></div>
+                        <span class="badge text-bg-warning">{{points}}</span>
+                        {{#if (isPosperity type)}}
+                        <div>+</div><span class="badge text-bg-warning">{{addPoints}}</span>
+                        {{/if}}
+                    </div>
+                </div>
+                {{/each}}
+                {{#if basicEvents}}
+                <h3 data-i18n="gen.basicevent" class="w-100"></h3>
+                {{#each basicEvents}}
+                <div class="playercard card p-2" role="tab" onclick="app.removeEventFromActivePlayer('{{@index}}')">
+                    <div class="d-flex">
+                        <div class="flex-grow-1" data-i18n="event.{{this}}"></div>
+                        <span class="badge text-bg-warning">3</span>
+                    </div>
+                </div>
+                {{/each}}
+                {{/if}}
+                {{#if specialEvents}}
+                <h3 data-i18n="gen.specialevent" class="w-100"></h3>
+                {{#each specialEvents}}
+                <div class="playercard card p-2" role="tab">
+                    <div class="d-flex">
+                        <div class="flex-grow-1" data-i18n="event.{{name}}" onclick="app.removeSpEventFromActivePlayer('{{@index}}')"></div>
+                        <span class="badge text-bg-warning" onclick="app.removeSpEventFromActivePlayer('{{@index}}')">{{points}}</span>
+                    </div>
+                    {{#if input}}
+                    <input id="value_{{name}}" type="range" class="form-range" min="0" value="{{value}}" max="{{inputMax}}" onchange="app.eventCardSetValue('{{name}}')">
+                    {{/if}}
+                </div>
+                {{/each}}
+                {{/if}}
+            </div>
+            {{#if leftResources}}
+            <h3 data-i18n="gen.leftovers" class="w-100"></h3>
+            {{#each leftResources}}
+            <div>
+                <!-- <img src="img/{{@key}}.png" height="20px" width="20px"></img> -->
+                <label for="value_{{../nav}}_{{@key}}" data-i18n="res.{{@key}}"></label>
+                <input id="value_{{../nav}}_{{@key}}" type="range" class="form-range" min="0" value="{{this}}" max="6" onchange="app.resourceSet('{{@key}}')">
+            </div>
+            {{/each}}
+            {{/if}}
+            {{#if journeys}}
+            <h3 data-i18n="gen.journey" class="w-100"></h3>
+            <div class="d-flex flex-wrap">
+                {{#each journeys}}
+                <div class="playercard card" role="tab" onclick="app.removeJourneyFromActivePlayer('{{@index}}')">
+                    <span class="badge text-bg-warning">{{this}}</span>
+                </div>
+                {{/each}}
+            </div>
+            {{/if}}
+        </script>
+        <div id="main-left">
+            <div id="cards" class="panel" role="tablist" aria-multiselectable="true">
+            </div>
+        </div>
+        <div id="main-right">
+            <ul class="nav nav-tabs" id="nav-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="nav-p1-tab" data-bs-toggle="tab" data-bs-target="#nav-p1" role="tab"
+                        aria-controls="nav-p1" aria-selected="true" href="#">
+                        <p id="nav-p1-p" data-i18n="gen.player" data-i18n-options='{ "number": 1 }'></p>
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="nav-p2-tab" data-bs-toggle="tab" data-bs-target="#nav-p2" role="tab"
+                        aria-controls="nav-p2" aria-selected="false" href="#">
+                        <p id="nav-p2-p" data-i18n="gen.player" data-i18n-options='{ "number": 2 }'></p>
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="nav-p3-tab" data-bs-toggle="tab" data-bs-target="#nav-p3" role="tab"
+                        aria-controls="nav-p3" aria-selected="false" href="#">
+                        <p id="nav-p3-p" data-i18n="gen.player" data-i18n-options='{ "number": 3 }'></p>
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="nav-p4-tab" data-bs-toggle="tab" data-bs-target="#nav-p4" role="tab"
+                        aria-controls="nav-p4" aria-selected="false" href="#">
+                        <p id="nav-p4-p" data-i18n="gen.player" data-i18n-options='{ "number": 4 }'></p>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content" id="nav-tabContent">
+                <div id="alert-cardlimit" class="alert alert-warning fade" role="alert" data-i18n="text.cardlimit"
+                    style="display: none"></div>
+                <div class="tab-pane fade show active" id="nav-p1" role="tabpanel" aria-labelledby="nav-p1-tab"
+                    tabindex="0"></div>
+                <div class="tab-pane fade" id="nav-p2" role="tabpanel" aria-labelledby="nav-p2-tab" tabindex="0">
+                </div>
+                <div class="tab-pane fade" id="nav-p3" role="tabpanel" aria-labelledby="nav-p3-tab" tabindex="0">
+                </div>
+                <div class="tab-pane fade" id="nav-p4" role="tabpanel" aria-labelledby="nav-p4-tab" tabindex="0">
+                </div>
+                <div class="tab-pane fade show active">
+                    <h3 data-i18n="gen.points"></h3>
+                    <div class="card">
+                        <label for="value_points" id="value_points_badge"
+                            class="form-label badge text-bg-warning">0</label>
+                        <input id="value_points" type="range" class="form-range" min="0" value="0" max="30"
+                            onchange="app.setActivePlayerPoints()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- <div id="everdell-logo">
+            <a href="https://404.com/"><img src="img/everdell_logo.png" style="width: 15rem;"></img></a>
+        </div> -->
+        <!-- <div id="legal-text">
+            </div> -->
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="src/app.js"></script>
+</body>
+
+</html>
