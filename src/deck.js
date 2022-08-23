@@ -30,6 +30,10 @@ function points_nine(player) { return 9; }
 function space_zero(player) { return 0; }
 function space_one(player) { return 1; }
 
+function available_always(app) { return true; }
+function available_belfaire(app) { return app.belfaire; }
+function available_npearlbrook(app) { return !app.pearlbrook; }
+
 let basecards = {
 
     '03': {
@@ -41,7 +45,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['innkeeper']
+        related: ['innkeeper'],
+        getAvailability: available_always
     },
     '04': {
         name: 'innkeeper',
@@ -52,7 +57,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '05': {
         name: 'postoffice',
@@ -63,7 +69,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['postal pigeon']
+        related: ['postal pigeon'],
+        getAvailability: available_always
     },
     '06': {
         name: 'postalpigeon',
@@ -74,7 +81,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '07': {
         name: 'cemetery',
@@ -85,7 +93,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['undertaker']
+        related: ['undertaker'],
+        getAvailability: available_always
     },
     '08': {
         name: 'undertaker',
@@ -96,7 +105,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '09': {
         name: 'chapel',
@@ -107,7 +117,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['shepherd']
+        related: ['shepherd'],
+        getAvailability: available_always
     },
     '10': {
         name: 'shepherd',
@@ -118,7 +129,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '11': {
         name: 'lookout',
@@ -129,7 +141,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['wanderer']
+        related: ['wanderer'],
+        getAvailability: available_always
     },
     '12': {
         name: 'wanderer',
@@ -140,7 +153,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_zero,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '13': {
         name: 'monastery',
@@ -151,7 +165,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['monk']
+        related: ['monk'],
+        getAvailability: available_always
     },
     '14': {
         name: 'monk',
@@ -162,7 +177,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '15': {
         name: 'university',
@@ -173,7 +189,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['doctor']
+        related: ['doctor'],
+        getAvailability: available_always
     },
     '16': {
         name: 'doctor',
@@ -184,7 +201,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '17': {
         name: 'ruins',
@@ -195,7 +213,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['peddler']
+        related: ['peddler'],
+        getAvailability: available_always
     },
     '18': {
         name: 'peddler',
@@ -206,7 +225,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '19': {
         name: 'fairgrounds',
@@ -217,7 +237,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['fool']
+        related: ['fool'],
+        getAvailability: available_always
     },
     '20': {
         name: 'fool',
@@ -228,7 +249,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '21': {
         name: 'twigbarge',
@@ -239,7 +261,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['bargetoad']
+        related: ['bargetoad'],
+        getAvailability: available_always
     },
     '22': {
         name: 'bargetoad',
@@ -250,7 +273,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '23': {
         name: 'resinrefinery',
@@ -261,7 +285,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['chipsweep']
+        related: ['chipsweep'],
+        getAvailability: available_always
     },
     '24': {
         name: 'chipsweep',
@@ -272,7 +297,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '25': {
         name: 'mine',
@@ -283,7 +309,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['minemoler']
+        related: ['minemoler'],
+        getAvailability: available_always
     },
     '26': {
         name: 'minemoler',
@@ -294,7 +321,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '27': {
         name: 'storehouse',
@@ -305,7 +333,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['woodcarver']
+        related: ['woodcarver'],
+        getAvailability: available_always
     },
     '28': {
         name: 'woodcarver',
@@ -316,7 +345,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '29': {
         name: 'farm',
@@ -327,7 +357,8 @@ let basecards = {
         maximum: 8,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['husband', 'wife']
+        related: ['husband', 'wife'],
+        getAvailability: available_always
     },
     '30': {
         name: 'husband',
@@ -343,7 +374,8 @@ let basecards = {
             }
             return 0;
         },
-        related: ['wife']
+        related: ['wife'],
+        getAvailability: available_always
     },
     '31': {
         name: 'wife',
@@ -359,7 +391,8 @@ let basecards = {
             }
             return 0;
         },
-        related: ['husband']
+        related: ['husband'],
+        getAvailability: available_always
     },
     '32': {
         name: 'generalstore',
@@ -370,7 +403,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['shopkeeper']
+        related: ['shopkeeper'],
+        getAvailability: available_always
     },
     '33': {
         name: 'shopkeeper',
@@ -381,7 +415,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '34': {
         name: 'courthouse',
@@ -392,7 +427,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['judge']
+        related: ['judge'],
+        getAvailability: available_always
     },
     '35': {
         name: 'judge',
@@ -403,7 +439,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '36': {
         name: 'clocktower',
@@ -414,7 +451,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['historian']
+        related: ['historian'],
+        getAvailability: available_always
     },
     '37': {
         name: 'historian',
@@ -425,7 +463,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '38': {
         name: 'crane',
@@ -436,7 +475,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['architect']
+        related: ['architect'],
+        getAvailability: available_always
     },
     '39': {
         name: 'architect',
@@ -447,7 +487,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return Math.min(6, player.leftResources['pebble'] + player.leftResources['resin']); },
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '40': {
         name: 'dungeon',
@@ -458,7 +499,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['ranger']
+        related: ['ranger'],
+        getAvailability: available_always
     },
     '41': {
         name: 'ranger',
@@ -469,7 +511,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '42': {
         name: 'evertree',
@@ -480,7 +523,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return player.findCountType(TYPES.prosperity); },
         getOccupiedSpaces: space_one,
-        related: ['']
+        related: [''],
+        getAvailability: available_always
     },
     '43': {
         name: 'castle',
@@ -491,7 +535,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return player.findCountRarityKind(RARITY.common, KINDS.building) },
         getOccupiedSpaces: space_one,
-        related: ['king']
+        related: ['king'],
+        getAvailability: available_always
     },
     '44': {
         name: 'king',
@@ -502,7 +547,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return player.basicEvents.length + player.specialEvents.length * 2; },
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '45': {
         name: 'palace',
@@ -513,7 +559,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return player.findCountRarityKind(RARITY.unique, KINDS.building) },
         getOccupiedSpaces: space_one,
-        related: ['queen']
+        related: ['queen'],
+        getAvailability: available_always
     },
     '46': {
         name: 'queen',
@@ -524,7 +571,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '47': {
         name: 'school',
@@ -535,7 +583,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return player.findCountRarityKind(RARITY.common, KINDS.critter) },
         getOccupiedSpaces: space_one,
-        related: ['teacher']
+        related: ['teacher'],
+        getAvailability: available_always
     },
     '48': {
         name: 'teacher',
@@ -546,7 +595,8 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     },
     '49': {
         name: 'theater',
@@ -557,7 +607,8 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return player.findCountRarityKind(RARITY.unique, KINDS.critter) },
         getOccupiedSpaces: space_one,
-        related: ['bard']
+        related: ['bard'],
+        getAvailability: available_always
     },
     '50': {
         name: 'bard',
@@ -568,15 +619,38 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: []
+        related: [],
+        getAvailability: available_always
     }
 }
 
 let basicEvents = {
-    "grandtour": 3,
-    "autumnfairy": 3,
-    "expedition": 3,
-    "monument": 3
+    "grandtour": {
+        name: "grandtour",
+        points: 3,
+        getAvailability: available_npearlbrook
+    },
+    "autumnfairy": {
+        name: "autumnfairy",
+        points: 3,
+        getAvailability: available_npearlbrook
+    },
+    "expedition": {
+        name: "expedition",
+        points: 3,
+        getAvailability: available_npearlbrook
+    },
+    "monument": {
+        name: "monument",
+        points: 3,
+        getAvailability: available_npearlbrook
+    },
+
+    "flowerfestival": {
+        name: "flowerfestival",
+        points: 4,
+        getAvailability: available_belfaire
+    }
 }
 
 let specialEvents = {
@@ -587,7 +661,8 @@ let specialEvents = {
         inputMax: 0,
         inputFactor: 0,
         points: 0,
-        getPoints: points_three
+        getPoints: points_three,
+        getAvailability: available_always
     },
     "pilgrimspath": {
         name: "pilgrimspath",
@@ -596,7 +671,8 @@ let specialEvents = {
         inputMax: 2,
         inputFactor: 3,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; }
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_always
     },
     "undernewmanagement": {
         name: "undernewmanagement",
@@ -605,7 +681,8 @@ let specialEvents = {
         inputMax: 6,
         inputFactor: 1,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; }
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_always
     },
     "awellruncity": {
         name: "awellruncity",
@@ -614,7 +691,8 @@ let specialEvents = {
         inputMax: 0,
         inputFactor: 0,
         points: 0,
-        getPoints: points_four
+        getPoints: points_four,
+        getAvailability: available_always
     },
     "rememberingthefallen": {
         name: "rememberingthefallen",
@@ -623,7 +701,8 @@ let specialEvents = {
         inputMax: 2,
         inputFactor: 3,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; }
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_always
     },
     "performerinresidence": {
         name: "performerinresidence",
@@ -632,7 +711,8 @@ let specialEvents = {
         inputMax: 3,
         inputFactor: 2,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; }
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_always
     },
     "croakwartcure": {
         name: "croakwartcure",
@@ -641,7 +721,8 @@ let specialEvents = {
         inputMax: 0,
         inputFactor: 0,
         points: 0,
-        getPoints: points_six
+        getPoints: points_six,
+        getAvailability: available_always
     },
     "capture": {
         name: "capture",
@@ -650,7 +731,8 @@ let specialEvents = {
         inputMax: 2,
         inputFactor: 3,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; }
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_always
     },
     "marketingplan": {
         name: "marketingplan",
@@ -659,7 +741,8 @@ let specialEvents = {
         inputMax: 3,
         inputFactor: 2,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; }
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_always
     },
     "ministeringtomiscreants": {
         name: "ministeringtomiscreants",
@@ -668,7 +751,8 @@ let specialEvents = {
         inputMax: 2,
         inputFactor: 3,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; }
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_always
     },
     "graduation": {
         name: "graduation",
@@ -677,7 +761,8 @@ let specialEvents = {
         inputMax: 3,
         inputFactor: 2,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; }
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_always
     },
     "pristinechapel": {
         name: "pristinechapel",
@@ -686,7 +771,8 @@ let specialEvents = {
         inputMax: 3,
         inputFactor: 2,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; }
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_always
     },
     "everdellgames": {
         name: "everdellgames",
@@ -695,7 +781,8 @@ let specialEvents = {
         inputMax: 0,
         inputFactor: 0,
         points: 0,
-        getPoints: points_nine
+        getPoints: points_nine,
+        getAvailability: available_always
     },
     "ancientscrolls": {
         name: "ancientscrolls",
@@ -704,7 +791,8 @@ let specialEvents = {
         inputMax: 5,
         inputFactor: 1,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; }
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_always
     },
     "fireworks": {
         name: "fireworks",
@@ -713,7 +801,8 @@ let specialEvents = {
         inputMax: 3,
         inputFactor: 2,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; }
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_always
     },
     "flyingdoctor": {
         name: "flyingdoctor",
@@ -722,7 +811,20 @@ let specialEvents = {
         inputMax: 3,
         inputFactor: 3,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; }
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_always
+    },
+
+
+    "a": {
+        name: "a",
+        input: false,
+        value: 0,
+        inputMax: 3,
+        inputFactor: 3,
+        points: 0,
+        getPoints: points_four,
+        getAvailability: available_belfaire
     }
 }
 

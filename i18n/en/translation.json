@@ -15,7 +15,8 @@
         "specialevent": "Special Events",
         "points": "Additional Points",
         "journey": "Journey",
-        "leftovers": "Leftover Resources"
+        "leftovers": "Leftover Resources",
+        "expansions": "Expansions"
     },
     "res": {
         "twig": "Twig",

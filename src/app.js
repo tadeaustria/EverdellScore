@@ -34,11 +34,12 @@ i18next.use(i18nextBrowserLanguageDetector).use(i18nextHttpBackend).init({
 class Application {
 
     constructor() {
-        this.cards = [...Object.values(basecards)];
-        this.basicEvents = basicEvents;
-        this.specialEvents = [...Object.values(specialEvents)];
-        this.reset();
-        this.buildCards();
+        this.belfaire = false;
+        this.pearlbrook = false;
+        this.spirecrest = false;
+
+        this.updateData();
+
         $('#nav-p1-tab').on('click', (e) => { this.activePlayer = this.players[0]; this.updatePlayerOutput(); });
         $('#nav-p2-tab').on('click', (e) => { this.activePlayer = this.players[1]; this.updatePlayerOutput(); });
         $('#nav-p3-tab').on('click', (e) => { this.activePlayer = this.players[2]; this.updatePlayerOutput(); });
@@ -48,6 +49,21 @@ class Application {
         Handlebars.registerHelper('isPosperity', function (type) {
             return type == TYPES.prosperity;
         });
+    }
+
+    updateData() {
+        this.belfaire = $('#flexSwitchCheckBelfaire').is(':checked');
+        this.pearlbrook = $('#flexSwitchCheckPearlbrook').is(':checked');
+        this.spirecrest = $('#flexSwitchCheckSpirecrest').is(':checked');
+
+        this.cards = [...Object.values(basecards)].filter((card) => card.getAvailability(this));
+        this.basicEvents = [...Object.values(basicEvents)].filter((event) => event.getAvailability(this));
+        this.specialEvents = [...Object.values(specialEvents)].filter((event) => event.getAvailability(this));
+
+        this.reset();
+        this.buildCards();
+        this.setCardsDisable();
+        $("#main-left").localize();
     }
 
     updatePlayerOutput() {
@@ -67,6 +83,7 @@ class Application {
 
     enableAll() {
         $("li.list-group-item").removeClass("disabled");
+        $("[id^=journey_]").removeClass("text-bg-secondary disabled").addClass("text-bg-warning");
     }
 
     findCardByName(cardName) {
@@ -95,7 +112,7 @@ class Application {
 
     addEventToActivePlayer(eventName) {
         if (eventName in basicEvents) {
-            this.activePlayer.addBasicEvent(eventName);
+            this.activePlayer.addBasicEvent(basicEvents[eventName]);
         } else {
             this.activePlayer.addSpecialEvent(specialEvents[eventName]);
         }
@@ -113,7 +130,7 @@ class Application {
     removeSpEventFromActivePlayer(eventIndex) {
         let eventName = this.activePlayer.removeSpecialEvent(eventIndex);
         $("#event_" + eventName).removeClass("disabled");
-        $("#specialevent-header").prop("disabled", false).tab("hide");
+        // $("#specialevent-header").prop("disabled", false).tab("hide");
     }
 
     addJourneyToActivePlayer(journeyIndex) {

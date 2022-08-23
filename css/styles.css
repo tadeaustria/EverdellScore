@@ -1,6 +1,6 @@
 #cards .card-header,
 #hand .card-header,
-#discard .card-header {
+#expansionspanel .card-header {
   padding: 0.2rem;
   font-weight: bold;
   background-color: #ccc0a8;
@@ -21,7 +21,7 @@ img+a {
 }
 
 h3,
-label {
+#main-right label {
   color: white;
 }
 

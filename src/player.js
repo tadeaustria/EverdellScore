@@ -38,15 +38,15 @@ class Player {
         return card;
     }
 
-    addBasicEvent(eventName) {
-        this.basicEvents.push(eventName);
+    addBasicEvent(event) {
+        this.basicEvents.push(event);
         this.showPlayer();
     }
 
     removeBasicEvent(eventIndex) {
-        let eventName = this.basicEvents.splice(eventIndex, 1)[0];
+        let event = this.basicEvents.splice(eventIndex, 1)[0];
         this.showPlayer();
-        return eventName;
+        return event;
     }
 
     addSpecialEvent(event) {
@@ -99,7 +99,7 @@ class Player {
         //Sum up all points
         return this.town.reduce((prev, card) => prev + card.points + card.getAdditionalPoints(this),
             this.specialEvents.reduce((prev, spevent) => prev + spevent.points,
-                this.basicEvents.reduce((prev, event) => prev + basicEvents[event],
+                this.basicEvents.reduce((prev, event) => prev + event.points,
                     this.journeys.reduce((prev, journeyPoints) => prev + journeyPoints,
                         this.points + this.getWifeAdditionalPoints()))));
     }
