@@ -27,7 +27,7 @@ function points_four(player) { return 4; }
 function points_five(player) { return 5; }
 function points_six(player) { return 6; }
 function points_nine(player) { return 9; }
-function space_zero(player) { return 1; }
+function space_zero(player) { return 0; }
 function space_one(player) { return 1; }
 
 let basecards = {
@@ -561,7 +561,7 @@ let basecards = {
     },
     '50': {
         name: 'bard',
-        type: TYPES.production,
+        type: TYPES.traveler,
         rarity: RARITY.unique,
         kind: KINDS.critter,
         points: 0,

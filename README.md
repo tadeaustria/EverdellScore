@@ -1,5 +1,5 @@
 # EverdellScore
-Serverless JS App for counting Everdell Score
+Serverless JS App for counting Everdell Score. Test it [here](https://tadeaustria.github.io/EverdellScore/)
 
 ## Content
 As the summing up the total points of a game of Everdell can be complex, this application should help players to identify the winner of the game faster.
@@ -12,8 +12,8 @@ Cookies for storing the chosen language. (NOT WORKING YET)
 # Roadmap
 
 * Implementing expansions
-  * Pearlbrook
   * Belfaire
+  * Pearlbrook
   * Spirecrest
 * 2 Upcoming expansions
 * (Adding picture to cards)
