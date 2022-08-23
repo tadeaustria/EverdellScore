@@ -102,6 +102,7 @@ class Application {
                 $("#alert-cardlimit").slideUp(500);
             });
         } else {
+            this.vibrate(50);
             this.activePlayer.addTown(card);
             this.setCardDisable(card);
             if (this.activeAchievement){
@@ -122,6 +123,7 @@ class Application {
         } else {
             this.activePlayer.addSpecialEvent(specialEvents[eventName]);
         }
+        this.vibrate(50);
         $("#event_" + eventName).addClass("disabled");
         if (this.players.reduce((prev, player) => prev + player.specialEvents.length, 0) >= 4) {
             $("#specialevent-header").prop("disabled", true);
@@ -142,6 +144,7 @@ class Application {
     addJourneyToActivePlayer(journeyIndex) {
         let value = journeys[journeyIndex];
         this.activePlayer.journeys.push(value);
+        this.vibrate(50);
         if (value > 2) {
             $("#journey_" + value).removeClass("text-bg-warning").addClass("text-bg-secondary disabled");
         }
@@ -158,6 +161,7 @@ class Application {
         if(this.activeAchievement)
             $("#achievement_" + this.activeAchievement.name).removeClass("highlight");
         $("#achievement_" + achievementName).addClass("highlight");
+        this.vibrate(50);
         this.activeAchievement = royalAchievements[achievementName];
         this.calculateAchievement();
         this.players.forEach((player) => player.showPlayer());
@@ -284,5 +288,10 @@ class Application {
         this.activePlayer.points = parseInt($("#value_points").val());
         $("#value_points_badge").text(this.activePlayer.points);
         this.activePlayer.showTotalPoints();
+    }
+
+    vibrate(intesity){
+        if('vibrate' in window.navigator)
+            window.navigator.vibrate(intesity);
     }
 }
