@@ -12,7 +12,7 @@ Cookies for storing the chosen language. (NOT WORKING YET)
 # Roadmap
 
 * Implementing expansions
-  * Belfaire
+  * Bellfaire
   * Pearlbrook
   * Spirecrest
 * 2 Upcoming expansions

@@ -31,7 +31,7 @@ function space_zero(player) { return 0; }
 function space_one(player) { return 1; }
 
 function available_always(app) { return true; }
-function available_belfaire(app) { return app.belfaire; }
+function available_bellfaire(app) { return app.bellfaire; }
 function available_npearlbrook(app) { return !app.pearlbrook; }
 
 let basecards = {
@@ -649,7 +649,7 @@ let basicEvents = {
     "flowerfestival": {
         name: "flowerfestival",
         points: 4,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     }
 }
 
@@ -824,7 +824,7 @@ let specialEvents = {
         inputFactor: 0,
         points: 5,
         getPoints: points_five,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "vacation": {
         name: "vacation",
@@ -834,7 +834,7 @@ let specialEvents = {
         inputFactor: 0,
         points: 5,
         getPoints: points_five,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "renaissance": {
         name: "renaissance",
@@ -844,7 +844,7 @@ let specialEvents = {
         inputFactor: 0,
         points: 5,
         getPoints: points_five,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "cakefeast": {
         name: "cakefeast",
@@ -854,7 +854,7 @@ let specialEvents = {
         inputFactor: 0,
         points: 6,
         getPoints: points_six,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "statues": {
         name: "statues",
@@ -864,7 +864,7 @@ let specialEvents = {
         inputFactor: 0,
         points: 6,
         getPoints: points_six,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "artnculture": {
         name: "artnculture",
@@ -874,7 +874,7 @@ let specialEvents = {
         inputFactor: 0,
         points: 6,
         getPoints: points_six,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "gathering": {
         name: "gathering",
@@ -884,7 +884,7 @@ let specialEvents = {
         inputFactor: 0,
         points: 5,
         getPoints: points_five,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "royalwedding": {
         name: "royalwedding",
@@ -894,7 +894,7 @@ let specialEvents = {
         inputFactor: 0,
         points: 6,
         getPoints: points_six,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "kingsroad": {
         name: "kingsroad",
@@ -904,7 +904,7 @@ let specialEvents = {
         inputFactor: 0,
         points: 6,
         getPoints: points_six,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     }
 }
 
@@ -914,49 +914,49 @@ let royalAchievements = {
         rankingFunction: (player) => player.findCountType(TYPES.traveler),
         pointsFirst: 6,
         pointsSecond: 3,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "tourism": {
         name: "tourism",
         rankingFunction: (player) => player.findCountType(TYPES.destination),
         pointsFirst: 6,
         pointsSecond: 3,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "beauty": {
         name: "beauty",
         rankingFunction: (player) => player.findCountType(TYPES.prosperity),
         pointsFirst: 6,
         pointsSecond: 3,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "peace": {
         name: "peace",
         rankingFunction: (player) => player.findCountType(TYPES.governance),
         pointsFirst: 6,
         pointsSecond: 3,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "farming": {
         name: "farming",
         rankingFunction: (player) => player.findCountType(TYPES.production),
         pointsFirst: 6,
         pointsSecond: 3,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "architecture": {
         name: "architecture",
         rankingFunction: (player) => player.findCountKind(KINDS.building),
         pointsFirst: 6,
         pointsSecond: 3,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     },
     "community": {
         name: "community",
         rankingFunction: (player) => player.findCountKind(KINDS.critter),
         pointsFirst: 6,
         pointsSecond: 3,
-        getAvailability: available_belfaire
+        getAvailability: available_bellfaire
     }
 }
 

@@ -34,7 +34,7 @@ i18next.use(i18nextBrowserLanguageDetector).use(i18nextHttpBackend).init({
 class Application {
 
     constructor() {
-        this.belfaire = false;
+        this.bellfaire = false;
         this.pearlbrook = false;
         this.spirecrest = false;
 
@@ -52,7 +52,7 @@ class Application {
     }
 
     updateData() {
-        this.belfaire = $('#flexSwitchCheckBelfaire').is(':checked');
+        this.bellfaire = $('#flexSwitchCheckBellfaire').is(':checked');
         this.pearlbrook = $('#flexSwitchCheckPearlbrook').is(':checked');
         this.spirecrest = $('#flexSwitchCheckSpirecrest').is(':checked');
 
