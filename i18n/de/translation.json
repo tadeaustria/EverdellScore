@@ -15,7 +15,9 @@
         "specialevent": "Besonderes Ereignis",
         "points": "Zusatzpunkte",
         "journey": "Reise",
-        "leftovers": "Übrige Ressourcen"
+        "leftovers": "Übrige Ressourcen",
+        "expansions": "Erweiterungen",
+        "royalachievement": "Königliche Auszeichnungen"
     },
     "res": {
         "twig": "Holz",
@@ -94,7 +96,27 @@
         "everdellgames": "Die Everdell-Spiele",
         "ancientscrolls": "Der Fund antiker Schriftrollen",
         "fireworks": "Ein Abend mit Feuerwerk",
-        "flyingdoctor": "Fliegender Arzt Service"
+        "flyingdoctor": "Fliegender Arzt Service",
+
+        "flowerfestival": "Blumenfestival",
+        "bednbreakfast": "Bed & Breakfast Vereinigung",
+        "vacation": "Urlaubsort",
+        "renaissance": "Architektonische Renaissance",
+        "cakefeast": "Kuchenwettessen",
+        "statues": "Enthüllung der Statuen",
+        "artnculture": "Kunst- und Kulturfestival",
+        "gathering": "Versammlung der Ältesten",
+        "royalwedding": "Royale Hochzeit",
+        "kingsroad": "Eröffnung der King's Road"
+    },
+    "achievement":{
+        "tales": "Erzählungen",
+        "tourism": "Tourismus",
+        "beauty": "Schönheit",
+        "peace": "Frieden",
+        "farming": "Landwirtschaft",
+        "architecture": "Architektur",
+        "community": "Gemeinschaft"
     },
     "text": {
         "cardlimit": "Kartenlimit der Stadt erreicht"

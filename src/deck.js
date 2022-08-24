@@ -816,21 +816,101 @@ let specialEvents = {
     },
 
 
-    "a": {
-        name: "a",
+    "bednbreakfast": {
+        name: "bednbreakfast",
         input: false,
         value: 0,
-        inputMax: 3,
-        inputFactor: 3,
-        points: 0,
-        getPoints: points_four,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 5,
+        getPoints: points_five,
+        getAvailability: available_belfaire
+    },
+    "vacation": {
+        name: "vacation",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 5,
+        getPoints: points_five,
+        getAvailability: available_belfaire
+    },
+    "renaissance": {
+        name: "renaissance",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 5,
+        getPoints: points_five,
+        getAvailability: available_belfaire
+    },
+    "cakefeast": {
+        name: "cakefeast",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 6,
+        getPoints: points_six,
+        getAvailability: available_belfaire
+    },
+    "statues": {
+        name: "statues",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 6,
+        getPoints: points_six,
+        getAvailability: available_belfaire
+    },
+    "artnculture": {
+        name: "artnculture",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 6,
+        getPoints: points_six,
+        getAvailability: available_belfaire
+    },
+    "gathering": {
+        name: "gathering",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 5,
+        getPoints: points_five,
+        getAvailability: available_belfaire
+    },
+    "royalwedding": {
+        name: "royalwedding",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 6,
+        getPoints: points_six,
+        getAvailability: available_belfaire
+    },
+    "kingsroad": {
+        name: "kingsroad",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 6,
+        getPoints: points_six,
         getAvailability: available_belfaire
     }
 }
 
 let royalAchievements = {
-    "telltale": {
-        name: "telltale",
+    "tales": {
+        name: "tales",
         rankingFunction: (player) => player.findCountType(TYPES.traveler),
         pointsFirst: 6,
         pointsSecond: 3,
@@ -843,8 +923,8 @@ let royalAchievements = {
         pointsSecond: 3,
         getAvailability: available_belfaire
     },
-    "beautiful": {
-        name: "beautiful",
+    "beauty": {
+        name: "beauty",
         rankingFunction: (player) => player.findCountType(TYPES.prosperity),
         pointsFirst: 6,
         pointsSecond: 3,
