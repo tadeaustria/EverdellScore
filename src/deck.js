@@ -828,6 +828,58 @@ let specialEvents = {
     }
 }
 
+let royalAchievements = {
+    "telltale": {
+        name: "telltale",
+        rankingFunction: (player) => player.findCountType(TYPES.traveler),
+        pointsFirst: 6,
+        pointsSecond: 3,
+        getAvailability: available_belfaire
+    },
+    "tourism": {
+        name: "tourism",
+        rankingFunction: (player) => player.findCountType(TYPES.destination),
+        pointsFirst: 6,
+        pointsSecond: 3,
+        getAvailability: available_belfaire
+    },
+    "beautiful": {
+        name: "beautiful",
+        rankingFunction: (player) => player.findCountType(TYPES.prosperity),
+        pointsFirst: 6,
+        pointsSecond: 3,
+        getAvailability: available_belfaire
+    },
+    "peace": {
+        name: "peace",
+        rankingFunction: (player) => player.findCountType(TYPES.governance),
+        pointsFirst: 6,
+        pointsSecond: 3,
+        getAvailability: available_belfaire
+    },
+    "farming": {
+        name: "farming",
+        rankingFunction: (player) => player.findCountType(TYPES.production),
+        pointsFirst: 6,
+        pointsSecond: 3,
+        getAvailability: available_belfaire
+    },
+    "architecture": {
+        name: "architecture",
+        rankingFunction: (player) => player.findCountKind(KINDS.building),
+        pointsFirst: 6,
+        pointsSecond: 3,
+        getAvailability: available_belfaire
+    },
+    "community": {
+        name: "community",
+        rankingFunction: (player) => player.findCountKind(KINDS.critter),
+        pointsFirst: 6,
+        pointsSecond: 3,
+        getAvailability: available_belfaire
+    }
+}
+
 let journeys = [5, 4, 3, 2];
 
 function getCardName(card) {
@@ -836,4 +888,8 @@ function getCardName(card) {
 
 function getEventName(event) {
     return i18next.t("event." + event.name);
+}
+
+function getAchievementName(achievement) {
+    return i18next.t("achievement." + achievement.name);
 }

@@ -16,7 +16,8 @@
         "points": "Additional Points",
         "journey": "Journey",
         "leftovers": "Leftover Resources",
-        "expansions": "Expansions"
+        "expansions": "Expansions",
+        "royalachievement": "Royal Achievements"
     },
     "res": {
         "twig": "Twig",
@@ -95,7 +96,15 @@
         "everdellgames": "The Everdell Games",
         "ancientscrolls": "Ancient scrolls discovered",
         "fireworks": "An evening of fireworks",
-        "flyingdoctor": "Flying doctor service"
+    },
+    "achievement":{
+        "telltale": "Telltale",
+        "tourism": "Tourism",
+        "beautiful": "Beautiful",
+        "peace": "Peace",
+        "farming": "Farming",
+        "architecture": "Architecture",
+        "community": "Community"
     },
     "text": {
         "cardlimit": "Card limit of town is reached"

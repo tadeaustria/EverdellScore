@@ -7,6 +7,10 @@
   cursor: pointer;
 }
 
+#royalachievement .highlight{
+  background-color: rgb(253, 253, 193)
+}
+
 img+a {
   margin: 0.5rem;
 }

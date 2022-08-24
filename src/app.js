@@ -59,6 +59,7 @@ class Application {
         this.cards = [...Object.values(basecards)].filter((card) => card.getAvailability(this));
         this.basicEvents = [...Object.values(basicEvents)].filter((event) => event.getAvailability(this));
         this.specialEvents = [...Object.values(specialEvents)].filter((event) => event.getAvailability(this));
+        this.royalAchievements = [...Object.values(royalAchievements)].filter((achievement) => achievement.getAvailability(this));
 
         this.reset();
         this.buildCards();
@@ -73,9 +74,10 @@ class Application {
     }
 
     reset() {
-        this.players = [new Player("p1"), new Player("p2"), new Player("p3"), new Player("p4")];
+        this.players = [new Player("p1", this), new Player("p2", this), new Player("p3", this), new Player("p4", this)];
         this.activePlayer = this.players[0];
         this.players.forEach((player) => player.showPlayer());
+        this.activeAchievement = null;
         $("#nav-p1-tab").tab('show');
         this.updatePlayerOutput();
         this.enableAll();
@@ -102,6 +104,10 @@ class Application {
         } else {
             this.activePlayer.addTown(card);
             this.setCardDisable(card);
+            if (this.activeAchievement){
+                this.calculateAchievement();
+                this.players.forEach((player) => player.showPlayer());
+            }
         }
     }
 
@@ -148,12 +154,50 @@ class Application {
             $("#journey_" + value).removeClass("text-bg-secondary disabled").addClass("text-bg-warning");
     }
 
+    chooseAchievement(achievementName){
+        if(this.activeAchievement)
+            $("#achievement_" + this.activeAchievement.name).removeClass("highlight");
+        $("#achievement_" + achievementName).addClass("highlight");
+        this.activeAchievement = royalAchievements[achievementName];
+        this.calculateAchievement();
+        this.players.forEach((player) => player.showPlayer());
+    }
+
+    removeAchievement(){
+        $("#achievement_" + this.activeAchievement.name).removeClass("highlight");
+        this.activeAchievement = null;
+        this.players.forEach((player) => {
+            player.royalAchievemenPoints = 0;
+            player.showPlayer();
+        });
+    }
+
+    calculateAchievement(){
+        let bucket = {};
+        for(let player of this.players){
+            let value = this.activeAchievement.rankingFunction(player);
+            player.royalAchievemenPoints = 0;
+            if(!(value in bucket)){
+                bucket[value] = [];
+            }
+            bucket[value].push(player);
+        }
+        let winners = Object.keys(bucket).sort().reverse();
+        if(winners[0] > 0){
+            bucket[winners[0]].forEach((player) => player.royalAchievemenPoints = this.activeAchievement.pointsFirst);
+        }
+        if(winners[1] > 0){
+            bucket[winners[1]].forEach((player) => player.royalAchievemenPoints = this.activeAchievement.pointsSecond);
+        }
+    }
+
     setLanguage(lang) {
         i18next.changeLanguage(lang, (err, t) => {
             // start localizing, details:
             // https://github.com/i18next/jquery-i18next#usage-of-selector-function
             this.buildCards();
             this.setCardsDisable();
+            $("#achievement_" + this.activeAchievement.name).addClass("highlight");
             $("*").localize();
             $("#nav-p1-p").append(`<span id='nav-p1-points' class='badge text-bg-warning'>${this.players[0].getTotalPoints()}</span>`);
             $("#nav-p2-p").append(`<span id='nav-p2-points' class='badge text-bg-warning'>${this.players[1].getTotalPoints()}</span>`);
@@ -177,12 +221,14 @@ class Application {
             suit.sort((a, b) => { return getCardName(a).localeCompare(getCardName(b)); });
         }
         this.specialEvents.sort((a, b) => { return getEventName(a).localeCompare(getEventName(b)); });
+        this.royalAchievements.sort((a, b) => { return getAchievementName(a).localeCompare(getAchievementName(b)); });
 
         let html = template({
             suits: suits,
             basicEvents: this.basicEvents,
             specialEvents: this.specialEvents,
-            journeys: journeys
+            journeys: journeys,
+            royalAchievements: this.royalAchievements
         }, {
             allowProtoMethodsByDefault: true
         });

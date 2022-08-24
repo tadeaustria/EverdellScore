@@ -5,6 +5,7 @@ class Player {
     specialEvents = [];
     #wonders = [];
     journeys = [];
+    royalAchievemenPoints = 0;
     points = 0;
     leftResources = {
         'twig': 0,
@@ -18,9 +19,11 @@ class Player {
     #pearls = 0;
 
     divName;
+    #app;
 
-    constructor(divName) {
+    constructor(divName, app) {
         this.divName = divName;
+        this.#app = app;
     }
 
     getOccupiedSpaces() {
@@ -101,7 +104,7 @@ class Player {
             this.specialEvents.reduce((prev, spevent) => prev + spevent.points,
                 this.basicEvents.reduce((prev, event) => prev + event.points,
                     this.journeys.reduce((prev, journeyPoints) => prev + journeyPoints,
-                        this.points + this.getWifeAdditionalPoints()))));
+                        this.points + this.getWifeAdditionalPoints() + this.royalAchievemenPoints))));
     }
 
     areLeftoversRequired() {
@@ -124,6 +127,10 @@ class Player {
             specialEvents: this.specialEvents,
             journeys: this.journeys,
             leftResources: this.areLeftoversRequired() ? this.leftResources : null,
+            achievement: this.#app.activeAchievement && this.royalAchievemenPoints > 0 ? { 
+                name: this.#app.activeAchievement.name,
+                points: this.royalAchievemenPoints
+            } : null, 
             nav: this.divName
         });
         // $("#value_points").val(this.points);

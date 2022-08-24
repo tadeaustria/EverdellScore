@@ -57,6 +57,21 @@
     </header>
     <main class="container-fluid">
         <script id="cards-template" type="text/x-handlebars-template">
+        {{#if royalAchievements}}
+        <div class="card">
+            <div class="card-header" role="tab" id="royalachievement-header" data-bs-toggle="collapse" data-bs-target="#royalachievement"
+                data-bs-parent="#cards" href="#royalachievement" aria-expanded="false" aria-controls="royalachievement">
+                <img src="img/royalachievement.png" width="48" height="48"><a data-i18n="gen.royalachievement"></a>
+            </div>
+            <div id="royalachievement" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="royalachievement-header">
+                <ul class="list-group">
+                    {{#each royalAchievements}}
+                    <li id="achievement_{{name}}" class="list-group-item" onclick="app.chooseAchievement('{{name}}')"
+                        data-i18n="achievement.{{name}}"></li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
         {{#each suits}}
         <div class="card">
             <div class="card-header" role="tab" id="{{@key}}-header" data-bs-toggle="collapse" data-bs-target="#{{@key}}"
@@ -182,6 +197,12 @@
                     <span class="badge text-bg-warning">{{this}}</span>
                 </div>
                 {{/each}}
+            </div>
+            {{/if}}
+            {{#if achievement}}
+            <h3 data-i18n="achievement.{{achievement.name}}" class="w-100"></h3>
+            <div class="playercard card" role="tab" onclick="app.removeAchievement()">
+                <span class="badge text-bg-warning">{{achievement.points}}</span>
             </div>
             {{/if}}
         </script>
