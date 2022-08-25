@@ -3,7 +3,7 @@ class Player {
     town = [];
     basicEvents = [];
     specialEvents = [];
-    #wonders = [];
+    wonders = [];
     journeys = [];
     royalAchievemenPoints = 0;
     points = 0;
@@ -57,7 +57,7 @@ class Player {
         this.showPlayer();
     }
 
-    removeSpecialEvent(eventIndex) {
+    removeWonder(eventIndex) {
         let event = this.specialEvents.splice(eventIndex, 1)[0];
         this.showPlayer();
         return event.name;
@@ -67,6 +67,12 @@ class Player {
         let value = this.journeys.splice(journeyIndex, 1)[0];
         this.showPlayer();
         return value;
+    }
+    
+    removeWonder(wonderIndex) {
+        let wonder = this.wonders.splice(wonderIndex, 1)[0];
+        this.showPlayer();
+        return wonder.name;
     }
 
     findCountFct(findfunction) {
@@ -104,7 +110,8 @@ class Player {
             this.specialEvents.reduce((prev, spevent) => prev + spevent.points,
                 this.basicEvents.reduce((prev, event) => prev + event.points,
                     this.journeys.reduce((prev, journeyPoints) => prev + journeyPoints,
-                        this.points + this.getWifeAdditionalPoints() + this.royalAchievemenPoints))));
+                        this.wonders.reduce((prev, wonder) => prev + wonder.points,
+                            this.points + this.getWifeAdditionalPoints() + this.royalAchievemenPoints)))));
     }
 
     areLeftoversRequired() {
@@ -125,6 +132,7 @@ class Player {
             cardCountPerc: 100 * this.getOccupiedSpaces() / 15,
             basicEvents: this.basicEvents,
             specialEvents: this.specialEvents,
+            wonders: this.wonders,
             journeys: this.journeys,
             leftResources: this.areLeftoversRequired() ? this.leftResources : null,
             achievement: this.#app.activeAchievement && this.royalAchievemenPoints > 0 ? { 

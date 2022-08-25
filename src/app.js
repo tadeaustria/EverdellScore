@@ -60,6 +60,7 @@ class Application {
         this.basicEvents = [...Object.values(basicEvents)].filter((event) => event.getAvailability(this));
         this.specialEvents = [...Object.values(specialEvents)].filter((event) => event.getAvailability(this));
         this.royalAchievements = [...Object.values(royalAchievements)].filter((achievement) => achievement.getAvailability(this));
+        this.wonders = [...Object.values(wonders)].filter((wonders) => wonders.getAvailability(this));
 
         this.reset();
         this.buildCards();
@@ -136,7 +137,7 @@ class Application {
     }
 
     removeSpEventFromActivePlayer(eventIndex) {
-        let eventName = this.activePlayer.removeSpecialEvent(eventIndex);
+        let eventName = this.activePlayer.removeWonder(eventIndex);
         $("#event_" + eventName).removeClass("disabled");
         // $("#specialevent-header").prop("disabled", false).tab("hide");
     }
@@ -155,6 +156,18 @@ class Application {
         let value = this.activePlayer.removeJourney(journeyIndex);
         if (value > 2)
             $("#journey_" + value).removeClass("text-bg-secondary disabled").addClass("text-bg-warning");
+    }
+
+    addWonderToActivePlayer(wonderName) {
+        this.activePlayer.wonders.push(wonders[wonderName]);
+        this.vibrate(50);
+        $("#wonder_" + wonderName).addClass("disabled");
+        this.activePlayer.showPlayer();
+    }
+
+    removeWonderFromActivePlayer(wonderIndex) {
+        let wonderName = this.activePlayer.removeWonder(wonderIndex);
+        $("#wonder_" + wonderName).removeClass("disabled");
     }
 
     chooseAchievement(achievementName){
@@ -233,7 +246,8 @@ class Application {
             basicEvents: this.basicEvents,
             specialEvents: this.specialEvents,
             journeys: journeys,
-            royalAchievements: this.royalAchievements
+            royalAchievements: this.royalAchievements,
+            wonders: this.wonders
         }, {
             allowProtoMethodsByDefault: true
         });

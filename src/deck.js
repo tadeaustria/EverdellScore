@@ -32,6 +32,7 @@ function space_one(player) { return 1; }
 
 function available_always(app) { return true; }
 function available_bellfaire(app) { return app.bellfaire; }
+function available_pearlbrook(app) { return app.pearlbrook; }
 function available_npearlbrook(app) { return !app.pearlbrook; }
 
 let basecards = {
@@ -961,6 +962,29 @@ let royalAchievements = {
 }
 
 let journeys = [5, 4, 3, 2];
+
+let wonders = {
+    "flame": {
+        name: "flame",
+        points: 25,
+        getAvailability: available_pearlbrook
+    },
+    "bridge": {
+        name: "bridge",
+        points: 20,
+        getAvailability: available_pearlbrook
+    },
+    "gate": {
+        name: "gate",
+        points: 20,
+        getAvailability: available_pearlbrook
+    },
+    "fountain": {
+        name: "fountain",
+        points: 15,
+        getAvailability: available_pearlbrook
+    }
+}
 
 function getCardName(card) {
     return i18next.t("card." + card.name);

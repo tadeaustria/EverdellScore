@@ -17,7 +17,8 @@
         "journey": "Journey",
         "leftovers": "Leftover Resources",
         "expansions": "Expansions",
-        "royalachievement": "Royal Achievements"
+        "royalachievement": "Royal Achievements",
+        "wonders": "Wonders"
     },
     "res": {
         "twig": "Twig",
@@ -117,6 +118,12 @@
         "farming": "Farming",
         "architecture": "Architecture",
         "community": "Community"
+    },
+    "wonders":{
+        "flame": "Starfalls flame",
+        "bridge": "Sunglaze bridge",
+        "fountain": "Mistrise fountain",
+        "gate": "Hopewatch gate"
     },
     "text": {
         "cardlimit": "Card limit of town is reached"

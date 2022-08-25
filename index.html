@@ -118,6 +118,22 @@
                 </ul>
             </div>
         </div>
+        {{#if wonders}}
+        <div class="card">
+            <div class="card-header" role="tab" id="wonders-header" data-bs-toggle="collapse" data-bs-target="#wonders"
+                data-bs-parent="#cards" href="#wonders" aria-expanded="false" aria-controls="wonders">
+                <img src="img/wonders.png" width="48" height="48"><a data-i18n="gen.wonders"></a>
+            </div>
+            <div id="wonders" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="wonders-header">
+                <ul class="list-group">
+                    {{#each wonders}}
+                    <li id="wonder_{{name}}" class="list-group-item" onclick="app.addWonderToActivePlayer('{{name}}')"
+                        data-i18n="wonder.{{name}}"></li>
+                    <span class="badge text-bg-warning">{{points}}</span>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
         <div class="card">
             <div class="card-header" role="tab" id="journey-header" data-bs-toggle="collapse" data-bs-target="#journey"
                 data-bs-parent="#cards" href="#journey" aria-expanded="false" aria-controls="journey">
@@ -178,6 +194,17 @@
                 </div>
                 {{/each}}
                 {{/if}}
+                {{#if wonders}}
+                <h3 data-i18n="gen.wonders" class="w-100"></h3>
+                {{#each wonders}}
+                <div class="playercard card p-2" role="tab" onclick="app.removeWonderFromActivePlayer('{{@index}}')">
+                    <div class="d-flex">
+                        <div class="flex-grow-1" data-i18n="wonders.{{name}}"></div>
+                        <span class="badge text-bg-warning">{{points}}</span>
+                    </div>
+                </div>
+                {{/each}}
+                {{/if}}
             </div>
             {{#if leftResources}}
             <h3 data-i18n="gen.leftovers" class="w-100"></h3>
@@ -223,13 +250,13 @@
                                 <label class="form-check-label" for="flexSwitchCheckBellfaire">Bellfaire</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckBellfaire">
                             </div>
-                            <div class="form-check form-switch">
-                                <label class="form-check-label" for="flexSwitchPearlbrook">Pearlbrook</label>
-                                <input class="form-check-input" type="checkbox" id="flexSwitchPearlbrook" disabled>
+                            <div class="form-check form-switch" onchange="app.updateData()">
+                                <label class="form-check-label" for="flexSwitchCheckPearlbrook">Pearlbrook</label>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckPearlbrook">
                             </div>
                             <div class="form-check form-switch">
-                                <label class="form-check-label" for="flexSwitchSpirecrest">Spirecrest</label>
-                                <input class="form-check-input" type="checkbox" id="flexSwitchSpirecrest" disabled>
+                                <label class="form-check-label" for="flexSwitchCheckSpirecrest">Spirecrest</label>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckSpirecrest" disabled>
                             </div>
                         </ul>
                     </div>
