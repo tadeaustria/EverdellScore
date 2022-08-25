@@ -3,19 +3,22 @@ class Player {
     town = [];
     basicEvents = [];
     specialEvents = [];
-    wonders = [];
     journeys = [];
-    royalAchievemenPoints = 0;
     points = 0;
     leftResources = {
         'twig': 0,
         'resin': 0,
         'pebble': 0,
-        'berry': 0
+        'berry': 0,
+        'card': 0
     }
 
+    //bellfaire
+    royalAchievemenPoints = 0;
+
     //pearlbrook
-    #artifacts = [];
+    wonders = [];
+    artifacts = [];
     #pearls = 0;
 
     divName;
@@ -75,6 +78,12 @@ class Player {
         return wonder.name;
     }
 
+    removeArtifact(artifactIndex) {
+        let artifact = this.artifacts.splice(artifactIndex, 1)[0];
+        this.showPlayer();
+        return artifact.name;
+    }
+
     findCountFct(findfunction) {
         return this.town.reduce((prev, card) => { if (findfunction(card)) ++prev; return prev; }, 0);
     }
@@ -115,8 +124,8 @@ class Player {
     }
 
     areLeftoversRequired() {
-        //If Architect is in town
-        return this.town.includes(basecards['39']);
+        //If Architect is in town or scale as artifact
+        return this.town.includes(basecards['39']) || this.artifacts.includes(artifacts["scale"]);
     }
 
     showPlayer() {
@@ -125,6 +134,7 @@ class Player {
         this.specialEvents.forEach((event) => { event.points = event.getPoints(app, this); })
 
         let displayedTown = this.town.map((card) => Object.assign({ addPoints: card.getAdditionalPoints(this) }, card));
+        let displayedArtifacts = this.artifacts.map((artifact) => Object.assign({ points: artifact.getPoints(this) }, artifact));
 
         let html = template({
             cards: displayedTown,
@@ -133,6 +143,7 @@ class Player {
             basicEvents: this.basicEvents,
             specialEvents: this.specialEvents,
             wonders: this.wonders,
+            artifacts: displayedArtifacts,
             journeys: this.journeys,
             leftResources: this.areLeftoversRequired() ? this.leftResources : null,
             achievement: this.#app.activeAchievement && this.royalAchievemenPoints > 0 ? { 

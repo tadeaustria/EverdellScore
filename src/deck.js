@@ -986,6 +986,75 @@ let wonders = {
     }
 }
 
+let artifacts = {
+    "tiara": {
+        name: "tiara",
+        getPoints: (player) => player.findCountType(TYPES.prosperity),
+        getAvailability: available_pearlbrook
+    },
+    "telescope": {
+        name: "telescope",
+        getPoints: (player) => player.wonders.length * 3,
+        getAvailability: available_pearlbrook
+    },
+    "compass": {
+        name: "compass",
+        getPoints: (player) => player.findCountType(TYPES.traveler),
+        getAvailability: available_pearlbrook
+    },
+    "goldenbook": {
+        name: "goldenbook",
+        getPoints: (player) => player.findCountType(TYPES.governance),
+        getAvailability: available_pearlbrook
+    },
+    "mask": {
+        name: "mask",
+        getPoints: (player) => Math.trunc(player.points / 3),
+        getAvailability: available_pearlbrook
+    },
+    "mirror": {
+        name: "mirror",
+        getPoints: (player) => { 
+            let types = new Set();
+            player.town.forEach(card => {
+                types.add(card.type);
+            });
+            return types.size;
+        },
+        getAvailability: available_pearlbrook
+    },
+    "scale": {
+        name: "scale",
+        getPoints: (player) => Math.min(player.leftResources['card'], 5),
+        getAvailability: available_pearlbrook
+    },
+    "sundial": {
+        name: "sundial",
+        getPoints: (player) => Math.trunc(player.findCountType(TYPES.production) / 2),
+        getAvailability: available_pearlbrook
+    },
+    "hourglass": {
+        name: "hourglass",
+        getPoints: (player) => player.findCountType(TYPES.destination),
+        getAvailability: available_pearlbrook
+    },
+    "bell": {
+        name: "bell",
+        getPoints: (player) => Math.trunc(player.findCountKind(KINDS.critter) / 2),
+        getAvailability: available_pearlbrook
+    },
+    "townkey": {
+        name: "townkey",
+        getPoints: (player) => Math.trunc(player.findCountKind(KINDS.building) / 2),
+        getAvailability: available_pearlbrook
+    },
+    "seacharm": {
+        name: "seacharm",
+        getPoints: points_three,
+        getAvailability: available_pearlbrook
+    }
+}
+
 function getCardName(card) {
     return i18next.t("card." + card.name);
 }
@@ -996,4 +1065,8 @@ function getEventName(event) {
 
 function getAchievementName(achievement) {
     return i18next.t("achievement." + achievement.name);
+}
+
+function getArtifactName(artifact) {
+    return i18next.t("artifact." + artifact.name);
 }

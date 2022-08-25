@@ -18,13 +18,15 @@
         "leftovers": "Leftover Resources",
         "expansions": "Expansions",
         "royalachievement": "Royal Achievements",
-        "wonders": "Wonders"
+        "wonders": "Wonders",
+        "artifacts": "Artifacts"
     },
     "res": {
         "twig": "Twig",
         "resin": "Resin",
         "pebble": "Pebble",
         "berry": "Berry",
+        "card": "Card",
         "pearl": "Pearl"
     },
     "card": {
@@ -119,13 +121,14 @@
         "architecture": "Architecture",
         "community": "Community"
     },
-    "wonders":{
+    "wonder":{
         "flame": "Starfalls flame",
         "bridge": "Sunglaze bridge",
         "fountain": "Mistrise fountain",
         "gate": "Hopewatch gate"
     },
     "text": {
-        "cardlimit": "Card limit of town is reached"
+        "cardlimit": "Card limit of town is reached",
+        "artifactlimit": "Card limit of artifacts is reached"
     }
 }

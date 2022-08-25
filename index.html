@@ -134,6 +134,21 @@
                 </ul>
             </div>
         {{/if}}
+        {{#if artifacts}}
+        <div class="card">
+            <div class="card-header" role="tab" id="artifacts-header" data-bs-toggle="collapse" data-bs-target="#artifacts"
+                data-bs-parent="#cards" href="#artifacts" aria-expanded="false" aria-controls="artifacts">
+                <img src="img/artifacts.png" width="48" height="48"><a data-i18n="gen.artifacts"></a>
+            </div>
+            <div id="artifacts" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="artifacts-header">
+                <ul class="list-group">
+                    {{#each artifacts}}
+                    <li id="artifact_{{name}}" class="list-group-item" onclick="app.addArtifactToActivePlayer('{{name}}')"
+                        data-i18n="artifact.{{name}}"></li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
         <div class="card">
             <div class="card-header" role="tab" id="journey-header" data-bs-toggle="collapse" data-bs-target="#journey"
                 data-bs-parent="#cards" href="#journey" aria-expanded="false" aria-controls="journey">
@@ -199,7 +214,18 @@
                 {{#each wonders}}
                 <div class="playercard card p-2" role="tab" onclick="app.removeWonderFromActivePlayer('{{@index}}')">
                     <div class="d-flex">
-                        <div class="flex-grow-1" data-i18n="wonders.{{name}}"></div>
+                        <div class="flex-grow-1" data-i18n="wonder.{{name}}"></div>
+                        <span class="badge text-bg-warning">{{points}}</span>
+                    </div>
+                </div>
+                {{/each}}
+                {{/if}}
+                {{#if artifacts}}
+                <h3 data-i18n="gen.artifacts" class="w-100"></h3>
+                {{#each artifacts}}
+                <div class="playercard card p-2" role="tab" onclick="app.removeArtifactFromActivePlayer('{{@index}}')">
+                    <div class="d-flex">
+                        <div class="flex-grow-1" data-i18n="artifact.{{name}}"></div>
                         <span class="badge text-bg-warning">{{points}}</span>
                     </div>
                 </div>
@@ -294,6 +320,8 @@
             </ul>
             <div class="tab-content" id="nav-tabContent">
                 <div id="alert-cardlimit" class="alert alert-warning fade" role="alert" data-i18n="text.cardlimit"
+                    style="display: none"></div>
+                <div id="alert-artifactlimit" class="alert alert-warning fade" role="alert" data-i18n="text.artifactlimit"
                     style="display: none"></div>
                 <div class="tab-pane fade show active" id="nav-p1" role="tabpanel" aria-labelledby="nav-p1-tab"
                     tabindex="0"></div>

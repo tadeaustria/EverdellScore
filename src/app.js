@@ -61,6 +61,7 @@ class Application {
         this.specialEvents = [...Object.values(specialEvents)].filter((event) => event.getAvailability(this));
         this.royalAchievements = [...Object.values(royalAchievements)].filter((achievement) => achievement.getAvailability(this));
         this.wonders = [...Object.values(wonders)].filter((wonders) => wonders.getAvailability(this));
+        this.artifacts = [...Object.values(artifacts)].filter((artifact) => artifact.getAvailability(this));
 
         this.reset();
         this.buildCards();
@@ -170,6 +171,24 @@ class Application {
         $("#wonder_" + wonderName).removeClass("disabled");
     }
 
+    addArtifactToActivePlayer(artifactName) {
+        if (this.activePlayer.artifacts.length < 2){
+            this.activePlayer.artifacts.push(artifacts[artifactName]);
+            this.vibrate(50);
+            $("#artifact_" + artifactName).addClass("disabled");
+            this.activePlayer.showPlayer();
+        }else{
+            $("#alert-artifactlimit").fadeTo(3000, 500).slideUp(500, function () {
+                $("#alert-artifactlimit").slideUp(500);
+            });
+        }
+    }
+
+    removeArtifactFromActivePlayer(artifactIndex) {
+        let artifactName = this.activePlayer.removeArtifact(artifactIndex);
+        $("#artifact_" + artifactName).removeClass("disabled");
+    }
+
     chooseAchievement(achievementName){
         if(this.activeAchievement)
             $("#achievement_" + this.activeAchievement.name).removeClass("highlight");
@@ -240,6 +259,7 @@ class Application {
         }
         this.specialEvents.sort((a, b) => { return getEventName(a).localeCompare(getEventName(b)); });
         this.royalAchievements.sort((a, b) => { return getAchievementName(a).localeCompare(getAchievementName(b)); });
+        this.artifacts.sort((a, b) => { return getArtifactName(a).localeCompare(getArtifactName(b)); });
 
         let html = template({
             suits: suits,
@@ -247,7 +267,8 @@ class Application {
             specialEvents: this.specialEvents,
             journeys: journeys,
             royalAchievements: this.royalAchievements,
-            wonders: this.wonders
+            wonders: this.wonders,
+            artifacts: this.artifacts
         }, {
             allowProtoMethodsByDefault: true
         });
