@@ -25,7 +25,8 @@ img+a {
 }
 
 h3,
-#main-right label {
+#main-right label,
+footer p {
   color: white;
 }
 
@@ -48,7 +49,7 @@ li.list-group-item {
 
 html,
 body {
-  height: 100%;
+  /* height: 97%; */
   margin: 0;
   padding: 0;
 }
@@ -96,6 +97,7 @@ main {
 }
 
 footer {
+  padding-top: 2rem;
   width: 100%;
   display: flex;
   flex-direction: row;
