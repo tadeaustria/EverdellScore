@@ -622,6 +622,105 @@ let basecards = {
         getOccupiedSpaces: space_one,
         related: [],
         getAvailability: available_always
+    },
+
+
+
+    '101': {
+        name: 'ferry',
+        type: TYPES.destination,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 2,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ['ferryferret'],
+        getAvailability: available_pearlbrook
+    },
+    '102': {
+        name: 'ferryferret',
+        type: TYPES.production,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 1,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_pearlbrook
+    },
+    '103': {
+        name: 'pirateship',
+        type: TYPES.destination,
+        rarity: RARITY.common,
+        kind: KINDS.building,
+        points: 0,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ['pirate'],
+        getAvailability: available_pearlbrook
+    },
+    '104': {
+        name: 'pirate',
+        type: TYPES.traveler,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 1,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_zero,
+        related: [],
+        getAvailability: available_pearlbrook
+    },
+    '105': {
+        name: 'harbor',
+        type: TYPES.production,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 3,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ['shipwright'],
+        getAvailability: available_pearlbrook
+    },
+    '106': {
+        name: 'shipwright',
+        type: TYPES.prosperity,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 2,
+        getAdditionalPoints: (player)=> player.findCountFct((card)=>card.getAvailability==available_pearlbrook),
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_pearlbrook
+    },
+    '107': {
+        name: 'bridge',
+        type: TYPES.governance,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 1,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ['messenger'],
+        getAvailability: available_pearlbrook
+    },
+    '108': {
+        name: 'messenger',
+        type: TYPES.traveler,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 0,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_pearlbrook
     }
 }
 
@@ -823,7 +922,7 @@ let specialEvents = {
         value: 0,
         inputMax: 0,
         inputFactor: 0,
-        points: 5,
+        points: 0,
         getPoints: points_five,
         getAvailability: available_bellfaire
     },
@@ -833,7 +932,7 @@ let specialEvents = {
         value: 0,
         inputMax: 0,
         inputFactor: 0,
-        points: 5,
+        points: 0,
         getPoints: points_five,
         getAvailability: available_bellfaire
     },
@@ -843,7 +942,7 @@ let specialEvents = {
         value: 0,
         inputMax: 0,
         inputFactor: 0,
-        points: 5,
+        points: 0,
         getPoints: points_five,
         getAvailability: available_bellfaire
     },
@@ -853,7 +952,7 @@ let specialEvents = {
         value: 0,
         inputMax: 0,
         inputFactor: 0,
-        points: 6,
+        points: 0,
         getPoints: points_six,
         getAvailability: available_bellfaire
     },
@@ -863,7 +962,7 @@ let specialEvents = {
         value: 0,
         inputMax: 0,
         inputFactor: 0,
-        points: 6,
+        points: 0,
         getPoints: points_six,
         getAvailability: available_bellfaire
     },
@@ -873,7 +972,7 @@ let specialEvents = {
         value: 0,
         inputMax: 0,
         inputFactor: 0,
-        points: 6,
+        points: 0,
         getPoints: points_six,
         getAvailability: available_bellfaire
     },
@@ -883,7 +982,7 @@ let specialEvents = {
         value: 0,
         inputMax: 0,
         inputFactor: 0,
-        points: 5,
+        points: 0,
         getPoints: points_five,
         getAvailability: available_bellfaire
     },
@@ -893,7 +992,7 @@ let specialEvents = {
         value: 0,
         inputMax: 0,
         inputFactor: 0,
-        points: 6,
+        points: 0,
         getPoints: points_six,
         getAvailability: available_bellfaire
     },
@@ -903,9 +1002,70 @@ let specialEvents = {
         value: 0,
         inputMax: 0,
         inputFactor: 0,
-        points: 6,
+        points: 0,
         getPoints: points_six,
         getAvailability: available_bellfaire
+    },
+
+    "romanticcruise": {
+        name: "romanticcruise",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_zero,
+        getAvailability: available_pearlbrook
+    },
+    "riverrace": {
+        name: "riverrace",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_four,
+        getAvailability: available_pearlbrook
+    },
+    "riverbath": {
+        name: "riverbath",
+        input: true,
+        value: 0,
+        inputMax: 3,
+        inputFactor: 2,
+        points: 0,
+        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getAvailability: available_pearlbrook
+    },
+    "markedtreasure": {
+        name: "markedtreasure",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_zero,
+        getAvailability: available_pearlbrook
+    },
+    "treasurediscovery": {
+        name: "treasurediscovery",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_zero,
+        getAvailability: available_pearlbrook
+    },
+    "invitationmaskball": {
+        name: "invitationmaskball",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_zero,
+        getAvailability: available_pearlbrook
     }
 }
 

@@ -17,7 +17,9 @@
         "journey": "Reise",
         "leftovers": "Übrige Ressourcen",
         "expansions": "Erweiterungen",
-        "royalachievement": "Königliche Auszeichnungen"
+        "royalachievement": "Königliche Auszeichnungen",
+        "wonders": "Wunder",
+        "artifacts": "Artefakte"
     },
     "res": {
         "twig": "Holz",
@@ -75,7 +77,16 @@
         "school": "Schule",
         "teacher": "Lehrer",
         "theater": "Theater",
-        "bard": "Barde"
+        "bard": "Barde",
+
+        "ferry": "Fähre",
+        "ferryferret": "Fährfrettchen",
+        "pirateship": "Piratenschiff",
+        "pirate": "Pirat",
+        "harbor": "Hafen",
+        "shipwright": "Schiffsbauer",
+        "bridge": "Brücke",
+        "messenger": "Kurier"
     },
     "event": {
         "grandtour": "Die große Fahrt",
@@ -108,7 +119,14 @@
         "artnculture": "Kunst- und Kulturfestival",
         "gathering": "Versammlung der Ältesten",
         "royalwedding": "Royale Hochzeit",
-        "kingsroad": "Eröffnung der King's Road"
+        "kingsroad": "Eröffnung der King's Road",
+
+        "romanticcruise": "Romantische Kreufahrt",
+        "riverrace": "Flussrennen",
+        "riverbath": "Flussbad",
+        "markedtreasure": "Ein X markiert den Schatz",
+        "treasurediscovery": "Entdeckung eines versunkenen Schatzes",
+        "invitationmaskball": "Einladung zum Maskenball"
     },
     "achievement":{
         "tales": "Erzählungen",
@@ -119,7 +137,29 @@
         "architecture": "Architektur",
         "community": "Gemeinschaft"
     },
+    "wonder":{
+        "flame": "Sternenfall-Flamme",
+        "bridge": "Sonnenstrahl-Brücke",
+        "fountain": "Nebelsteig-Brunnen",
+        "gate": "Tor der Hoffnungswache"
+    },
+    "artifact":{
+        "tiara": "Tiara",
+        "telescope": "Fernrohr",
+        "compass": "Kompass",
+        "goldenbook": "Goldenes Buch",
+        "mask": "Maske",
+        "mirror": "Spiegel",
+        "scale": "Waage",
+        "sundial":"Sonnenuhr",
+        "hourglass":"Sanduhr",
+        "bell": "Glocke",
+        "townkey": "Schlüssel zur Stadt",
+        "seacharm": "Meerglas-Amulett"
+    },
+
     "text": {
-        "cardlimit": "Kartenlimit der Stadt erreicht"
+        "cardlimit": "Kartenlimit der Stadt erreicht",
+        "artifactlimit": "Kartenlimit der Artefakte erreicht"
     }
 }
