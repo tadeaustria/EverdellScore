@@ -244,7 +244,11 @@ class Application {
     }
 
     resourceSet(name) {
-        this.activePlayer.leftResources[name] = parseInt($("#value_" + this.activePlayer.divName + "_" + name).val());
+        if (name == "pearl"){
+            this.activePlayer.pearls = parseInt($("#value_" + this.activePlayer.divName + "_" + name).val());
+        }else{
+            this.activePlayer.leftResources[name] = parseInt($("#value_" + this.activePlayer.divName + "_" + name).val());
+        }
         this.activePlayer.showPlayer();
     }
 

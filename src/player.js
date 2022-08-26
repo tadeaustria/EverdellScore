@@ -19,7 +19,7 @@ class Player {
     //pearlbrook
     wonders = [];
     artifacts = [];
-    #pearls = 0;
+    pearls = 0;
 
     divName;
     #app;
@@ -120,7 +120,7 @@ class Player {
                 this.basicEvents.reduce((prev, event) => prev + event.points,
                     this.journeys.reduce((prev, journeyPoints) => prev + journeyPoints,
                         this.wonders.reduce((prev, wonder) => prev + wonder.points,
-                            this.points + this.getWifeAdditionalPoints() + this.royalAchievemenPoints)))));
+                            this.points + this.getWifeAdditionalPoints() + this.royalAchievemenPoints + 2 * this.pearls)))));
     }
 
     areLeftoversRequired() {
@@ -145,7 +145,9 @@ class Player {
             wonders: this.wonders,
             artifacts: displayedArtifacts,
             journeys: this.journeys,
+            anyRessourceNeeded: this.areLeftoversRequired() || this.#app.pearlbrook,
             leftResources: this.areLeftoversRequired() ? this.leftResources : null,
+            pearl: this.#app.pearlbrook ? { pearl: this.pearls, points: 2*this.pearls } : null,
             achievement: this.#app.activeAchievement && this.royalAchievemenPoints > 0 ? { 
                 name: this.#app.activeAchievement.name,
                 points: this.royalAchievemenPoints

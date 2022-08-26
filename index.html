@@ -232,7 +232,7 @@
                 {{/each}}
                 {{/if}}
             </div>
-            {{#if leftResources}}
+            {{#if anyRessourceNeeded}}
             <h3 data-i18n="gen.leftovers" class="w-100"></h3>
             {{#each leftResources}}
             <div>
@@ -241,6 +241,13 @@
                 <input id="value_{{../nav}}_{{@key}}" type="range" class="form-range" min="0" value="{{this}}" max="6" onchange="app.resourceSet('{{@key}}')">
             </div>
             {{/each}}
+            {{#if pearl includeZero=true}}
+            <div>
+                <!-- <img src="img/{{@key}}.png" height="20px" width="20px"></img> -->
+                <label for="value_{{nav}}_pearl" data-i18n="res.pearl"></label><span class='badge text-bg-warning' style="margin-left: 1rem;">{{pearl.points}}</span>
+                <input id="value_{{nav}}_pearl" type="range" class="form-range" min="0" value="{{pearl.pearl}}" max="6" onchange="app.resourceSet('pearl')">
+            </div>
+            {{/if}}
             {{/if}}
             {{#if journeys}}
             <h3 data-i18n="gen.journey" class="w-100"></h3>
