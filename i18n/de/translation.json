@@ -17,9 +17,9 @@
         "journey": "Reise",
         "leftovers": "Übrige Ressourcen",
         "expansions": "Erweiterungen",
-        "royalachievement": "Königliche Auszeichnungen",
+        "garlandaward": "Königliche Auszeichnungen",
         "wonders": "Wunder",
-        "artifacts": "Artefakte"
+        "adornments": "Artefakte"
     },
     "res": {
         "twig": "Holz",
@@ -128,7 +128,7 @@
         "treasurediscovery": "Entdeckung eines versunkenen Schatzes",
         "invitationmaskball": "Einladung zum Maskenball"
     },
-    "achievement":{
+    "award":{
         "tales": "Erzählungen",
         "tourism": "Tourismus",
         "beauty": "Schönheit",
@@ -143,7 +143,7 @@
         "fountain": "Nebelsteig-Brunnen",
         "gate": "Tor der Hoffnungswache"
     },
-    "artifact":{
+    "adornment":{
         "tiara": "Tiara",
         "telescope": "Fernrohr",
         "compass": "Kompass",
@@ -160,6 +160,6 @@
 
     "text": {
         "cardlimit": "Kartenlimit der Stadt erreicht",
-        "artifactlimit": "Kartenlimit der Artefakte erreicht"
+        "adornmentlimit": "Kartenlimit der Artefakte erreicht"
     }
 }

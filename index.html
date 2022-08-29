@@ -57,17 +57,17 @@
     </header>
     <main class="container-fluid">
         <script id="cards-template" type="text/x-handlebars-template">
-        {{#if royalAchievements}}
+        {{#if garlandAwards}}
         <div class="card">
-            <div class="card-header" role="tab" id="royalachievement-header" data-bs-toggle="collapse" data-bs-target="#royalachievement"
-                data-bs-parent="#cards" href="#royalachievement" aria-expanded="false" aria-controls="royalachievement">
-                <img src="img/royalachievement.png" width="48" height="48"><a data-i18n="gen.royalachievement"></a>
+            <div class="card-header" role="tab" id="garlandaward-header" data-bs-toggle="collapse" data-bs-target="#garlandaward"
+                data-bs-parent="#cards" href="#garlandaward" aria-expanded="false" aria-controls="garlandaward">
+                <img src="img/garlandaward.png" width="48" height="48"><a data-i18n="gen.garlandaward"></a>
             </div>
-            <div id="royalachievement" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="royalachievement-header">
+            <div id="garlandaward" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="garlandaward-header">
                 <ul class="list-group">
-                    {{#each royalAchievements}}
-                    <li id="achievement_{{name}}" class="list-group-item" onclick="app.chooseAchievement('{{name}}')"
-                        data-i18n="achievement.{{name}}"></li>
+                    {{#each garlandAwards}}
+                    <li id="award_{{name}}" class="list-group-item" onclick="app.chooseAward('{{name}}')"
+                        data-i18n="award.{{name}}"></li>
                     {{/each}}
                 </ul>
             </div>
@@ -134,17 +134,17 @@
                 </ul>
             </div>
         {{/if}}
-        {{#if artifacts}}
+        {{#if adornments}}
         <div class="card">
-            <div class="card-header" role="tab" id="artifacts-header" data-bs-toggle="collapse" data-bs-target="#artifacts"
-                data-bs-parent="#cards" href="#artifacts" aria-expanded="false" aria-controls="artifacts">
-                <img src="img/artifacts.png" width="48" height="48"><a data-i18n="gen.artifacts"></a>
+            <div class="card-header" role="tab" id="adornments-header" data-bs-toggle="collapse" data-bs-target="#adornments"
+                data-bs-parent="#cards" href="#adornments" aria-expanded="false" aria-controls="adornments">
+                <img src="img/adornments.png" width="48" height="48"><a data-i18n="gen.adornments"></a>
             </div>
-            <div id="artifacts" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="artifacts-header">
+            <div id="adornments" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="adornments-header">
                 <ul class="list-group">
-                    {{#each artifacts}}
-                    <li id="artifact_{{name}}" class="list-group-item" onclick="app.addArtifactToActivePlayer('{{name}}')"
-                        data-i18n="artifact.{{name}}"></li>
+                    {{#each adornments}}
+                    <li id="adornment_{{name}}" class="list-group-item" onclick="app.addAdornmentToActivePlayer('{{name}}')"
+                        data-i18n="adornment.{{name}}"></li>
                     {{/each}}
                 </ul>
             </div>
@@ -220,12 +220,12 @@
                 </div>
                 {{/each}}
                 {{/if}}
-                {{#if artifacts}}
-                <h3 data-i18n="gen.artifacts" class="w-100"></h3>
-                {{#each artifacts}}
-                <div class="playercard card p-2" role="tab" onclick="app.removeArtifactFromActivePlayer('{{@index}}')">
+                {{#if adornments}}
+                <h3 data-i18n="gen.adornments" class="w-100"></h3>
+                {{#each adornments}}
+                <div class="playercard card p-2" role="tab" onclick="app.removeAdornmentFromActivePlayer('{{@index}}')">
                     <div class="d-flex">
-                        <div class="flex-grow-1" data-i18n="artifact.{{name}}"></div>
+                        <div class="flex-grow-1" data-i18n="adornment.{{name}}"></div>
                         <span class="badge text-bg-warning">{{points}}</span>
                     </div>
                 </div>
@@ -259,10 +259,10 @@
                 {{/each}}
             </div>
             {{/if}}
-            {{#if achievement}}
-            <h3 data-i18n="achievement.{{achievement.name}}" class="w-100"></h3>
-            <div class="playercard card" role="tab" onclick="app.removeAchievement()">
-                <span class="badge text-bg-warning">{{achievement.points}}</span>
+            {{#if award}}
+            <h3 data-i18n="award.{{award.name}}" class="w-100"></h3>
+            <div class="playercard card" role="tab" onclick="app.removeAward()">
+                <span class="badge text-bg-warning">{{award.points}}</span>
             </div>
             {{/if}}
         </script>
@@ -328,7 +328,7 @@
             <div class="tab-content" id="nav-tabContent">
                 <div id="alert-cardlimit" class="alert alert-warning fade" role="alert" data-i18n="text.cardlimit"
                     style="display: none"></div>
-                <div id="alert-artifactlimit" class="alert alert-warning fade" role="alert" data-i18n="text.artifactlimit"
+                <div id="alert-adornmentlimit" class="alert alert-warning fade" role="alert" data-i18n="text.adornmentlimit"
                     style="display: none"></div>
                 <div class="tab-pane fade show active" id="nav-p1" role="tabpanel" aria-labelledby="nav-p1-tab"
                     tabindex="0"></div>

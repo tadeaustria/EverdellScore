@@ -17,9 +17,9 @@
         "journey": "Journey",
         "leftovers": "Leftover Resources",
         "expansions": "Expansions",
-        "royalachievement": "Royal Achievements",
+        "garlandaward": "Garland Awards",
         "wonders": "Wonders",
-        "artifacts": "Artifacts"
+        "adornments": "Adornments"
     },
     "res": {
         "twig": "Twig",
@@ -129,7 +129,7 @@
         "invitationmaskball": "Invitation to the masked ball"
     },
 
-    "achievement": {
+    "award": {
         "tales": "Tales",
         "tourism": "Tourism",
         "beauty": "Beauty",
@@ -144,7 +144,7 @@
         "fountain": "Mistrise fountain",
         "gate": "Hopewatch gate"
     },
-    "artifact": {
+    "adornment": {
         "tiara": "Tiara",
         "telescope": "Telescope",
         "compass": "Compass",
@@ -160,6 +160,6 @@
     },
     "text": {
         "cardlimit": "Card limit of town is reached",
-        "artifactlimit": "Card limit of artifacts is reached"
+        "adornmentlimit": "Card limit of adornments is reached"
     }
 }

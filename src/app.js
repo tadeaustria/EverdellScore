@@ -59,9 +59,9 @@ class Application {
         this.cards = [...Object.values(basecards)].filter((card) => card.getAvailability(this));
         this.basicEvents = [...Object.values(basicEvents)].filter((event) => event.getAvailability(this));
         this.specialEvents = [...Object.values(specialEvents)].filter((event) => event.getAvailability(this));
-        this.royalAchievements = [...Object.values(royalAchievements)].filter((achievement) => achievement.getAvailability(this));
+        this.garlandAwards = [...Object.values(garlandAwards)].filter((award) => award.getAvailability(this));
         this.wonders = [...Object.values(wonders)].filter((wonders) => wonders.getAvailability(this));
-        this.artifacts = [...Object.values(artifacts)].filter((artifact) => artifact.getAvailability(this));
+        this.adornments = [...Object.values(adornments)].filter((adornment) => adornment.getAvailability(this));
 
         this.reset();
         this.buildCards();
@@ -79,7 +79,7 @@ class Application {
         this.players = [new Player("p1", this), new Player("p2", this), new Player("p3", this), new Player("p4", this)];
         this.activePlayer = this.players[0];
         this.players.forEach((player) => player.showPlayer());
-        this.activeAchievement = null;
+        this.activeAward = null;
         $("#nav-p1-tab").tab('show');
         this.updatePlayerOutput();
         this.enableAll();
@@ -107,8 +107,8 @@ class Application {
             this.vibrate(50);
             this.activePlayer.addTown(card);
             this.setCardDisable(card);
-            if (this.activeAchievement){
-                this.calculateAchievement();
+            if (this.activeAward){
+                this.calculateAward();
                 this.players.forEach((player) => player.showPlayer());
             }
         }
@@ -171,48 +171,48 @@ class Application {
         $("#wonder_" + wonderName).removeClass("disabled");
     }
 
-    addArtifactToActivePlayer(artifactName) {
-        if (this.activePlayer.artifacts.length < 2){
-            this.activePlayer.artifacts.push(artifacts[artifactName]);
+    addAdornmentToActivePlayer(adornmentName) {
+        if (this.activePlayer.adornments.length < 2){
+            this.activePlayer.adornments.push(adornments[adornmentName]);
             this.vibrate(50);
-            $("#artifact_" + artifactName).addClass("disabled");
+            $("#adornment_" + adornmentName).addClass("disabled");
             this.activePlayer.showPlayer();
         }else{
-            $("#alert-artifactlimit").fadeTo(3000, 500).slideUp(500, function () {
-                $("#alert-artifactlimit").slideUp(500);
+            $("#alert-adornmentlimit").fadeTo(3000, 500).slideUp(500, function () {
+                $("#alert-adornmentlimit").slideUp(500);
             });
         }
     }
 
-    removeArtifactFromActivePlayer(artifactIndex) {
-        let artifactName = this.activePlayer.removeArtifact(artifactIndex);
-        $("#artifact_" + artifactName).removeClass("disabled");
+    removeAdornmentFromActivePlayer(adornmentIndex) {
+        let adornmentName = this.activePlayer.removeAdornment(adornmentIndex);
+        $("#adornment_" + adornmentName).removeClass("disabled");
     }
 
-    chooseAchievement(achievementName){
-        if(this.activeAchievement)
-            $("#achievement_" + this.activeAchievement.name).removeClass("highlight");
-        $("#achievement_" + achievementName).addClass("highlight");
+    chooseAward(awardName){
+        if(this.activeAward)
+            $("#award_" + this.activeAward.name).removeClass("highlight");
+        $("#award_" + awardName).addClass("highlight");
         this.vibrate(50);
-        this.activeAchievement = royalAchievements[achievementName];
-        this.calculateAchievement();
+        this.activeAward = garlandAwards[awardName];
+        this.calculateAward();
         this.players.forEach((player) => player.showPlayer());
     }
 
-    removeAchievement(){
-        $("#achievement_" + this.activeAchievement.name).removeClass("highlight");
-        this.activeAchievement = null;
+    removeAward(){
+        $("#award_" + this.activeAward.name).removeClass("highlight");
+        this.activeAward = null;
         this.players.forEach((player) => {
-            player.royalAchievemenPoints = 0;
+            player.garlandAchievemenPoints = 0;
             player.showPlayer();
         });
     }
 
-    calculateAchievement(){
+    calculateAward(){
         let bucket = {};
         for(let player of this.players){
-            let value = this.activeAchievement.rankingFunction(player);
-            player.royalAchievemenPoints = 0;
+            let value = this.activeAward.rankingFunction(player);
+            player.garlandAchievemenPoints = 0;
             if(!(value in bucket)){
                 bucket[value] = [];
             }
@@ -220,10 +220,10 @@ class Application {
         }
         let winners = Object.keys(bucket).sort().reverse();
         if(winners[0] > 0){
-            bucket[winners[0]].forEach((player) => player.royalAchievemenPoints = this.activeAchievement.pointsFirst);
+            bucket[winners[0]].forEach((player) => player.garlandAchievemenPoints = this.activeAward.pointsFirst);
         }
         if(winners[1] > 0){
-            bucket[winners[1]].forEach((player) => player.royalAchievemenPoints = this.activeAchievement.pointsSecond);
+            bucket[winners[1]].forEach((player) => player.garlandAchievemenPoints = this.activeAward.pointsSecond);
         }
     }
 
@@ -233,8 +233,8 @@ class Application {
             // https://github.com/i18next/jquery-i18next#usage-of-selector-function
             this.buildCards();
             this.setCardsDisable();
-            if (this.activeAchievement)
-                $("#achievement_" + this.activeAchievement.name).addClass("highlight");
+            if (this.activeAward)
+                $("#award_" + this.activeAward.name).addClass("highlight");
             $("*").localize();
             $("#nav-p1-p").append(`<span id='nav-p1-points' class='badge text-bg-warning'>${this.players[0].getTotalPoints()}</span>`);
             $("#nav-p2-p").append(`<span id='nav-p2-points' class='badge text-bg-warning'>${this.players[1].getTotalPoints()}</span>`);
@@ -262,17 +262,17 @@ class Application {
             suit.sort((a, b) => { return getCardName(a).localeCompare(getCardName(b)); });
         }
         this.specialEvents.sort((a, b) => { return getEventName(a).localeCompare(getEventName(b)); });
-        this.royalAchievements.sort((a, b) => { return getAchievementName(a).localeCompare(getAchievementName(b)); });
-        this.artifacts.sort((a, b) => { return getArtifactName(a).localeCompare(getArtifactName(b)); });
+        this.garlandAwards.sort((a, b) => { return getAwardName(a).localeCompare(getAwardName(b)); });
+        this.adornments.sort((a, b) => { return getAdornmentName(a).localeCompare(getAdornmentName(b)); });
 
         let html = template({
             suits: suits,
             basicEvents: this.basicEvents,
             specialEvents: this.specialEvents,
             journeys: journeys,
-            royalAchievements: this.royalAchievements,
+            garlandAwards: this.garlandAwards,
             wonders: this.wonders,
-            artifacts: this.artifacts
+            adornments: this.adornments
         }, {
             allowProtoMethodsByDefault: true
         });

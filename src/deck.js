@@ -1069,7 +1069,7 @@ let specialEvents = {
     }
 }
 
-let royalAchievements = {
+let garlandAwards = {
     "tales": {
         name: "tales",
         rankingFunction: (player) => player.findCountType(TYPES.traveler),
@@ -1146,7 +1146,7 @@ let wonders = {
     }
 }
 
-let artifacts = {
+let adornments = {
     "tiara": {
         name: "tiara",
         getPoints: (player) => player.findCountType(TYPES.prosperity),
@@ -1223,10 +1223,10 @@ function getEventName(event) {
     return i18next.t("event." + event.name);
 }
 
-function getAchievementName(achievement) {
-    return i18next.t("achievement." + achievement.name);
+function getAwardName(award) {
+    return i18next.t("award." + award.name);
 }
 
-function getArtifactName(artifact) {
-    return i18next.t("artifact." + artifact.name);
+function getAdornmentName(adornment) {
+    return i18next.t("adornment." + adornment.name);
 }

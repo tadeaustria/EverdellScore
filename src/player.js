@@ -14,11 +14,11 @@ class Player {
     }
 
     //bellfaire
-    royalAchievemenPoints = 0;
+    garlandAchievemenPoints = 0;
 
     //pearlbrook
     wonders = [];
-    artifacts = [];
+    adornments = [];
     pearls = 0;
 
     divName;
@@ -78,10 +78,10 @@ class Player {
         return wonder.name;
     }
 
-    removeArtifact(artifactIndex) {
-        let artifact = this.artifacts.splice(artifactIndex, 1)[0];
+    removeAdornment(adornmentIndex) {
+        let adornment = this.adornments.splice(adornmentIndex, 1)[0];
         this.showPlayer();
-        return artifact.name;
+        return adornment.name;
     }
 
     findCountFct(findfunction) {
@@ -124,8 +124,8 @@ class Player {
     }
 
     areLeftoversRequired() {
-        //If Architect is in town or scale as artifact
-        return this.town.includes(basecards['39']) || this.artifacts.includes(artifacts["scale"]);
+        //If Architect is in town or scale as adornment
+        return this.town.includes(basecards['39']) || this.adornments.includes(adornments["scale"]);
     }
 
     showPlayer() {
@@ -134,7 +134,7 @@ class Player {
         this.specialEvents.forEach((event) => { event.points = event.getPoints(app, this); })
 
         let displayedTown = this.town.map((card) => Object.assign({ addPoints: card.getAdditionalPoints(this) }, card));
-        let displayedArtifacts = this.artifacts.map((artifact) => Object.assign({ points: artifact.getPoints(this) }, artifact));
+        let displayedAdornments = this.adornments.map((adornment) => Object.assign({ points: adornment.getPoints(this) }, adornment));
 
         let html = template({
             cards: displayedTown,
@@ -143,14 +143,14 @@ class Player {
             basicEvents: this.basicEvents,
             specialEvents: this.specialEvents,
             wonders: this.wonders,
-            artifacts: displayedArtifacts,
+            adornments: displayedAdornments,
             journeys: this.journeys,
             anyRessourceNeeded: this.areLeftoversRequired() || this.#app.pearlbrook,
             leftResources: this.areLeftoversRequired() ? this.leftResources : null,
             pearl: this.#app.pearlbrook ? { pearl: this.pearls, points: 2*this.pearls } : null,
-            achievement: this.#app.activeAchievement && this.royalAchievemenPoints > 0 ? { 
-                name: this.#app.activeAchievement.name,
-                points: this.royalAchievemenPoints
+            award: this.#app.activeAward && this.garlandAchievemenPoints > 0 ? { 
+                name: this.#app.activeAward.name,
+                points: this.garlandAchievemenPoints
             } : null, 
             nav: this.divName
         });
