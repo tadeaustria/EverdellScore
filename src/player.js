@@ -120,7 +120,8 @@ class Player {
                 this.basicEvents.reduce((prev, event) => prev + event.points,
                     this.journeys.reduce((prev, journeyPoints) => prev + journeyPoints,
                         this.wonders.reduce((prev, wonder) => prev + wonder.points,
-                            this.points + this.getWifeAdditionalPoints() + this.royalAchievemenPoints + 2 * this.pearls)))));
+                            this.adornments.reduce((prev, adornments) => prev + adornments.getPoints(this),
+                                this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.pearls))))));
     }
 
     areLeftoversRequired() {

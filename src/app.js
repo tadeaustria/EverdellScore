@@ -326,7 +326,7 @@ class Application {
     setActivePlayerPoints() {
         this.activePlayer.points = parseInt($("#value_points").val());
         $("#value_points_badge").text(this.activePlayer.points);
-        this.activePlayer.showTotalPoints();
+        this.activePlayer.showPlayer();
     }
 
     vibrate(intesity){
