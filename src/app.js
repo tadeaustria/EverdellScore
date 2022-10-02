@@ -3,8 +3,10 @@
 
 let app;
 
-i18next.use(i18nextBrowserLanguageDetector).use(i18nextHttpBackend).init({
-    lng: 'en', // evtl. use language-detector https://github.com/i18next/i18next-browser-languageDetector
+i18next
+.use(i18nextBrowserLanguageDetector)
+.use(i18nextHttpBackend)
+.init({
     fallbackLng: 'en',
     // debug: true,
     saveMissing: false,
@@ -12,6 +14,8 @@ i18next.use(i18nextBrowserLanguageDetector).use(i18nextHttpBackend).init({
         loadPath: 'i18n/{{lng}}/{{ns}}.json',
         addPath: 'i18n/{{lng}}/{{ns}}.missing.json'
     }
+    // 
+    // useLocalStore: false
 }, function (err, t) {
     // for options see
     // https://github.com/i18next/jquery-i18next#initialize-the-plugin

@@ -7,19 +7,23 @@ It allows you to choose all the cards per player and will give the sum up the to
 The application also prevents that cards are multiple chosen, if not allowed (e.g. unique cards or number of cards).
 
 ## Personal Data
-Cookies for storing the chosen language. (NOT WORKING YET)
+Cookies for storing the chosen language.
 
 # Roadmap
 
 * [ ] Implementing expansions
   * [X] Bellfaire
-  * [ ] Pearlbrook
+  * [X] Pearlbrook
   * [ ] Spirecrest
 * [ ] 2 Upcoming expansions
 * [ ] (Adding picture to cards)
 
 # Updates
 
+## Version 1.2
+* Pearlbrook extension
+* Remember language on refresh
+  
 ## Version 1.1 
 * Bellfaire extension
 * Vibration feedback on choosing cards on phone
