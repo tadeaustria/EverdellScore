@@ -148,6 +148,39 @@
                     {{/each}}
                 </ul>
             </div>
+        </div>
+        {{/if}}
+        {{#if expeditions}}
+        <div class="card">
+            <div class="card-header" role="tab" id="expeditions-header" data-bs-toggle="collapse" data-bs-target="#expeditions"
+                data-bs-parent="#cards" href="#expeditions" aria-expanded="false" aria-controls="expeditions">
+                <img src="img/expeditions.png" width="48" height="48"><a data-i18n="gen.expeditions"></a>
+            </div>
+            <div id="expeditions" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="expeditions-header">
+                <ul class="list-group">
+                    {{#each expeditions}}
+                    <li id="expedition_{{name}}" class="list-group-item" onclick="app.addExpeditionToActivePlayer('{{name}}')"
+                        data-i18n="expedition.{{name}}"></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        {{/if}}
+        {{#if discoveries}}
+        <div class="card">
+            <div class="card-header" role="tab" id="discoveries-header" data-bs-toggle="collapse" data-bs-target="#discoveries"
+                data-bs-parent="#cards" href="#discoveries" aria-expanded="false" aria-controls="discoveries">
+                <img src="img/discoveries.png" width="48" height="48"><a data-i18n="gen.discoveries"></a>
+            </div>
+            <div id="discoveries" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="discoveries-header">
+                <ul class="list-group">
+                    {{#each discoveries}}
+                    <li id="discovery_{{name}}" class="list-group-item" onclick="app.addDiscoveryToActivePlayer('{{name}}')"
+                        data-i18n="discovery.{{name}}"></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
         {{/if}}
         <div class="card">
             <div class="card-header" role="tab" id="journey-header" data-bs-toggle="collapse" data-bs-target="#journey"
@@ -231,6 +264,28 @@
                 </div>
                 {{/each}}
                 {{/if}}
+                {{#if expeditions}}
+                <h3 data-i18n="gen.expeditions" class="w-100"></h3>
+                {{#each expeditions}}
+                <div class="playercard card p-2" role="tab" onclick="app.removeExpeditionFromActivePlayer('{{@index}}')">
+                    <div class="d-flex">
+                        <div class="flex-grow-1" data-i18n="expedition.{{name}}"></div>
+                        <span class="badge text-bg-warning">{{points}}</span>
+                    </div>
+                </div>
+                {{/each}}
+                {{/if}}
+                {{#if discoveries}}
+                <h3 data-i18n="gen.discoveries" class="w-100"></h3>
+                {{#each discoveries}}
+                <div class="playercard card p-2" role="tab" onclick="app.removeDiscoveryFromActivePlayer('{{@index}}')">
+                    <div class="d-flex">
+                        <div class="flex-grow-1" data-i18n="discovery.{{name}}"></div>
+                        <span class="badge text-bg-warning">{{points}}</span>
+                    </div>
+                </div>
+                {{/each}}
+                {{/if}}
             </div>
             {{#if anyRessourceNeeded}}
             <h3 data-i18n="gen.leftovers" class="w-100"></h3>
@@ -287,9 +342,9 @@
                                 <label class="form-check-label" for="flexSwitchCheckPearlbrook">Pearlbrook</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckPearlbrook">
                             </div>
-                            <div class="form-check form-switch">
+                            <div class="form-check form-switch" onchange="app.updateData()">
                                 <label class="form-check-label" for="flexSwitchCheckSpirecrest">Spirecrest</label>
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckSpirecrest" disabled>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckSpirecrest">
                             </div>
                         </ul>
                     </div>
@@ -329,6 +384,10 @@
                 <div id="alert-cardlimit" class="alert alert-warning fade" role="alert" data-i18n="text.cardlimit"
                     style="display: none"></div>
                 <div id="alert-adornmentlimit" class="alert alert-warning fade" role="alert" data-i18n="text.adornmentlimit"
+                    style="display: none"></div>
+                <div id="alert-expeditionlimit" class="alert alert-warning fade" role="alert" data-i18n="text.expeditionlimit"
+                    style="display: none"></div>
+                <div id="alert-discoverylimit" class="alert alert-warning fade" role="alert" data-i18n="text.discoverylimit"
                     style="display: none"></div>
                 <div class="tab-pane fade show active" id="nav-p1" role="tabpanel" aria-labelledby="nav-p1-tab"
                     tabindex="0"></div>

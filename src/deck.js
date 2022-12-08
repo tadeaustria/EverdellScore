@@ -34,6 +34,7 @@ function available_always(app) { return true; }
 function available_bellfaire(app) { return app.bellfaire; }
 function available_pearlbrook(app) { return app.pearlbrook; }
 function available_npearlbrook(app) { return !app.pearlbrook; }
+function available_spirecrest(app) { return app.spirecrest; }
 
 let basecards = {
 
@@ -1215,6 +1216,22 @@ let adornments = {
     }
 }
 
+let expeditions = {
+    "seacharm": {
+        name: "seacharm",
+        points: 3,
+        getAvailability: available_spirecrest
+    }
+}
+
+let discoveries = {
+    "seacharm": {
+        name: "seacharm",
+        getPoints: points_three,
+        getAvailability: available_spirecrest
+    }
+}
+
 function getCardName(card) {
     return i18next.t("card." + card.name);
 }
@@ -1229,4 +1246,12 @@ function getAwardName(award) {
 
 function getAdornmentName(adornment) {
     return i18next.t("adornment." + adornment.name);
+}
+
+function getExpeditionName(adornment) {
+    return i18next.t("expedition." + adornment.name);
+}
+
+function getDiscoveryName(adornment) {
+    return i18next.t("discovery." + adornment.name);
 }

@@ -21,6 +21,10 @@ class Player {
     adornments = [];
     pearls = 0;
 
+    //spirecrest
+    expeditions = [];
+    discoveries = [];
+
     divName;
     #app;
 
@@ -83,6 +87,18 @@ class Player {
         this.showPlayer();
         return adornment.name;
     }
+    
+    removeExpedition(expeditionIndex) {
+        let expedition = this.expeditions.splice(expeditionIndex, 1)[0];
+        this.showPlayer();
+        return expedition.name;
+    }
+    
+    removeDiscovery(discoveryIndex) {
+        let discovery = this.discoveries.splice(discoveryIndex, 1)[0];
+        this.showPlayer();
+        return discovery.name;
+    }
 
     findCountFct(findfunction) {
         return this.town.reduce((prev, card) => { if (findfunction(card)) ++prev; return prev; }, 0);
@@ -121,7 +137,9 @@ class Player {
                     this.journeys.reduce((prev, journeyPoints) => prev + journeyPoints,
                         this.wonders.reduce((prev, wonder) => prev + wonder.points,
                             this.adornments.reduce((prev, adornments) => prev + adornments.getPoints(this),
-                                this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.pearls))))));
+                                this.expeditions.reduce((prev, expedition) => prev + expedition.points,
+                                    this.discoveries.reduce((prev, discovery) => prev + discovery.getPoints(this),
+                                        this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.pearls))))))));
     }
 
     areLeftoversRequired() {
@@ -136,6 +154,7 @@ class Player {
 
         let displayedTown = this.town.map((card) => Object.assign({ addPoints: card.getAdditionalPoints(this) }, card));
         let displayedAdornments = this.adornments.map((adornment) => Object.assign({ points: adornment.getPoints(this) }, adornment));
+        let displayedDiscoveries = this.discoveries.map((discovery) => Object.assign({ points: discovery.getPoints(this) }, discovery));
 
         let html = template({
             cards: displayedTown,
@@ -145,6 +164,8 @@ class Player {
             specialEvents: this.specialEvents,
             wonders: this.wonders,
             adornments: displayedAdornments,
+            expeditions: this.expeditions,
+            discoveries: displayedDiscoveries,
             journeys: this.journeys,
             anyRessourceNeeded: this.areLeftoversRequired() || this.#app.pearlbrook,
             leftResources: this.areLeftoversRequired() ? this.leftResources : null,

@@ -19,7 +19,9 @@
         "expansions": "Expansions",
         "garlandaward": "Garland Awards",
         "wonders": "Wonders",
-        "adornments": "Adornments"
+        "adornments": "Adornments",
+        "expeditions": "Expeditions",
+        "discoveries": "Discoveries"
     },
     "res": {
         "twig": "Twig",
@@ -158,8 +160,16 @@
         "townkey": "Town key",
         "seacharm": "Sea charm"
     },
+    "expedition": {
+        "seacharm": "Test1"
+    },
+    "discovery": {
+        "seacharm": "Test2"
+    },
     "text": {
         "cardlimit": "Card limit of town is reached",
-        "adornmentlimit": "Card limit of adornments is reached"
+        "adornmentlimit": "Card limit of adornments is reached",
+        "expeditionlimit": "Card limit of expeditions is reached",
+        "discoverylimit": "Card limit of discoveries is reached"
     }
 }
