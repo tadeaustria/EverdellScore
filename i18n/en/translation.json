@@ -161,10 +161,46 @@
         "seacharm": "Sea charm"
     },
     "expedition": {
-        "seacharm": "Test1"
+        "meeks": "Meek's Crossing",
+        "lilyponds": "Lily ponds",
+        "thesea": "The Sea",
+        "fortress": "Fortress Longway",
+        "manguste": "Manguste's Canyon",
+        "yarasland": "Yara's Land",
+        "littledell": "Littledell",
+        "blubmountain": "Blubmountain Spring",
+        "cuddlebay": "Cuddle Bay",
+        "stomp": "Stomp Bump",
+        "watermill": "Watermill Ferry",
+        "longfootforest": "Long Foot Forest",
+        "earthcavevalley": "Earth Cave Valley",
+        "ambercaves": "Amber Caves",
+        "berryfields": "Berry fields",
+        "dewworm": "Dew Worm Way",
+        "twinbridges": "Twin Bridges",
+        "mirrorlake": "Mirror Lake",
+        "badgersteeth": "Badger's Teeth",
+        "debriscoast": "Coast Of Debris",
+        "quokkasisle": "Isle Of Quokkas",
+        "seaofflowers": "Sea Of Glossy Flowers",
+        "soullessdesert": "Soulless Desert",
+        "mistfalls": "Mistfalls Of Fire"
     },
     "discovery": {
-        "seacharm": "Test2"
+        "greenrungpath": "Greenrung Path",
+        "everflowerpath": "Everflower Path",
+        "misttrackpath": "Misttrack Path",
+        "sunraypath": "Sunray Path",
+        "starfallpath": "Starfall Path",
+        "glockenspielpath": "Glockenspiel Path",
+        "glockenspielcity": "Glockenspiel City",
+        "greenrungcity": "Greenrung City",
+        "everflowercity": "Everflower City",
+        "misttrackcity": "Misttrack City",
+        "sunraycity": "Sunray City",
+        "starfallcity": "Starfall City",
+        "wayofhope": "Way Of Hope",
+        "flybreakpath": "Flybreak Path"
     },
     "text": {
         "cardlimit": "Card limit of town is reached",

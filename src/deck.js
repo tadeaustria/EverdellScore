@@ -1217,17 +1217,232 @@ let adornments = {
 }
 
 let expeditions = {
-    "seacharm": {
-        name: "seacharm",
+    "meeks": {
+        name: "meeks",
+        points: 2,
+        getAvailability: available_spirecrest
+    },
+    "lilyponds": {
+        name: "lilyponds",
+        points: 2,
+        getAvailability: available_spirecrest
+    },
+    "thesea": {
+        name: "thesea",
+        points: 2,
+        getAvailability: available_spirecrest
+    },
+    "fortress": {
+        name: "fortress",
+        points: 2,
+        getAvailability: available_spirecrest
+    },
+    "manguste": {
+        name: "manguste",
+        points: 2,
+        getAvailability: available_spirecrest
+    },
+    "yarasland": {
+        name: "yarasland",
+        points: 2,
+        getAvailability: available_spirecrest
+    },
+    "littledell": {
+        name: "littledell",
         points: 3,
         getAvailability: available_spirecrest
-    }
+    },
+    "blubmountain": {
+        name: "blubmountain",
+        points: 3,
+        getAvailability: available_spirecrest
+    },
+    "cuddlebay": {
+        name: "cuddlebay",
+        points: 3,
+        getAvailability: available_spirecrest
+    },
+    "stomp": {
+        name: "stomp",
+        points: 3,
+        getAvailability: available_spirecrest
+    },
+    "watermill": {
+        name: "watermill",
+        points: 3,
+        getAvailability: available_spirecrest
+    },
+    "longfootforest": {
+        name: "longfootforest",
+        points: 3,
+        getAvailability: available_spirecrest
+    },
+    "earthcavevalley": {
+        name: "earthcavevalley",
+        points: 4,
+        getAvailability: available_spirecrest
+    },
+    "ambercaves": {
+        name: "ambercaves",
+        points: 4,
+        getAvailability: available_spirecrest
+    },
+    "berryfields": {
+        name: "berryfields",
+        points: 4,
+        getAvailability: available_spirecrest
+    },
+    "dewworm": {
+        name: "dewworm",
+        points: 4,
+        getAvailability: available_spirecrest
+    },
+    "twinbridges": {
+        name: "twinbridges",
+        points: 4,
+        getAvailability: available_spirecrest
+    },
+    "mirrorlake": {
+        name: "mirrorlake",
+        points: 4,
+        getAvailability: available_spirecrest
+    },
+    "badgersteeth": {
+        name: "badgersteeth",
+        points: 5,
+        getAvailability: available_spirecrest
+    },
+    "debriscoast": {
+        name: "debriscoast",
+        points: 5,
+        getAvailability: available_spirecrest
+    },
+    "quokkasisle": {
+        name: "quokkasisle",
+        points: 5,
+        getAvailability: available_spirecrest
+    },
+    "seaofflowers": {
+        name: "seaofflowers",
+        points: 6,
+        getAvailability: available_spirecrest
+    },
+    "soullessdesert": {
+        name: "soullessdesert",
+        points: 6,
+        getAvailability: available_spirecrest
+    },
+    "mistfalls": {
+        name: "mistfalls",
+        points: 6,
+        getAvailability: available_spirecrest
+    },
 }
 
 let discoveries = {
-    "seacharm": {
-        name: "seacharm",
+    "greenrungpath": {
+        name: "greenrungpath",
+        getPoints: points_four,
+        getAvailability: available_spirecrest
+    },
+    "misttrack": {
+        name: "misttrack",
+        getPoints: points_four,
+        getAvailability: available_spirecrest
+    },
+    "everflowerpath": {
+        name: "everflowerpath",
+        getPoints: points_four,
+        getAvailability: available_spirecrest
+    },
+    "sunray": {
+        name: "sunray",
+        getPoints: points_four,
+        getAvailability: available_spirecrest
+    },
+    "starfall": {
+        name: "starfall",
+        getPoints: points_four,
+        getAvailability: available_spirecrest
+    },
+    "glockenspielpath": {
+        name: "glockenspielpath",
+        getPoints: points_four,
+        getAvailability: available_spirecrest
+    },
+    "glockenspielcity": {
+        name: "glockenspielcity",
         getPoints: points_three,
+        getAvailability: available_spirecrest
+    }, 
+    "greenrungcity": {
+        name: "greenrungcity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "everflowercity": {
+        name: "everflowercity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "misttrackcity": {
+        name: "misttrackcity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "sunraycity": {
+        name: "sunraycity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "starfallcity": {
+        name: "starfallcity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "wayofhope": {
+        name: "wayofhope",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "flybreakpath": {
+        name: "flybreakpath",
+        getPoints: points_four,
+        getAvailability: available_spirecrest
+    }, 
+    "greenrungcity": {
+        name: "greenrungcity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "everflowercity": {
+        name: "everflowercity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "misttrackcity": {
+        name: "misttrackcity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "sunraycity": {
+        name: "sunraycity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "starfallcity": {
+        name: "starfallcity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "wayofhope": {
+        name: "wayofhope",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "flybreakpath": {
+        name: "flybreakpath",
+        getPoints: points_four,
         getAvailability: available_spirecrest
     }
 }
