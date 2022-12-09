@@ -8,16 +8,23 @@ const TYPES = {
 Object.freeze(TYPES);
 
 const KINDS = {
-    building: 'building',
-    critter: 'critter'
+    building: 0,
+    critter: 1
 }
 Object.freeze(KINDS);
 
 const RARITY = {
-    common: 'common',
-    unique: 'unique'
+    common: 0,
+    unique: 1
 }
 Object.freeze(RARITY)
+
+const DISCOVERYTYPES = {
+    foothills: 0,
+    peaks: 1,
+    ridge: 2
+}
+Object.freeze(DISCOVERYTYPES)
 
 function points_zero(player) { return 0; }
 function points_one(player) { return 1; }
@@ -1342,72 +1349,87 @@ let expeditions = {
 let discoveries = {
     "greenrungpath": {
         name: "greenrungpath",
-        getPoints: points_four,
+        getPoints:  (player) => (player.findCountType(TYPES.production) >= 4 ) ? 4 : 0,
+        type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest
     },
-    "misttrack": {
-        name: "misttrack",
-        getPoints: points_four,
-        getAvailability: available_spirecrest
+    "misttrackpath": {
+        name: "misttrackpath",
+        getPoints: (player) => (player.findCountType(TYPES.traveler) >= 3 ) ? 4 : 0 ,
+        type: DISCOVERYTYPES.foothills,
+        getAvailability: available_spirecrest 
     },
     "everflowerpath": {
         name: "everflowerpath",
-        getPoints: points_four,
-        getAvailability: available_spirecrest
+        getPoints: (player) => (player.findCountType(TYPES.prosperity) >= 3 ) ? 4 : 0 ,
+        type: DISCOVERYTYPES.foothills,
+        getAvailability: available_spirecrest 
     },
-    "sunray": {
-        name: "sunray",
-        getPoints: points_four,
-        getAvailability: available_spirecrest
+    "sunraypath": {
+        name: "sunraypath",
+        getPoints: (player) => (player.findCountType(TYPES.destination) >= 3 ) ? 4 : 0,
+        type: DISCOVERYTYPES.foothills,
+        getAvailability: available_spirecrest  
     },
-    "starfall": {
-        name: "starfall",
-        getPoints: points_four,
-        getAvailability: available_spirecrest
+    "starfallpath": {
+        name: "starfallpath",
+        getPoints: (player) => (player.findCountType(TYPES.governance) >= 3 ) ? 4 : 0 ,
+        type: DISCOVERYTYPES.foothills,
+        getAvailability: available_spirecrest 
     },
     "glockenspielpath": {
         name: "glockenspielpath",
-        getPoints: points_four,
+        getPoints: (player) => (player.expeditions.length >= 3 ) ? 4 : 0 ,
+        type: DISCOVERYTYPES.peaks,
         getAvailability: available_spirecrest
     },
     "glockenspielcity": {
         name: "glockenspielcity",
-        getPoints: points_three,
+        // fix 3 point + number of fewest card type in city
+        getPoints: (player) => 3 + TYPES.reduce((prev, type, _) => Math.min(prev, player.findCountType(type)), 15),
+        type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     }, 
     "greenrungcity": {
         name: "greenrungcity",
-        getPoints: points_six,
+        getPoints: (player) => 6 - Math.trunc(player.findCountType(TYPES.production) / 2 ),
+        type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
     "everflowercity": {
         name: "everflowercity",
-        getPoints: points_six,
+        getPoints: (player) => 6 - player.findCountType(TYPES.prosperity),
+        type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
     "misttrackcity": {
         name: "misttrackcity",
-        getPoints: points_six,
+        getPoints: (player) => 6 - player.findCountType(TYPES.traveler),
+        type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
     "sunraycity": {
         name: "sunraycity",
-        getPoints: points_six,
+        getPoints: (player) => 6 - player.findCountType(TYPES.destination),
+        type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
     "starfallcity": {
         name: "starfallcity",
-        getPoints: points_six,
+        getPoints: (player) => 6 - player.findCountType(TYPES.governance),
+        type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
     "wayofhope": {
         name: "wayofhope",
-        getPoints: points_six,
+        getPoints: (player) => Math.min(7, player.expeditions.reduce((prev, expedition, _) => prev + expedition.points, 0)),
+        type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
     "flybreakpath": {
         name: "flybreakpath",
-        getPoints: points_four,
+        getPoints: (player) => player.basicEvents.length + player.specialEvents.length >= 2 ? 4 : 0,
+        type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     }, 
     "greenrungcity": {
