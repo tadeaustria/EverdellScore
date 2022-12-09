@@ -142,7 +142,7 @@ class Application {
     }
 
     removeSpEventFromActivePlayer(eventIndex) {
-        let eventName = this.activePlayer.removeWonder(eventIndex);
+        let eventName = this.activePlayer.removeSpecialEvent(eventIndex);
         $("#event_" + eventName).removeClass("disabled");
         // $("#specialevent-header").prop("disabled", false).tab("hide");
     }

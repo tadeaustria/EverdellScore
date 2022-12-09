@@ -52,7 +52,7 @@ class Player {
     removeBasicEvent(eventIndex) {
         let event = this.basicEvents.splice(eventIndex, 1)[0];
         this.showPlayer();
-        return event;
+        return event.name;
     }
 
     addSpecialEvent(event) {
@@ -60,7 +60,7 @@ class Player {
         this.showPlayer();
     }
 
-    removeWonder(eventIndex) {
+    removeSpecialEvent(eventIndex) {
         let event = this.specialEvents.splice(eventIndex, 1)[0];
         this.showPlayer();
         return event.name;
