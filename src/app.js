@@ -50,8 +50,8 @@ class Application {
         $('#nav-p4-tab').on('click', (e) => { this.activePlayer = this.players[3]; this.updatePlayerOutput(); });
         $("#alert-cardlimit").hide();
 
-        Handlebars.registerHelper('isPosperity', function (type) {
-            return type == TYPES.prosperity;
+        Handlebars.registerHelper('isPosperityButNotWife', function (type, name) {
+            return type == TYPES.prosperity && name != basecards['31'].name;
         });
     }
 

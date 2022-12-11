@@ -178,12 +178,20 @@
                     <div class="d-flex">
                         <div class="flex-grow-1" data-i18n="card.{{name}}"></div>
                         <span class="badge text-bg-warning">{{points}}</span>
-                        {{#if (isPosperity type)}}
+                        {{#if (isPosperityButNotWife type name)}}
                         <div>+</div><span class="badge text-bg-warning">{{addPoints}}</span>
                         {{/if}}
                     </div>
                 </div>
                 {{/each}}
+                {{#if additionalWifePoints}}
+                <div class="playercard card w-100 p-2" style="margin-top: 1rem;">
+                    <div class="d-flex">
+                        <div class="flex-grow-1" data-i18n="gen.addWifePoints"></div>
+                        <span class="badge text-bg-warning">{{additionalWifePoints}}</span>
+                    </div>
+                </div>
+                {{/if}}
                 {{#if basicEvents}}
                 <h3 data-i18n="gen.basicevent" class="w-100"></h3>
                 {{#each basicEvents}}

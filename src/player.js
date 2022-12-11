@@ -141,6 +141,7 @@ class Player {
             cards: displayedTown,
             cardCount: this.getOccupiedSpaces(),
             cardCountPerc: 100 * this.getOccupiedSpaces() / 15,
+            additionalWifePoints: this.getWifeAdditionalPoints(),
             basicEvents: this.basicEvents,
             specialEvents: this.specialEvents,
             wonders: this.wonders,
