@@ -48,6 +48,26 @@ li.list-group-item {
   cursor: pointer;
 }
 
+.traveler {
+  background-color: burlywood;
+}
+
+.production {
+  background-color: lightgreen;
+}
+
+.destination {
+  background-color: indianred;
+}
+
+.governance {
+  background-color: cornflowerblue;
+}
+
+.prosperity {
+  background-color: mediumpurple;
+}
+
 html,
 body {
   /* height: 97%; */

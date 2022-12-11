@@ -174,7 +174,7 @@
             <div class="d-flex flex-wrap">
                 <h3 data-i18n="gen.town" class="w-100"></h3>
                 {{#each cards}}
-                <div class="playercard card p-2" role="tab" onclick="app.removeFromActivePlayer('{{@index}}')">
+                <div class="playercard card p-2 {{type}}" role="tab" onclick="app.removeFromActivePlayer('{{@index}}')">
                     <div class="d-flex">
                         <div class="flex-grow-1" data-i18n="card.{{name}}"></div>
                         <span class="badge text-bg-warning">{{points}}</span>
@@ -185,7 +185,7 @@
                 </div>
                 {{/each}}
                 {{#if additionalWifePoints}}
-                <div class="playercard card w-100 p-2" style="margin-top: 1rem;">
+                <div class="playercard card w-100 p-2 prosperity" style="margin-top: 1rem;">
                     <div class="d-flex">
                         <div class="flex-grow-1" data-i18n="gen.addWifePoints"></div>
                         <span class="badge text-bg-warning">{{additionalWifePoints}}</span>
