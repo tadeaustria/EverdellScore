@@ -33,8 +33,16 @@ class Player {
         return this.town.reduce((prev, card) => prev + card.getOccupiedSpaces(this), 0);
     }
 
+    compareByTypeAndLexicographically(cardA, cardB) {
+        if (cardA.type == cardB.type){
+            return cardA.name.localeCompare(cardB.name);
+        }
+        return cardA.type.localeCompare(cardB.type);
+    }
+
     addTown(card) {
         this.town.push(card);
+        this.town.sort(this.compareByTypeAndLexicographically);
         this.showPlayer();
     }
 
