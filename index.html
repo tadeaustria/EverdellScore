@@ -209,10 +209,10 @@
                 <div class="playercard card p-2" role="tab">
                     <div class="d-flex">
                         <div class="flex-grow-1" data-i18n="event.{{name}}" onclick="app.removeSpEventFromActivePlayer('{{@index}}')"></div>
-                        <span class="badge text-bg-warning" onclick="app.removeSpEventFromActivePlayer('{{@index}}')">{{points}}</span>
+                        <span id="event_value_{{name}}" class="badge text-bg-warning" onclick="app.removeSpEventFromActivePlayer('{{@index}}')">{{points}}</span>
                     </div>
                     {{#if input}}
-                    <input id="value_{{name}}" type="range" class="form-range" min="0" value="{{value}}" max="{{inputMax}}" onchange="app.eventCardSetValue('{{name}}')">
+                    <input id="value_{{name}}" type="range" class="form-range" min="0" value="{{value}}" max="{{inputMax}}" oninput="app.eventCardSetValue('{{name}}')">
                     {{/if}}
                 </div>
                 {{/each}}
@@ -240,23 +240,6 @@
                 {{/each}}
                 {{/if}}
             </div>
-            {{#if anyRessourceNeeded}}
-            <h3 data-i18n="gen.leftovers" class="w-100"></h3>
-            {{#each leftResources}}
-            <div>
-                <!-- <img src="img/{{@key}}.png" height="20px" width="20px"></img> -->
-                <label for="value_{{../nav}}_{{@key}}" data-i18n="res.{{@key}}"></label>
-                <input id="value_{{../nav}}_{{@key}}" type="range" class="form-range" min="0" value="{{this}}" max="6" onchange="app.resourceSet('{{@key}}')">
-            </div>
-            {{/each}}
-            {{#if pearl includeZero=true}}
-            <div>
-                <!-- <img src="img/{{@key}}.png" height="20px" width="20px"></img> -->
-                <label for="value_{{nav}}_pearl" data-i18n="res.pearl"></label><span class='badge text-bg-warning' style="margin-left: 1rem;">{{pearl.points}}</span>
-                <input id="value_{{nav}}_pearl" type="range" class="form-range" min="0" value="{{pearl.pearl}}" max="6" onchange="app.resourceSet('pearl')">
-            </div>
-            {{/if}}
-            {{/if}}
             {{#if journeys}}
             <h3 data-i18n="gen.journey" class="w-100"></h3>
             <div class="d-flex flex-wrap">
@@ -273,6 +256,15 @@
                 <span class="badge text-bg-warning">{{award.points}}</span>
             </div>
             {{/if}}
+        </script>
+        <script id="ressource-template" type="text/x-handlebars-template">
+            {{#each resources}}
+            <div id="area_{{@key}}">
+                <!-- <img src="img/{{@key}}.png" height="20px" width="20px"></img> -->
+                <label for="value_{{@key}}" data-i18n="res.{{@key}}"></label>
+                <input id="value_{{@key}}" type="range" class="form-range" min="0" value="0" max="6" oninput="app.resourceSet('{{@key}}')">
+            </div>
+            {{/each}}
         </script>
         <div id="main-left">
             <div id="expansionspanel" class="panel" role="tablist" aria-multiselectable="true">
@@ -347,12 +339,16 @@
                 <div class="tab-pane fade" id="nav-p4" role="tabpanel" aria-labelledby="nav-p4-tab" tabindex="0">
                 </div>
                 <div class="tab-pane fade show active">
+                    <div id="leftOverArea" style="display: none;">
+                        <h3 data-i18n="gen.leftovers" class="w-100"></h3>
+                        <div id="leftRessources"></div>
+                    </div>
                     <h3 data-i18n="gen.points"></h3>
                     <div class="card">
                         <p for="value_points" id="value_points_badge"
                             class="form-label badge text-bg-warning">0</p>
                         <input id="value_points" type="range" class="form-range" min="0" value="0" max="30"
-                            onchange="app.setActivePlayerPoints()">
+                            oninput="app.setActivePlayerPoints()">
                     </div>
                 </div>
             </div>

@@ -71,9 +71,13 @@ class Application {
         this.buildCards();
         this.setCardsDisable();
         $("#main-left").localize();
+
+        this.buildLeftRessources();
+        $("#leftOverArea").localize();
     }
 
     updatePlayerOutput() {
+        this.activePlayer.updateLeftOvers();
         $("#value_points").val(this.activePlayer.points);
         $("#value_points_badge").text(this.activePlayer.points);
         this.setCardsDisable();
@@ -248,11 +252,7 @@ class Application {
     }
 
     resourceSet(name) {
-        if (name == "pearl"){
-            this.activePlayer.pearls = parseInt($("#value_" + this.activePlayer.divName + "_" + name).val());
-        }else{
-            this.activePlayer.leftResources[name] = parseInt($("#value_" + this.activePlayer.divName + "_" + name).val());
-        }
+        this.activePlayer.leftResources[name] = parseInt($("#value_" + name).val());
         this.activePlayer.showPlayer();
     }
 
@@ -320,17 +320,27 @@ class Application {
 
     eventCardSetValue(name) {
         specialEvents[name].value = $("#value_" + name).val();
+        specialEvents[name].points = specialEvents[name].getPoints(this, this.activePlayer);
+        $("#event_value_" + name).html(specialEvents[name].points);
         this.playerRefresh();
     }
 
     playerRefresh() {
-        this.activePlayer.showPlayer();
+        this.activePlayer.updateTotalPoints();
     }
 
     setActivePlayerPoints() {
         this.activePlayer.points = parseInt($("#value_points").val());
         $("#value_points_badge").text(this.activePlayer.points);
         this.activePlayer.showPlayer();
+    }
+
+    buildLeftRessources() {
+        let template = Handlebars.compile($("#ressource-template").html());
+        let html = template({
+            resources: RESSOURCES
+        });
+        $('#leftRessources').html(html);
     }
 
     vibrate(intesity){

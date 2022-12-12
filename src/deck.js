@@ -35,6 +35,16 @@ function available_bellfaire(app) { return app.bellfaire; }
 function available_pearlbrook(app) { return app.pearlbrook; }
 function available_npearlbrook(app) { return !app.pearlbrook; }
 
+const RESSOURCES = {
+    twig: 'twig',
+    resin: 'resin',
+    pebble: 'pebble',
+    berry: 'berry',
+    card: 'card',
+    pearl: 'pearl'
+}
+Object.freeze(RESSOURCES)
+
 let basecards = {
 
     '03': {

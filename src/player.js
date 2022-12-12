@@ -6,11 +6,6 @@ class Player {
     journeys = [];
     points = 0;
     leftResources = {
-        'twig': 0,
-        'resin': 0,
-        'pebble': 0,
-        'berry': 0,
-        'card': 0
     }
 
     //bellfaire
@@ -19,7 +14,6 @@ class Player {
     //pearlbrook
     wonders = [];
     adornments = [];
-    pearls = 0;
 
     divName;
     #app;
@@ -27,6 +21,8 @@ class Player {
     constructor(divName, app) {
         this.divName = divName;
         this.#app = app;
+
+        Object.values(RESSOURCES).forEach((val) => this.leftResources[val] = 0);
     }
 
     getOccupiedSpaces() {
@@ -129,12 +125,32 @@ class Player {
                     this.journeys.reduce((prev, journeyPoints) => prev + journeyPoints,
                         this.wonders.reduce((prev, wonder) => prev + wonder.points,
                             this.adornments.reduce((prev, adornments) => prev + adornments.getPoints(this),
-                                this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.pearls))))));
+                                this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.leftResources[RESSOURCES.pearl]))))));
     }
 
     areLeftoversRequired() {
         //If Architect is in town or scale as adornment
         return this.town.includes(basecards['39']) || this.adornments.includes(adornments["scale"]);
+    }
+
+    updateLeftOvers(){
+        Object.keys(this.leftResources).forEach((key) => $("#value_" + key).val(this.leftResources[key]));
+        this.showLeftOvers();
+    }
+
+    showLeftOvers(){
+        if (this.#app.pearlbrook){
+            $("#leftOverArea").show();
+            $("#area_pearl").show();
+            $("#area_card").show();
+        }else{
+            $("#area_pearl").hide();
+            $("#area_card").hide();
+            if (this.areLeftoversRequired())
+                $("#leftOverArea").show();
+            else
+                $("#leftOverArea").hide();
+        }
     }
 
     showPlayer() {
@@ -155,22 +171,21 @@ class Player {
             wonders: this.wonders,
             adornments: displayedAdornments,
             journeys: this.journeys,
-            anyRessourceNeeded: this.areLeftoversRequired() || this.#app.pearlbrook,
-            leftResources: this.areLeftoversRequired() ? this.leftResources : null,
-            pearl: this.#app.pearlbrook ? { pearl: this.pearls, points: 2*this.pearls } : null,
             award: this.#app.activeAward && this.garlandAchievemenPoints > 0 ? { 
                 name: this.#app.activeAward.name,
                 points: this.garlandAchievemenPoints
             } : null, 
             nav: this.divName
         });
-        // $("#value_points").val(this.points);
+
+        this.showLeftOvers();
+
         $("#nav-" + this.divName).html(html);
-        this.showTotalPoints();
+        this.updateTotalPoints();
         $(".tab-content").localize();
     }
 
-    showTotalPoints() {
+    updateTotalPoints() {
         $("#nav-" + this.divName + "-points").html(this.getTotalPoints()); //set sum in tab
     }
 }
