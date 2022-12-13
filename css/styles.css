@@ -46,6 +46,7 @@ footer p {
 
 li.list-group-item {
   cursor: pointer;
+  padding: 0.2rem;
 }
 
 .traveler {
@@ -125,11 +126,11 @@ footer {
 }
 
 #main-left {
-  width: 12rem;
+  width: 10rem;
 }
 
 #main-right {
   min-height: 100%;
   padding-left: 0.5rem;
-  width: calc(100% - 12.5rem);
+  width: calc(100% - 10.5rem);
 }
