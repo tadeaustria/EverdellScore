@@ -50,23 +50,23 @@ li.list-group-item {
 }
 
 .traveler {
-  background-color: burlywood;
+  background-color: #D5C1AF;
 }
 
 .production {
-  background-color: lightgreen;
+  background-color: #C8ECC1;
 }
 
 .destination {
-  background-color: indianred;
+  background-color: #DD9696;
 }
 
 .governance {
-  background-color: cornflowerblue;
+  background-color: #C0C9E6;
 }
 
 .prosperity {
-  background-color: mediumpurple;
+  background-color: #E0ABF9;
 }
 
 html,
