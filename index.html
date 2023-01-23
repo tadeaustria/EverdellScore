@@ -60,7 +60,7 @@
         <div class="card">
             <div class="card-header" role="tab" id="garlandaward-header" data-bs-toggle="collapse" data-bs-target="#garlandaward"
                 data-bs-parent="#cards" href="#garlandaward" aria-expanded="false" aria-controls="garlandaward">
-                <img src="img/garlandaward.png" width="48" height="48"><a data-i18n="gen.garlandaward"></a>
+                <img src="img/garlandaward.png" width="32" height="32"><a data-i18n="gen.garlandaward"></a>
             </div>
             <div id="garlandaward" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="garlandaward-header">
                 <ul class="list-group">
@@ -75,7 +75,7 @@
         <div class="card">
             <div class="card-header" role="tab" id="{{@key}}-header" data-bs-toggle="collapse" data-bs-target="#{{@key}}"
                 data-bs-parent="#cards" href="#{{@key}}" aria-expanded="false" aria-controls="{{@key}}">
-                <img src="img/{{@key}}.png" width="48" height="48"><a data-i18n="types.{{@key}}"></a>
+                <img src="img/{{@key}}.png" width="32" height="32"><a data-i18n="types.{{@key}}"></a>
             </div>
             <div id="{{@key}}" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="{{@key}}-header">
                 <ul class="list-group">
@@ -91,7 +91,7 @@
         <div class="card">
             <div class="card-header" role="tab" id="basicevent-header" data-bs-toggle="collapse" data-bs-target="#basicevent"
                 data-bs-parent="#cards" href="#basicevent" aria-expanded="false" aria-controls="basicevent">
-                <img src="img/basicevent.png" width="48" height="48"><a data-i18n="gen.basicevent"></a>
+                <img src="img/basicevent.png" width="32" height="32"><a data-i18n="gen.basicevent"></a>
             </div>
             <div id="basicevent" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="basicevent-header">
                 <ul class="list-group">
@@ -106,7 +106,7 @@
         <div class="card">
             <div class="card-header" role="tab" id="specialevent-header" data-bs-toggle="collapse" data-bs-target="#specialevent"
                 data-bs-parent="#cards" href="#specialevent" aria-expanded="false" aria-controls="specialevent">
-                <img src="img/specialevent.png" width="48" height="48"><a data-i18n="gen.specialevent"></a>
+                <img src="img/specialevent.png" width="32" height="32"><a data-i18n="gen.specialevent"></a>
             </div>
             <div id="specialevent" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="specialevent-header">
                 <ul class="list-group">
@@ -121,7 +121,7 @@
         <div class="card">
             <div class="card-header" role="tab" id="wonders-header" data-bs-toggle="collapse" data-bs-target="#wonders"
                 data-bs-parent="#cards" href="#wonders" aria-expanded="false" aria-controls="wonders">
-                <img src="img/wonder25.png" width="48" height="48"><a data-i18n="gen.wonders"></a>
+                <img src="img/wonder25.png" width="32" height="32"><a data-i18n="gen.wonders"></a>
             </div>
             <div id="wonders" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="wonders-header">
                 <ul class="list-group">
@@ -137,7 +137,7 @@
         <div class="card">
             <div class="card-header" role="tab" id="adornments-header" data-bs-toggle="collapse" data-bs-target="#adornments"
                 data-bs-parent="#cards" href="#adornments" aria-expanded="false" aria-controls="adornments">
-                <img src="img/adornments.png" width="48" height="48"><a data-i18n="gen.adornments"></a>
+                <img src="img/adornments.png" width="32" height="32"><a data-i18n="gen.adornments"></a>
             </div>
             <div id="adornments" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="adornments-header">
                 <ul class="list-group">
@@ -184,7 +184,7 @@
         <div class="card">
             <div class="card-header" role="tab" id="journey-header" data-bs-toggle="collapse" data-bs-target="#journey"
                 data-bs-parent="#cards" href="#journey" aria-expanded="false" aria-controls="journey">
-                <img src="img/journey.png" width="48" height="48"><a data-i18n="gen.journey"></a>
+                <img src="img/journey.png" width="32" height="32"><a data-i18n="gen.journey"></a>
             </div>
             <div id="journey" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="journey-header">
                 <ul class="list-group">
@@ -206,16 +206,24 @@
             <div class="d-flex flex-wrap">
                 <h3 data-i18n="gen.town" class="w-100"></h3>
                 {{#each cards}}
-                <div class="playercard card p-2" role="tab" onclick="app.removeFromActivePlayer('{{@index}}')">
+                <div class="playercard card p-2 {{type}}" role="tab" onclick="app.removeFromActivePlayer('{{@index}}')">
                     <div class="d-flex">
                         <div class="flex-grow-1" data-i18n="card.{{name}}"></div>
                         <span class="badge text-bg-warning">{{points}}</span>
-                        {{#if (isPosperity type)}}
+                        {{#if (isPosperityButNotWife type name)}}
                         <div>+</div><span class="badge text-bg-warning">{{addPoints}}</span>
                         {{/if}}
                     </div>
                 </div>
                 {{/each}}
+                {{#if additionalWifePoints}}
+                <div class="playercard card w-100 p-2 prosperity" style="margin-top: 1rem;">
+                    <div class="d-flex">
+                        <div class="flex-grow-1" data-i18n="gen.addWifePoints"></div>
+                        <span class="badge text-bg-warning">{{additionalWifePoints}}</span>
+                    </div>
+                </div>
+                {{/if}}
                 {{#if basicEvents}}
                 <h3 data-i18n="gen.basicevent" class="w-100"></h3>
                 {{#each basicEvents}}
@@ -233,10 +241,10 @@
                 <div class="playercard card p-2" role="tab">
                     <div class="d-flex">
                         <div class="flex-grow-1" data-i18n="event.{{name}}" onclick="app.removeSpEventFromActivePlayer('{{@index}}')"></div>
-                        <span class="badge text-bg-warning" onclick="app.removeSpEventFromActivePlayer('{{@index}}')">{{points}}</span>
+                        <span id="event_value_{{name}}" class="badge text-bg-warning" onclick="app.removeSpEventFromActivePlayer('{{@index}}')">{{points}}</span>
                     </div>
                     {{#if input}}
-                    <input id="value_{{name}}" type="range" class="form-range" min="0" value="{{value}}" max="{{inputMax}}" onchange="app.eventCardSetValue('{{name}}')">
+                    <input id="value_{{name}}" type="range" class="form-range" min="0" value="{{value}}" max="{{inputMax}}" oninput="app.eventCardSetValue('{{name}}')">
                     {{/if}}
                 </div>
                 {{/each}}
@@ -286,23 +294,6 @@
                 {{/each}}
                 {{/if}}
             </div>
-            {{#if anyRessourceNeeded}}
-            <h3 data-i18n="gen.leftovers" class="w-100"></h3>
-            {{#each leftResources}}
-            <div>
-                <!-- <img src="img/{{@key}}.png" height="20px" width="20px"></img> -->
-                <label for="value_{{../nav}}_{{@key}}" data-i18n="res.{{@key}}"></label>
-                <input id="value_{{../nav}}_{{@key}}" type="range" class="form-range" min="0" value="{{this}}" max="6" onchange="app.resourceSet('{{@key}}')">
-            </div>
-            {{/each}}
-            {{#if pearl includeZero=true}}
-            <div>
-                <!-- <img src="img/{{@key}}.png" height="20px" width="20px"></img> -->
-                <label for="value_{{nav}}_pearl" data-i18n="res.pearl"></label><span class='badge text-bg-warning' style="margin-left: 1rem;">{{pearl.points}}</span>
-                <input id="value_{{nav}}_pearl" type="range" class="form-range" min="0" value="{{pearl.pearl}}" max="6" onchange="app.resourceSet('pearl')">
-            </div>
-            {{/if}}
-            {{/if}}
             {{#if journeys}}
             <h3 data-i18n="gen.journey" class="w-100"></h3>
             <div class="d-flex flex-wrap">
@@ -320,13 +311,22 @@
             </div>
             {{/if}}
         </script>
+        <script id="ressource-template" type="text/x-handlebars-template">
+            {{#each resources}}
+            <div id="area_{{@key}}">
+                <!-- <img src="img/{{@key}}.png" height="20px" width="20px"></img> -->
+                <label for="value_{{@key}}" data-i18n="res.{{@key}}"></label>
+                <input id="value_{{@key}}" type="range" class="form-range" min="0" value="0" max="6" oninput="app.resourceSet('{{@key}}')">
+            </div>
+            {{/each}}
+        </script>
         <div id="main-left">
             <div id="expansionspanel" class="panel" role="tablist" aria-multiselectable="true">
                 <div id="cardExpansion" class="card">
                     <div class="card-header" role="tab" id="expansions-header" data-bs-toggle="collapse"
                         data-bs-target="#expansions" data-bs-parent="#expansionspanel" href="#expansions" aria-expanded="false"
                         aria-controls="expansions">
-                        <img src="img/expansions.png" width="48" height="48"><a data-i18n="gen.expansions"></a>
+                        <img src="img/expansions.png" width="32" height="32"><a data-i18n="gen.expansions"></a>
                     </div>
                     <div id="expansions" class="collapse" role="tabpanel" data-bs-parent="#expansionspanel"
                         aria-labelledby="expansions-header">
@@ -397,12 +397,16 @@
                 <div class="tab-pane fade" id="nav-p4" role="tabpanel" aria-labelledby="nav-p4-tab" tabindex="0">
                 </div>
                 <div class="tab-pane fade show active">
+                    <div id="leftOverArea" style="display: none;">
+                        <h3 data-i18n="gen.leftovers" class="w-100"></h3>
+                        <div id="leftRessources"></div>
+                    </div>
                     <h3 data-i18n="gen.points"></h3>
                     <div class="card">
                         <p for="value_points" id="value_points_badge"
                             class="form-label badge text-bg-warning">0</p>
                         <input id="value_points" type="range" class="form-range" min="0" value="0" max="30"
-                            onchange="app.setActivePlayerPoints()">
+                            oninput="app.setActivePlayerPoints()">
                     </div>
                 </div>
             </div>

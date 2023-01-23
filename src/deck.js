@@ -43,6 +43,16 @@ function available_pearlbrook(app) { return app.pearlbrook; }
 function available_npearlbrook(app) { return !app.pearlbrook; }
 function available_spirecrest(app) { return app.spirecrest; }
 
+const RESSOURCES = {
+    twig: 'twig',
+    resin: 'resin',
+    pebble: 'pebble',
+    berry: 'berry',
+    card: 'card',
+    pearl: 'pearl'
+}
+Object.freeze(RESSOURCES)
+
 let basecards = {
 
     '03': {

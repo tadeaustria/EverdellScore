@@ -46,6 +46,27 @@ footer p {
 
 li.list-group-item {
   cursor: pointer;
+  padding: 0.2rem;
+}
+
+.traveler {
+  background-color: #D5C1AF;
+}
+
+.production {
+  background-color: #C8ECC1;
+}
+
+.destination {
+  background-color: #DD9696;
+}
+
+.governance {
+  background-color: #C0C9E6;
+}
+
+.prosperity {
+  background-color: #E0ABF9;
 }
 
 html,
@@ -105,11 +126,11 @@ footer {
 }
 
 #main-left {
-  width: 12rem;
+  width: 10rem;
 }
 
 #main-right {
   min-height: 100%;
   padding-left: 0.5rem;
-  width: calc(100% - 12.5rem);
+  width: calc(100% - 10.5rem);
 }
