@@ -8,16 +8,23 @@ const TYPES = {
 Object.freeze(TYPES);
 
 const KINDS = {
-    building: 'building',
-    critter: 'critter'
+    building: 0,
+    critter: 1
 }
 Object.freeze(KINDS);
 
 const RARITY = {
-    common: 'common',
-    unique: 'unique'
+    common: 0,
+    unique: 1
 }
 Object.freeze(RARITY)
+
+const DISCOVERYTYPES = {
+    foothills: 0,
+    peaks: 1,
+    ridge: 2
+}
+Object.freeze(DISCOVERYTYPES)
 
 function points_zero(player) { return 0; }
 function points_one(player) { return 1; }
@@ -34,6 +41,17 @@ function available_always(app) { return true; }
 function available_bellfaire(app) { return app.bellfaire; }
 function available_pearlbrook(app) { return app.pearlbrook; }
 function available_npearlbrook(app) { return !app.pearlbrook; }
+function available_spirecrest(app) { return app.spirecrest; }
+
+const RESSOURCES = {
+    twig: 'twig',
+    resin: 'resin',
+    pebble: 'pebble',
+    berry: 'berry',
+    card: 'card',
+    pearl: 'pearl'
+}
+Object.freeze(RESSOURCES)
 
 let basecards = {
 
@@ -1215,6 +1233,252 @@ let adornments = {
     }
 }
 
+let expeditions = {
+    "meeks": {
+        name: "meeks",
+        points: 2,
+        getAvailability: available_spirecrest
+    },
+    "lilyponds": {
+        name: "lilyponds",
+        points: 2,
+        getAvailability: available_spirecrest
+    },
+    "thesea": {
+        name: "thesea",
+        points: 2,
+        getAvailability: available_spirecrest
+    },
+    "fortress": {
+        name: "fortress",
+        points: 2,
+        getAvailability: available_spirecrest
+    },
+    "manguste": {
+        name: "manguste",
+        points: 2,
+        getAvailability: available_spirecrest
+    },
+    "yarasland": {
+        name: "yarasland",
+        points: 2,
+        getAvailability: available_spirecrest
+    },
+    "littledell": {
+        name: "littledell",
+        points: 3,
+        getAvailability: available_spirecrest
+    },
+    "blubmountain": {
+        name: "blubmountain",
+        points: 3,
+        getAvailability: available_spirecrest
+    },
+    "cuddlebay": {
+        name: "cuddlebay",
+        points: 3,
+        getAvailability: available_spirecrest
+    },
+    "stomp": {
+        name: "stomp",
+        points: 3,
+        getAvailability: available_spirecrest
+    },
+    "watermill": {
+        name: "watermill",
+        points: 3,
+        getAvailability: available_spirecrest
+    },
+    "longfootforest": {
+        name: "longfootforest",
+        points: 3,
+        getAvailability: available_spirecrest
+    },
+    "earthcavevalley": {
+        name: "earthcavevalley",
+        points: 4,
+        getAvailability: available_spirecrest
+    },
+    "ambercaves": {
+        name: "ambercaves",
+        points: 4,
+        getAvailability: available_spirecrest
+    },
+    "berryfields": {
+        name: "berryfields",
+        points: 4,
+        getAvailability: available_spirecrest
+    },
+    "dewworm": {
+        name: "dewworm",
+        points: 4,
+        getAvailability: available_spirecrest
+    },
+    "twinbridges": {
+        name: "twinbridges",
+        points: 4,
+        getAvailability: available_spirecrest
+    },
+    "mirrorlake": {
+        name: "mirrorlake",
+        points: 4,
+        getAvailability: available_spirecrest
+    },
+    "badgersteeth": {
+        name: "badgersteeth",
+        points: 5,
+        getAvailability: available_spirecrest
+    },
+    "debriscoast": {
+        name: "debriscoast",
+        points: 5,
+        getAvailability: available_spirecrest
+    },
+    "quokkasisle": {
+        name: "quokkasisle",
+        points: 5,
+        getAvailability: available_spirecrest
+    },
+    "seaofflowers": {
+        name: "seaofflowers",
+        points: 6,
+        getAvailability: available_spirecrest
+    },
+    "soullessdesert": {
+        name: "soullessdesert",
+        points: 6,
+        getAvailability: available_spirecrest
+    },
+    "mistfalls": {
+        name: "mistfalls",
+        points: 6,
+        getAvailability: available_spirecrest
+    },
+}
+
+let discoveries = {
+    "greenrungpath": {
+        name: "greenrungpath",
+        getPoints:  (player) => (player.findCountType(TYPES.production) >= 4 ) ? 4 : 0,
+        type: DISCOVERYTYPES.foothills,
+        getAvailability: available_spirecrest
+    },
+    "misttrackpath": {
+        name: "misttrackpath",
+        getPoints: (player) => (player.findCountType(TYPES.traveler) >= 3 ) ? 4 : 0 ,
+        type: DISCOVERYTYPES.foothills,
+        getAvailability: available_spirecrest 
+    },
+    "everflowerpath": {
+        name: "everflowerpath",
+        getPoints: (player) => (player.findCountType(TYPES.prosperity) >= 3 ) ? 4 : 0 ,
+        type: DISCOVERYTYPES.foothills,
+        getAvailability: available_spirecrest 
+    },
+    "sunraypath": {
+        name: "sunraypath",
+        getPoints: (player) => (player.findCountType(TYPES.destination) >= 3 ) ? 4 : 0,
+        type: DISCOVERYTYPES.foothills,
+        getAvailability: available_spirecrest  
+    },
+    "starfallpath": {
+        name: "starfallpath",
+        getPoints: (player) => (player.findCountType(TYPES.governance) >= 3 ) ? 4 : 0 ,
+        type: DISCOVERYTYPES.foothills,
+        getAvailability: available_spirecrest 
+    },
+    "glockenspielpath": {
+        name: "glockenspielpath",
+        getPoints: (player) => (player.expeditions.length >= 3 ) ? 4 : 0 ,
+        type: DISCOVERYTYPES.peaks,
+        getAvailability: available_spirecrest
+    },
+    "glockenspielcity": {
+        name: "glockenspielcity",
+        // fix 3 point + number of fewest card type in city
+        getPoints: (player) => 3 + TYPES.reduce((prev, type, _) => Math.min(prev, player.findCountType(type)), 15),
+        type: DISCOVERYTYPES.ridge,
+        getAvailability: available_spirecrest
+    }, 
+    "greenrungcity": {
+        name: "greenrungcity",
+        getPoints: (player) => 6 - Math.trunc(player.findCountType(TYPES.production) / 2 ),
+        type: DISCOVERYTYPES.ridge,
+        getAvailability: available_spirecrest
+    },
+    "everflowercity": {
+        name: "everflowercity",
+        getPoints: (player) => 6 - player.findCountType(TYPES.prosperity),
+        type: DISCOVERYTYPES.ridge,
+        getAvailability: available_spirecrest
+    },
+    "misttrackcity": {
+        name: "misttrackcity",
+        getPoints: (player) => 6 - player.findCountType(TYPES.traveler),
+        type: DISCOVERYTYPES.ridge,
+        getAvailability: available_spirecrest
+    },
+    "sunraycity": {
+        name: "sunraycity",
+        getPoints: (player) => 6 - player.findCountType(TYPES.destination),
+        type: DISCOVERYTYPES.ridge,
+        getAvailability: available_spirecrest
+    },
+    "starfallcity": {
+        name: "starfallcity",
+        getPoints: (player) => 6 - player.findCountType(TYPES.governance),
+        type: DISCOVERYTYPES.ridge,
+        getAvailability: available_spirecrest
+    },
+    "wayofhope": {
+        name: "wayofhope",
+        getPoints: (player) => Math.min(7, player.expeditions.reduce((prev, expedition, _) => prev + expedition.points, 0)),
+        type: DISCOVERYTYPES.ridge,
+        getAvailability: available_spirecrest
+    },
+    "flybreakpath": {
+        name: "flybreakpath",
+        getPoints: (player) => player.basicEvents.length + player.specialEvents.length >= 2 ? 4 : 0,
+        type: DISCOVERYTYPES.ridge,
+        getAvailability: available_spirecrest
+    }, 
+    "greenrungcity": {
+        name: "greenrungcity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "everflowercity": {
+        name: "everflowercity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "misttrackcity": {
+        name: "misttrackcity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "sunraycity": {
+        name: "sunraycity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "starfallcity": {
+        name: "starfallcity",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "wayofhope": {
+        name: "wayofhope",
+        getPoints: points_six,
+        getAvailability: available_spirecrest
+    },
+    "flybreakpath": {
+        name: "flybreakpath",
+        getPoints: points_four,
+        getAvailability: available_spirecrest
+    }
+}
+
 function getCardName(card) {
     return i18next.t("card." + card.name);
 }
@@ -1229,4 +1493,12 @@ function getAwardName(award) {
 
 function getAdornmentName(adornment) {
     return i18next.t("adornment." + adornment.name);
+}
+
+function getExpeditionName(adornment) {
+    return i18next.t("expedition." + adornment.name);
+}
+
+function getDiscoveryName(adornment) {
+    return i18next.t("discovery." + adornment.name);
 }

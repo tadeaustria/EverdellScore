@@ -20,7 +20,9 @@
         "expansions": "Erweiterungen",
         "garlandaward": "Königliche Auszeichnungen",
         "wonders": "Wunder",
-        "adornments": "Artefakte"
+        "adornments": "Artefakte",
+        "expeditions": "Expeditionen",
+        "discoveries": "Entdeckungen"
     },
     "res": {
         "twig": "Holz",
@@ -159,8 +161,54 @@
         "seacharm": "Meerglas-Amulett"
     },
 
+    "expedition": {
+        "meeks": "Meeks Kreuzung",
+        "lilyponds": "Seerosenteiche",
+        "thesea": "Das Meer",
+        "fortress": "Festung Weitweg",
+        "manguste": "Mangustenschlucht",
+        "yarasland": "Yaras Land",
+        "littledell": "Littledell",
+        "blubmountain": "Blubbergquellen",
+        "cuddlebay": "Knuddelbucht",
+        "stomp": "Baumstumpfbuckel",
+        "watermill": "Mühlbach Fähre",
+        "longfootforest": "Langfuss Wald",
+        "earthcavevalley": "Tal der Erdhöhlen",
+        "ambercaves": "Bernsteinhöhlen",
+        "berryfields": "Beerenfelder",
+        "dewworm": "Tauwurmweg",
+        "twinbridges": "Zwillingsbrücken",
+        "mirrorlake": "Spiegelsee",
+        "badgersteeth": "Badger's Teeth",
+        "debriscoast": "Trümmerküste",
+        "quokkasisle": "Insel der Quokkas",
+        "seaofflowers": "Lichtblumenmeer",
+        "soullessdesert": "Seelenlose Wüste",
+        "mistfalls": "Nebelfeuerfälle"
+    },
+
+    "discovery": {
+        "greenrungpath": "Grünspross Weg",
+        "everflowerpath": "Immerblumen Weg",
+        "misttrackpath": "Nebelsteig Weg",
+        "sunraypath": "Sonnenstrahl Weg",
+        "starfallpath": "Sternenfall Weg",
+        "glockenspielpath": "Glockenspiel Weg",
+        "glockenspielcity": "Glockenspiel Stadt",
+        "greenrungcity": "Grünspross Stadt",
+        "everflowercity": "Immerblumen Stadt",
+        "misttrackcity": "Nebelsteig Stadt",
+        "sunraycity": "Sonnenstrahl Stadt",
+        "starfallcity": "Sternenfall Stadt",
+        "wayofhope": "Weg der Hoffnung",
+        "flybreakpath": "Windfang Weg"
+    },
+
     "text": {
         "cardlimit": "Kartenlimit der Stadt erreicht",
-        "adornmentlimit": "Kartenlimit der Artefakte erreicht"
+        "adornmentlimit": "Kartenlimit der Artefakte erreicht",
+        "expeditionlimit": "Kartenlimit der Expeditionen erreicht",
+        "discoverylimit": "Kartenlimit der Erkundungen erreicht"
     }
 }

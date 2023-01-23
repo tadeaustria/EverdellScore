@@ -65,15 +65,21 @@ class Application {
         this.specialEvents = [...Object.values(specialEvents)].filter((event) => event.getAvailability(this));
         this.garlandAwards = [...Object.values(garlandAwards)].filter((award) => award.getAvailability(this));
         this.wonders = [...Object.values(wonders)].filter((wonders) => wonders.getAvailability(this));
-        this.adornments = [...Object.values(adornments)].filter((adornment) => adornment.getAvailability(this));
+        this.adornments = [...Object.values(adornments)].filter((adornment) => adornment.getAvailability(this))
+        this.expeditions = [...Object.values(expeditions)].filter((expedition) => expedition.getAvailability(this));
+        this.discoveries = [...Object.values(discoveries)].filter((discovery) => discovery.getAvailability(this));
 
         this.reset();
         this.buildCards();
         this.setCardsDisable();
         $("#main-left").localize();
+
+        this.buildLeftRessources();
+        $("#leftOverArea").localize();
     }
 
     updatePlayerOutput() {
+        this.activePlayer.updateLeftOvers();
         $("#value_points").val(this.activePlayer.points);
         $("#value_points_badge").text(this.activePlayer.points);
         this.setCardsDisable();
@@ -193,6 +199,42 @@ class Application {
         $("#adornment_" + adornmentName).removeClass("disabled");
     }
 
+    addExpeditionToActivePlayer(expeditionName){
+        if (this.activePlayer.expeditions.length < 3){
+            this.activePlayer.expeditions.push(expeditions[expeditionName]);
+            this.vibrate(50);
+            $("#expedition_" + expeditionName).addClass("disabled");
+            this.activePlayer.showPlayer();
+        }else{
+            $("#alert-expeditionlimit").fadeTo(3000, 500).slideUp(500, function () {
+                $("#alert-expeditionlimit").slideUp(500);
+            });
+        }
+    }
+
+    removeExpeditionFromActivePlayer(expeditionIndex) {
+        let expeditionName = this.activePlayer.removeExpedition(expeditionIndex);
+        $("#expedition_" + expeditionName).removeClass("disabled");
+    }
+
+    addDiscoveryToActivePlayer(discoveryName){
+        if (this.activePlayer.discoveries.length < 2){
+            this.activePlayer.discoveries.push(discoveries[discoveryName]);
+            this.vibrate(50);
+            $("#discovery_" + discoveryName).addClass("disabled");
+            this.activePlayer.showPlayer();
+        }else{
+            $("#alert-discoverylimit").fadeTo(3000, 500).slideUp(500, function () {
+                $("#alert-discoverylimit").slideUp(500);
+            });
+        }
+    }
+    
+    removeDiscoveryFromActivePlayer(discoveryIndex) {
+        let discoveryName = this.activePlayer.removeDiscovery(discoveryIndex);
+        $("#discovery_" + discoveryName).removeClass("disabled");
+    }
+
     chooseAward(awardName){
         if(this.activeAward)
             $("#award_" + this.activeAward.name).removeClass("highlight");
@@ -248,11 +290,7 @@ class Application {
     }
 
     resourceSet(name) {
-        if (name == "pearl"){
-            this.activePlayer.pearls = parseInt($("#value_" + this.activePlayer.divName + "_" + name).val());
-        }else{
-            this.activePlayer.leftResources[name] = parseInt($("#value_" + this.activePlayer.divName + "_" + name).val());
-        }
+        this.activePlayer.leftResources[name] = parseInt($("#value_" + name).val());
         this.activePlayer.showPlayer();
     }
 
@@ -268,6 +306,8 @@ class Application {
         this.specialEvents.sort((a, b) => { return getEventName(a).localeCompare(getEventName(b)); });
         this.garlandAwards.sort((a, b) => { return getAwardName(a).localeCompare(getAwardName(b)); });
         this.adornments.sort((a, b) => { return getAdornmentName(a).localeCompare(getAdornmentName(b)); });
+        this.expeditions.sort((a, b) => { return getExpeditionName(a).localeCompare(getExpeditionName(b)); });
+        this.discoveries.sort((a, b) => { return getDiscoveryName(a).localeCompare(getDiscoveryName(b)); });
 
         let html = template({
             suits: suits,
@@ -276,7 +316,9 @@ class Application {
             journeys: journeys,
             garlandAwards: this.garlandAwards,
             wonders: this.wonders,
-            adornments: this.adornments
+            adornments: this.adornments,
+            expeditions: this.expeditions,
+            discoveries: this.discoveries
         }, {
             allowProtoMethodsByDefault: true
         });
@@ -320,17 +362,27 @@ class Application {
 
     eventCardSetValue(name) {
         specialEvents[name].value = $("#value_" + name).val();
+        specialEvents[name].points = specialEvents[name].getPoints(this, this.activePlayer);
+        $("#event_value_" + name).html(specialEvents[name].points);
         this.playerRefresh();
     }
 
     playerRefresh() {
-        this.activePlayer.showPlayer();
+        this.activePlayer.updateTotalPoints();
     }
 
     setActivePlayerPoints() {
         this.activePlayer.points = parseInt($("#value_points").val());
         $("#value_points_badge").text(this.activePlayer.points);
         this.activePlayer.showPlayer();
+    }
+
+    buildLeftRessources() {
+        let template = Handlebars.compile($("#ressource-template").html());
+        let html = template({
+            resources: RESSOURCES
+        });
+        $('#leftRessources').html(html);
     }
 
     vibrate(intesity){

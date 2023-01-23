@@ -11,20 +11,30 @@ Cookies for storing the chosen language.
 
 # Roadmap
 
-* [ ] Implementing expansions
+* [X] Implementing expansions
   * [X] Bellfaire
   * [X] Pearlbrook
-  * [ ] Spirecrest
+  * [X] Spirecrest
 * [ ] 2 Upcoming expansions
+  * [ ] Mistwood
+  * [ ] Newleaf
 * [ ] (Adding picture to cards)
 
 # Updates
 
-## Version 1.2
+## Version 1.3
+* Spirecrest extension
+* Coloring of cards when in players town
+* Changed sort of cards in players town by type and name
+* Mobile QoL improved
+  * Smaller blocks to better fit on mobile
+  * Sliders effect immediately for easier input
+  
+### Version 1.2
 * Pearlbrook extension
 * Remember language on refresh
   
-## Version 1.1 
+### Version 1.1 
 * Bellfaire extension
 * Vibration feedback on choosing cards on phone
    

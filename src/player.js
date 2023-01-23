@@ -6,11 +6,6 @@ class Player {
     journeys = [];
     points = 0;
     leftResources = {
-        'twig': 0,
-        'resin': 0,
-        'pebble': 0,
-        'berry': 0,
-        'card': 0
     }
 
     //bellfaire
@@ -19,7 +14,10 @@ class Player {
     //pearlbrook
     wonders = [];
     adornments = [];
-    pearls = 0;
+
+    //spirecrest
+    expeditions = [];
+    discoveries = [];
 
     divName;
     #app;
@@ -27,14 +25,24 @@ class Player {
     constructor(divName, app) {
         this.divName = divName;
         this.#app = app;
+
+        Object.values(RESSOURCES).forEach((val) => this.leftResources[val] = 0);
     }
 
     getOccupiedSpaces() {
         return this.town.reduce((prev, card) => prev + card.getOccupiedSpaces(this), 0);
     }
 
+    compareByTypeAndLexicographically(cardA, cardB) {
+        if (cardA.type == cardB.type){
+            return cardA.name.localeCompare(cardB.name);
+        }
+        return cardA.type.localeCompare(cardB.type);
+    }
+
     addTown(card) {
         this.town.push(card);
+        this.town.sort(this.compareByTypeAndLexicographically);
         this.showPlayer();
     }
 
@@ -83,6 +91,18 @@ class Player {
         this.showPlayer();
         return adornment.name;
     }
+    
+    removeExpedition(expeditionIndex) {
+        let expedition = this.expeditions.splice(expeditionIndex, 1)[0];
+        this.showPlayer();
+        return expedition.name;
+    }
+    
+    removeDiscovery(discoveryIndex) {
+        let discovery = this.discoveries.splice(discoveryIndex, 1)[0];
+        this.showPlayer();
+        return discovery.name;
+    }
 
     findCountFct(findfunction) {
         return this.town.reduce((prev, card) => { if (findfunction(card)) ++prev; return prev; }, 0);
@@ -121,12 +141,34 @@ class Player {
                     this.journeys.reduce((prev, journeyPoints) => prev + journeyPoints,
                         this.wonders.reduce((prev, wonder) => prev + wonder.points,
                             this.adornments.reduce((prev, adornments) => prev + adornments.getPoints(this),
-                                this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.pearls))))));
+                                this.expeditions.reduce((prev, expedition) => prev + expedition.points,
+                                    this.discoveries.reduce((prev, discovery) => prev + discovery.getPoints(this),
+                                        this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.leftResources[RESSOURCES.pearl]))))))));
     }
 
     areLeftoversRequired() {
         //If Architect is in town or scale as adornment
         return this.town.includes(basecards['39']) || this.adornments.includes(adornments["scale"]);
+    }
+
+    updateLeftOvers(){
+        Object.keys(this.leftResources).forEach((key) => $("#value_" + key).val(this.leftResources[key]));
+        this.showLeftOvers();
+    }
+
+    showLeftOvers(){
+        if (this.#app.pearlbrook){
+            $("#leftOverArea").show();
+            $("#area_pearl").show();
+            $("#area_card").show();
+        }else{
+            $("#area_pearl").hide();
+            $("#area_card").hide();
+            if (this.areLeftoversRequired())
+                $("#leftOverArea").show();
+            else
+                $("#leftOverArea").hide();
+        }
     }
 
     showPlayer() {
@@ -136,6 +178,7 @@ class Player {
 
         let displayedTown = this.town.map((card) => Object.assign({ addPoints: card.getAdditionalPoints(this) }, card));
         let displayedAdornments = this.adornments.map((adornment) => Object.assign({ points: adornment.getPoints(this) }, adornment));
+        let displayedDiscoveries = this.discoveries.map((discovery) => Object.assign({ points: discovery.getPoints(this) }, discovery));
 
         let html = template({
             cards: displayedTown,
@@ -146,23 +189,24 @@ class Player {
             specialEvents: this.specialEvents,
             wonders: this.wonders,
             adornments: displayedAdornments,
+            expeditions: this.expeditions,
+            discoveries: displayedDiscoveries,
             journeys: this.journeys,
-            anyRessourceNeeded: this.areLeftoversRequired() || this.#app.pearlbrook,
-            leftResources: this.areLeftoversRequired() ? this.leftResources : null,
-            pearl: this.#app.pearlbrook ? { pearl: this.pearls, points: 2*this.pearls } : null,
             award: this.#app.activeAward && this.garlandAchievemenPoints > 0 ? { 
                 name: this.#app.activeAward.name,
                 points: this.garlandAchievemenPoints
             } : null, 
             nav: this.divName
         });
-        // $("#value_points").val(this.points);
+
+        this.showLeftOvers();
+
         $("#nav-" + this.divName).html(html);
-        this.showTotalPoints();
+        this.updateTotalPoints();
         $(".tab-content").localize();
     }
 
-    showTotalPoints() {
+    updateTotalPoints() {
         $("#nav-" + this.divName + "-points").html(this.getTotalPoints()); //set sum in tab
     }
 }
