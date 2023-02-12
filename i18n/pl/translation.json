@@ -17,8 +17,8 @@
         "points": "Punkty dodatkowe",
         "journey": "Podróż",
         "leftovers": "Leftover Resources",
-        "expansions": "Expansions",
-        "garlandaward": "Garland Awards",
+        "expansions": "Dodatki",
+        "garlandaward": "Nagroda 'Wianek stulecia'",
         "wonders": "Wonders",
         "adornments": "Adornments",
         "expeditions": "Expeditions",
@@ -92,10 +92,10 @@
         "messenger": "Messenger"
     },
     "event": {
-        "grandtour": "Grand tour",
-        "autumnfairy": "Autumn fairy",
-        "expedition": "Expedition of the cartograph",
-        "monument": "City's monument",
+        "grandtour": "Rejs po rzece",
+        "autumnfairy": "Święto plonów",
+        "expedition": "Wyprawa kartografów",
+        "monument": "Pomnik",
 
         "taxrelief": "Ulga podatkowa",
         "pilgrimspath": "Szlak pielgrzymów",
@@ -114,16 +114,16 @@
         "fireworks": "Wieczór fajerwerków",
         "flyingdoctor": "Usługi latającego doktora",
         
-        "flowerfestival": "Flower festival",
-        "bednbreakfast": "Bed & breakfast union",
-        "vacation": "Vacation location",
-        "renaissance": "Architectonic renaissance",
-        "cakefeast": "Cakefeast",
-        "statues": "Exposure of statues",
-        "artnculture": "A festival of Art & Culture",
-        "gathering": "Gathering of the eldest",
-        "royalwedding": "Royal wedding",
-        "kingsroad": "King's road opening",
+        "flowerfestival": "Festiwal kwiatów",
+        "bednbreakfast": "Gildia hotelarzy",
+        "vacation": "Miejskie wakacje",
+        "renaissance": "Renesans w architekturze",
+        "cakefeast": "Konkurs jedzenia ciasta",
+        "statues": "Odsłonięcie pomnika",
+        "artnculture": "Festiwal muzyki i sztuki",
+        "gathering": "Zgromadzenie Starszych",
+        "royalwedding": "Królewski ślub",
+        "kingsroad": "Budowa Traktu Królewskiego",
 
         "romanticcruise": "Romantic cruise",
         "riverrace": "River race",
@@ -134,13 +134,13 @@
     },
 
     "award": {
-        "tales": "Tales",
-        "tourism": "Tourism",
-        "beauty": "Beauty",
-        "peace": "Peace",
-        "farming": "Farming",
-        "architecture": "Architecture",
-        "community": "Community"
+        "tales": "Gawędziarstwo",
+        "tourism": "Turystyka",
+        "beauty": "Piękno",
+        "peace": "Harmonia",
+        "farming": "Rolnictwo",
+        "architecture": "Architektura",
+        "community": "Społeczność"
     },
     "wonder": {
         "flame": "Starfalls flame",
