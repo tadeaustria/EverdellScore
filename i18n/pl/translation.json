@@ -19,8 +19,8 @@
         "leftovers": "Leftover Resources",
         "expansions": "Dodatki",
         "garlandaward": "Nagroda 'Wianek stulecia'",
-        "wonders": "Wonders",
-        "adornments": "Adornments",
+        "wonders": "Cuda",
+        "adornments": "Ozdoby",
         "expeditions": "Expeditions",
         "discoveries": "Discoveries"
     },
@@ -30,7 +30,7 @@
         "pebble": "Kamyki",
         "berry": "Jagody",
         "card": "Karty",
-        "pearl": "Pearl"
+        "pearl": "Perły"
     },
     "card": {
         "inn": "Karczma",
@@ -82,14 +82,14 @@
         "theater": "Teatr",
         "bard": "Bard",
 
-        "ferry": "Ferry",
-        "ferryferret": "Ferry ferret",
-        "pirateship": "Pirate ship",
-        "pirate": "Pirate",
-        "harbor": "Harbor",
-        "shipwright": "Shipwright",
-        "bridge": "Bridge",
-        "messenger": "Messenger"
+        "ferry": "Prom",
+        "ferryferret": "Przewoźnik",
+        "pirateship": "Piracki statek",
+        "pirate": "Pirat",
+        "harbor": "Przystań",
+        "shipwright": "Cieśla okrętowy",
+        "bridge": "Most",
+        "messenger": "Posłaniec"
     },
     "event": {
         "grandtour": "Rejs po rzece",
@@ -125,12 +125,12 @@
         "royalwedding": "Królewski ślub",
         "kingsroad": "Budowa Traktu Królewskiego",
 
-        "romanticcruise": "Romantic cruise",
-        "riverrace": "River race",
-        "riverbath": "River bath",
-        "markedtreasure": "The X markes the treasure",
-        "treasurediscovery": "Discovery of a sunken treasure",
-        "invitationmaskball": "Invitation to the masked ball"
+        "romanticcruise": "Romantyczny rejs",
+        "riverrace": "Wyścig po rzece",
+        "riverbath": "Nadrzeczny kurort",
+        "markedtreasure": "X wskazuje miejsce",
+        "treasurediscovery": "Odnalezienie zatopionego skarbu",
+        "invitationmaskball": "Zaproszenie na bal przebierańców"
     },
 
     "award": {
@@ -143,24 +143,24 @@
         "community": "Społeczność"
     },
     "wonder": {
-        "flame": "Starfalls flame",
-        "bridge": "Sunglaze bridge",
-        "fountain": "Mistrise fountain",
-        "gate": "Hopewatch gate"
+        "flame": "Gwieździsta Latarnia",
+        "bridge": "Słoneczny Most",
+        "fountain": "Fontanna Mgieł",
+        "gate": "Brama Wyczekiwańca"
     },
     "adornment": {
         "tiara": "Tiara",
-        "telescope": "Telescope",
-        "compass": "Compass",
-        "goldenbook": "Golden book",
-        "mask": "Mask",
-        "mirror": "Mirror",
-        "scale": "Scale",
-        "sundial": "Sundial",
-        "hourglass": "Hourglass",
-        "bell": "Bell",
-        "townkey": "Town key",
-        "seacharm": "Sea charm"
+        "telescope": "Luneta",
+        "compass": "Kompas",
+        "goldenbook": "Złota księga",
+        "mask": "Maska",
+        "mirror": "Lusterko",
+        "scale": "Waga",
+        "sundial": "Zegar słoneczny",
+        "hourglass": "Klepsydra",
+        "bell": "Dzwonek",
+        "townkey": "Klucz do miasta",
+        "seacharm": "Szklany amulet"
     },
     "expedition": {
         "meeks": "Meek's Crossing",
@@ -206,7 +206,7 @@
     },
     "text": {
         "cardlimit": "Limit kart w mieście osiągnięty",
-        "adornmentlimit": "Card limit of adornments is reached",
+        "adornmentlimit": "Limit kart ozdób osiągnięty",
         "expeditionlimit": "Card limit of expeditions is reached",
         "discoverylimit": "Card limit of discoveries is reached"
     }
