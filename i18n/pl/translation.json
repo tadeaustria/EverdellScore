@@ -189,20 +189,20 @@
         "mistfalls": "Wodospad Mgieł"
     },
     "discovery": {
-        "greenrungpath": "Leśny Szlak",
-        "everflowerpath": "Kwiecisty Szlak",
-        "misttrackpath": "Mglisty Szlak",
-        "sunraypath": "Skalny Szlak",
-        "starfallpath": "Świetlisty Szlak",
-        "glockenspielpath": "Lodowy Szlak",
-        "glockenspielcity": "Lodowe Miasto",
-        "greenrungcity": "Leśne Miasto",
-        "everflowercity": "Kwitnące Miasto",
-        "misttrackcity": "Mgliste Miasto",
-        "sunraycity": "Skalne Miasto",
+        "greensprouttrail": "Leśny Szlak",
+        "everblossomtrail": "Kwiecisty Szlak",
+        "mistrisetrail": "Mglisty Szlak",
+        "sunblazetrail": "Skalny Szlak",
+        "starfalltrail": "Świetlisty Szlak",
+        "bellsongtrail": "Lodowy Szlak",
+        "bellsongcity": "Lodowe Miasto",
+        "greensproutcity": "Leśne Miasto",
+        "everblossomcity": "Kwitnące Miasto",
+        "mistrisecity": "Mgliste Miasto",
+        "sunblazecity": "Skalne Miasto",
         "starfallcity": "Świetliste Miasto",
-        "wayofhope": "Szlak Wyczekiwańca",
-        "flybreakpath": "Szlak Czterech Wiatrów"
+        "hopewatchtrail": "Szlak Wyczekiwańca",
+        "gatherwindtrail": "Szlak Czterech Wiatrów"
     },
     "text": {
         "cardlimit": "Limit kart w mieście osiągnięty",
