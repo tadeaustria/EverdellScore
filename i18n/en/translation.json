@@ -188,20 +188,20 @@
         "mistfalls": "Mistfalls Of Fire"
     },
     "discovery": {
-        "greenrungpath": "Greenrung Path",
-        "everflowerpath": "Everflower Path",
-        "misttrackpath": "Misttrack Path",
-        "sunraypath": "Sunray Path",
-        "starfallpath": "Starfall Path",
-        "glockenspielpath": "Glockenspiel Path",
-        "glockenspielcity": "Glockenspiel City",
-        "greenrungcity": "Greenrung City",
-        "everflowercity": "Everflower City",
-        "misttrackcity": "Misttrack City",
-        "sunraycity": "Sunray City",
+        "greensprouttrail": "Greensprout Trail",
+        "everblossomtrail": "Everblossom Trail",
+        "mistrisetrail": "Mistrise Trail",
+        "sunblazetrail": "Sunblaze Trail",
+        "starfalltrail": "Starfall Trail",
+        "bellsongtrail": "Bellsong Trail",
+        "bellsongcity": "Bellsong City",
+        "greensproutcity": "Greensprout City",
+        "everblossomcity": "Everblossom City",
+        "mistrisecity": "Mistrise City",
+        "sunblazecity": "Sunblaze City",
         "starfallcity": "Starfall City",
-        "wayofhope": "Way Of Hope",
-        "flybreakpath": "Flybreak Path"
+        "hopewatchtrail": "Hopewatch Trail",
+        "gatherwindtrail": "Gatherwind Trail"
     },
     "text": {
         "cardlimit": "Card limit of town is reached",

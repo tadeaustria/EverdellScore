@@ -1357,69 +1357,69 @@ let expeditions = {
 }
 
 let discoveries = {
-    "greenrungpath": {
-        name: "greenrungpath",
+    "greensprouttrail": {
+        name: "greensprouttrail",
         getPoints:  (player) => (player.findCountType(TYPES.production) >= 4 ) ? 4 : 0,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest
     },
-    "misttrackpath": {
-        name: "misttrackpath",
+    "mistrisetrail": {
+        name: "mistrisetrail",
         getPoints: (player) => (player.findCountType(TYPES.traveler) >= 3 ) ? 4 : 0 ,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest 
     },
-    "everflowerpath": {
-        name: "everflowerpath",
+    "everblossomtrail": {
+        name: "everblossomtrail",
         getPoints: (player) => (player.findCountType(TYPES.prosperity) >= 3 ) ? 4 : 0 ,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest 
     },
-    "sunraypath": {
-        name: "sunraypath",
+    "sunblazetrail": {
+        name: "sunblazetrail",
         getPoints: (player) => (player.findCountType(TYPES.destination) >= 3 ) ? 4 : 0,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest  
     },
-    "starfallpath": {
-        name: "starfallpath",
+    "starfalltrail": {
+        name: "starfalltrail",
         getPoints: (player) => (player.findCountType(TYPES.governance) >= 3 ) ? 4 : 0 ,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest 
     },
-    "glockenspielpath": {
-        name: "glockenspielpath",
+    "bellsongtrail": {
+        name: "bellsongtrail",
         getPoints: (player) => (player.expeditions.length >= 3 ) ? 4 : 0 ,
         type: DISCOVERYTYPES.peaks,
         getAvailability: available_spirecrest
     },
-    "glockenspielcity": {
-        name: "glockenspielcity",
+    "bellsongcity": {
+        name: "bellsongcity",
         // fix 3 point + number of fewest card type in city
         getPoints: (player) => 3 + TYPES.reduce((prev, type, _) => Math.min(prev, player.findCountType(type)), 15),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     }, 
-    "greenrungcity": {
-        name: "greenrungcity",
+    "greensproutcity": {
+        name: "greensproutcity",
         getPoints: (player) => 6 - Math.trunc(player.findCountType(TYPES.production) / 2 ),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
-    "everflowercity": {
-        name: "everflowercity",
+    "everblossomcity": {
+        name: "everblossomcity",
         getPoints: (player) => 6 - player.findCountType(TYPES.prosperity),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
-    "misttrackcity": {
-        name: "misttrackcity",
+    "mistrisecity": {
+        name: "mistrisecity",
         getPoints: (player) => 6 - player.findCountType(TYPES.traveler),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
-    "sunraycity": {
-        name: "sunraycity",
+    "sunblazecity": {
+        name: "sunblazecity",
         getPoints: (player) => 6 - player.findCountType(TYPES.destination),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
@@ -1430,14 +1430,14 @@ let discoveries = {
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
-    "wayofhope": {
-        name: "wayofhope",
+    "hopewatchtrail": {
+        name: "hopewatchtrail",
         getPoints: (player) => Math.min(7, player.expeditions.reduce((prev, expedition, _) => prev + expedition.points, 0)),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
-    "flybreakpath": {
-        name: "flybreakpath",
+    "gatherwindtrail": {
+        name: "gatherwindtrail",
         getPoints: (player) => player.basicEvents.length + player.specialEvents.length >= 2 ? 4 : 0,
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
