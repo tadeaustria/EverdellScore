@@ -1170,8 +1170,8 @@ let adornments = {
         getPoints: (player) => player.findCountType(TYPES.prosperity),
         getAvailability: available_pearlbrook
     },
-    "telescope": {
-        name: "telescope",
+    "spyglass": {
+        name: "spyglass",
         getPoints: (player) => player.wonders.length * 3,
         getAvailability: available_pearlbrook
     },
@@ -1180,13 +1180,13 @@ let adornments = {
         getPoints: (player) => player.findCountType(TYPES.traveler),
         getAvailability: available_pearlbrook
     },
-    "goldenbook": {
-        name: "goldenbook",
+    "gildedbook": {
+        name: "gildedbook",
         getPoints: (player) => player.findCountType(TYPES.governance),
         getAvailability: available_pearlbrook
     },
-    "mask": {
-        name: "mask",
+    "masque": {
+        name: "masque",
         getPoints: (player) => Math.trunc(player.points / 3),
         getAvailability: available_pearlbrook
     },
@@ -1201,8 +1201,8 @@ let adornments = {
         },
         getAvailability: available_pearlbrook
     },
-    "scale": {
-        name: "scale",
+    "scales": {
+        name: "scales",
         getPoints: (player) => Math.min(player.leftResources['card'], 5),
         getAvailability: available_pearlbrook
     },
@@ -1221,13 +1221,13 @@ let adornments = {
         getPoints: (player) => Math.trunc(player.findCountKind(KINDS.critter) / 2),
         getAvailability: available_pearlbrook
     },
-    "townkey": {
-        name: "townkey",
+    "keytothecity": {
+        name: "keytothecity",
         getPoints: (player) => Math.trunc(player.findCountKind(KINDS.building) / 2),
         getAvailability: available_pearlbrook
     },
-    "seacharm": {
-        name: "seacharm",
+    "seaglassamulet": {
+        name: "seaglassamulet",
         getPoints: points_three,
         getAvailability: available_pearlbrook
     }

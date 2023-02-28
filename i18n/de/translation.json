@@ -148,17 +148,17 @@
     },
     "adornment":{
         "tiara": "Tiara",
-        "telescope": "Fernrohr",
+        "spyglass": "Fernrohr",
         "compass": "Kompass",
-        "goldenbook": "Goldenes Buch",
-        "mask": "Maske",
+        "gildedbook": "Goldenes Buch",
+        "masque": "Maske",
         "mirror": "Spiegel",
-        "scale": "Waage",
+        "scales": "Waage",
         "sundial":"Sonnenuhr",
         "hourglass":"Sanduhr",
         "bell": "Glocke",
-        "townkey": "Schlüssel zur Stadt",
-        "seacharm": "Meerglas-Amulett"
+        "keytothecity": "Schlüssel zur Stadt",
+        "seaglassamulet": "Meerglas-Amulett"
     },
 
     "expedition": {

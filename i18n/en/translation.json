@@ -149,17 +149,17 @@
     },
     "adornment": {
         "tiara": "Tiara",
-        "telescope": "Telescope",
+        "spyglass": "Spyglass",
         "compass": "Compass",
-        "goldenbook": "Golden book",
-        "mask": "Mask",
+        "gildedbook": "Gilded Book",
+        "masque": "Masque",
         "mirror": "Mirror",
-        "scale": "Scale",
+        "scales": "Scales",
         "sundial": "Sundial",
         "hourglass": "Hourglass",
         "bell": "Bell",
-        "townkey": "Town key",
-        "seacharm": "Sea charm"
+        "keytothecity": "Key to the City",
+        "seaglassamulet": "Seaglass Amulet"
     },
     "expedition": {
         "meekscrossing": "Meek's Crossing",

@@ -148,7 +148,7 @@ class Player {
 
     areLeftoversRequired() {
         //If Architect is in town or scale as adornment
-        return this.town.includes(basecards['39']) || this.adornments.includes(adornments["scale"]);
+        return this.town.includes(basecards['39']) || this.adornments.includes(adornments["scales"]);
     }
 
     updateLeftOvers(){
