@@ -1395,8 +1395,13 @@ let discoveries = {
     },
     "bellsongcity": {
         name: "bellsongcity",
-        // fix 3 point + number of fewest card type in city
-        getPoints: (player) => 3 + Object.keys(TYPES).reduce((prev, type, _) => Math.min(prev, player.findCountType(type)), 15),
+        getPoints: (player) => {
+            let playerCardTypesCounts = Object.keys(TYPES)
+                .map(type => player.findCountType(type))
+                .filter(typeCount => typeCount > 0);
+
+            return 3 + (playerCardTypesCounts.length ? Math.min(...playerCardTypesCounts) : 0);
+        },
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     }, 
@@ -1432,7 +1437,7 @@ let discoveries = {
     },
     "hopewatchtrail": {
         name: "hopewatchtrail",
-        getPoints: (player) => Math.min(7, player.expeditions.reduce((prev, expedition, _) => prev + expedition.points, 0)),
+        getPoints: (player) => Math.min(7, player.journeys.reduce((prev, journey, _) => prev + journey, 0)),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
