@@ -748,8 +748,8 @@ let basicEvents = {
         points: 3,
         getAvailability: available_npearlbrook
     },
-    "autumnfairy": {
-        name: "autumnfairy",
+    "harvestfestival": {
+        name: "harvestfestival",
         points: 3,
         getAvailability: available_npearlbrook
     },
@@ -782,8 +782,8 @@ let specialEvents = {
         getPoints: points_three,
         getAvailability: available_always
     },
-    "pilgrimspath": {
-        name: "pilgrimspath",
+    "pathofthepilgrims": {
+        name: "pathofthepilgrims",
         input: true,
         value: 0,
         inputMax: 2,
@@ -842,8 +842,8 @@ let specialEvents = {
         getPoints: points_six,
         getAvailability: available_always
     },
-    "capture": {
-        name: "capture",
+    "captureoftheacornthieves": {
+        name: "captureoftheacornthieves",
         input: true,
         value: 0,
         inputMax: 2,
@@ -852,8 +852,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_always
     },
-    "marketingplan": {
-        name: "marketingplan",
+    "abrilliantmarketingplan": {
+        name: "abrilliantmarketingplan",
         input: true,
         value: 0,
         inputMax: 3,
@@ -872,8 +872,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_always
     },
-    "graduation": {
-        name: "graduation",
+    "graduationofscholars": {
+        name: "graduationofscholars",
         input: true,
         value: 0,
         inputMax: 3,
@@ -882,8 +882,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_always
     },
-    "pristinechapel": {
-        name: "pristinechapel",
+    "pristinechapelceiling": {
+        name: "pristinechapelceiling",
         input: true,
         value: 0,
         inputMax: 3,
@@ -892,8 +892,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_always
     },
-    "everdellgames": {
-        name: "everdellgames",
+    "theeverdellgames": {
+        name: "theeverdellgames",
         input: false,
         value: 0,
         inputMax: 0,
@@ -902,8 +902,8 @@ let specialEvents = {
         getPoints: points_nine,
         getAvailability: available_always
     },
-    "ancientscrolls": {
-        name: "ancientscrolls",
+    "ancientscrollsdiscovered": {
+        name: "ancientscrollsdiscovered",
         input: true,
         value: 0,
         inputMax: 5,
@@ -912,8 +912,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_always
     },
-    "fireworks": {
-        name: "fireworks",
+    "aneveningoffireworks": {
+        name: "aneveningoffireworks",
         input: true,
         value: 0,
         inputMax: 3,
@@ -922,8 +922,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_always
     },
-    "flyingdoctor": {
-        name: "flyingdoctor",
+    "flyingdoctorservice": {
+        name: "flyingdoctorservice",
         input: true,
         value: 0,
         inputMax: 3,
@@ -934,8 +934,8 @@ let specialEvents = {
     },
 
 
-    "bednbreakfast": {
-        name: "bednbreakfast",
+    "bednbreakfastguild": {
+        name: "bednbreakfastguild",
         input: false,
         value: 0,
         inputMax: 0,
@@ -944,8 +944,8 @@ let specialEvents = {
         getPoints: points_five,
         getAvailability: available_bellfaire
     },
-    "vacation": {
-        name: "vacation",
+    "cityholiday": {
+        name: "cityholiday",
         input: false,
         value: 0,
         inputMax: 0,
@@ -954,8 +954,8 @@ let specialEvents = {
         getPoints: points_five,
         getAvailability: available_bellfaire
     },
-    "renaissance": {
-        name: "renaissance",
+    "architecturalrenaissance": {
+        name: "architecturalrenaissance",
         input: false,
         value: 0,
         inputMax: 0,
@@ -964,8 +964,8 @@ let specialEvents = {
         getPoints: points_five,
         getAvailability: available_bellfaire
     },
-    "cakefeast": {
-        name: "cakefeast",
+    "pieeatingcontest": {
+        name: "pieeatingcontest",
         input: false,
         value: 0,
         inputMax: 0,
@@ -974,8 +974,8 @@ let specialEvents = {
         getPoints: points_six,
         getAvailability: available_bellfaire
     },
-    "statues": {
-        name: "statues",
+    "statuescommisioned": {
+        name: "statuescommisioned",
         input: false,
         value: 0,
         inputMax: 0,
@@ -984,8 +984,8 @@ let specialEvents = {
         getPoints: points_six,
         getAvailability: available_bellfaire
     },
-    "artnculture": {
-        name: "artnculture",
+    "artnmusicfestival": {
+        name: "artnmusicfestival",
         input: false,
         value: 0,
         inputMax: 0,
@@ -994,8 +994,8 @@ let specialEvents = {
         getPoints: points_six,
         getAvailability: available_bellfaire
     },
-    "gathering": {
-        name: "gathering",
+    "gatheringoftheelders": {
+        name: "gatheringoftheelders",
         input: false,
         value: 0,
         inputMax: 0,
@@ -1014,8 +1014,8 @@ let specialEvents = {
         getPoints: points_six,
         getAvailability: available_bellfaire
     },
-    "kingsroad": {
-        name: "kingsroad",
+    "kingsroadestablished": {
+        name: "kingsroadestablished",
         input: false,
         value: 0,
         inputMax: 0,
@@ -1045,8 +1045,8 @@ let specialEvents = {
         getPoints: points_four,
         getAvailability: available_pearlbrook
     },
-    "riverbath": {
-        name: "riverbath",
+    "riversideresort": {
+        name: "riversideresort",
         input: true,
         value: 0,
         inputMax: 3,
@@ -1055,8 +1055,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_pearlbrook
     },
-    "markedtreasure": {
-        name: "markedtreasure",
+    "xmarksthespot": {
+        name: "xmarksthespot",
         input: false,
         value: 0,
         inputMax: 0,
@@ -1065,8 +1065,8 @@ let specialEvents = {
         getPoints: points_zero,
         getAvailability: available_pearlbrook
     },
-    "treasurediscovery": {
-        name: "treasurediscovery",
+    "sunkentreasurediscovered": {
+        name: "sunkentreasurediscovered",
         input: false,
         value: 0,
         inputMax: 0,
@@ -1075,8 +1075,8 @@ let specialEvents = {
         getPoints: points_zero,
         getAvailability: available_pearlbrook
     },
-    "invitationmaskball": {
-        name: "invitationmaskball",
+    "masqueradeinvitations": {
+        name: "masqueradeinvitations",
         input: false,
         value: 0,
         inputMax: 0,
