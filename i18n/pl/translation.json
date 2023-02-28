@@ -150,17 +150,17 @@
     },
     "adornment": {
         "tiara": "Tiara",
-        "telescope": "Luneta",
+        "spyglass": "Luneta",
         "compass": "Kompas",
-        "goldenbook": "Złota księga",
-        "mask": "Maska",
+        "gildedbook": "Złota księga",
+        "masque": "Maska",
         "mirror": "Lusterko",
-        "scale": "Waga",
+        "scales": "Waga",
         "sundial": "Zegar słoneczny",
         "hourglass": "Klepsydra",
         "bell": "Dzwonek",
-        "townkey": "Klucz do miasta",
-        "seacharm": "Szklany amulet"
+        "keytothecity": "Klucz do miasta",
+        "seaglassamulet": "Szklany amulet"
     },
     "expedition": {
         "meekscrossing": "Ciche Rozstaje",
