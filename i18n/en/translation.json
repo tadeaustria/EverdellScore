@@ -56,7 +56,7 @@
         "resinrefinery": "Resin Refinery",
         "chipsweep": "Chip Sweep",
         "mine": "Mine",
-        "minemoler": "Mine Moler",
+        "minermole": "Miner Mole",
         "storehouse": "Storehouse",
         "woodcarver": "Woodcarver",
         "farm": "Farm",
@@ -81,10 +81,10 @@
         "teacher": "Teacher",
         "theater": "Theater",
         "bard": "Bard",
-    
+
         "ferry": "Ferry",
-        "ferryferret": "Ferry ferret",
-        "pirateship": "Pirate ship",
+        "ferryferret": "Ferry Ferret",
+        "pirateship": "Pirate Ship",
         "pirate": "Pirate",
         "harbor": "Harbor",
         "shipwright": "Shipwright",
@@ -135,11 +135,11 @@
     },
 
     "award": {
-        "tales": "Tales",
+        "storytelling": "Storytelling",
         "tourism": "Tourism",
         "beauty": "Beauty",
         "peace": "Peace",
-        "farming": "Farming",
+        "agriculture": "Agriculture",
         "architecture": "Architecture",
         "community": "Community"
     },

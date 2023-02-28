@@ -56,7 +56,7 @@
         "resinrefinery": "Rafineria żywicy",
         "chipsweep": "Sprzątacz",
         "mine": "Kopalnia",
-        "minemoler": "Kopacz",
+        "minermole": "Kopacz",
         "storehouse": "Magazyn",
         "woodcarver": "Snycerz",
         "farm": "Farma",
@@ -134,11 +134,11 @@
     },
 
     "award": {
-        "tales": "Gawędziarstwo",
+        "storytelling": "Gawędziarstwo",
         "tourism": "Turystyka",
         "beauty": "Piękno",
         "peace": "Harmonia",
-        "farming": "Rolnictwo",
+        "agriculture": "Rolnictwo",
         "architecture": "Architektura",
         "community": "Społeczność"
     },
