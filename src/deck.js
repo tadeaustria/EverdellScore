@@ -1234,8 +1234,8 @@ let adornments = {
 }
 
 let expeditions = {
-    "meeks": {
-        name: "meeks",
+    "meekscrossing": {
+        name: "meekscrossing",
         points: 2,
         getAvailability: available_spirecrest
     },
@@ -1244,23 +1244,23 @@ let expeditions = {
         points: 2,
         getAvailability: available_spirecrest
     },
-    "thesea": {
-        name: "thesea",
+    "thebog": {
+        name: "thebog",
         points: 2,
         getAvailability: available_spirecrest
     },
-    "fortress": {
-        name: "fortress",
+    "fortfaraway": {
+        name: "fortfaraway",
         points: 2,
         getAvailability: available_spirecrest
     },
-    "manguste": {
-        name: "manguste",
+    "meerkatcanyon": {
+        name: "meerkatcanyon",
         points: 2,
         getAvailability: available_spirecrest
     },
-    "yarasland": {
-        name: "yarasland",
+    "yaraspatch": {
+        name: "yaraspatch",
         points: 2,
         getAvailability: available_spirecrest
     },
@@ -1269,33 +1269,33 @@ let expeditions = {
         points: 3,
         getAvailability: available_spirecrest
     },
-    "blubmountain": {
-        name: "blubmountain",
+    "bubblingsprings": {
+        name: "bubblingsprings",
         points: 3,
         getAvailability: available_spirecrest
     },
-    "cuddlebay": {
-        name: "cuddlebay",
+    "cuddlerscove": {
+        name: "cuddlerscove",
         points: 3,
         getAvailability: available_spirecrest
     },
-    "stomp": {
-        name: "stomp",
+    "stompyknoll": {
+        name: "stompyknoll",
         points: 3,
         getAvailability: available_spirecrest
     },
-    "watermill": {
-        name: "watermill",
+    "kibblerillferry": {
+        name: "kibblerillferry",
         points: 3,
         getAvailability: available_spirecrest
     },
-    "longfootforest": {
-        name: "longfootforest",
+    "longlegforest": {
+        name: "longlegforest",
         points: 3,
         getAvailability: available_spirecrest
     },
-    "earthcavevalley": {
-        name: "earthcavevalley",
+    "burrowdale": {
+        name: "burrowdale",
         points: 4,
         getAvailability: available_spirecrest
     },
@@ -1304,13 +1304,13 @@ let expeditions = {
         points: 4,
         getAvailability: available_spirecrest
     },
-    "berryfields": {
-        name: "berryfields",
+    "newberryfields": {
+        name: "newberryfields",
         points: 4,
         getAvailability: available_spirecrest
     },
-    "dewworm": {
-        name: "dewworm",
+    "dugwormgully": {
+        name: "dugwormgully",
         points: 4,
         getAvailability: available_spirecrest
     },
@@ -1329,28 +1329,28 @@ let expeditions = {
         points: 5,
         getAvailability: available_spirecrest
     },
-    "debriscoast": {
-        name: "debriscoast",
+    "shipwreckshore": {
+        name: "shipwreckshore",
         points: 5,
         getAvailability: available_spirecrest
     },
-    "quokkasisle": {
-        name: "quokkasisle",
+    "quokkaisland": {
+        name: "quokkaisland",
         points: 5,
         getAvailability: available_spirecrest
     },
-    "seaofflowers": {
-        name: "seaofflowers",
+    "brightcoatbloom": {
+        name: "brightcoatbloom",
         points: 6,
         getAvailability: available_spirecrest
     },
-    "soullessdesert": {
-        name: "soullessdesert",
+    "coldbloodeddesert": {
+        name: "coldbloodeddesert",
         points: 6,
         getAvailability: available_spirecrest
     },
-    "mistfalls": {
-        name: "mistfalls",
+    "mistfirefalls": {
+        name: "mistfirefalls",
         points: 6,
         getAvailability: available_spirecrest
     },
