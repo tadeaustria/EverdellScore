@@ -328,11 +328,11 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['minemoler'],
+        related: ['minermole'],
         getAvailability: available_always
     },
     '26': {
-        name: 'minemoler',
+        name: 'minermole',
         type: TYPES.production,
         rarity: RARITY.common,
         kind: KINDS.critter,
@@ -1088,8 +1088,8 @@ let specialEvents = {
 }
 
 let garlandAwards = {
-    "tales": {
-        name: "tales",
+    "storytelling": {
+        name: "storytelling",
         rankingFunction: (player) => player.findCountType(TYPES.traveler),
         pointsFirst: 6,
         pointsSecond: 3,
@@ -1116,8 +1116,8 @@ let garlandAwards = {
         pointsSecond: 3,
         getAvailability: available_bellfaire
     },
-    "farming": {
-        name: "farming",
+    "agriculture": {
+        name: "agriculture",
         rankingFunction: (player) => player.findCountType(TYPES.production),
         pointsFirst: 6,
         pointsSecond: 3,

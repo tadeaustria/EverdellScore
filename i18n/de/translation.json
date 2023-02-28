@@ -56,7 +56,7 @@
         "resinrefinery": "Harzraffinerie",
         "chipsweep": "Fegehörnchen",
         "mine": "Mine",
-        "minemoler": "Minenmaulwurf",
+        "minermole": "Minenmaulwurf",
         "storehouse": "Lager",
         "woodcarver": "Holzschnitzer",
         "farm": "Farm",
@@ -132,11 +132,11 @@
         "masqueradeinvitations": "Einladung zum Maskenball"
     },
     "award":{
-        "tales": "Erzählungen",
+        "storytelling": "Erzählungen",
         "tourism": "Tourismus",
         "beauty": "Schönheit",
         "peace": "Frieden",
-        "farming": "Landwirtschaft",
+        "agriculture": "Landwirtschaft",
         "architecture": "Architektur",
         "community": "Gemeinschaft"
     },
