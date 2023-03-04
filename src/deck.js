@@ -328,11 +328,11 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['minemoler'],
+        related: ['minermole'],
         getAvailability: available_always
     },
     '26': {
-        name: 'minemoler',
+        name: 'minermole',
         type: TYPES.production,
         rarity: RARITY.common,
         kind: KINDS.critter,
@@ -748,8 +748,8 @@ let basicEvents = {
         points: 3,
         getAvailability: available_npearlbrook
     },
-    "autumnfairy": {
-        name: "autumnfairy",
+    "harvestfestival": {
+        name: "harvestfestival",
         points: 3,
         getAvailability: available_npearlbrook
     },
@@ -782,8 +782,8 @@ let specialEvents = {
         getPoints: points_three,
         getAvailability: available_always
     },
-    "pilgrimspath": {
-        name: "pilgrimspath",
+    "pathofthepilgrims": {
+        name: "pathofthepilgrims",
         input: true,
         value: 0,
         inputMax: 2,
@@ -842,8 +842,8 @@ let specialEvents = {
         getPoints: points_six,
         getAvailability: available_always
     },
-    "capture": {
-        name: "capture",
+    "captureoftheacornthieves": {
+        name: "captureoftheacornthieves",
         input: true,
         value: 0,
         inputMax: 2,
@@ -852,8 +852,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_always
     },
-    "marketingplan": {
-        name: "marketingplan",
+    "abrilliantmarketingplan": {
+        name: "abrilliantmarketingplan",
         input: true,
         value: 0,
         inputMax: 3,
@@ -872,8 +872,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_always
     },
-    "graduation": {
-        name: "graduation",
+    "graduationofscholars": {
+        name: "graduationofscholars",
         input: true,
         value: 0,
         inputMax: 3,
@@ -882,8 +882,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_always
     },
-    "pristinechapel": {
-        name: "pristinechapel",
+    "pristinechapelceiling": {
+        name: "pristinechapelceiling",
         input: true,
         value: 0,
         inputMax: 3,
@@ -892,8 +892,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_always
     },
-    "everdellgames": {
-        name: "everdellgames",
+    "theeverdellgames": {
+        name: "theeverdellgames",
         input: false,
         value: 0,
         inputMax: 0,
@@ -902,8 +902,8 @@ let specialEvents = {
         getPoints: points_nine,
         getAvailability: available_always
     },
-    "ancientscrolls": {
-        name: "ancientscrolls",
+    "ancientscrollsdiscovered": {
+        name: "ancientscrollsdiscovered",
         input: true,
         value: 0,
         inputMax: 5,
@@ -912,8 +912,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_always
     },
-    "fireworks": {
-        name: "fireworks",
+    "aneveningoffireworks": {
+        name: "aneveningoffireworks",
         input: true,
         value: 0,
         inputMax: 3,
@@ -922,8 +922,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_always
     },
-    "flyingdoctor": {
-        name: "flyingdoctor",
+    "flyingdoctorservice": {
+        name: "flyingdoctorservice",
         input: true,
         value: 0,
         inputMax: 3,
@@ -934,8 +934,8 @@ let specialEvents = {
     },
 
 
-    "bednbreakfast": {
-        name: "bednbreakfast",
+    "bednbreakfastguild": {
+        name: "bednbreakfastguild",
         input: false,
         value: 0,
         inputMax: 0,
@@ -944,8 +944,8 @@ let specialEvents = {
         getPoints: points_five,
         getAvailability: available_bellfaire
     },
-    "vacation": {
-        name: "vacation",
+    "cityholiday": {
+        name: "cityholiday",
         input: false,
         value: 0,
         inputMax: 0,
@@ -954,8 +954,8 @@ let specialEvents = {
         getPoints: points_five,
         getAvailability: available_bellfaire
     },
-    "renaissance": {
-        name: "renaissance",
+    "architecturalrenaissance": {
+        name: "architecturalrenaissance",
         input: false,
         value: 0,
         inputMax: 0,
@@ -964,8 +964,8 @@ let specialEvents = {
         getPoints: points_five,
         getAvailability: available_bellfaire
     },
-    "cakefeast": {
-        name: "cakefeast",
+    "pieeatingcontest": {
+        name: "pieeatingcontest",
         input: false,
         value: 0,
         inputMax: 0,
@@ -974,8 +974,8 @@ let specialEvents = {
         getPoints: points_six,
         getAvailability: available_bellfaire
     },
-    "statues": {
-        name: "statues",
+    "statuescommisioned": {
+        name: "statuescommisioned",
         input: false,
         value: 0,
         inputMax: 0,
@@ -984,8 +984,8 @@ let specialEvents = {
         getPoints: points_six,
         getAvailability: available_bellfaire
     },
-    "artnculture": {
-        name: "artnculture",
+    "artnmusicfestival": {
+        name: "artnmusicfestival",
         input: false,
         value: 0,
         inputMax: 0,
@@ -994,8 +994,8 @@ let specialEvents = {
         getPoints: points_six,
         getAvailability: available_bellfaire
     },
-    "gathering": {
-        name: "gathering",
+    "gatheringoftheelders": {
+        name: "gatheringoftheelders",
         input: false,
         value: 0,
         inputMax: 0,
@@ -1014,8 +1014,8 @@ let specialEvents = {
         getPoints: points_six,
         getAvailability: available_bellfaire
     },
-    "kingsroad": {
-        name: "kingsroad",
+    "kingsroadestablished": {
+        name: "kingsroadestablished",
         input: false,
         value: 0,
         inputMax: 0,
@@ -1045,8 +1045,8 @@ let specialEvents = {
         getPoints: points_four,
         getAvailability: available_pearlbrook
     },
-    "riverbath": {
-        name: "riverbath",
+    "riversideresort": {
+        name: "riversideresort",
         input: true,
         value: 0,
         inputMax: 3,
@@ -1055,8 +1055,8 @@ let specialEvents = {
         getPoints: function (app, player) { return this.value * this.inputFactor; },
         getAvailability: available_pearlbrook
     },
-    "markedtreasure": {
-        name: "markedtreasure",
+    "xmarksthespot": {
+        name: "xmarksthespot",
         input: false,
         value: 0,
         inputMax: 0,
@@ -1065,8 +1065,8 @@ let specialEvents = {
         getPoints: points_zero,
         getAvailability: available_pearlbrook
     },
-    "treasurediscovery": {
-        name: "treasurediscovery",
+    "sunkentreasurediscovered": {
+        name: "sunkentreasurediscovered",
         input: false,
         value: 0,
         inputMax: 0,
@@ -1075,8 +1075,8 @@ let specialEvents = {
         getPoints: points_zero,
         getAvailability: available_pearlbrook
     },
-    "invitationmaskball": {
-        name: "invitationmaskball",
+    "masqueradeinvitations": {
+        name: "masqueradeinvitations",
         input: false,
         value: 0,
         inputMax: 0,
@@ -1088,8 +1088,8 @@ let specialEvents = {
 }
 
 let garlandAwards = {
-    "tales": {
-        name: "tales",
+    "storytelling": {
+        name: "storytelling",
         rankingFunction: (player) => player.findCountType(TYPES.traveler),
         pointsFirst: 6,
         pointsSecond: 3,
@@ -1116,8 +1116,8 @@ let garlandAwards = {
         pointsSecond: 3,
         getAvailability: available_bellfaire
     },
-    "farming": {
-        name: "farming",
+    "agriculture": {
+        name: "agriculture",
         rankingFunction: (player) => player.findCountType(TYPES.production),
         pointsFirst: 6,
         pointsSecond: 3,
@@ -1170,8 +1170,8 @@ let adornments = {
         getPoints: (player) => player.findCountType(TYPES.prosperity),
         getAvailability: available_pearlbrook
     },
-    "telescope": {
-        name: "telescope",
+    "spyglass": {
+        name: "spyglass",
         getPoints: (player) => player.wonders.length * 3,
         getAvailability: available_pearlbrook
     },
@@ -1180,13 +1180,13 @@ let adornments = {
         getPoints: (player) => player.findCountType(TYPES.traveler),
         getAvailability: available_pearlbrook
     },
-    "goldenbook": {
-        name: "goldenbook",
+    "gildedbook": {
+        name: "gildedbook",
         getPoints: (player) => player.findCountType(TYPES.governance),
         getAvailability: available_pearlbrook
     },
-    "mask": {
-        name: "mask",
+    "masque": {
+        name: "masque",
         getPoints: (player) => Math.trunc(player.points / 3),
         getAvailability: available_pearlbrook
     },
@@ -1201,8 +1201,8 @@ let adornments = {
         },
         getAvailability: available_pearlbrook
     },
-    "scale": {
-        name: "scale",
+    "scales": {
+        name: "scales",
         getPoints: (player) => Math.min(player.leftResources['card'], 5),
         getAvailability: available_pearlbrook
     },
@@ -1221,21 +1221,21 @@ let adornments = {
         getPoints: (player) => Math.trunc(player.findCountKind(KINDS.critter) / 2),
         getAvailability: available_pearlbrook
     },
-    "townkey": {
-        name: "townkey",
+    "keytothecity": {
+        name: "keytothecity",
         getPoints: (player) => Math.trunc(player.findCountKind(KINDS.building) / 2),
         getAvailability: available_pearlbrook
     },
-    "seacharm": {
-        name: "seacharm",
+    "seaglassamulet": {
+        name: "seaglassamulet",
         getPoints: points_three,
         getAvailability: available_pearlbrook
     }
 }
 
 let expeditions = {
-    "meeks": {
-        name: "meeks",
+    "meekscrossing": {
+        name: "meekscrossing",
         points: 2,
         getAvailability: available_spirecrest
     },
@@ -1244,23 +1244,23 @@ let expeditions = {
         points: 2,
         getAvailability: available_spirecrest
     },
-    "thesea": {
-        name: "thesea",
+    "thebog": {
+        name: "thebog",
         points: 2,
         getAvailability: available_spirecrest
     },
-    "fortress": {
-        name: "fortress",
+    "fortfaraway": {
+        name: "fortfaraway",
         points: 2,
         getAvailability: available_spirecrest
     },
-    "manguste": {
-        name: "manguste",
+    "meerkatcanyon": {
+        name: "meerkatcanyon",
         points: 2,
         getAvailability: available_spirecrest
     },
-    "yarasland": {
-        name: "yarasland",
+    "yaraspatch": {
+        name: "yaraspatch",
         points: 2,
         getAvailability: available_spirecrest
     },
@@ -1269,33 +1269,33 @@ let expeditions = {
         points: 3,
         getAvailability: available_spirecrest
     },
-    "blubmountain": {
-        name: "blubmountain",
+    "bubblingsprings": {
+        name: "bubblingsprings",
         points: 3,
         getAvailability: available_spirecrest
     },
-    "cuddlebay": {
-        name: "cuddlebay",
+    "cuddlerscove": {
+        name: "cuddlerscove",
         points: 3,
         getAvailability: available_spirecrest
     },
-    "stomp": {
-        name: "stomp",
+    "stompyknoll": {
+        name: "stompyknoll",
         points: 3,
         getAvailability: available_spirecrest
     },
-    "watermill": {
-        name: "watermill",
+    "kibblerillferry": {
+        name: "kibblerillferry",
         points: 3,
         getAvailability: available_spirecrest
     },
-    "longfootforest": {
-        name: "longfootforest",
+    "longlegforest": {
+        name: "longlegforest",
         points: 3,
         getAvailability: available_spirecrest
     },
-    "earthcavevalley": {
-        name: "earthcavevalley",
+    "burrowdale": {
+        name: "burrowdale",
         points: 4,
         getAvailability: available_spirecrest
     },
@@ -1304,13 +1304,13 @@ let expeditions = {
         points: 4,
         getAvailability: available_spirecrest
     },
-    "berryfields": {
-        name: "berryfields",
+    "newberryfields": {
+        name: "newberryfields",
         points: 4,
         getAvailability: available_spirecrest
     },
-    "dewworm": {
-        name: "dewworm",
+    "dugwormgully": {
+        name: "dugwormgully",
         points: 4,
         getAvailability: available_spirecrest
     },
@@ -1329,97 +1329,97 @@ let expeditions = {
         points: 5,
         getAvailability: available_spirecrest
     },
-    "debriscoast": {
-        name: "debriscoast",
+    "shipwreckshore": {
+        name: "shipwreckshore",
         points: 5,
         getAvailability: available_spirecrest
     },
-    "quokkasisle": {
-        name: "quokkasisle",
+    "quokkaisland": {
+        name: "quokkaisland",
         points: 5,
         getAvailability: available_spirecrest
     },
-    "seaofflowers": {
-        name: "seaofflowers",
+    "brightcoatbloom": {
+        name: "brightcoatbloom",
         points: 6,
         getAvailability: available_spirecrest
     },
-    "soullessdesert": {
-        name: "soullessdesert",
+    "coldbloodeddesert": {
+        name: "coldbloodeddesert",
         points: 6,
         getAvailability: available_spirecrest
     },
-    "mistfalls": {
-        name: "mistfalls",
+    "mistfirefalls": {
+        name: "mistfirefalls",
         points: 6,
         getAvailability: available_spirecrest
     },
 }
 
 let discoveries = {
-    "greenrungpath": {
-        name: "greenrungpath",
+    "greensprouttrail": {
+        name: "greensprouttrail",
         getPoints:  (player) => (player.findCountType(TYPES.production) >= 4 ) ? 4 : 0,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest
     },
-    "misttrackpath": {
-        name: "misttrackpath",
+    "mistrisetrail": {
+        name: "mistrisetrail",
         getPoints: (player) => (player.findCountType(TYPES.traveler) >= 3 ) ? 4 : 0 ,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest 
     },
-    "everflowerpath": {
-        name: "everflowerpath",
+    "everblossomtrail": {
+        name: "everblossomtrail",
         getPoints: (player) => (player.findCountType(TYPES.prosperity) >= 3 ) ? 4 : 0 ,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest 
     },
-    "sunraypath": {
-        name: "sunraypath",
+    "sunblazetrail": {
+        name: "sunblazetrail",
         getPoints: (player) => (player.findCountType(TYPES.destination) >= 3 ) ? 4 : 0,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest  
     },
-    "starfallpath": {
-        name: "starfallpath",
+    "starfalltrail": {
+        name: "starfalltrail",
         getPoints: (player) => (player.findCountType(TYPES.governance) >= 3 ) ? 4 : 0 ,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest 
     },
-    "glockenspielpath": {
-        name: "glockenspielpath",
+    "bellsongtrail": {
+        name: "bellsongtrail",
         getPoints: (player) => (player.expeditions.length >= 3 ) ? 4 : 0 ,
         type: DISCOVERYTYPES.peaks,
         getAvailability: available_spirecrest
     },
-    "glockenspielcity": {
-        name: "glockenspielcity",
+    "bellsongcity": {
+        name: "bellsongcity",
         // fix 3 point + number of fewest card type in city
         getPoints: (player) => 3 + TYPES.reduce((prev, type, _) => Math.min(prev, player.findCountType(type)), 15),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     }, 
-    "greenrungcity": {
-        name: "greenrungcity",
+    "greensproutcity": {
+        name: "greensproutcity",
         getPoints: (player) => 6 - Math.trunc(player.findCountType(TYPES.production) / 2 ),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
-    "everflowercity": {
-        name: "everflowercity",
+    "everblossomcity": {
+        name: "everblossomcity",
         getPoints: (player) => 6 - player.findCountType(TYPES.prosperity),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
-    "misttrackcity": {
-        name: "misttrackcity",
+    "mistrisecity": {
+        name: "mistrisecity",
         getPoints: (player) => 6 - player.findCountType(TYPES.traveler),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
-    "sunraycity": {
-        name: "sunraycity",
+    "sunblazecity": {
+        name: "sunblazecity",
         getPoints: (player) => 6 - player.findCountType(TYPES.destination),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
@@ -1430,14 +1430,14 @@ let discoveries = {
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
-    "wayofhope": {
-        name: "wayofhope",
+    "hopewatchtrail": {
+        name: "hopewatchtrail",
         getPoints: (player) => Math.min(7, player.expeditions.reduce((prev, expedition, _) => prev + expedition.points, 0)),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
-    "flybreakpath": {
-        name: "flybreakpath",
+    "gatherwindtrail": {
+        name: "gatherwindtrail",
         getPoints: (player) => player.basicEvents.length + player.specialEvents.length >= 2 ? 4 : 0,
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
