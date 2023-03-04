@@ -1396,7 +1396,7 @@ let discoveries = {
     "bellsongcity": {
         name: "bellsongcity",
         // fix 3 point + number of fewest card type in city
-        getPoints: (player) => 3 + TYPES.reduce((prev, type, _) => Math.min(prev, player.findCountType(type)), 15),
+        getPoints: (player) => 3 + Math.min(...Object.values(player.getTownOverview())),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     }, 
