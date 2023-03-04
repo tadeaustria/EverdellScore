@@ -1396,7 +1396,7 @@ let discoveries = {
     "bellsongcity": {
         name: "bellsongcity",
         // fix 3 point + number of fewest card type in city
-        getPoints: (player) => 3 + TYPES.reduce((prev, type, _) => Math.min(prev, player.findCountType(type)), 15),
+        getPoints: (player) => 3 + Math.min(...Object.values(player.getTownOverview())),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     }, 
@@ -1432,7 +1432,7 @@ let discoveries = {
     },
     "hopewatchtrail": {
         name: "hopewatchtrail",
-        getPoints: (player) => Math.min(7, player.expeditions.reduce((prev, expedition, _) => prev + expedition.points, 0)),
+        getPoints: (player) => Math.min(7, player.journeys.reduce((prev, journey, _) => prev + journey, 0)),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
@@ -1440,41 +1440,6 @@ let discoveries = {
         name: "gatherwindtrail",
         getPoints: (player) => player.basicEvents.length + player.specialEvents.length >= 2 ? 4 : 0,
         type: DISCOVERYTYPES.ridge,
-        getAvailability: available_spirecrest
-    }, 
-    "greenrungcity": {
-        name: "greenrungcity",
-        getPoints: points_six,
-        getAvailability: available_spirecrest
-    },
-    "everflowercity": {
-        name: "everflowercity",
-        getPoints: points_six,
-        getAvailability: available_spirecrest
-    },
-    "misttrackcity": {
-        name: "misttrackcity",
-        getPoints: points_six,
-        getAvailability: available_spirecrest
-    },
-    "sunraycity": {
-        name: "sunraycity",
-        getPoints: points_six,
-        getAvailability: available_spirecrest
-    },
-    "starfallcity": {
-        name: "starfallcity",
-        getPoints: points_six,
-        getAvailability: available_spirecrest
-    },
-    "wayofhope": {
-        name: "wayofhope",
-        getPoints: points_six,
-        getAvailability: available_spirecrest
-    },
-    "flybreakpath": {
-        name: "flybreakpath",
-        getPoints: points_four,
         getAvailability: available_spirecrest
     }
 }

@@ -33,6 +33,17 @@ class Player {
         return this.town.reduce((prev, card) => prev + card.getOccupiedSpaces(this), 0);
     }
 
+    getTownOverview() {
+        let dict = {};
+        this.town.forEach((card) => {
+            if (card.type in dict)
+                dict[card.type]++;
+            else
+                dict[card.type] = 1;
+        });
+        return dict;
+    }
+
     compareByTypeAndLexicographically(cardA, cardB) {
         if (cardA.type == cardB.type){
             return cardA.name.localeCompare(cardB.name);

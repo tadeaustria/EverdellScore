@@ -22,7 +22,12 @@ Cookies for storing the chosen language.
 
 # Updates
 
-## Version 1.3
+## Version 1.3.1
+* Improved english text. Thanks to [Dajakk](https://github.com/Dajakk)
+* Fix _Hopewatch Trail_ to count journey points.
+* Changed _Bellsong City_ according to the outcome of [discussions](https://boardgamegeek.com/thread/2287277/bellsong-city-clarification).
+
+### Version 1.3
 * Spirecrest extension
 * Coloring of cards when in players town
 * Changed sort of cards in players town by type and name
