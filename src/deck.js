@@ -1432,7 +1432,7 @@ let discoveries = {
     },
     "hopewatchtrail": {
         name: "hopewatchtrail",
-        getPoints: (player) => Math.min(7, player.expeditions.reduce((prev, expedition, _) => prev + expedition.points, 0)),
+        getPoints: (player) => Math.min(7, player.journeys.reduce((prev, journey, _) => prev + journey, 0)),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
