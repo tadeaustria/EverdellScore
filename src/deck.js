@@ -1441,41 +1441,6 @@ let discoveries = {
         getPoints: (player) => player.basicEvents.length + player.specialEvents.length >= 2 ? 4 : 0,
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
-    }, 
-    "greenrungcity": {
-        name: "greenrungcity",
-        getPoints: points_six,
-        getAvailability: available_spirecrest
-    },
-    "everflowercity": {
-        name: "everflowercity",
-        getPoints: points_six,
-        getAvailability: available_spirecrest
-    },
-    "misttrackcity": {
-        name: "misttrackcity",
-        getPoints: points_six,
-        getAvailability: available_spirecrest
-    },
-    "sunraycity": {
-        name: "sunraycity",
-        getPoints: points_six,
-        getAvailability: available_spirecrest
-    },
-    "starfallcity": {
-        name: "starfallcity",
-        getPoints: points_six,
-        getAvailability: available_spirecrest
-    },
-    "wayofhope": {
-        name: "wayofhope",
-        getPoints: points_six,
-        getAvailability: available_spirecrest
-    },
-    "flybreakpath": {
-        name: "flybreakpath",
-        getPoints: points_four,
-        getAvailability: available_spirecrest
     }
 }
 
