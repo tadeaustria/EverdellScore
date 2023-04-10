@@ -48,7 +48,8 @@ class Player {
         if (cardA.type == cardB.type){
             return cardA.name.localeCompare(cardB.name);
         }
-        return cardA.type.localeCompare(cardB.type);
+        let typeOrder = Object.keys(TYPES);
+        return typeOrder.findIndex((elem) => elem == cardA.type) - typeOrder.findIndex((elem) => elem == cardB.type);
     }
 
     addTown(card) {
