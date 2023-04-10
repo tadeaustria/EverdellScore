@@ -120,6 +120,7 @@ class Application {
             if (this.activeAward){
                 this.calculateAward();
                 this.players.forEach((player) => player.showPlayer());
+                this.activePlayer.showPlayer();
             }
         }
     }
