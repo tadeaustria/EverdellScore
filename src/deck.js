@@ -1152,14 +1152,14 @@ let wonders = {
         points: 20,
         getAvailability: available_pearlbrook
     },
-    "gate": {
-        name: "gate",
-        points: 20,
-        getAvailability: available_pearlbrook
-    },
     "fountain": {
         name: "fountain",
         points: 15,
+        getAvailability: available_pearlbrook
+    },
+    "gate": {
+        name: "gate",
+        points: 10,
         getAvailability: available_pearlbrook
     }
 }
