@@ -164,7 +164,10 @@ class Player {
     }
 
     updateLeftOvers(){
-        Object.keys(this.leftResources).forEach((key) => $("#value_" + key).val(this.leftResources[key]));
+        Object.keys(this.leftResources).forEach((key) => {
+            $("#value_" + key).val(this.leftResources[key]);
+            $("#value_badge_" + key).html(this.leftResources[key]);
+        });
         this.showLeftOvers();
     }
 
