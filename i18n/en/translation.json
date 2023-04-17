@@ -203,7 +203,9 @@
         "sunblazecity": "Sunblaze City",
         "starfallcity": "Starfall City",
         "hopewatchtrail": "Hopewatch Trail",
-        "gatherwindtrail": "Gatherwind Trail"
+        "gatherwindtrail": "Gatherwind Trail",
+        "serpentspass": "Serpent's Pass",
+        "distantshore": "The Distant Shore"
     },
     "text": {
         "cardlimit": "Card limit of town is reached",

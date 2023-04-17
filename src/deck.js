@@ -33,6 +33,7 @@ function points_three(player) { return 3; }
 function points_four(player) { return 4; }
 function points_five(player) { return 5; }
 function points_six(player) { return 6; }
+function points_seven(player) { return 7; }
 function points_nine(player) { return 9; }
 function space_zero(player) { return 0; }
 function space_one(player) { return 1; }
@@ -1152,14 +1153,14 @@ let wonders = {
         points: 20,
         getAvailability: available_pearlbrook
     },
-    "gate": {
-        name: "gate",
-        points: 20,
-        getAvailability: available_pearlbrook
-    },
     "fountain": {
         name: "fountain",
         points: 15,
+        getAvailability: available_pearlbrook
+    },
+    "gate": {
+        name: "gate",
+        points: 10,
         getAvailability: available_pearlbrook
     }
 }
@@ -1440,6 +1441,18 @@ let discoveries = {
         name: "gatherwindtrail",
         getPoints: (player) => player.basicEvents.length + player.specialEvents.length >= 2 ? 4 : 0,
         type: DISCOVERYTYPES.ridge,
+        getAvailability: available_spirecrest
+    },
+    "serpentspass": {
+        name: "serpentspass",
+        getPoints: points_seven,
+        type: DISCOVERYTYPES.ridge,
+        getAvailability: available_spirecrest
+    },
+    "distantshore": {
+        name: "distantshore",
+        getPoints: (player) => (player.expeditions.length >= 3 ) ? 7 : 0,
+        type: DISCOVERYTYPES.peaks,
         getAvailability: available_spirecrest
     }
 }

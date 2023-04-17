@@ -1,5 +1,5 @@
 # EverdellScore
-Serverless JS App for counting Everdell Score. Online version can be found [here](https://tadeaustria.github.io/EverdellScore/).
+Serverless JS App for counting Everdell Score.
 
 ## Content
 As the summing up the total points of a game of Everdell can be complex, this application should help players to identify the winner of the game faster.
@@ -18,11 +18,24 @@ Cookies for storing the chosen language.
 * [ ] 2 Upcoming expansions
   * [ ] Mistwood
   * [ ] Newleaf
-* [ ] (Adding picture to cards)
+* [ ] QoL
+  * [ ] Statistics
+  * [ ] Export results
+  * [ ] (Adding picture to cards)
 
 # Updates
 
-## Version 1.3.1
+## Version 1.3.2
+* General 
+  * Type ordering of players town cards matches now with type order in menu bar
+  * Left over ressources have now own counting badge
+  * Fix issue that left over ressources was not displayed although *Architect* was in town, if a *Garland Award* was active
+* Spirecrest 
+  * Added missing discoveries _Serpent's Pass_ and _The Distant Shore_ (missing polish translation)
+* Pearlbrook
+  * Fix points of *Hopewatchgate*
+
+### Version 1.3.1
 * Improved english text. Thanks to [Dajakk](https://github.com/Dajakk)
 * Fix _Hopewatch Trail_ to count journey points.
 * Changed _Bellsong City_ according to the outcome of [discussions](https://boardgamegeek.com/thread/2287277/bellsong-city-clarification).

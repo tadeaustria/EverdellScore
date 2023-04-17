@@ -48,7 +48,8 @@ class Player {
         if (cardA.type == cardB.type){
             return cardA.name.localeCompare(cardB.name);
         }
-        return cardA.type.localeCompare(cardB.type);
+        let typeOrder = Object.keys(TYPES);
+        return typeOrder.findIndex((elem) => elem == cardA.type) - typeOrder.findIndex((elem) => elem == cardB.type);
     }
 
     addTown(card) {
@@ -163,7 +164,10 @@ class Player {
     }
 
     updateLeftOvers(){
-        Object.keys(this.leftResources).forEach((key) => $("#value_" + key).val(this.leftResources[key]));
+        Object.keys(this.leftResources).forEach((key) => {
+            $("#value_" + key).val(this.leftResources[key]);
+            $("#value_badge_" + key).html(this.leftResources[key]);
+        });
         this.showLeftOvers();
     }
 

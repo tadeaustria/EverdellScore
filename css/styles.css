@@ -121,8 +121,6 @@ main {
 footer {
   padding-top: 2rem;
   width: 100%;
-  display: flex;
-  flex-direction: row;
 }
 
 #main-left {
@@ -133,4 +131,8 @@ footer {
   min-height: 100%;
   padding-left: 0.5rem;
   width: calc(100% - 10.5rem);
+}
+
+#leftOverArea label {
+  width: 75pt;
 }

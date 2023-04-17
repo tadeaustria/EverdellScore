@@ -120,6 +120,7 @@ class Application {
             if (this.activeAward){
                 this.calculateAward();
                 this.players.forEach((player) => player.showPlayer());
+                this.activePlayer.showPlayer();
             }
         }
     }
@@ -289,8 +290,8 @@ class Application {
         });
     }
 
-    resourceSet(name) {
-        this.activePlayer.leftResources[name] = parseInt($("#value_" + name).val());
+    setResource(name) {
+        $("#value_badge_" + name).html(this.activePlayer.leftResources[name] = parseInt($("#value_" + name).val()));
         this.activePlayer.showPlayer();
     }
 
