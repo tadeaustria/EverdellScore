@@ -337,7 +337,7 @@ let basecards = {
         type: TYPES.production,
         rarity: RARITY.common,
         kind: KINDS.critter,
-        points: 2,
+        points: 1,
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,

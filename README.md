@@ -30,6 +30,7 @@ Cookies for storing the chosen language.
   * Type ordering of players town cards matches now with type order in menu bar
   * Left over ressources have now own counting badge
   * Fix issue that left over ressources was not displayed although *Architect* was in town, if a *Garland Award* was active
+  * Fix miner mole points
 * Spirecrest 
   * Added missing discoveries _Serpent's Pass_ and _The Distant Shore_ (missing polish translation)
 * Pearlbrook
