@@ -202,7 +202,9 @@
         "sunblazecity": "Skalne Miasto",
         "starfallcity": "Świetliste Miasto",
         "hopewatchtrail": "Szlak Wyczekiwańca",
-        "gatherwindtrail": "Szlak Czterech Wiatrów"
+        "gatherwindtrail": "Szlak Czterech Wiatrów",
+        "serpentspass": "Wężowy Przesmyk",
+        "distantshore": "Odległy Ląd"
     },
     "text": {
         "cardlimit": "Limit kart w mieście osiągnięty",

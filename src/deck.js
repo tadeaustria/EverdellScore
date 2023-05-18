@@ -1452,7 +1452,7 @@ let discoveries = {
     "distantshore": {
         name: "distantshore",
         getPoints: (player) => (player.expeditions.length >= 3 ) ? 7 : 0,
-        type: DISCOVERYTYPES.peaks,
+        type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     }
 }
