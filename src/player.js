@@ -26,7 +26,7 @@ class Player {
         this.divName = divName;
         this.#app = app;
 
-        Object.values(RESSOURCES).forEach((val) => this.leftResources[val] = 0);
+        Object.values(RESOURCES).forEach((val) => this.leftResources[val] = 0);
     }
 
     getOccupiedSpaces() {
@@ -155,7 +155,7 @@ class Player {
                             this.adornments.reduce((prev, adornments) => prev + adornments.getPoints(this),
                                 this.expeditions.reduce((prev, expedition) => prev + expedition.points,
                                     this.discoveries.reduce((prev, discovery) => prev + discovery.getPoints(this),
-                                        this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.leftResources[RESSOURCES.pearl]))))))));
+                                        this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.leftResources[RESOURCES.pearl]))))))));
     }
 
     areLeftoversRequired() {
