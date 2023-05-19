@@ -211,7 +211,7 @@
                     <div class="d-flex">
                         <div class="flex-grow-1" data-i18n="card.{{name}}"></div>
                         <span class="badge text-bg-warning">{{points}}</span>
-                        {{#if (isPosperityButNotWife type name)}}
+                        {{#if (isProsperityButNotWife type name)}}
                         <div>+</div><span class="badge text-bg-warning">{{addPoints}}</span>
                         {{/if}}
                     </div>
@@ -312,7 +312,7 @@
             </div>
             {{/if}}
         </script>
-        <script id="ressource-template" type="text/x-handlebars-template">
+        <script id="resource-template" type="text/x-handlebars-template">
             {{#each resources}}
             <div id="area_{{@key}}">
                 <div class="d-flex">
@@ -411,7 +411,7 @@
                 <div class="tab-pane fade show active">
                     <div id="leftOverArea" style="display: none;">
                         <h3 data-i18n="gen.leftovers" class="w-100"></h3>
-                        <div id="leftRessources"></div>
+                        <div id="leftResources"></div>
                     </div>
                     <h3 data-i18n="gen.points"></h3>
                     <div class="card">
