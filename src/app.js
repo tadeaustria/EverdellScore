@@ -282,6 +282,10 @@ class Application {
             this.setCardsDisable();
             if (this.activeAward)
                 $("#award_" + this.activeAward.name).addClass("highlight");
+            for(let player of this.players){
+                player.resortTown();
+            }
+            this.activePlayer.showPlayer();
             $("*").localize();
             $("#nav-p1-p").append(`<span id='nav-p1-points' class='badge text-bg-warning'>${this.players[0].getTotalPoints()}</span>`);
             $("#nav-p2-p").append(`<span id='nav-p2-points' class='badge text-bg-warning'>${this.players[1].getTotalPoints()}</span>`);

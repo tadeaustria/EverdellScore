@@ -46,7 +46,7 @@ class Player {
 
     compareByTypeAndLexicographically(cardA, cardB) {
         if (cardA.type == cardB.type){
-            return cardA.name.localeCompare(cardB.name);
+            return getCardName(cardA).localeCompare(getCardName(cardB));
         }
         let typeOrder = Object.keys(TYPES);
         return typeOrder.findIndex((elem) => elem == cardA.type) - typeOrder.findIndex((elem) => elem == cardB.type);
@@ -54,8 +54,12 @@ class Player {
 
     addTown(card) {
         this.town.push(card);
-        this.town.sort(this.compareByTypeAndLexicographically);
+        this.resortTown();
         this.showPlayer();
+    }
+
+    resortTown(){
+        this.town.sort(this.compareByTypeAndLexicographically);
     }
 
     removeTown(cardIndex) {
