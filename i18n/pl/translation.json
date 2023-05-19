@@ -24,6 +24,13 @@
         "expeditions": "Wyprawa",
         "discoveries": "Odkrycia"
     },
+    "expansion" : {
+        "Bellfaire": "Święto Lata",
+        "Pearlbrook": "Perłowy Potok",
+        "Spirecrest": "Zimowy Szczyt",
+        "Mistwood": "Mgielny Las",
+        "Newleaf": "Stacja Nowoliść"
+    },
     "res": {
         "twig": "Gałązki",
         "resin": "Bryłki żywicy",
