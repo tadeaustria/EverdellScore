@@ -32,14 +32,14 @@ Cookies for storing the chosen language.
   * Fix issue that left over ressources was not displayed although *Architect* was in town, if a *Garland Award* was active
   * Fix miner mole points
 * Spirecrest 
-  * Added missing discoveries _Serpent's Pass_ and _The Distant Shore_ (missing polish translation)
+  * Added missing discoveries _Serpent's Pass_ and _The Distant Shore_
 * Pearlbrook
   * Fix points of *Hopewatchgate*
 
 ### Version 1.3.1
 * Improved english text. Thanks to [Dajakk](https://github.com/Dajakk)
 * Fix _Hopewatch Trail_ to count journey points.
-* Changed _Bellsong City_ according to the outcome of [discussions](https://boardgamegeek.com/thread/2287277/bellsong-city-clarification).
+* Changed _Bellsong City_ according to [The Everdell Archive](https://cdn.shopify.com/s/files/1/0559/8245/6947/files/The_Everdell_Archive_web_res.pdf) from The Complete Collection.
 
 ### Version 1.3
 * Spirecrest extension
