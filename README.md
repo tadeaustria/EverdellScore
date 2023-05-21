@@ -25,7 +25,11 @@ Cookies for storing the chosen language.
 
 # Updates
 
-## Version 1.3.2
+## Version 1.3.3
+* General
+  * Sort town cards by translated name
+
+### Version 1.3.2
 * General 
   * Type ordering of players town cards matches now with type order in menu bar
   * Left over resources have now own counting badge
