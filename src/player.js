@@ -26,7 +26,7 @@ class Player {
         this.divName = divName;
         this.#app = app;
 
-        Object.values(RESSOURCES).forEach((val) => this.leftResources[val] = 0);
+        Object.values(RESOURCES).forEach((val) => this.leftResources[val] = 0);
     }
 
     getOccupiedSpaces() {
@@ -46,7 +46,7 @@ class Player {
 
     compareByTypeAndLexicographically(cardA, cardB) {
         if (cardA.type == cardB.type){
-            return cardA.name.localeCompare(cardB.name);
+            return getCardName(cardA).localeCompare(getCardName(cardB));
         }
         let typeOrder = Object.keys(TYPES);
         return typeOrder.findIndex((elem) => elem == cardA.type) - typeOrder.findIndex((elem) => elem == cardB.type);
@@ -54,8 +54,12 @@ class Player {
 
     addTown(card) {
         this.town.push(card);
-        this.town.sort(this.compareByTypeAndLexicographically);
+        this.resortTown();
         this.showPlayer();
+    }
+
+    resortTown(){
+        this.town.sort(this.compareByTypeAndLexicographically);
     }
 
     removeTown(cardIndex) {
@@ -155,7 +159,7 @@ class Player {
                             this.adornments.reduce((prev, adornments) => prev + adornments.getPoints(this),
                                 this.expeditions.reduce((prev, expedition) => prev + expedition.points,
                                     this.discoveries.reduce((prev, discovery) => prev + discovery.getPoints(this),
-                                        this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.leftResources[RESSOURCES.pearl]))))))));
+                                        this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.leftResources[RESOURCES.pearl]))))))));
     }
 
     areLeftoversRequired() {

@@ -50,7 +50,7 @@ class Application {
         $('#nav-p4-tab').on('click', (e) => { this.activePlayer = this.players[3]; this.updatePlayerOutput(); });
         $("#alert-cardlimit").hide();
 
-        Handlebars.registerHelper('isPosperityButNotWife', function (type, name) {
+        Handlebars.registerHelper('isProsperityButNotWife', function (type, name) {
             return type == TYPES.prosperity && name != basecards['31'].name;
         });
     }
@@ -74,7 +74,7 @@ class Application {
         this.setCardsDisable();
         $("#main-left").localize();
 
-        this.buildLeftRessources();
+        this.buildLeftResources();
         $("#leftOverArea").localize();
     }
 
@@ -282,6 +282,10 @@ class Application {
             this.setCardsDisable();
             if (this.activeAward)
                 $("#award_" + this.activeAward.name).addClass("highlight");
+            for(let player of this.players){
+                player.resortTown();
+            }
+            this.activePlayer.showPlayer();
             $("*").localize();
             $("#nav-p1-p").append(`<span id='nav-p1-points' class='badge text-bg-warning'>${this.players[0].getTotalPoints()}</span>`);
             $("#nav-p2-p").append(`<span id='nav-p2-points' class='badge text-bg-warning'>${this.players[1].getTotalPoints()}</span>`);
@@ -378,12 +382,12 @@ class Application {
         this.activePlayer.showPlayer();
     }
 
-    buildLeftRessources() {
-        let template = Handlebars.compile($("#ressource-template").html());
+    buildLeftResources() {
+        let template = Handlebars.compile($("#resource-template").html());
         let html = template({
-            resources: RESSOURCES
+            resources: RESOURCES
         });
-        $('#leftRessources').html(html);
+        $('#leftResources').html(html);
     }
 
     vibrate(intesity){
