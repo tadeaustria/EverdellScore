@@ -255,21 +255,25 @@ class Application {
         });
     }
 
-    calculateAward(){
+    calculateAward() {
         let bucket = {};
-        for(let player of this.players){
+        for (let player of this.players) {
             let value = this.activeAward.rankingFunction(player);
             player.garlandAchievemenPoints = 0;
-            if(!(value in bucket)){
+            if (!(value in bucket)) {
                 bucket[value] = [];
             }
             bucket[value].push(player);
         }
-        let winners = Object.keys(bucket).sort().reverse();
-        if(winners[0] > 0){
+        let winners = Object.keys(bucket)
+            .sort(function (a, b) {
+                return a - b;
+            })
+            .reverse();
+        if (winners[0] > 0) {
             bucket[winners[0]].forEach((player) => player.garlandAchievemenPoints = this.activeAward.pointsFirst);
         }
-        if(winners[1] > 0){
+        if (winners[1] > 0) {
             bucket[winners[1]].forEach((player) => player.garlandAchievemenPoints = this.activeAward.pointsSecond);
         }
     }
