@@ -41,6 +41,8 @@ class Application {
         this.bellfaire = false;
         this.pearlbrook = false;
         this.spirecrest = false;
+        this.mistwood = false;
+        this.newleaf = false;
 
         this.updateData();
 
@@ -59,6 +61,8 @@ class Application {
         this.bellfaire = $('#flexSwitchCheckBellfaire').is(':checked');
         this.pearlbrook = $('#flexSwitchCheckPearlbrook').is(':checked');
         this.spirecrest = $('#flexSwitchCheckSpirecrest').is(':checked');
+        this.mistwood = $('#flexSwitchCheckMistwood').is(':checked');
+        this.newleaf = $('#flexSwitchCheckNewleaf').is(':checked');
 
         this.cards = [...Object.values(basecards)].filter((card) => card.getAvailability(this));
         this.basicEvents = [...Object.values(basicEvents)].filter((event) => event.getAvailability(this));
@@ -68,6 +72,7 @@ class Application {
         this.adornments = [...Object.values(adornments)].filter((adornment) => adornment.getAvailability(this))
         this.expeditions = [...Object.values(expeditions)].filter((expedition) => expedition.getAvailability(this));
         this.discoveries = [...Object.values(discoveries)].filter((discovery) => discovery.getAvailability(this));
+        this.visitors = this.newleaf ? [...Object.values(visitors)] : [];
 
         this.reset();
         this.buildCards();
@@ -313,6 +318,7 @@ class Application {
         this.adornments.sort((a, b) => { return getAdornmentName(a).localeCompare(getAdornmentName(b)); });
         this.expeditions.sort((a, b) => { return getExpeditionName(a).localeCompare(getExpeditionName(b)); });
         this.discoveries.sort((a, b) => { return getDiscoveryName(a).localeCompare(getDiscoveryName(b)); });
+        this.visitors.sort((a, b) => { return getVisitorName(a).localeCompare(getVisitorName(b)); });
 
         let html = template({
             suits: suits,
@@ -323,7 +329,8 @@ class Application {
             wonders: this.wonders,
             adornments: this.adornments,
             expeditions: this.expeditions,
-            discoveries: this.discoveries
+            discoveries: this.discoveries,
+            visitors: this.visitors
         }, {
             allowProtoMethodsByDefault: true
         });

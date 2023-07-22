@@ -22,7 +22,8 @@
         "wonders": "Wonders",
         "adornments": "Adornments",
         "expeditions": "Expeditions",
-        "discoveries": "Discoveries"
+        "discoveries": "Discoveries",
+        "visitors": "Visitors"
     },
     "expansion" : {
         "bellfaire": "Bellfaire",
@@ -213,6 +214,11 @@
         "gatherwindtrail": "Gatherwind Trail",
         "serpentspass": "Serpent's Pass",
         "distantshore": "The Distant Shore"
+    },
+    "visitor": {
+        "bimlittle": "Bim Little",
+        "bosleytedwardson": "Bosley Tedwardson",
+        "butterbellsweetpaw": "Butterbell Sweetpaw"
     },
     "text": {
         "cardlimit": "Card limit of town is reached",

@@ -43,6 +43,7 @@ function available_bellfaire(app) { return app.bellfaire; }
 function available_pearlbrook(app) { return app.pearlbrook; }
 function available_npearlbrook(app) { return !app.pearlbrook; }
 function available_spirecrest(app) { return app.spirecrest; }
+function available_newleaf(app) { return app.newleaf; }
 
 const RESOURCES = {
     twig: 'twig',
@@ -1457,6 +1458,21 @@ let discoveries = {
     }
 }
 
+let visitors = {
+    "bimlittle": {
+        name: "bimlittle",
+        getPoints: (player) => player.findCountType(TYPES.destination) >= 6 ? 7 : 0
+    },
+    "bosleytedwardson": {
+        name: "bosleytedwardson",
+        getPoints: (player) => Object.keys(TYPES).reduce((prev, val) => prev && player.findCountType(TYPES[val]) >= 2, true) ? 9 : 0
+    },
+    "butterbellsweetpaw": {
+        name: "butterbellsweetpaw",
+        getPoints: (player) => player.town.length >= 15 ? 6 : 0
+    }
+}
+
 function getCardName(card) {
     return i18next.t("card." + card.name);
 }
@@ -1473,10 +1489,14 @@ function getAdornmentName(adornment) {
     return i18next.t("adornment." + adornment.name);
 }
 
-function getExpeditionName(adornment) {
-    return i18next.t("expedition." + adornment.name);
+function getExpeditionName(expedition) {
+    return i18next.t("expedition." + expedition.name);
 }
 
-function getDiscoveryName(adornment) {
-    return i18next.t("discovery." + adornment.name);
+function getDiscoveryName(discovery) {
+    return i18next.t("discovery." + discovery.name);
+}
+
+function getVisitorName(visitor) {
+    return i18next.t("visitor." + visitor.name);
 }
