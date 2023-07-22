@@ -183,6 +183,22 @@
             </div>
         </div>
         {{/if}}
+        {{#if visitors}}
+        <div class="card">
+            <div class="card-header" role="tab" id="visitors-header" data-bs-toggle="collapse" data-bs-target="#visitors"
+                data-bs-parent="#cards" href="#visitors" aria-expanded="false" aria-controls="visitors">
+                <img src="img/visitors.png" width="32" height="42"><a data-i18n="gen.visitors"></a>
+            </div>
+            <div id="visitors" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="visitors-header">
+                <ul class="list-group">
+                    {{#each visitors}}
+                    <li id="visitor_{{name}}" class="list-group-item" onclick="app.addVisitorToActivePlayer('{{name}}')"
+                        data-i18n="visitor.{{name}}"></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        {{/if}}
         <div class="card">
             <div class="card-header" role="tab" id="journey-header" data-bs-toggle="collapse" data-bs-target="#journey"
                 data-bs-parent="#cards" href="#journey" aria-expanded="false" aria-controls="journey">
@@ -202,7 +218,7 @@
         <script id="player-template" type="text/x-handlebars-template">
             <div id="hand-info">
                 <span class="progress">
-                    <div class="progress-bar bg-warning text-dark" style="width: {{cardCountPerc}}%" role="progressbar" aria-valuenow="{{cardCount}}" aria-valuemin="0" aria-valuemax="15">{{cardCount}}/15</div>
+                    <div class="progress-bar bg-warning text-dark" style="width: {{cardCountPerc}}%" role="progressbar" aria-valuenow="{{cardCount}}" aria-valuemin="0" aria-valuemax="{{cardMax}}">{{cardCount}}/{{cardMax}}</div>
                 </span>
             </div>
             <div class="d-flex flex-wrap">
@@ -295,6 +311,17 @@
                 </div>
                 {{/each}}
                 {{/if}}
+                {{#if visitors}}
+                <h3 data-i18n="gen.visitors" class="w-100"></h3>
+                {{#each visitors}}
+                <div class="playercard card p-2" role="tab" onclick="app.removeVisitorFromActivePlayer('{{@index}}')">
+                    <div class="d-flex">
+                        <div class="flex-grow-1" data-i18n="visitor.{{name}}"></div>
+                        <span class="badge text-bg-warning">{{points}}</span>
+                    </div>
+                </div>
+                {{/each}}
+                {{/if}}
             </div>
             {{#if journeys}}
             <h3 data-i18n="gen.journey" class="w-100"></h3>
@@ -356,7 +383,7 @@
                             </div>
                             <div class="form-check form-switch" onchange="app.updateExpansions()">
                                 <label class="form-check-label" for="flexSwitchCheckNewleaf" data-i18n="expansion.newleaf">Newleaf</label>
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckNewleaf" disabled>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckNewleaf">
                             </div>
                         </ul>
                     </div>

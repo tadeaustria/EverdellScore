@@ -22,7 +22,8 @@
         "wonders": "Wunder",
         "adornments": "Artefakte",
         "expeditions": "Expeditionen",
-        "discoveries": "Entdeckungen"
+        "discoveries": "Entdeckungen",
+        "visitors": "Gäste"
     },
     "res": {
         "twig": "Holz",
@@ -96,7 +97,32 @@
         "harbor": "Hafen",
         "shipwright": "Schiffsbauer",
         "bridge": "Brücke",
-        "messenger": "Kurier"
+        "messenger": "Kurier",
+
+        "baker": "Bäckerin",
+        "chipsmith": "Schmiedehörnchen",
+        "conductor": "Schaffner",
+        "diplomat": "Diplomat",
+        "gardener": "Gärtner",
+        "inventor": "Erfinderin",
+        "lamplighter": "Laternenkäfer",
+        "magician": "Zauberin",
+        "mayor": "Bürgermeister",
+        "miller": "Müllerin",
+        "photographer": "Fotografin",
+        "poet": "Dichterling",
+        "airballoon": "Heißluftballon",
+        "bank": "Bank",
+        "cityhall": "Rathaus",
+        "everwall": "Immermauer",
+        "freightcar":"Frachtwaggon",
+        "greenhouse": "Gewächshaus",
+        "hotel": "Hotel",
+        "library": "Bücherei",
+        "locomotive": "Lokomotive",
+        "mainroad": "Hauptstraße",
+        "museum": "Museum",
+        "teahouse": "Teestube"
     },
     "event": {
         "grandtour": "Die große Fahrt",
@@ -136,7 +162,20 @@
         "riversideresort": "Flussbad",
         "xmarksthespot": "Ein X markiert den Schatz",
         "sunkentreasurediscovered": "Entdeckung eines versunkenen Schatzes",
-        "masqueradeinvitations": "Einladung zum Maskenball"
+        "masqueradeinvitations": "Einladung zum Maskenball",
+
+        "scenicflight": "Ausflug",
+        "bigcity": "Großstadt",
+
+        "cityjubilee" : "Stadtjubiläum",
+        "everwalltower" : "Turm der Immermauer errichtet",
+        "glowlightfestival" : "Lichterfest",
+        "hotairballoonrace" : "Ballon-Wettrennen",
+        "dancecontest" : "Juniper Jig Tanzwettbewerb",
+        "magicshow" : "Zaubershow",
+        "royaltea" : "Königliche Teeparty",
+        "stockmarketboom" : "Die Börse boomt",
+        "sunflowerparade" : "Sonnenblumenparade"
     },
     "award":{
         "storytelling": "Erzählungen",
@@ -212,6 +251,41 @@
         "gatherwindtrail": "Windfang Weg",
         "serpentspass": "Schlangenpfad",
         "distantshore": "Die Ferne Küste"
+    },
+
+    "visitor": {
+        "bimlittle": "Benni Klein",
+        "bosleytedwardson": "Bosley Andersson",
+        "butterbellsweetpaw": "Bärbel Süßpfote",
+        "diggsdeepwell": "Bing Brunnentief",
+        "cillweedquicksniff": "Dietlieb Schnüffel",
+        "dimdustlight": "Dorian Dämmerung",
+        "dipdibble": "Tip Tröpfel",
+        "dunetarrington": "Sherrif Dan",
+        "dwellnorthwatch": "Delf Nordwacht",
+        "edvardtriptail": "Eduard Stolperschweif",
+        "frinstickly": "Fred Schuster",
+        "glindilfrink": "Gilbert Frink",
+        "iggysilverscale": "Ignatius Silberschweif",
+        "mossysteptoe": "Mona Tanzpfote",
+        "orinnimblepaw": "Ortwin Flinkpfote",
+        "oscarlongtale": "Oskar Langatem",
+        "phillgurgle": "Phillip Glucks",
+        "piffquillglow": "Pitt Sternschnuppe",
+        "plumshortclaw": "Pluto Kurzklaue",
+        "quinncleanwhisker": "Quintia Sauberschnauz",
+        "reemysniggle": "René Giggel",
+        "rivilablacus": "Reginald von Schupp",
+        "rubydew": "Rubinia Morgentau",
+        "sarisclearwhistle": "Saria Klarpfiff",
+        "sirtrivleqsmarqwill": "Tristan Q. S. Graf Reineke III",
+        "skidshinysnout": "Snorri Glanznase",
+        "snoutpuddlehop": "Snout Pfützenhüpf",
+        "trisspeske": "Trine Petersen",
+        "wildellfamily": "Familie Wiesengrün",
+        "willowgreengrin": "Wilma Grinsegrün",
+        "wimblewuffle": "Willibald Wuffel",
+        "yarabrunmayberry": "Yara & Brun Maibeere"
     },
 
     "text": {

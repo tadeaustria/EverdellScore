@@ -41,6 +41,8 @@ class Application {
         this.bellfaire = false;
         this.pearlbrook = false;
         this.spirecrest = false;
+        this.mistwood = false;
+        this.newleaf = false;
 
         this.updateData();
 
@@ -70,6 +72,8 @@ class Application {
         this.bellfaire = $('#flexSwitchCheckBellfaire').is(':checked');
         this.pearlbrook = $('#flexSwitchCheckPearlbrook').is(':checked');
         this.spirecrest = $('#flexSwitchCheckSpirecrest').is(':checked');
+        this.mistwood = $('#flexSwitchCheckMistwood').is(':checked');
+        this.newleaf = $('#flexSwitchCheckNewleaf').is(':checked');
 
         this.cards = [...Object.values(basecards)].filter((card) => card.getAvailability(this));
         this.basicEvents = [...Object.values(basicEvents)].filter((event) => event.getAvailability(this));
@@ -79,6 +83,7 @@ class Application {
         this.adornments = [...Object.values(adornments)].filter((adornment) => adornment.getAvailability(this))
         this.expeditions = [...Object.values(expeditions)].filter((expedition) => expedition.getAvailability(this));
         this.discoveries = [...Object.values(discoveries)].filter((discovery) => discovery.getAvailability(this));
+        this.visitors = this.newleaf ? [...Object.values(visitors)] : [];
 
         this.reset();
         this.buildCards();
@@ -101,6 +106,8 @@ class Application {
         $('#flexSwitchCheckBellfaire').prop('checked', this.bellfaire);
         $('#flexSwitchCheckPearlbrook').prop('checked', this.pearlbrook);
         $('#flexSwitchCheckSpirecrest').prop('checked', this.spirecrest);
+        $('#flexSwitchCheckMistwood').prop('checked', this.mistwood);
+        $('#flexSwitchCheckNewleaf').prop('checked', this.newleaf);
     }
 
     btn_reset() {
@@ -131,7 +138,7 @@ class Application {
 
     addToActivePlayer(cardName) {
         let card = this.findCardByName(cardName);
-        if (card.getOccupiedSpaces(this.activePlayer, true) + this.activePlayer.getOccupiedSpaces() > 15) {
+        if (card.getOccupiedSpaces(this.activePlayer, true) + this.activePlayer.getOccupiedSpaces() > this.activePlayer.getMaxSpace()) {
             $("#alert-cardlimit").fadeTo(3000, 500).slideUp(500, function () {
                 $("#alert-cardlimit").slideUp(500);
             });
@@ -257,6 +264,18 @@ class Application {
         let discoveryName = this.activePlayer.removeDiscovery(discoveryIndex);
         $("#discovery_" + discoveryName).removeClass("disabled");
     }
+    
+    addVisitorToActivePlayer(visitorName) {
+        this.activePlayer.visitors.push(visitors[visitorName]);
+        this.vibrate(50);
+        $("#visitor_" + visitorName).addClass("disabled");
+        this.activePlayer.showPlayer();
+    }
+
+    removeVisitorFromActivePlayer(visitorIndex) {
+        let visitorName = this.activePlayer.removeVisitor(visitorIndex);
+        $("#visitor_" + visitorName).removeClass("disabled");
+    }
 
     chooseAward(awardName) {
         if (this.activeAward)
@@ -335,6 +354,7 @@ class Application {
         this.adornments.sort((a, b) => { return getAdornmentName(a).localeCompare(getAdornmentName(b)); });
         this.expeditions.sort((a, b) => { return getExpeditionName(a).localeCompare(getExpeditionName(b)); });
         this.discoveries.sort((a, b) => { return getDiscoveryName(a).localeCompare(getDiscoveryName(b)); });
+        this.visitors.sort((a, b) => { return getVisitorName(a).localeCompare(getVisitorName(b)); });
 
         let html = template({
             suits: suits,
@@ -345,7 +365,8 @@ class Application {
             wonders: this.wonders,
             adornments: this.adornments,
             expeditions: this.expeditions,
-            discoveries: this.discoveries
+            discoveries: this.discoveries,
+            visitors: this.visitors
         }, {
             allowProtoMethodsByDefault: true
         });

@@ -19,6 +19,9 @@ class Player {
     expeditions = [];
     discoveries = [];
 
+    //newleaf
+    visitors = [];
+
     divName;
     #app;
 
@@ -27,6 +30,11 @@ class Player {
         this.#app = app;
 
         Object.values(RESOURCES).forEach((val) => this.leftResources[val] = 0);
+    }
+
+    getMaxSpace(){
+        //Unique main road extends the city by one space
+        return 15 + this.findCountCard(basecards['mainroad']);
     }
 
     getOccupiedSpaces() {
@@ -120,6 +128,12 @@ class Player {
         return discovery.name;
     }
 
+    removeVisitor(visitorIndex) {
+        let visitor = this.visitors.splice(visitorIndex, 1)[0];
+        this.showPlayer();
+        return visitor.name;
+    }
+
     findCountFct(findfunction) {
         return this.town.reduce((prev, card) => { if (findfunction(card)) ++prev; return prev; }, 0);
     }
@@ -136,8 +150,12 @@ class Player {
         return this.findCountFct((card) => { return card.kind == kind && card.rarity == rarity; });
     }
 
+    findCountRarity(rarity) {
+        return this.findCountFct((card) => { return card.rarity == rarity; });
+    }
+
     findCountCard(cardToFind) {
-        return this.findCountFct((card) => { return card == cardToFind; });
+        return this.findCountFct((card) => { return card.name == cardToFind.name; });
     }
 
     hasData() {
@@ -149,6 +167,7 @@ class Player {
             this.adornments.length > 0 || 
             this.expeditions.length > 0 || 
             this.discoveries.length > 0 ||
+            this.visitors.length > 0 ||
             this.points > 0 || 
             Object.values(this.leftResources).reduce((prev, val) => prev || val > 0, false);
     }
@@ -172,12 +191,19 @@ class Player {
                             this.adornments.reduce((prev, adornments) => prev + adornments.getPoints(this),
                                 this.expeditions.reduce((prev, expedition) => prev + expedition.points,
                                     this.discoveries.reduce((prev, discovery) => prev + discovery.getPoints(this),
-                                        this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.leftResources[RESOURCES.pearl]))))))));
+                                        this.visitors.reduce((prev, visitor) => prev + visitor.getPoints(this),
+                                            this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.leftResources[RESOURCES.pearl])))))))));
     }
 
     areLeftoversRequired() {
-        //If Architect is in town or scale as adornment
-        return this.town.includes(basecards['39']) || this.adornments.includes(adornments["scales"]);
+        //If Architect is in town or scale as adornment or Architect is copied through photographer
+        return this.town.includes(basecards['architect']) ||
+            this.adornments.includes(adornments["scales"]) ||
+            this.visitors.includes(visitors['diggsdeepwell']) || 
+            this.visitors.includes(visitors['frinstickly']) || 
+            this.visitors.includes(visitors['piffquillglow']) || 
+            this.visitors.includes(visitors['sirtrivleqsmarqwill']) || 
+            this.visitors.includes(visitors['wimblewuffle']);
     }
 
     updateLeftOvers(){
@@ -211,11 +237,13 @@ class Player {
         let displayedTown = this.town.map((card) => Object.assign({ addPoints: card.getAdditionalPoints(this) }, card));
         let displayedAdornments = this.adornments.map((adornment) => Object.assign({ points: adornment.getPoints(this) }, adornment));
         let displayedDiscoveries = this.discoveries.map((discovery) => Object.assign({ points: discovery.getPoints(this) }, discovery));
+        let displayedVisitors = this.visitors.map((visitor) => Object.assign({ points: visitor.getPoints(this) }, visitor));
 
         let html = template({
             cards: displayedTown,
             cardCount: this.getOccupiedSpaces(),
-            cardCountPerc: 100 * this.getOccupiedSpaces() / 15,
+            cardMax: this.getMaxSpace(),
+            cardCountPerc: 100 * this.getOccupiedSpaces() / this.getMaxSpace(),
             additionalWifePoints: this.getWifeAdditionalPoints(),
             basicEvents: this.basicEvents,
             specialEvents: this.specialEvents,
@@ -223,6 +251,7 @@ class Player {
             adornments: displayedAdornments,
             expeditions: this.expeditions,
             discoveries: displayedDiscoveries,
+            visitors: displayedVisitors,
             journeys: this.journeys,
             award: this.#app.activeAward && this.garlandAchievemenPoints > 0 ? { 
                 name: this.#app.activeAward.name,

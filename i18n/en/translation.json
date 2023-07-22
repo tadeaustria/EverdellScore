@@ -22,7 +22,8 @@
         "wonders": "Wonders",
         "adornments": "Adornments",
         "expeditions": "Expeditions",
-        "discoveries": "Discoveries"
+        "discoveries": "Discoveries",
+        "visitors": "Visitors"
     },
     "expansion" : {
         "bellfaire": "Bellfaire",
@@ -96,7 +97,32 @@
         "harbor": "Harbor",
         "shipwright": "Shipwright",
         "bridge": "Bridge",
-        "messenger": "Messenger"
+        "messenger": "Messenger",
+
+        "baker": "Baker",
+        "chipsmith": "Chipsmith",
+        "conductor": "Conductor",
+        "diplomat": "Diplomat",
+        "gardener": "Gardener",
+        "inventor": "Inventor",
+        "lamplighter": "Lamplighter",
+        "magician": "Magician",
+        "mayor": "Mayor",
+        "miller": "Miller",
+        "photographer": "Photographer",
+        "poet": "Poet",
+        "airballoon": "Airballoon",
+        "bank": "Bank",
+        "cityhall": "Cityhall",
+        "everwall": "Everwall",
+        "freightcar":"Freightcar",
+        "greenhouse": "Greenhouse",
+        "hotel": "Hotel",
+        "library": "Library",
+        "locomotive": "Locomotive",
+        "mainroad": "Mainroad",
+        "museum": "Museum",
+        "teahouse": "Teahouse"
     },
     "event": {
         "grandtour": "Grand Tour",
@@ -138,7 +164,20 @@
         "riversideresort": "Riverside Resort",
         "xmarksthespot": "X Marks the Spot",
         "sunkentreasurediscovered": "Sunken Treasure Discovered",
-        "masqueradeinvitations": "Masquerade Invitations"
+        "masqueradeinvitations": "Masquerade Invitations",
+
+        "scenicflight": "Scenic Flight",
+        "bigcity": "Bit City",
+        
+        "cityjubilee" : "City Jubilee",
+        "everwalltower" : "Ever Wall Tower Constructed",
+        "glowlightfestival" : "Glow Light Festival",
+        "hotairballoonrace" : "Hot Air Ballon Race",
+        "dancecontest" : "Juniper Jig Dance Contest",
+        "magicshow" : "Magic Show",
+        "royaltea" : "Royal Tea",
+        "stockmarketboom" : "Stock Market Boom",
+        "sunflowerparade" : "Sunflower Parade"
     },
 
     "award": {
@@ -213,6 +252,40 @@
         "gatherwindtrail": "Gatherwind Trail",
         "serpentspass": "Serpent's Pass",
         "distantshore": "The Distant Shore"
+    },
+    "visitor": {
+        "bimlittle": "Bim Little",
+        "bosleytedwardson": "Bosley Tedwardson",
+        "butterbellsweetpaw": "Butterbell Sweetpaw",
+        "diggsdeepwell": "Diggs Deepwell",
+        "cillweedquicksniff": "Dillweed Quicksniff",
+        "dimdustlight": "Dim Dustlight",
+        "dipdibble": "Dip Dibble",
+        "dunetarrington": "Dune Tarrington",
+        "dwellnorthwatch": "Dwell Northwatch",
+        "edvardtriptail": "Edvard Triptail",
+        "frinstickly": "Frin Stickly",
+        "glindilfrink": "Glindil Frink",
+        "iggysilverscale": "Iggy Silverscale",
+        "mossysteptoe": "Mossy Steptoe",
+        "orinnimblepaw": "Orin Nimblepaw",
+        "oscarlongtale": "Oscar Longtale",
+        "phillgurgle": "Phill Gurgle",
+        "piffquillglow": "Piff Quillglow",
+        "plumshortclaw": "Plum Shortclaw",
+        "quinncleanwhisker": "Quinn Cleanwhisker",
+        "reemysniggle": "Reemy Sniggle",
+        "rivilablacus": "Rivil Ablacus",
+        "rubydew": "Ruby Dew",
+        "sarisclearwhistle": "Saris Clearwhistle",
+        "sirtrivleqsmarqwill": "Sir Trivle Q. S. Marqwill III",
+        "skidshinysnout": "Skid Shinysnout",
+        "snoutpuddlehop": "Snout Puddlehop",
+        "trisspeske": "Triss Peske",
+        "wildellfamily": "Wildell Family",
+        "willowgreengrin": "Willow Greengrin",
+        "wimblewuffle": "Wimble Wuffle",
+        "yarabrunmayberry": "Yara & Brun Mayberry"
     },
     "text": {
         "cardlimit": "Card limit of town is reached",
