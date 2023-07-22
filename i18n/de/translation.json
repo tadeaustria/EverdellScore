@@ -32,6 +32,13 @@
         "card": "Karte",
         "pearl": "Perle"
     },
+    "expansion" : {
+        "bellfaire": "Bellfaire",
+        "pearlbrook": "Pearlbrook",
+        "spirecrest": "Spirecrest",
+        "mistwood": "Mistwood",
+        "newleaf": "Newleaf"
+    },
     "card": {
         "inn": "Gasthaus",
         "innkeeper": "Gastwirt",

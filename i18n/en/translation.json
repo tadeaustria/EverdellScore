@@ -25,11 +25,11 @@
         "discoveries": "Discoveries"
     },
     "expansion" : {
-        "Bellfaire": "Bellfair",
-        "Pearlbrook": "Pearlbrook",
-        "Spirecrest": "Spirecrest",
-        "Mistwood": "Mistwood",
-        "Newleaf": "Newleaf"
+        "bellfaire": "Bellfaire",
+        "pearlbrook": "Pearlbrook",
+        "spirecrest": "Spirecrest",
+        "mistwood": "Mistwood",
+        "newleaf": "Newleaf"
     },
     "res": {
         "twig": "Twig",
