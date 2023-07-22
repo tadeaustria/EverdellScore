@@ -4,35 +4,35 @@
 let app;
 
 i18next
-.use(i18nextBrowserLanguageDetector)
-.use(i18nextHttpBackend)
-.init({
-    fallbackLng: 'en',
-    // debug: true,
-    saveMissing: false,
-    backend: {
-        loadPath: 'i18n/{{lng}}/{{ns}}.json',
-        addPath: 'i18n/{{lng}}/{{ns}}.missing.json'
-    }
-    // 
-    // useLocalStore: false
-}, function (err, t) {
-    // for options see
-    // https://github.com/i18next/jquery-i18next#initialize-the-plugin
-    jqueryI18next.init(i18next, $, {
-        useOptionsAttr: true
+    .use(i18nextBrowserLanguageDetector)
+    .use(i18nextHttpBackend)
+    .init({
+        fallbackLng: 'en',
+        // debug: true,
+        saveMissing: false,
+        backend: {
+            loadPath: 'i18n/{{lng}}/{{ns}}.json',
+            addPath: 'i18n/{{lng}}/{{ns}}.missing.json'
+        }
+        // 
+        // useLocalStore: false
+    }, function (err, t) {
+        // for options see
+        // https://github.com/i18next/jquery-i18next#initialize-the-plugin
+        jqueryI18next.init(i18next, $, {
+            useOptionsAttr: true
+        });
+
+        app = new Application();
+
+        // start localizing, details:
+        // https://github.com/i18next/jquery-i18next#usage-of-selector-function
+        $("*").localize();
+        $("#nav-p1-p").append("<span id=\"nav-p1-points\" class=\"badge text-bg-warning\">0</span>");
+        $("#nav-p2-p").append("<span id=\"nav-p2-points\" class=\"badge text-bg-warning\">0</span>");
+        $("#nav-p3-p").append("<span id=\"nav-p3-points\" class=\"badge text-bg-warning\">0</span>");
+        $("#nav-p4-p").append("<span id=\"nav-p4-points\" class=\"badge text-bg-warning\">0</span>");
     });
-
-    app = new Application();
-
-    // start localizing, details:
-    // https://github.com/i18next/jquery-i18next#usage-of-selector-function
-    $("*").localize();
-    $("#nav-p1-p").append("<span id=\"nav-p1-points\" class=\"badge text-bg-warning\">0</span>");
-    $("#nav-p2-p").append("<span id=\"nav-p2-points\" class=\"badge text-bg-warning\">0</span>");
-    $("#nav-p3-p").append("<span id=\"nav-p3-points\" class=\"badge text-bg-warning\">0</span>");
-    $("#nav-p4-p").append("<span id=\"nav-p4-points\" class=\"badge text-bg-warning\">0</span>");
-});
 
 
 class Application {
@@ -117,7 +117,7 @@ class Application {
             this.vibrate(50);
             this.activePlayer.addTown(card);
             this.setCardDisable(card);
-            if (this.activeAward){
+            if (this.activeAward) {
                 this.calculateAward();
                 this.players.forEach((player) => player.showPlayer());
                 this.activePlayer.showPlayer();
@@ -183,12 +183,12 @@ class Application {
     }
 
     addAdornmentToActivePlayer(adornmentName) {
-        if (this.activePlayer.adornments.length < 2){
+        if (this.activePlayer.adornments.length < 2) {
             this.activePlayer.adornments.push(adornments[adornmentName]);
             this.vibrate(50);
             $("#adornment_" + adornmentName).addClass("disabled");
             this.activePlayer.showPlayer();
-        }else{
+        } else {
             $("#alert-adornmentlimit").fadeTo(3000, 500).slideUp(500, function () {
                 $("#alert-adornmentlimit").slideUp(500);
             });
@@ -200,13 +200,13 @@ class Application {
         $("#adornment_" + adornmentName).removeClass("disabled");
     }
 
-    addExpeditionToActivePlayer(expeditionName){
-        if (this.activePlayer.expeditions.length < 3){
+    addExpeditionToActivePlayer(expeditionName) {
+        if (this.activePlayer.expeditions.length < 3) {
             this.activePlayer.expeditions.push(expeditions[expeditionName]);
             this.vibrate(50);
             $("#expedition_" + expeditionName).addClass("disabled");
             this.activePlayer.showPlayer();
-        }else{
+        } else {
             $("#alert-expeditionlimit").fadeTo(3000, 500).slideUp(500, function () {
                 $("#alert-expeditionlimit").slideUp(500);
             });
@@ -218,26 +218,26 @@ class Application {
         $("#expedition_" + expeditionName).removeClass("disabled");
     }
 
-    addDiscoveryToActivePlayer(discoveryName){
-        if (this.activePlayer.discoveries.length < 2){
+    addDiscoveryToActivePlayer(discoveryName) {
+        if (this.activePlayer.discoveries.length < 2) {
             this.activePlayer.discoveries.push(discoveries[discoveryName]);
             this.vibrate(50);
             $("#discovery_" + discoveryName).addClass("disabled");
             this.activePlayer.showPlayer();
-        }else{
+        } else {
             $("#alert-discoverylimit").fadeTo(3000, 500).slideUp(500, function () {
                 $("#alert-discoverylimit").slideUp(500);
             });
         }
     }
-    
+
     removeDiscoveryFromActivePlayer(discoveryIndex) {
         let discoveryName = this.activePlayer.removeDiscovery(discoveryIndex);
         $("#discovery_" + discoveryName).removeClass("disabled");
     }
 
-    chooseAward(awardName){
-        if(this.activeAward)
+    chooseAward(awardName) {
+        if (this.activeAward)
             $("#award_" + this.activeAward.name).removeClass("highlight");
         $("#award_" + awardName).addClass("highlight");
         this.vibrate(50);
@@ -246,7 +246,7 @@ class Application {
         this.players.forEach((player) => player.showPlayer());
     }
 
-    removeAward(){
+    removeAward() {
         $("#award_" + this.activeAward.name).removeClass("highlight");
         this.activeAward = null;
         this.players.forEach((player) => {
@@ -255,21 +255,21 @@ class Application {
         });
     }
 
-    calculateAward(){
+    calculateAward() {
         let bucket = {};
-        for(let player of this.players){
+        for (let player of this.players) {
             let value = this.activeAward.rankingFunction(player);
             player.garlandAchievemenPoints = 0;
-            if(!(value in bucket)){
+            if (!(value in bucket)) {
                 bucket[value] = [];
             }
             bucket[value].push(player);
         }
-        let winners = Object.keys(bucket).sort().reverse();
-        if(winners[0] > 0){
+        let winners = Int8Array.from(Object.keys(bucket)).sort().reverse();
+        if (winners[0] > 0) {
             bucket[winners[0]].forEach((player) => player.garlandAchievemenPoints = this.activeAward.pointsFirst);
         }
-        if(winners[1] > 0){
+        if (winners[1] > 0) {
             bucket[winners[1]].forEach((player) => player.garlandAchievemenPoints = this.activeAward.pointsSecond);
         }
     }
@@ -282,7 +282,7 @@ class Application {
             this.setCardsDisable();
             if (this.activeAward)
                 $("#award_" + this.activeAward.name).addClass("highlight");
-            for(let player of this.players){
+            for (let player of this.players) {
                 player.resortTown();
             }
             this.activePlayer.showPlayer();
@@ -390,8 +390,8 @@ class Application {
         $('#leftResources').html(html);
     }
 
-    vibrate(intesity){
-        if('vibrate' in window.navigator)
+    vibrate(intesity) {
+        if ('vibrate' in window.navigator)
             window.navigator.vibrate(intesity);
     }
 }
