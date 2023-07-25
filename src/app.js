@@ -413,7 +413,7 @@ class Application {
     }
 
     vibrate(intesity) {
-        if ('vibrate' in window.navigator)
+        // if ('vibrate' in window.navigator)
             window.navigator.vibrate(intesity);
     }
 
