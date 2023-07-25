@@ -50,9 +50,20 @@ class Application {
         $('#nav-p4-tab').on('click', (e) => { this.activePlayer = this.players[3]; this.updatePlayerOutput(); });
         $("#alert-cardlimit").hide();
 
+        // returning something in this function, will result in a message box
+        // if site is left
+        window.onbeforeunload = function () { return 'Are you sure?' };
+
         Handlebars.registerHelper('isProsperityButNotWife', function (type, name) {
             return type == TYPES.prosperity && name != basecards['31'].name;
         });
+    }
+
+    updateExpansions() {
+        if (this.hasData())
+            this.show_modal(i18next.t("text.data_loss_header"), i18next.t("text.expansion_content"), this.updateData, this.reset_expansions_ui );
+        else
+            this.updateData();
     }
 
     updateData() {
@@ -83,6 +94,17 @@ class Application {
         $("#value_points").val(this.activePlayer.points);
         $("#value_points_badge").text(this.activePlayer.points);
         this.setCardsDisable();
+    }
+
+    // Sets switches in UI to stored values
+    reset_expansions_ui(){
+        $('#flexSwitchCheckBellfaire').prop('checked', this.bellfaire);
+        $('#flexSwitchCheckPearlbrook').prop('checked', this.pearlbrook);
+        $('#flexSwitchCheckSpirecrest').prop('checked', this.spirecrest);
+    }
+
+    btn_reset() {
+        this.show_modal(i18next.t("text.data_loss_header"), i18next.t("text.reset_content"), this.reset);
     }
 
     reset() {
@@ -393,5 +415,28 @@ class Application {
     vibrate(intesity) {
         if ('vibrate' in window.navigator)
             window.navigator.vibrate(intesity);
+    }
+
+    show_modal(header, text, fun_accept, fun_abort = null) {
+        this.callback_accept = fun_accept;
+        this.callback_abort = fun_abort;
+        $("#modal_title").text(header);
+        $("#modal_text").text(text);
+        $("#modal_window").modal("show");
+    }
+
+    modal_accept() {
+        $("#modal_window").modal("hide");
+        this.callback_accept();
+    }
+
+    modal_abort() {
+        $("#modal_window").modal("hide");
+        if (this.callback_abort)
+            this.callback_abort();
+    }
+
+    hasData() {
+        return this.players.reduce((prev, player) => prev || player.hasData(), false);
     }
 }
