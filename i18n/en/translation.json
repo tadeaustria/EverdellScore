@@ -224,6 +224,9 @@
         "cardlimit": "Card limit of town is reached",
         "adornmentlimit": "Card limit of adornments is reached",
         "expeditionlimit": "Card limit of expeditions is reached",
-        "discoverylimit": "Card limit of discoveries is reached"
+        "discoverylimit": "Card limit of discoveries is reached",
+        "data_loss_header": "Warning data loss",
+        "reset_content": "Are you sure you want to reset all players?",
+        "expansion_content": "Changing expansions will result in resetting all data. Do you want to proceed?"
     }
 }

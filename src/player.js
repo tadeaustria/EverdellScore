@@ -140,6 +140,19 @@ class Player {
         return this.findCountFct((card) => { return card == cardToFind; });
     }
 
+    hasData() {
+        return this.town.length > 0 ||
+            this.basicEvents.length > 0 ||
+            this.specialEvents.length > 0 || 
+            this.journeys.length > 0 || 
+            this.wonders.length > 0 || 
+            this.adornments.length > 0 || 
+            this.expeditions.length > 0 || 
+            this.discoveries.length > 0 ||
+            this.points > 0 || 
+            Object.values(this.leftResources).reduce((prev, val) => prev || val > 0, false);
+    }
+
     //minimal count of wife or husband is number of pairs
     getWifeHusbandPairs() {
         return Math.min(this.findCountCard(basecards['30']), this.findCountCard(basecards['31']));

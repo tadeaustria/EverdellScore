@@ -51,7 +51,7 @@
                 <button class="dropdown-item" type="button" onclick="app.setLanguage('de')">Deutsch</button>
                 <button class="dropdown-item" type="button" onclick="app.setLanguage('pl')">Polski</button>
             </div>
-            <button id="clear" type="button" class="btn btn-danger" onclick="app.reset()"
+            <button id="clear" type="button" class="btn btn-danger" onclick="app.btn_reset()"
                 data-i18n="gen.reset"></button>
         </div>
     </header>
@@ -353,23 +353,23 @@
                         <ul class="list-group">
                             <!-- <li id="card_{{name}}" class="list-group-item" onclick="app.addToActivePlayer('{{name}}')"
                             data-i18n="card.{{name}}">{{name}}</li> -->
-                            <div class="form-check form-switch" onchange="app.updateData()">
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
                                 <label class="form-check-label" for="flexSwitchCheckBellfaire" data-i18n="expansion.bellfaire">Bellfaire</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckBellfaire">
                             </div>
-                            <div class="form-check form-switch" onchange="app.updateData()">
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
                                 <label class="form-check-label" for="flexSwitchCheckPearlbrook" data-i18n="expansion.pearlbrook">Pearlbrook</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckPearlbrook">
                             </div>
-                            <div class="form-check form-switch" onchange="app.updateData()">
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
                                 <label class="form-check-label" for="flexSwitchCheckSpirecrest" data-i18n="expansion.spirecrest">Spirecrest</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckSpirecrest">
                             </div>
-                            <div class="form-check form-switch" onchange="app.updateData()">
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
                                 <label class="form-check-label" for="flexSwitchCheckMistwood" data-i18n="expansion.mistwood">Mistwood</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckMistwood" disabled>
                             </div>
-                            <div class="form-check form-switch" onchange="app.updateData()">
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
                                 <label class="form-check-label" for="flexSwitchCheckNewleaf" data-i18n="expansion.newleaf">Newleaf</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckNewleaf">
                             </div>
@@ -439,6 +439,23 @@
                 </div>
             </div>
         </div>
+        <div id="modal_window" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 id="modal_title" class="modal-title">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p id="modal_text">Text</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" onclick="app.modal_click()">Accept</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </main>
     <footer>
         <div id="developmentlink">
