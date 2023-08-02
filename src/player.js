@@ -30,7 +30,7 @@ class Player {
     }
 
     getOccupiedSpaces() {
-        return this.town.reduce((prev, card) => prev + card.getOccupiedSpaces(this), 0);
+        return this.town.reduce((prev, card) => prev + card.getOccupiedSpaces(this, false), 0);
     }
 
     getTownOverview() {
