@@ -25,7 +25,15 @@ Cookies for storing the chosen language.
 
 # Updates
 
-## Version 1.3.3
+## Version 1.3.4
+* General
+  * Spanish support for base game. Thanks to Camilo.
+  * Added warnings when data could be lost. Leave page, reset or expansion activation.
+  * Fix Wife being addable to full town see [issue 23](../../issues/23)
+* Bellfaire
+  * Fix Garlandawards see [issue 19](../../issues/19)
+
+### Version 1.3.3
 * General
   * Sort town cards by translated name
 
