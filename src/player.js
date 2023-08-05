@@ -174,7 +174,7 @@ class Player {
 
     //minimal count of wife or husband is number of pairs
     getWifeHusbandPairs() {
-        return Math.min(this.findCountCard(basecards['30']), this.findCountCard(basecards['31']));
+        return Math.min(this.findCountCard(basecards['husband']), this.findCountCard(basecards['wife']));
     }
 
     getWifeAdditionalPoints() {

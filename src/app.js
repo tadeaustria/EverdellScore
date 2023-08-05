@@ -57,7 +57,7 @@ class Application {
         window.onbeforeunload = function () { return 'Are you sure?' };
 
         Handlebars.registerHelper('isProsperityButNotWife', function (type, name) {
-            return type == TYPES.prosperity && name != basecards['31'].name;
+            return type == TYPES.prosperity && name != basecards['wife'].name;
         });
     }
 
