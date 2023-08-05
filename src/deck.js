@@ -879,7 +879,7 @@ let basecards = {
         kind: KINDS.critter,
         points: 2,
         maximum: 2,
-        getAdditionalPoints: points_zero,
+        getAdditionalPoints: (player) => player.photographerChoiceCardName == null ? 0 : basecards[player.photographerChoiceCardName].getAdditionalPoints(player),
         getOccupiedSpaces: space_one,
         related: [],
         getAvailability: available_newleaf
@@ -963,7 +963,6 @@ let basecards = {
         kind: KINDS.building,
         points: 2,
         maximum: 3,
-        //TODO share with farm
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: function (player, to_be_added) {
             // Greenhouse requires 1 space if she should be added to town and town already has

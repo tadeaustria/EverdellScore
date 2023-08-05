@@ -109,7 +109,7 @@
         "magician": "Magician",
         "mayor": "Mayor",
         "miller": "Miller",
-        "photographer": "Photographer",
+        "photographer": "Photographer {{card}}",
         "poet": "Poet",
         "airballoon": "Airballoon",
         "bank": "Bank",
@@ -296,6 +296,7 @@
         "reset_content": "Are you sure you want to reset all players?",
         "expansion_content": "Changing expansions will result in resetting all data. Do you want to proceed?",
         "yes": "Yes",
-        "no": "No"
+        "no": "No",
+        "photographer_modal_title": "Choose effect to copy"
     }
 }

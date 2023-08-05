@@ -144,14 +144,51 @@ class Application {
             });
         } else {
             this.vibrate(50);
+
             this.activePlayer.addTown(card);
             this.setCardDisable(card);
+
+            //Special handling photographer
+            if(card == basecards['photographer']){
+                let prosperitiesInOtherTowns = new Set();
+                for (let player of this.players) {
+                    if (player == this.activePlayer)
+                        continue;
+                    player.town.filter((card) => card.type == TYPES.prosperity).forEach(prosperitiesInOtherTowns.add, prosperitiesInOtherTowns);
+                }
+                // If any other has also photographer, add cards of own town as well
+                if(prosperitiesInOtherTowns.has(basecards['photographer'])){
+                    this.activePlayer.town.filter((card) => card.type == TYPES.prosperity).forEach(prosperitiesInOtherTowns.add, prosperitiesInOtherTowns);
+                }
+                prosperitiesInOtherTowns.delete(basecards['photographer']);
+
+                let template = Handlebars.compile($("#photographer-template").html());
+                let cards = [];
+                for(const card of prosperitiesInOtherTowns.values()){
+                    cards.push({name: card.name, points: card.getAdditionalPoints(this.activePlayer)});
+                }
+
+                let html = template({
+                    cards: cards,
+                }, {
+                    allowProtoMethodsByDefault: true
+                });
+                $('#photographer_modal_body').html(html).localize();
+                $('#photographer_modal').modal('show');
+            }
+
             if (this.activeAward) {
                 this.calculateAward();
                 this.players.forEach((player) => player.showPlayer());
                 this.activePlayer.showPlayer();
             }
         }
+    }
+
+    chooseEffectCopy(cardname){
+        $('#photographer_modal').modal('hide');
+        this.activePlayer.photographerChoiceCardName = cardname;
+        this.activePlayer.showPlayer();
     }
 
     removeFromActivePlayer(cardIndex) {

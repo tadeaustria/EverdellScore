@@ -21,6 +21,7 @@ class Player {
 
     //newleaf
     visitors = [];
+    photographerChoiceCardName = null;
 
     divName;
     #app;
@@ -72,6 +73,8 @@ class Player {
 
     removeTown(cardIndex) {
         let card = this.town.splice(cardIndex, 1)[0];
+        if(card.name == 'photographer')
+            this.photographerChoiceCardName = null;
         this.showPlayer();
         return card;
     }
@@ -172,9 +175,17 @@ class Player {
             Object.values(this.leftResources).reduce((prev, val) => prev || val > 0, false);
     }
 
+    getWifeCount(){
+        let base = this.findCountCard(basecards['wife']);
+        if(this.photographerChoiceCardName == 'wife'){
+            base++;
+        }
+        return base;
+    }
+
     //minimal count of wife or husband is number of pairs
     getWifeHusbandPairs() {
-        return Math.min(this.findCountCard(basecards['husband']), this.findCountCard(basecards['wife']));
+        return Math.min(this.findCountCard(basecards['husband']), this.getWifeCount());
     }
 
     getWifeAdditionalPoints() {
@@ -199,6 +210,7 @@ class Player {
         //If Architect is in town or scale as adornment or Architect is copied through photographer
         return this.town.includes(basecards['architect']) ||
             this.adornments.includes(adornments["scales"]) ||
+            this.photographerChoiceCardName == 'architect' ||
             this.visitors.includes(visitors['diggsdeepwell']) || 
             this.visitors.includes(visitors['frinstickly']) || 
             this.visitors.includes(visitors['piffquillglow']) || 
@@ -257,7 +269,8 @@ class Player {
                 name: this.#app.activeAward.name,
                 points: this.garlandAchievemenPoints
             } : null, 
-            nav: this.divName
+            nav: this.divName,
+            photographerCardName: this.photographerChoiceCardName ? '(' + getCardName(basecards[this.photographerChoiceCardName]) + ')' : null
         });
 
         this.showLeftOvers();

@@ -109,7 +109,7 @@
         "magician": "Zauberin",
         "mayor": "Bürgermeister",
         "miller": "Müllerin",
-        "photographer": "Fotografin",
+        "photographer": "Fotografin {{card}}",
         "poet": "Dichterling",
         "airballoon": "Heißluftballon",
         "bank": "Bank",
@@ -297,6 +297,7 @@
         "reset_content": "Wollen Sie wirklich alle Spielerdaten zurücksetzen?",
         "expansion_content": "Erweiterungsaktivierungen führt zum Zurücksetzen aller eingegebenen Daten. Wollen Sie fortfahren?",
         "yes": "Ja",
-        "no": "Nein"
+        "no": "Nein",
+        "photographer_modal_title": "Effekt zum Kopieren wählen"
     }
 }

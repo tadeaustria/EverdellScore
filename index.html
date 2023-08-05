@@ -226,7 +226,7 @@
                 {{#each cards}}
                 <div class="playercard card p-2 {{type}}" role="tab" onclick="app.removeFromActivePlayer('{{@index}}')">
                     <div class="d-flex">
-                        <div class="flex-grow-1" data-i18n="card.{{name}}"></div>
+                        <div class="flex-grow-1" data-i18n="card.{{name}}" data-i18n-options='{ "card": "{{../photographerCardName}}" }'></div>
                         <span class="badge text-bg-warning">{{points}}</span>
                         {{#if (isProsperityButNotWife type name)}}
                         <div>+</div><span class="badge text-bg-warning">{{addPoints}}</span>
@@ -352,6 +352,16 @@
             </div>
             {{/each}}
         </script>
+        <script id="photographer-template" type="text/x-handlebars-template">
+            {{#each cards}}
+            <div class="playercard card p-2 prosperity" role="tab" onclick="app.chooseEffectCopy('{{name}}')">
+                <div class="d-flex">
+                    <div class="flex-grow-1" data-i18n="card.{{name}}">{{name}}</div>
+                    <span class="badge text-bg-warning">{{points}}</span>
+                </div>
+            </div>
+            {{/each}}
+        </script>
         <div id="main-left">
             <div id="expansionspanel" class="panel" role="tablist" aria-multiselectable="true">
                 <div id="cardExpansion" class="card">
@@ -464,6 +474,19 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" onclick="app.modal_abort()" data-i18n="text.no"></button>
                   <button type="button" class="btn btn-primary" onclick="app.modal_accept()" data-i18n="text.yes"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        <div id="photographer_modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 id="photographer_modal_title" class="modal-title" data-i18n="text.photographer_modal_title"></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="photographer_modal_body" class="modal-body">
                 </div>
               </div>
             </div>
