@@ -8,8 +8,8 @@ const TYPES = {
 Object.freeze(TYPES);
 
 const KINDS = {
-    building: 0,
-    critter: 1
+    building: 'building',
+    critter: 'critter'
 }
 Object.freeze(KINDS);
 

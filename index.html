@@ -227,6 +227,7 @@
                 <div class="playercard card p-2 {{type}}" role="tab" onclick="app.removeFromActivePlayer('{{@index}}')">
                     <div class="d-flex">
                         <div class="flex-grow-1" data-i18n="card.{{name}}" data-i18n-options='{ "card": "{{../photographerCardName}}" }'></div>
+                        <img src="img/{{kind}}.png" height="20px">
                         <span class="badge text-bg-warning">{{points}}</span>
                         {{#if (isProsperityButNotWife type name)}}
                         <div>+</div><span class="badge text-bg-warning">{{addPoints}}</span>
