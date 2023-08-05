@@ -32,6 +32,13 @@
         "card": "Karte",
         "pearl": "Perle"
     },
+    "expansion" : {
+        "bellfaire": "Bellfaire",
+        "pearlbrook": "Pearlbrook",
+        "spirecrest": "Spirecrest",
+        "mistwood": "Mistwood",
+        "newleaf": "Newleaf"
+    },
     "card": {
         "inn": "Gasthaus",
         "innkeeper": "Gastwirt",
@@ -211,6 +218,11 @@
         "cardlimit": "Kartenlimit der Stadt erreicht",
         "adornmentlimit": "Kartenlimit der Artefakte erreicht",
         "expeditionlimit": "Kartenlimit der Expeditionen erreicht",
-        "discoverylimit": "Kartenlimit der Erkundungen erreicht"
+        "discoverylimit": "Kartenlimit der Erkundungen erreicht",
+        "data_loss_header": "Achtung Datenverlust",
+        "reset_content": "Wollen Sie wirklich alle Spielerdaten zurücksetzen?",
+        "expansion_content": "Erweiterungsaktivierungen führt zum Zurücksetzen aller eingegebenen Daten. Wollen Sie fortfahren?",
+        "yes": "Ja",
+        "no": "Nein"
     }
 }

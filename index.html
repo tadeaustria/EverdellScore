@@ -50,8 +50,9 @@
                 <button class="dropdown-item" type="button" onclick="app.setLanguage('en')">English</button>
                 <button class="dropdown-item" type="button" onclick="app.setLanguage('de')">Deutsch</button>
                 <button class="dropdown-item" type="button" onclick="app.setLanguage('pl')">Polski</button>
+                <button class="dropdown-item" type="button" onclick="app.setLanguage('es')">Español</button>
             </div>
-            <button id="clear" type="button" class="btn btn-danger" onclick="app.reset()"
+            <button id="clear" type="button" class="btn btn-danger" onclick="app.btn_reset()"
                 data-i18n="gen.reset"></button>
         </div>
     </header>
@@ -337,24 +338,24 @@
                         <ul class="list-group">
                             <!-- <li id="card_{{name}}" class="list-group-item" onclick="app.addToActivePlayer('{{name}}')"
                             data-i18n="card.{{name}}">{{name}}</li> -->
-                            <div class="form-check form-switch" onchange="app.updateData()">
-                                <label class="form-check-label" for="flexSwitchCheckBellfaire" data-i18n="expansion.Bellfaire">Bellfaire</label>
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
+                                <label class="form-check-label" for="flexSwitchCheckBellfaire" data-i18n="expansion.bellfaire">Bellfaire</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckBellfaire">
                             </div>
-                            <div class="form-check form-switch" onchange="app.updateData()">
-                                <label class="form-check-label" for="flexSwitchCheckPearlbrook" data-i18n="expansion.Pearlbrook">Pearlbrook</label>
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
+                                <label class="form-check-label" for="flexSwitchCheckPearlbrook" data-i18n="expansion.pearlbrook">Pearlbrook</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckPearlbrook">
                             </div>
-                            <div class="form-check form-switch" onchange="app.updateData()">
-                                <label class="form-check-label" for="flexSwitchCheckSpirecrest" data-i18n="expansion.Spirecrest">Spirecrest</label>
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
+                                <label class="form-check-label" for="flexSwitchCheckSpirecrest" data-i18n="expansion.spirecrest">Spirecrest</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckSpirecrest">
                             </div>
-                            <div class="form-check form-switch" onchange="app.updateData()">
-                                <label class="form-check-label" for="flexSwitchCheckMistwood" data-i18n="expansion.Mistwood">Mistwood</label>
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
+                                <label class="form-check-label" for="flexSwitchCheckMistwood" data-i18n="expansion.mistwood">Mistwood</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckMistwood" disabled>
                             </div>
-                            <div class="form-check form-switch" onchange="app.updateData()">
-                                <label class="form-check-label" for="flexSwitchCheckNewleaf" data-i18n="expansion.Newleaf">Newleaf</label>
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
+                                <label class="form-check-label" for="flexSwitchCheckNewleaf" data-i18n="expansion.newleaf">Newleaf</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckNewleaf" disabled>
                             </div>
                         </ul>
@@ -423,15 +424,33 @@
                 </div>
             </div>
         </div>
+        <div id="modal_window" class="modal fade" data-bs-backdrop="static" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 id="modal_title" class="modal-title">Modal title</h5>
+                  <button type="button" class="btn-close" onclick="app.modal_abort()" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p id="modal_text">Text</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" onclick="app.modal_abort()" data-i18n="text.no"></button>
+                  <button type="button" class="btn btn-primary" onclick="app.modal_accept()" data-i18n="text.yes"></button>
+                </div>
+              </div>
+            </div>
+          </div>
     </main>
     <footer>
         <div id="developmentlink">
             <p>If you encounter errors, feel free to visit the <a href="https://github.com/tadeaustria/EverdellScore">development page</a> and post an issue or <a href="mailto:tade_tirol@hotmail.com">send me an email</a>.</p>
+            <p>If you want to help adding your language, find the <a href="i18n/en/translation.json">English template here</a>.</p>
         </div>
         <!-- <div id="legal-text">
         </div> -->
         <div id="version">
-            <p>v1.3.3</p>
+            <p>v1.3.4 (Upcoming Newleaf support with v1.4.0)</p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

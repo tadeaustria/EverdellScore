@@ -35,8 +35,9 @@ function points_five(player) { return 5; }
 function points_six(player) { return 6; }
 function points_seven(player) { return 7; }
 function points_nine(player) { return 9; }
-function space_zero(player) { return 0; }
-function space_one(player) { return 1; }
+
+function space_zero(player, to_be_added) { return 0; }
+function space_one(player, to_be_added) { return 1; }
 
 function available_always(app) { return true; }
 function available_bellfaire(app) { return app.bellfaire; }
@@ -388,7 +389,7 @@ let basecards = {
         points: 2,
         maximum: 4,
         getAdditionalPoints: points_zero,
-        getOccupiedSpaces: function (player) {
+        getOccupiedSpaces: function (player, to_be_added) {
             if (player.findCountCard(basecards['31']) <= player.findCountCard(basecards['30'])) {
                 return 1;
             }
@@ -405,8 +406,11 @@ let basecards = {
         points: 2,
         maximum: 4,
         getAdditionalPoints: points_zero,
-        getOccupiedSpaces: function (player) {
-            if (player.findCountCard(basecards['31']) > player.findCountCard(basecards['30'])) {
+        getOccupiedSpaces: function (player, to_be_added) {
+            // Wife requires 1 space if she should be added to town and town already has
+            // as many wifes as husbands
+            if (player.findCountCard(basecards['31']) > player.findCountCard(basecards['30']) || 
+                to_be_added && player.findCountCard(basecards['31']) == player.findCountCard(basecards['30'])) {
                 return 1;
             }
             return 0;

@@ -25,11 +25,11 @@
         "discoveries": "Odkrycia"
     },
     "expansion" : {
-        "Bellfaire": "Święto Lata",
-        "Pearlbrook": "Perłowy Potok",
-        "Spirecrest": "Zimowy Szczyt",
-        "Mistwood": "Mgielny Las",
-        "Newleaf": "Stacja Nowoliść"
+        "bellfaire": "Święto Lata",
+        "pearlbrook": "Perłowy Potok",
+        "spirecrest": "Zimowy Szczyt",
+        "mistwood": "Mgielny Las",
+        "newleaf": "Stacja Nowoliść"
     },
     "res": {
         "twig": "Gałązki",
