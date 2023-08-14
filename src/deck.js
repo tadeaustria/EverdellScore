@@ -1075,18 +1075,18 @@ let basicEvents = {
     "flowerfestival": {
         name: "flowerfestival",
         points: 4,
-        getAvailability: available_bellfaire
+        getAvailability: (app) => available_bellfaire(app) && available_npearlbrook(app)
     },
     
     "scenicflight": {
         name: "scenicflight",
         points: 3,
-        getAvailability: available_newleaf
+        getAvailability: (app) => available_newleaf(app) && available_npearlbrook(app)
     },
     "bigcity": {
         name: "bigcity",
         points: 5,
-        getAvailability: available_newleaf
+        getAvailability: (app) => available_newleaf(app) && available_npearlbrook(app)
     }
 }
 
