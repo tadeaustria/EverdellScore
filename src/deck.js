@@ -8,8 +8,8 @@ const TYPES = {
 Object.freeze(TYPES);
 
 const KINDS = {
-    building: 0,
-    critter: 1
+    building: 'building',
+    critter: 'critter'
 }
 Object.freeze(KINDS);
 
@@ -44,6 +44,7 @@ function available_bellfaire(app) { return app.bellfaire; }
 function available_pearlbrook(app) { return app.pearlbrook; }
 function available_npearlbrook(app) { return !app.pearlbrook; }
 function available_spirecrest(app) { return app.spirecrest; }
+function available_newleaf(app) { return app.newleaf; }
 
 const RESOURCES = {
     twig: 'twig',
@@ -57,7 +58,7 @@ Object.freeze(RESOURCES)
 
 let basecards = {
 
-    '03': {
+    'inn': {
         name: 'inn',
         type: TYPES.destination,
         rarity: RARITY.common,
@@ -69,7 +70,7 @@ let basecards = {
         related: ['innkeeper'],
         getAvailability: available_always
     },
-    '04': {
+    'innkeeper': {
         name: 'innkeeper',
         type: TYPES.governance,
         rarity: RARITY.unique,
@@ -81,7 +82,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '05': {
+    'postoffice': {
         name: 'postoffice',
         type: TYPES.destination,
         rarity: RARITY.common,
@@ -93,7 +94,7 @@ let basecards = {
         related: ['postal pigeon'],
         getAvailability: available_always
     },
-    '06': {
+    'postalpigeon': {
         name: 'postalpigeon',
         type: TYPES.traveler,
         rarity: RARITY.common,
@@ -105,7 +106,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '07': {
+    'cemetery': {
         name: 'cemetery',
         type: TYPES.destination,
         rarity: RARITY.unique,
@@ -117,7 +118,7 @@ let basecards = {
         related: ['undertaker'],
         getAvailability: available_always
     },
-    '08': {
+    'undertaker': {
         name: 'undertaker',
         type: TYPES.traveler,
         rarity: RARITY.unique,
@@ -129,7 +130,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '09': {
+    'chapel': {
         name: 'chapel',
         type: TYPES.destination,
         rarity: RARITY.unique,
@@ -141,7 +142,7 @@ let basecards = {
         related: ['shepherd'],
         getAvailability: available_always
     },
-    '10': {
+    'shepherd': {
         name: 'shepherd',
         type: TYPES.traveler,
         rarity: RARITY.unique,
@@ -153,7 +154,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '11': {
+    'lookout': {
         name: 'lookout',
         type: TYPES.destination,
         rarity: RARITY.unique,
@@ -165,7 +166,7 @@ let basecards = {
         related: ['wanderer'],
         getAvailability: available_always
     },
-    '12': {
+    'wanderer': {
         name: 'wanderer',
         type: TYPES.traveler,
         rarity: RARITY.common,
@@ -177,7 +178,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '13': {
+    'monastery': {
         name: 'monastery',
         type: TYPES.destination,
         rarity: RARITY.unique,
@@ -189,7 +190,7 @@ let basecards = {
         related: ['monk'],
         getAvailability: available_always
     },
-    '14': {
+    'monk': {
         name: 'monk',
         type: TYPES.production,
         rarity: RARITY.unique,
@@ -201,7 +202,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '15': {
+    'university': {
         name: 'university',
         type: TYPES.destination,
         rarity: RARITY.unique,
@@ -213,7 +214,7 @@ let basecards = {
         related: ['doctor'],
         getAvailability: available_always
     },
-    '16': {
+    'doctor': {
         name: 'doctor',
         type: TYPES.production,
         rarity: RARITY.unique,
@@ -225,7 +226,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '17': {
+    'ruins': {
         name: 'ruins',
         type: TYPES.traveler,
         rarity: RARITY.common,
@@ -237,7 +238,7 @@ let basecards = {
         related: ['peddler'],
         getAvailability: available_always
     },
-    '18': {
+    'peddler': {
         name: 'peddler',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -249,7 +250,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '19': {
+    'fairgrounds': {
         name: 'fairgrounds',
         type: TYPES.production,
         rarity: RARITY.unique,
@@ -261,7 +262,7 @@ let basecards = {
         related: ['fool'],
         getAvailability: available_always
     },
-    '20': {
+    'fool': {
         name: 'fool',
         type: TYPES.traveler,
         rarity: RARITY.unique,
@@ -273,7 +274,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '21': {
+    'twigbarge': {
         name: 'twigbarge',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -285,7 +286,7 @@ let basecards = {
         related: ['bargetoad'],
         getAvailability: available_always
     },
-    '22': {
+    'bargetoad': {
         name: 'bargetoad',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -297,7 +298,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '23': {
+    'resinrefinery': {
         name: 'resinrefinery',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -309,7 +310,7 @@ let basecards = {
         related: ['chipsweep'],
         getAvailability: available_always
     },
-    '24': {
+    'chipsweep': {
         name: 'chipsweep',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -321,7 +322,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '25': {
+    'mine': {
         name: 'mine',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -333,7 +334,7 @@ let basecards = {
         related: ['minermole'],
         getAvailability: available_always
     },
-    '26': {
+    'minermole': {
         name: 'minermole',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -345,7 +346,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '27': {
+    'storehouse': {
         name: 'storehouse',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -357,7 +358,7 @@ let basecards = {
         related: ['woodcarver'],
         getAvailability: available_always
     },
-    '28': {
+    'woodcarver': {
         name: 'woodcarver',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -369,7 +370,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '29': {
+    'farm': {
         name: 'farm',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -377,11 +378,16 @@ let basecards = {
         points: 1,
         maximum: 8,
         getAdditionalPoints: points_zero,
-        getOccupiedSpaces: space_one,
+        getOccupiedSpaces: function (player, to_be_added) {
+            if (player.findCountCard(basecards['greenhouse']) <= player.findCountCard(basecards['farm'])) {
+                return 1;
+            }
+            return 0;
+        },
         related: ['husband', 'wife'],
         getAvailability: available_always
     },
-    '30': {
+    'husband': {
         name: 'husband',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -390,7 +396,7 @@ let basecards = {
         maximum: 4,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: function (player, to_be_added) {
-            if (player.findCountCard(basecards['31']) <= player.findCountCard(basecards['30'])) {
+            if (player.findCountCard(basecards['wife']) <= player.findCountCard(basecards['husband'])) {
                 return 1;
             }
             return 0;
@@ -398,7 +404,7 @@ let basecards = {
         related: ['wife'],
         getAvailability: available_always
     },
-    '31': {
+    'wife': {
         name: 'wife',
         type: TYPES.prosperity,
         rarity: RARITY.common,
@@ -409,8 +415,8 @@ let basecards = {
         getOccupiedSpaces: function (player, to_be_added) {
             // Wife requires 1 space if she should be added to town and town already has
             // as many wifes as husbands
-            if (player.findCountCard(basecards['31']) > player.findCountCard(basecards['30']) || 
-                to_be_added && player.findCountCard(basecards['31']) == player.findCountCard(basecards['30'])) {
+            if (player.findCountCard(basecards['wife']) > player.findCountCard(basecards['husband']) || 
+                to_be_added && player.findCountCard(basecards['wife']) == player.findCountCard(basecards['husband'])) {
                 return 1;
             }
             return 0;
@@ -418,7 +424,7 @@ let basecards = {
         related: ['husband'],
         getAvailability: available_always
     },
-    '32': {
+    'generalstore': {
         name: 'generalstore',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -430,7 +436,7 @@ let basecards = {
         related: ['shopkeeper'],
         getAvailability: available_always
     },
-    '33': {
+    'shopkeeper': {
         name: 'shopkeeper',
         type: TYPES.governance,
         rarity: RARITY.unique,
@@ -442,7 +448,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '34': {
+    'courthouse': {
         name: 'courthouse',
         type: TYPES.governance,
         rarity: RARITY.unique,
@@ -454,7 +460,7 @@ let basecards = {
         related: ['judge'],
         getAvailability: available_always
     },
-    '35': {
+    'judge': {
         name: 'judge',
         type: TYPES.governance,
         rarity: RARITY.unique,
@@ -466,7 +472,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '36': {
+    'clocktower': {
         name: 'clocktower',
         type: TYPES.governance,
         rarity: RARITY.unique,
@@ -478,7 +484,7 @@ let basecards = {
         related: ['historian'],
         getAvailability: available_always
     },
-    '37': {
+    'historian': {
         name: 'historian',
         type: TYPES.governance,
         rarity: RARITY.unique,
@@ -490,7 +496,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '38': {
+    'crane': {
         name: 'crane',
         type: TYPES.governance,
         rarity: RARITY.unique,
@@ -502,7 +508,7 @@ let basecards = {
         related: ['architect'],
         getAvailability: available_always
     },
-    '39': {
+    'architect': {
         name: 'architect',
         type: TYPES.prosperity,
         rarity: RARITY.unique,
@@ -514,7 +520,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '40': {
+    'dungeon': {
         name: 'dungeon',
         type: TYPES.governance,
         rarity: RARITY.unique,
@@ -526,7 +532,7 @@ let basecards = {
         related: ['ranger'],
         getAvailability: available_always
     },
-    '41': {
+    'ranger': {
         name: 'ranger',
         type: TYPES.traveler,
         rarity: RARITY.unique,
@@ -538,7 +544,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '42': {
+    'evertree': {
         name: 'evertree',
         type: TYPES.prosperity,
         rarity: RARITY.unique,
@@ -550,7 +556,7 @@ let basecards = {
         related: [''],
         getAvailability: available_always
     },
-    '43': {
+    'castle': {
         name: 'castle',
         type: TYPES.prosperity,
         rarity: RARITY.unique,
@@ -562,7 +568,7 @@ let basecards = {
         related: ['king'],
         getAvailability: available_always
     },
-    '44': {
+    'king': {
         name: 'king',
         type: TYPES.prosperity,
         rarity: RARITY.unique,
@@ -574,7 +580,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '45': {
+    'palace': {
         name: 'palace',
         type: TYPES.prosperity,
         rarity: RARITY.unique,
@@ -586,7 +592,7 @@ let basecards = {
         related: ['queen'],
         getAvailability: available_always
     },
-    '46': {
+    'queen': {
         name: 'queen',
         type: TYPES.destination,
         rarity: RARITY.unique,
@@ -598,7 +604,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '47': {
+    'school': {
         name: 'school',
         type: TYPES.prosperity,
         rarity: RARITY.unique,
@@ -610,7 +616,7 @@ let basecards = {
         related: ['teacher'],
         getAvailability: available_always
     },
-    '48': {
+    'teacher': {
         name: 'teacher',
         type: TYPES.production,
         rarity: RARITY.common,
@@ -622,7 +628,7 @@ let basecards = {
         related: [],
         getAvailability: available_always
     },
-    '49': {
+    'theater': {
         name: 'theater',
         type: TYPES.prosperity,
         rarity: RARITY.unique,
@@ -634,7 +640,7 @@ let basecards = {
         related: ['bard'],
         getAvailability: available_always
     },
-    '50': {
+    'bard': {
         name: 'bard',
         type: TYPES.traveler,
         rarity: RARITY.unique,
@@ -649,7 +655,7 @@ let basecards = {
 
 
 
-    '101': {
+    'ferry': {
         name: 'ferry',
         type: TYPES.destination,
         rarity: RARITY.unique,
@@ -661,7 +667,7 @@ let basecards = {
         related: ['ferryferret'],
         getAvailability: available_pearlbrook
     },
-    '102': {
+    'ferryferret': {
         name: 'ferryferret',
         type: TYPES.production,
         rarity: RARITY.unique,
@@ -673,7 +679,7 @@ let basecards = {
         related: [],
         getAvailability: available_pearlbrook
     },
-    '103': {
+    'pirateship': {
         name: 'pirateship',
         type: TYPES.destination,
         rarity: RARITY.common,
@@ -685,7 +691,7 @@ let basecards = {
         related: ['pirate'],
         getAvailability: available_pearlbrook
     },
-    '104': {
+    'pirate': {
         name: 'pirate',
         type: TYPES.traveler,
         rarity: RARITY.common,
@@ -697,7 +703,7 @@ let basecards = {
         related: [],
         getAvailability: available_pearlbrook
     },
-    '105': {
+    'harbor': {
         name: 'harbor',
         type: TYPES.production,
         rarity: RARITY.unique,
@@ -709,7 +715,7 @@ let basecards = {
         related: ['shipwright'],
         getAvailability: available_pearlbrook
     },
-    '106': {
+    'shipwright': {
         name: 'shipwright',
         type: TYPES.prosperity,
         rarity: RARITY.unique,
@@ -721,7 +727,7 @@ let basecards = {
         related: [],
         getAvailability: available_pearlbrook
     },
-    '107': {
+    'bridge': {
         name: 'bridge',
         type: TYPES.governance,
         rarity: RARITY.unique,
@@ -733,7 +739,7 @@ let basecards = {
         related: ['messenger'],
         getAvailability: available_pearlbrook
     },
-    '108': {
+    'messenger': {
         name: 'messenger',
         type: TYPES.traveler,
         rarity: RARITY.common,
@@ -744,6 +750,303 @@ let basecards = {
         getOccupiedSpaces: space_one,
         related: [],
         getAvailability: available_pearlbrook
+    },
+
+    'baker': {
+        name: 'baker',
+        type: TYPES.prosperity,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 2,
+        getAdditionalPoints: (player) => Math.min(6, player.leftResources[RESOURCES.berry] * 2),
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'chipsmith': {
+        name: 'chipsmith',
+        type: TYPES.destination,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 1,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'conductor': {
+        name: 'conductor',
+        type: TYPES.destination,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'diplomat': {
+        name: 'diplomat',
+        type: TYPES.governance,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'gardener': {
+        name: 'gardener',
+        type: TYPES.traveler,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 1,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'inventor': {
+        name: 'inventor',
+        type: TYPES.governance,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 1,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'lamplighter': {
+        name: 'lamplighter',
+        type: TYPES.production,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 1,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'magician': {
+        name: 'magician',
+        type: TYPES.production,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'mayor': {
+        name: 'mayor',
+        type: TYPES.production,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 1,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'miller': {
+        name: 'miller',
+        type: TYPES.production,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'photographer': {
+        name: 'photographer',
+        type: TYPES.prosperity,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 2,
+        getAdditionalPoints: (player) => player.photographerChoiceCardName == null ? 0 : basecards[player.photographerChoiceCardName].getAdditionalPoints(player),
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'poet': {
+        name: 'poet',
+        type: TYPES.traveler,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 0,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'airballoon': {
+        name: 'airballoon',
+        type: TYPES.traveler,
+        rarity: RARITY.common,
+        kind: KINDS.building,
+        points: 1,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_zero,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'bank': {
+        name: 'bank',
+        type: TYPES.production,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 2,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'cityhall': {
+        name: 'cityhall',
+        type: TYPES.governance,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 2,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'everwall': {
+        name: 'everwall',
+        type: TYPES.prosperity,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 6,
+        maximum: 2,
+        getAdditionalPoints: (player) => Math.floor((player.getOccupiedSpaces() / 5 * 2)),
+        getOccupiedSpaces: space_zero,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'freightcar': {
+        name: 'freightcar',
+        type: TYPES.production,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 3,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'greenhouse': {
+        name: 'greenhouse',
+        type: TYPES.production,
+        rarity: RARITY.common,
+        kind: KINDS.building,
+        points: 2,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: function (player, to_be_added) {
+            // Greenhouse requires 1 space if she should be added to town and town already has
+            // as many greenhouses as farms
+            if (player.findCountCard(basecards['greenhouse']) > player.findCountCard(basecards['farm']) || 
+                to_be_added && player.findCountCard(basecards['greenhouse']) == player.findCountCard(basecards['farm'])) {
+                return 1;
+            }
+            return 0;
+        },
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'hotel': {
+        name: 'hotel',
+        type: TYPES.destination,
+        rarity: RARITY.common,
+        kind: KINDS.building,
+        points: 1,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'library': {
+        name: 'library',
+        type: TYPES.prosperity,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 3,
+        maximum: 2,
+        getAdditionalPoints: (player) => Object.entries(player.getTownOverview()).length,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'locomotive': {
+        name: 'locomotive',
+        type: TYPES.destination,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 3,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'mainroad': {
+        name: 'mainroad',
+        type: TYPES.traveler,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 0,
+        maximum: 4,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_zero,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'museum': {
+        name: 'museum',
+        type: TYPES.governance,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 2,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
+    },
+    'teahouse': {
+        name: 'teahouse',
+        type: TYPES.production,
+        rarity: RARITY.common,
+        kind: KINDS.building,
+        points: 1,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_newleaf
     }
 }
 
@@ -772,7 +1075,18 @@ let basicEvents = {
     "flowerfestival": {
         name: "flowerfestival",
         points: 4,
-        getAvailability: available_bellfaire
+        getAvailability: (app) => available_bellfaire(app) && available_npearlbrook(app)
+    },
+    
+    "scenicflight": {
+        name: "scenicflight",
+        points: 3,
+        getAvailability: (app) => available_newleaf(app) && available_npearlbrook(app)
+    },
+    "bigcity": {
+        name: "bigcity",
+        points: 5,
+        getAvailability: (app) => available_newleaf(app) && available_npearlbrook(app)
     }
 }
 
@@ -938,7 +1252,7 @@ let specialEvents = {
         getAvailability: available_always
     },
 
-
+    //Bellfaire
     "bednbreakfastguild": {
         name: "bednbreakfastguild",
         input: false,
@@ -1030,6 +1344,7 @@ let specialEvents = {
         getAvailability: available_bellfaire
     },
 
+    //Pearlbrook
     "romanticcruise": {
         name: "romanticcruise",
         input: false,
@@ -1089,6 +1404,98 @@ let specialEvents = {
         points: 0,
         getPoints: points_zero,
         getAvailability: available_pearlbrook
+    },
+
+    //Newleaf
+    "cityjubilee": {
+        name: "cityjubilee",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_zero,
+        getAvailability: available_newleaf
+    },
+    "everwalltower": {
+        name: "everwalltower",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_five,
+        getAvailability: available_newleaf
+    },
+    "glowlightfestival": {
+        name: "glowlightfestival",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_three,
+        getAvailability: available_newleaf
+    },
+    "hotairballoonrace": {
+        name: "hotairballoonrace",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_four,
+        getAvailability: available_newleaf
+    },
+    "dancecontest": {
+        name: "dancecontest",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_five,
+        getAvailability: available_newleaf
+    },
+    "magicshow": {
+        name: "magicshow",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_four,
+        getAvailability: available_newleaf
+    },
+    "royaltea": {
+        name: "royaltea",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_four,
+        getAvailability: available_newleaf
+    },
+    "stockmarketboom": {
+        name: "stockmarketboom",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_four,
+        getAvailability: available_newleaf
+    },
+    "sunflowerparade": {
+        name: "sunflowerparade",
+        input: false,
+        value: 0,
+        inputMax: 0,
+        inputFactor: 0,
+        points: 0,
+        getPoints: points_five,
+        getAvailability: available_newleaf
     }
 }
 
@@ -1461,6 +1868,142 @@ let discoveries = {
     }
 }
 
+let visitors = {
+    "bimlittle": {
+        name: "bimlittle",
+        getPoints: (player) => player.findCountType(TYPES.destination) >= 6 ? 7 : 0
+    },
+    "bosleytedwardson": {
+        name: "bosleytedwardson",
+        getPoints: (player) => Object.keys(TYPES).reduce((prev, val) => prev && player.findCountType(TYPES[val]) >= 2, true) ? 9 : 0
+    },
+    "butterbellsweetpaw": {
+        name: "butterbellsweetpaw",
+        getPoints: (player) => player.town.length >= 15 ? 6 : 0
+    },
+    "diggsdeepwell": {
+        name: "diggsdeepwell",
+        getPoints: (player) => player.leftResources[RESOURCES.pebble] >= 2 ? 6 : 0
+    },
+    "cillweedquicksniff": {
+        name: "cillweedquicksniff",
+        getPoints: (player) => player.findCountKind(KINDS.building) > player.findCountKind(KINDS.critter) ? 5 : 0
+    },
+    "dimdustlight": {
+        name: "dimdustlight",
+        getPoints: (player) => player.findCountRarity(RARITY.unique) >= 6 ? 5 : 0
+    },
+    "dipdibble": {
+        name: "dipdibble",
+        getPoints: (player) => player.findCountType(TYPES.destination) >= 4 ? 5 : 0
+    },
+    "dunetarrington": {
+        name: "dunetarrington",
+        getPoints: (player) => player.findCountType(TYPES.prosperity) >= 6 ? 6 : 0
+    },
+    "dwellnorthwatch": {
+        name: "dwellnorthwatch",
+        getPoints: (player) => player.findCountType(TYPES.traveler) >= 4 ? 5 : 0
+    },
+    "edvardtriptail": {
+        name: "edvardtriptail",
+        getPoints: (player) => Object.keys(TYPES).reduce((prev, val) => prev && player.findCountType(TYPES[val]) >= 1, true) ? 5 : 0
+    },
+    "frinstickly": {
+        name: "frinstickly",
+        getPoints: (player) => player.leftResources[RESOURCES.resin] >= 4 ? 6 : 0
+    },
+    "glindilfrink": {
+        name: "glindilfrink",
+        getPoints: (player) => player.findCountType(TYPES.prosperity) >= 4 ? 4 : 0
+    },
+    "iggysilverscale": {
+        name: "iggysilverscale",
+        getPoints: (player) => player.findCountType(TYPES.traveler) >= 6 ? 7 : 0
+    },
+    "mossysteptoe": {
+        name: "mossysteptoe",
+        getPoints: (player) => player.findCountType(TYPES.production) >= 5 ? 5 : 0
+    },
+    "orinnimblepaw": {
+      name: "orinnimblepaw",
+      getPoints: (player) => player.journeys.length >= 2 ? 6 : 0
+     },
+    "oscarlongtale": {
+        name: "oscarlongtale",
+        getPoints: (player) => player.findCountKind(KINDS.critter) > player.findCountKind(KINDS.building) ? 5 : 0
+    },
+    "phillgurgle": {
+        name: "phillgurgle",
+        getPoints: (player) => player.findCountType(TYPES.production) <= 2 ? 10 : 0
+    },    
+    "piffquillglow": {
+        name: "piffquillglow",
+        getPoints: (player) => player.leftResources[RESOURCES.twig] >= 5 ? 6 : 0
+    },
+    "plumshortclaw": {
+        name: "plumshortclaw",
+        getPoints: (player) => player.findCountType(TYPES.governance) >= 4 ? 5 : 0
+    }, 
+    "quinncleanwhisker": {
+        name: "quinncleanwhisker",
+        getPoints: (player) => player.findCountKind(KINDS.critter) >= 6 && player.findCountKind(KINDS.building) >= 6 ? 6 : 0
+    },
+    "reemysniggle": {
+        name: "reemysniggle",
+        getPoints: (player) => player.basicEvents.length >= 3 ? 7 : 0
+    },
+    "rivilablacus": {
+        name: "rivilablacus",
+        getPoints: (player) => player.findCountType(TYPES.governance) >= 6 ? 7 : 0
+    },
+    "rubydew": {
+        name: "rubydew",
+        getPoints: (player) => player.specialEvents.length >= 2 ? 8 : 0
+    },
+    "sarisclearwhistle": {
+        name: "sarisclearwhistle",
+        getPoints: (player) => player.findCountRarity(RARITY.common) >= 6 ? 5 : 0
+    },
+    "sirtrivleqsmarqwill": {
+        name: "sirtrivleqsmarqwill",
+        getPoints: (player) => player.leftResources[RESOURCES.twig] >= 1 && player.leftResources[RESOURCES.resin] >= 1 && player.leftResources[RESOURCES.pebble] >= 1 && player.leftResources[RESOURCES.berry] >= 1  ? 7 : 0
+    },
+    "skidshinysnout": {
+        name: "skidshinysnout",
+        getPoints: (player) => player.points >= 10 ? 5 : 0
+    },
+    "snoutpuddlehop": {
+        name: "snoutpuddlehop",
+        getPoints: (player) => player.specialEvents.length >= 1 && player.basicEvents.length >= 2 ? 8 : 0
+    },
+    "trisspeske": {
+        name: "trisspeske",
+        getPoints: (player) => {
+            let overview = player.getTownOverview();
+            return Object.keys(overview).reduce(
+                (prev, type) => prev || (type != TYPES.production && overview[type] >= 6),
+                false) ? 6 : 0;
+        }
+    },
+    "wildellfamily": {
+        name: "wildellfamily",
+        getPoints: (player) => player.findCountRarity(RARITY.common) >= 9 ? 7 : 0
+    },
+    "willowgreengrin": {
+        name: "willowgreengrin",
+        getPoints: (player) => player.findCountType(TYPES.production) >= 7 ? 7 : 0
+    },
+    "wimblewuffle": {
+        name: "wimblewuffle",
+        getPoints: (player) => player.leftResources[RESOURCES.berry] >= 3 ? 6 : 0
+    },
+    "yarabrunmayberry": {
+        name: "yarabrunmayberry",
+        getPoints: (player) => player.findCountRarity(RARITY.unique) >= 7 ? 7 : 0
+    }
+}
+
 function getCardName(card) {
     return i18next.t("card." + card.name);
 }
@@ -1477,10 +2020,14 @@ function getAdornmentName(adornment) {
     return i18next.t("adornment." + adornment.name);
 }
 
-function getExpeditionName(adornment) {
-    return i18next.t("expedition." + adornment.name);
+function getExpeditionName(expedition) {
+    return i18next.t("expedition." + expedition.name);
 }
 
-function getDiscoveryName(adornment) {
-    return i18next.t("discovery." + adornment.name);
+function getDiscoveryName(discovery) {
+    return i18next.t("discovery." + discovery.name);
+}
+
+function getVisitorName(visitor) {
+    return i18next.t("visitor." + visitor.name);
 }

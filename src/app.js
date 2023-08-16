@@ -41,6 +41,8 @@ class Application {
         this.bellfaire = false;
         this.pearlbrook = false;
         this.spirecrest = false;
+        this.mistwood = false;
+        this.newleaf = false;
 
         this.updateData();
 
@@ -55,7 +57,7 @@ class Application {
         window.onbeforeunload = function () { return 'Are you sure?' };
 
         Handlebars.registerHelper('isProsperityButNotWife', function (type, name) {
-            return type == TYPES.prosperity && name != basecards['31'].name;
+            return type == TYPES.prosperity && name != basecards['wife'].name;
         });
     }
 
@@ -70,6 +72,8 @@ class Application {
         this.bellfaire = $('#flexSwitchCheckBellfaire').is(':checked');
         this.pearlbrook = $('#flexSwitchCheckPearlbrook').is(':checked');
         this.spirecrest = $('#flexSwitchCheckSpirecrest').is(':checked');
+        this.mistwood = $('#flexSwitchCheckMistwood').is(':checked');
+        this.newleaf = $('#flexSwitchCheckNewleaf').is(':checked');
 
         this.cards = [...Object.values(basecards)].filter((card) => card.getAvailability(this));
         this.basicEvents = [...Object.values(basicEvents)].filter((event) => event.getAvailability(this));
@@ -79,6 +83,7 @@ class Application {
         this.adornments = [...Object.values(adornments)].filter((adornment) => adornment.getAvailability(this))
         this.expeditions = [...Object.values(expeditions)].filter((expedition) => expedition.getAvailability(this));
         this.discoveries = [...Object.values(discoveries)].filter((discovery) => discovery.getAvailability(this));
+        this.visitors = this.newleaf ? [...Object.values(visitors)] : [];
 
         this.reset();
         this.buildCards();
@@ -101,6 +106,8 @@ class Application {
         $('#flexSwitchCheckBellfaire').prop('checked', this.bellfaire);
         $('#flexSwitchCheckPearlbrook').prop('checked', this.pearlbrook);
         $('#flexSwitchCheckSpirecrest').prop('checked', this.spirecrest);
+        $('#flexSwitchCheckMistwood').prop('checked', this.mistwood);
+        $('#flexSwitchCheckNewleaf').prop('checked', this.newleaf);
     }
 
     btn_reset() {
@@ -131,20 +138,57 @@ class Application {
 
     addToActivePlayer(cardName) {
         let card = this.findCardByName(cardName);
-        if (card.getOccupiedSpaces(this.activePlayer, true) + this.activePlayer.getOccupiedSpaces() > 15) {
+        if (card.getOccupiedSpaces(this.activePlayer, true) + this.activePlayer.getOccupiedSpaces() > this.activePlayer.getMaxSpace()) {
             $("#alert-cardlimit").fadeTo(3000, 500).slideUp(500, function () {
                 $("#alert-cardlimit").slideUp(500);
             });
         } else {
             this.vibrate(50);
+
             this.activePlayer.addTown(card);
             this.setCardDisable(card);
+
+            //Special handling photographer
+            if(card == basecards['photographer']){
+                let prosperitiesInOtherTowns = new Set();
+                for (let player of this.players) {
+                    if (player == this.activePlayer)
+                        continue;
+                    player.town.filter((card) => card.type == TYPES.prosperity).forEach(prosperitiesInOtherTowns.add, prosperitiesInOtherTowns);
+                }
+                // If any other has also photographer, add cards of own town as well
+                if(prosperitiesInOtherTowns.has(basecards['photographer'])){
+                    this.activePlayer.town.filter((card) => card.type == TYPES.prosperity).forEach(prosperitiesInOtherTowns.add, prosperitiesInOtherTowns);
+                }
+                prosperitiesInOtherTowns.delete(basecards['photographer']);
+
+                let template = Handlebars.compile($("#photographer-template").html());
+                let cards = [];
+                for(const card of prosperitiesInOtherTowns.values()){
+                    cards.push({name: card.name, points: card.getAdditionalPoints(this.activePlayer)});
+                }
+
+                let html = template({
+                    cards: cards,
+                }, {
+                    allowProtoMethodsByDefault: true
+                });
+                $('#photographer_modal_body').html(html).localize();
+                $('#photographer_modal').modal('show');
+            }
+
             if (this.activeAward) {
                 this.calculateAward();
                 this.players.forEach((player) => player.showPlayer());
                 this.activePlayer.showPlayer();
             }
         }
+    }
+
+    chooseEffectCopy(cardname){
+        $('#photographer_modal').modal('hide');
+        this.activePlayer.photographerChoiceCardName = cardname;
+        this.activePlayer.showPlayer();
     }
 
     removeFromActivePlayer(cardIndex) {
@@ -257,6 +301,18 @@ class Application {
         let discoveryName = this.activePlayer.removeDiscovery(discoveryIndex);
         $("#discovery_" + discoveryName).removeClass("disabled");
     }
+    
+    addVisitorToActivePlayer(visitorName) {
+        this.activePlayer.visitors.push(visitors[visitorName]);
+        this.vibrate(50);
+        $("#visitor_" + visitorName).addClass("disabled");
+        this.activePlayer.showPlayer();
+    }
+
+    removeVisitorFromActivePlayer(visitorIndex) {
+        let visitorName = this.activePlayer.removeVisitor(visitorIndex);
+        $("#visitor_" + visitorName).removeClass("disabled");
+    }
 
     chooseAward(awardName) {
         if (this.activeAward)
@@ -335,6 +391,7 @@ class Application {
         this.adornments.sort((a, b) => { return getAdornmentName(a).localeCompare(getAdornmentName(b)); });
         this.expeditions.sort((a, b) => { return getExpeditionName(a).localeCompare(getExpeditionName(b)); });
         this.discoveries.sort((a, b) => { return getDiscoveryName(a).localeCompare(getDiscoveryName(b)); });
+        this.visitors.sort((a, b) => { return getVisitorName(a).localeCompare(getVisitorName(b)); });
 
         let html = template({
             suits: suits,
@@ -345,7 +402,8 @@ class Application {
             wonders: this.wonders,
             adornments: this.adornments,
             expeditions: this.expeditions,
-            discoveries: this.discoveries
+            discoveries: this.discoveries,
+            visitors: this.visitors
         }, {
             allowProtoMethodsByDefault: true
         });

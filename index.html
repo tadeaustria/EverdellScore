@@ -155,7 +155,7 @@
         <div class="card">
             <div class="card-header" role="tab" id="expeditions-header" data-bs-toggle="collapse" data-bs-target="#expeditions"
                 data-bs-parent="#cards" href="#expeditions" aria-expanded="false" aria-controls="expeditions">
-                <img src="img/expeditions.png" width="48" height="48"><a data-i18n="gen.expeditions"></a>
+                <img src="img/expeditions.png" width="32" height="32"><a data-i18n="gen.expeditions"></a>
             </div>
             <div id="expeditions" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="expeditions-header">
                 <ul class="list-group">
@@ -171,13 +171,29 @@
         <div class="card">
             <div class="card-header" role="tab" id="discoveries-header" data-bs-toggle="collapse" data-bs-target="#discoveries"
                 data-bs-parent="#cards" href="#discoveries" aria-expanded="false" aria-controls="discoveries">
-                <img src="img/discoveries.png" width="48" height="48"><a data-i18n="gen.discoveries"></a>
+                <img src="img/discoveries.png" width="32" height="32"><a data-i18n="gen.discoveries"></a>
             </div>
             <div id="discoveries" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="discoveries-header">
                 <ul class="list-group">
                     {{#each discoveries}}
                     <li id="discovery_{{name}}" class="list-group-item" onclick="app.addDiscoveryToActivePlayer('{{name}}')"
                         data-i18n="discovery.{{name}}"></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        {{/if}}
+        {{#if visitors}}
+        <div class="card">
+            <div class="card-header" role="tab" id="visitors-header" data-bs-toggle="collapse" data-bs-target="#visitors"
+                data-bs-parent="#cards" href="#visitors" aria-expanded="false" aria-controls="visitors">
+                <img src="img/visitors.png" width="32" height="42"><a data-i18n="gen.visitors"></a>
+            </div>
+            <div id="visitors" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="visitors-header">
+                <ul class="list-group">
+                    {{#each visitors}}
+                    <li id="visitor_{{name}}" class="list-group-item" onclick="app.addVisitorToActivePlayer('{{name}}')"
+                        data-i18n="visitor.{{name}}"></li>
                     {{/each}}
                 </ul>
             </div>
@@ -202,7 +218,7 @@
         <script id="player-template" type="text/x-handlebars-template">
             <div id="hand-info">
                 <span class="progress">
-                    <div class="progress-bar bg-warning text-dark" style="width: {{cardCountPerc}}%" role="progressbar" aria-valuenow="{{cardCount}}" aria-valuemin="0" aria-valuemax="15">{{cardCount}}/15</div>
+                    <div class="progress-bar bg-warning text-dark" style="width: {{cardCountPerc}}%" role="progressbar" aria-valuenow="{{cardCount}}" aria-valuemin="0" aria-valuemax="{{cardMax}}">{{cardCount}}/{{cardMax}}</div>
                 </span>
             </div>
             <div class="d-flex flex-wrap">
@@ -210,7 +226,8 @@
                 {{#each cards}}
                 <div class="playercard card p-2 {{type}}" role="tab" onclick="app.removeFromActivePlayer('{{@index}}')">
                     <div class="d-flex">
-                        <div class="flex-grow-1" data-i18n="card.{{name}}"></div>
+                        <div class="flex-grow-1" data-i18n="card.{{name}}" data-i18n-options='{ "card": "{{../photographerCardName}}" }'></div>
+                        <img src="img/{{kind}}.png" height="20px">
                         <span class="badge text-bg-warning">{{points}}</span>
                         {{#if (isProsperityButNotWife type name)}}
                         <div>+</div><span class="badge text-bg-warning">{{addPoints}}</span>
@@ -295,6 +312,17 @@
                 </div>
                 {{/each}}
                 {{/if}}
+                {{#if visitors}}
+                <h3 data-i18n="gen.visitors" class="w-100"></h3>
+                {{#each visitors}}
+                <div class="playercard card p-2" role="tab" onclick="app.removeVisitorFromActivePlayer('{{@index}}')">
+                    <div class="d-flex">
+                        <div class="flex-grow-1" data-i18n="visitor.{{name}}"></div>
+                        <span class="badge text-bg-warning">{{points}}</span>
+                    </div>
+                </div>
+                {{/each}}
+                {{/if}}
             </div>
             {{#if journeys}}
             <h3 data-i18n="gen.journey" class="w-100"></h3>
@@ -322,6 +350,16 @@
                     <span id="value_badge_{{@key}}" class="badge text-bg-light">0</span>
                 </div>
                 <input id="value_{{@key}}" type="range" class="form-range" min="0" value="0" max="6" oninput="app.setResource('{{@key}}')">
+            </div>
+            {{/each}}
+        </script>
+        <script id="photographer-template" type="text/x-handlebars-template">
+            {{#each cards}}
+            <div class="playercard card p-2 prosperity" role="tab" onclick="app.chooseEffectCopy('{{name}}')">
+                <div class="d-flex">
+                    <div class="flex-grow-1" data-i18n="card.{{name}}">{{name}}</div>
+                    <span class="badge text-bg-warning">{{points}}</span>
+                </div>
             </div>
             {{/each}}
         </script>
@@ -356,7 +394,7 @@
                             </div>
                             <div class="form-check form-switch" onchange="app.updateExpansions()">
                                 <label class="form-check-label" for="flexSwitchCheckNewleaf" data-i18n="expansion.newleaf">Newleaf</label>
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckNewleaf" disabled>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckNewleaf">
                             </div>
                         </ul>
                     </div>
@@ -418,7 +456,7 @@
                     <div class="card">
                         <p for="value_points" id="value_points_badge"
                             class="form-label badge text-bg-warning">0</p>
-                        <input id="value_points" type="range" class="form-range" min="0" value="0" max="30"
+                        <input id="value_points" type="range" class="form-range" min="0" value="0" max="50"
                             oninput="app.setActivePlayerPoints()">
                     </div>
                 </div>
@@ -441,6 +479,19 @@
               </div>
             </div>
           </div>
+          
+        <div id="photographer_modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 id="photographer_modal_title" class="modal-title" data-i18n="text.photographer_modal_title"></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="photographer_modal_body" class="modal-body">
+                </div>
+              </div>
+            </div>
+          </div>
     </main>
     <footer>
         <div id="developmentlink">
@@ -450,7 +501,7 @@
         <!-- <div id="legal-text">
         </div> -->
         <div id="version">
-            <p>v1.3.4 (Upcoming Newleaf support with v1.4.0)</p>
+            <p>v1.4.0</p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
