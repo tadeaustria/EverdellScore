@@ -17,7 +17,7 @@ Cookies for storing the chosen language.
   * [X] Spirecrest
 * [ ] 2 Upcoming expansions
   * [ ] Mistwood
-  * [ ] Newleaf
+  * [X] Newleaf
 * [ ] QoL
   * [ ] Statistics
   * [ ] Export results
@@ -25,7 +25,19 @@ Cookies for storing the chosen language.
 
 # Updates
 
-## Version 1.3.4
+## Version 1.4.0
+* General
+  * Increased additional points to 50. (30 was not enough for Newleaf)
+  * Added kind icons to cards in town
+* Bellfaire
+  * Hide basic events if Pearlbrook is active
+* Newleaf
+  * New town cards
+  * New basic events
+  * New special events
+  * Visitors
+
+### Version 1.3.4
 * General
   * Spanish support for base game. Thanks to Camilo.
   * Added warnings when data could be lost. Leave page, reset or expansion activation.
