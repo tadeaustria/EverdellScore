@@ -15,7 +15,8 @@ Object.freeze(KINDS);
 
 const RARITY = {
     common: 0,
-    unique: 1
+    unique: 1,
+    legendary: 2
 }
 Object.freeze(RARITY)
 
@@ -45,6 +46,7 @@ function available_pearlbrook(app) { return app.pearlbrook; }
 function available_npearlbrook(app) { return !app.pearlbrook; }
 function available_spirecrest(app) { return app.spirecrest; }
 function available_newleaf(app) { return app.newleaf; }
+function available_mistwood(app) { return app.mistwood; }
 
 const RESOURCES = {
     twig: 'twig',
@@ -379,13 +381,26 @@ let basecards = {
         maximum: 8,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: function (player, to_be_added) {
-            if (player.findCountCard(basecards['greenhouse']) <= player.findCountCard(basecards['farm'])) {
+            if (player.findCountCard(basecards['greenhouse']) <= player.findCountCard(basecards['farm']) && 
+                player.playerpowername != 'pigs') {
                 return 1;
             }
             return 0;
         },
         related: ['husband', 'wife'],
         getAvailability: available_always
+    },
+    'farmnospace': {
+        name: 'farmnospace',
+        type: TYPES.production,
+        rarity: RARITY.common,
+        kind: KINDS.building,
+        points: 1,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_zero,
+        related: ['husband', 'wife'],
+        getAvailability: available_mistwood
     },
     'husband': {
         name: 'husband',
@@ -415,8 +430,8 @@ let basecards = {
         getOccupiedSpaces: function (player, to_be_added) {
             // Wife requires 1 space if she should be added to town and town already has
             // as many wifes as husbands
-            if (player.findCountCard(basecards['wife']) > player.findCountCard(basecards['husband']) || 
-                to_be_added && player.findCountCard(basecards['wife']) == player.findCountCard(basecards['husband'])) {
+            if (player.findCountHusbandMatches() > player.findCountCard(basecards['husband']) ||
+                to_be_added && player.findCountHusbandMatches() == player.findCountCard(basecards['husband'])) {
                 return 1;
             }
             return 0;
@@ -722,7 +737,7 @@ let basecards = {
         kind: KINDS.critter,
         points: 2,
         maximum: 2,
-        getAdditionalPoints: (player)=> player.findCountFct((card)=>card.getAvailability==available_pearlbrook),
+        getAdditionalPoints: (player) => player.findCountFct((card) => card.getAvailability == available_pearlbrook),
         getOccupiedSpaces: space_one,
         related: [],
         getAvailability: available_pearlbrook
@@ -968,7 +983,8 @@ let basecards = {
             // Greenhouse requires 1 space if she should be added to town and town already has
             // as many greenhouses as farms
             if (player.findCountCard(basecards['greenhouse']) > player.findCountCard(basecards['farm']) || 
-                to_be_added && player.findCountCard(basecards['greenhouse']) == player.findCountCard(basecards['farm'])) {
+                to_be_added && player.findCountCard(basecards['greenhouse']) == player.findCountCard(basecards['farm']) ||
+                player.playerpowername == 'pigs' ) {
                 return 1;
             }
             return 0;
@@ -1047,6 +1063,198 @@ let basecards = {
         getOccupiedSpaces: space_one,
         related: [],
         getAvailability: available_newleaf
+    },
+
+    'corrinspath': {
+        name: 'corrinspath',
+        type: TYPES.destination,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 0,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_zero,
+        related: [],
+        getAvailability: available_mistwood
+    },
+    'corrinsfield': {
+        name: 'corrinsfield',
+        type: TYPES.production,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 1,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_mistwood
+    },
+    'corrintheleader': {
+        name: 'corrintheleader',
+        type: TYPES.governance,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 1,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_mistwood
+    },
+    'corrintheking': {
+        name: 'corrintheking',
+        type: TYPES.prosperity,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: 
+            // Prosperity cards in other towns
+            (player) => player.getOtherPlayers().reduce((prev, pl) => prev + pl.findCountType(TYPES.prosperity), 0),
+        getOccupiedSpaces: space_one,
+        related: [],
+        getAvailability: available_mistwood
+    },
+    'corrinthewarrior': {
+        name: 'corrinthewarrior',
+        type: TYPES.traveler,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 1,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_zero,
+        related: [],
+        getAvailability: available_mistwood
+    },
+
+    'chipterswipple': {
+        name: 'chipterswipple',
+        type: TYPES.production,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ['chipsweep'],
+        getAvailability: available_mistwood
+    },
+    'clickclacks': {
+        name: 'clickclacks',
+        type: TYPES.production,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ['shopkeeper', 'generalstore'],
+        getAvailability: available_mistwood
+    },
+    'darkdeepprison': {
+        name: 'darkdeepprison',
+        type: TYPES.traveler,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 3,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ['dungeon', 'ranger'],
+        getAvailability: available_mistwood
+    },
+    'everflametomb': {
+        name: 'everflametomb',
+        type: TYPES.destination,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 2,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ['cemetery', 'undertaker'],
+        getAvailability: available_mistwood
+    },
+    'jorgoldwing': {
+        name: 'jorgoldwing',
+        type: TYPES.traveler,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ['bard'],
+        getAvailability: available_mistwood
+    },
+    'kingnorthstreasury': {
+        name: 'kingnorthstreasury',
+        type: TYPES.governance,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ['clocktower', 'historian'],
+        getAvailability: available_mistwood
+    },
+    'mayberrymatriarch': {
+        name: 'mayberrymatriarch',
+        type: TYPES.prosperity,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 5,
+        maximum: 1,
+        getAdditionalPoints: (player) => player.findCountCard(basecards['husband']) >= 1 && player.findCountCard(basecards['farm']) >= 1 ? 5 : 0,
+        getOccupiedSpaces: function (player, to_be_added) {
+            // Wife requires 1 space if she should be added to town and town already has
+            // as many wifes as husbands
+            if (player.findCountHusbandMatches() > player.findCountCard(basecards['husband']) ||
+                to_be_added && player.findCountHusbandMatches() == player.findCountCard(basecards['husband'])) {
+                return 1;
+            }
+            return 0;
+        },
+        related: ['wife', 'husband'],
+        getAvailability: available_mistwood
+    },
+    'strongrootcastle': {
+        name: 'strongrootcastle',
+        type: TYPES.prosperity,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: (player) => player.findCountRarityKind(RARITY.common, KINDS.building) * 2,
+        getOccupiedSpaces: space_one,
+        related: ['castle', 'king'],
+        getAvailability: available_mistwood
+    },
+    'streysamt': {
+        name: 'streysamt',
+        type: TYPES.production,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ['ranger'],
+        getAvailability: available_mistwood
+    },
+    'terryhare': {
+        name: 'terryhare',
+        type: TYPES.governance,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ['shopkeeper'],
+        getAvailability: available_mistwood
     }
 }
 
@@ -1771,37 +1979,37 @@ let expeditions = {
 let discoveries = {
     "greensprouttrail": {
         name: "greensprouttrail",
-        getPoints:  (player) => (player.findCountType(TYPES.production) >= 4 ) ? 4 : 0,
+        getPoints: (player) => (player.findCountType(TYPES.production) >= 4) ? 4 : 0,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest
     },
     "mistrisetrail": {
         name: "mistrisetrail",
-        getPoints: (player) => (player.findCountType(TYPES.traveler) >= 3 ) ? 4 : 0 ,
+        getPoints: (player) => (player.findCountType(TYPES.traveler) >= 3) ? 4 : 0,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest 
     },
     "everblossomtrail": {
         name: "everblossomtrail",
-        getPoints: (player) => (player.findCountType(TYPES.prosperity) >= 3 ) ? 4 : 0 ,
+        getPoints: (player) => (player.findCountType(TYPES.prosperity) >= 3) ? 4 : 0,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest 
     },
     "sunblazetrail": {
         name: "sunblazetrail",
-        getPoints: (player) => (player.findCountType(TYPES.destination) >= 3 ) ? 4 : 0,
+        getPoints: (player) => (player.findCountType(TYPES.destination) >= 3) ? 4 : 0,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest  
     },
     "starfalltrail": {
         name: "starfalltrail",
-        getPoints: (player) => (player.findCountType(TYPES.governance) >= 3 ) ? 4 : 0 ,
+        getPoints: (player) => (player.findCountType(TYPES.governance) >= 3) ? 4 : 0,
         type: DISCOVERYTYPES.foothills,
         getAvailability: available_spirecrest 
     },
     "bellsongtrail": {
         name: "bellsongtrail",
-        getPoints: (player) => (player.expeditions.length >= 3 ) ? 4 : 0 ,
+        getPoints: (player) => (player.expeditions.length >= 3) ? 4 : 0,
         type: DISCOVERYTYPES.peaks,
         getAvailability: available_spirecrest
     },
@@ -1814,7 +2022,7 @@ let discoveries = {
     }, 
     "greensproutcity": {
         name: "greensproutcity",
-        getPoints: (player) => 6 - Math.trunc(player.findCountType(TYPES.production) / 2 ),
+        getPoints: (player) => 6 - Math.trunc(player.findCountType(TYPES.production) / 2),
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     },
@@ -1862,7 +2070,7 @@ let discoveries = {
     },
     "distantshore": {
         name: "distantshore",
-        getPoints: (player) => (player.expeditions.length >= 3 ) ? 7 : 0,
+        getPoints: (player) => (player.expeditions.length >= 3) ? 7 : 0,
         type: DISCOVERYTYPES.ridge,
         getAvailability: available_spirecrest
     }
@@ -1967,7 +2175,7 @@ let visitors = {
     },
     "sirtrivleqsmarqwill": {
         name: "sirtrivleqsmarqwill",
-        getPoints: (player) => player.leftResources[RESOURCES.twig] >= 1 && player.leftResources[RESOURCES.resin] >= 1 && player.leftResources[RESOURCES.pebble] >= 1 && player.leftResources[RESOURCES.berry] >= 1  ? 7 : 0
+        getPoints: (player) => player.leftResources[RESOURCES.twig] >= 1 && player.leftResources[RESOURCES.resin] >= 1 && player.leftResources[RESOURCES.pebble] >= 1 && player.leftResources[RESOURCES.berry] >= 1 ? 7 : 0
     },
     "skidshinysnout": {
         name: "skidshinysnout",
@@ -2004,6 +2212,13 @@ let visitors = {
     }
 }
 
+let playerpowers = {
+    'pigs' : {
+        name: 'pigs',
+        getAvailability: available_mistwood
+    },
+}
+
 function getCardName(card) {
     return i18next.t("card." + card.name);
 }
@@ -2030,4 +2245,8 @@ function getDiscoveryName(discovery) {
 
 function getVisitorName(visitor) {
     return i18next.t("visitor." + visitor.name);
+}
+
+function getPlayerpowerName(playerpower) {
+    return i18next.t("playerpower." + playerpower.name);
 }

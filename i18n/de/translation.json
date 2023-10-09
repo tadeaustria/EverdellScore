@@ -23,7 +23,8 @@
         "adornments": "Artefakte",
         "expeditions": "Expeditionen",
         "discoveries": "Entdeckungen",
-        "visitors": "Gäste"
+        "visitors": "Gäste",
+        "playerpower": "Fähigkeit"
     },
     "res": {
         "twig": "Holz",
@@ -122,7 +123,24 @@
         "locomotive": "Lokomotive",
         "mainroad": "Hauptstraße",
         "museum": "Museum",
-        "teahouse": "Teestube"
+        "teahouse": "Teestube",
+
+        "farmnospace": "Sommerfarm (ohne Platz)",
+        "corrintheleader": "Corrin der Anführer",
+        "corrintheking": "Corrin der König",
+        "corrinthewarrior": "Corrin der Krieger",
+        "corrinsfield": "Corrins Feld",
+        "corrinspath": "Corrins Pfad",
+        "jorgoldwing": "Jor Goldflügel",
+        "streysamt": "Strey Samtpfote",
+        "terryhare": "Max Mümmelmann",
+        "mayberrymatriarch": "Mama Maibeere",
+        "chipterswipple": "Hammerhörnchen",
+        "clickclacks": "Klick-Klacks",
+        "darkdeepprison": "Abgrundtief-Verlies",
+        "everflametomb": "Grab der Immerflamme",
+        "kingnorthstreasury": "König Norths Schatzkammer",
+        "strongrootcastle": "Schloss Starkwurz"
     },
     "event": {
         "grandtour": "Die große Fahrt",
@@ -287,7 +305,9 @@
         "wimblewuffle": "Willibald Wuffel",
         "yarabrunmayberry": "Yara & Brun Maibeere"
     },
-
+    "playerpower":{
+        "pigs": "Schweine"
+    },
     "text": {
         "cardlimit": "Kartenlimit der Stadt erreicht",
         "adornmentlimit": "Kartenlimit der Artefakte erreicht",

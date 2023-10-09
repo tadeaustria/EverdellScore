@@ -63,7 +63,7 @@ class Application {
 
     updateExpansions() {
         if (this.hasData())
-            this.show_modal(i18next.t("text.data_loss_header"), i18next.t("text.expansion_content"), this.updateData, this.reset_expansions_ui );
+            this.show_modal(i18next.t("text.data_loss_header"), i18next.t("text.expansion_content"), this.updateData, this.reset_expansions_ui);
         else
             this.updateData();
     }
@@ -84,6 +84,7 @@ class Application {
         this.expeditions = [...Object.values(expeditions)].filter((expedition) => expedition.getAvailability(this));
         this.discoveries = [...Object.values(discoveries)].filter((discovery) => discovery.getAvailability(this));
         this.visitors = this.newleaf ? [...Object.values(visitors)] : [];
+        this.playerpowers = [...Object.values(playerpowers)].filter((playerpower) => playerpower.getAvailability(this));
 
         this.reset();
         this.buildCards();
@@ -102,7 +103,7 @@ class Application {
     }
 
     // Sets switches in UI to stored values
-    reset_expansions_ui(){
+    reset_expansions_ui() {
         $('#flexSwitchCheckBellfaire').prop('checked', this.bellfaire);
         $('#flexSwitchCheckPearlbrook').prop('checked', this.pearlbrook);
         $('#flexSwitchCheckSpirecrest').prop('checked', this.spirecrest);
@@ -149,7 +150,7 @@ class Application {
             this.setCardDisable(card);
 
             //Special handling photographer
-            if(card == basecards['photographer']){
+            if (card == basecards['photographer']) {
                 let prosperitiesInOtherTowns = new Set();
                 for (let player of this.players) {
                     if (player == this.activePlayer)
@@ -157,15 +158,15 @@ class Application {
                     player.town.filter((card) => card.type == TYPES.prosperity).forEach(prosperitiesInOtherTowns.add, prosperitiesInOtherTowns);
                 }
                 // If any other has also photographer, add cards of own town as well
-                if(prosperitiesInOtherTowns.has(basecards['photographer'])){
+                if (prosperitiesInOtherTowns.has(basecards['photographer'])) {
                     this.activePlayer.town.filter((card) => card.type == TYPES.prosperity).forEach(prosperitiesInOtherTowns.add, prosperitiesInOtherTowns);
                 }
                 prosperitiesInOtherTowns.delete(basecards['photographer']);
 
                 let template = Handlebars.compile($("#photographer-template").html());
                 let cards = [];
-                for(const card of prosperitiesInOtherTowns.values()){
-                    cards.push({name: card.name, points: card.getAdditionalPoints(this.activePlayer)});
+                for (const card of prosperitiesInOtherTowns.values()) {
+                    cards.push({ name: card.name, points: card.getAdditionalPoints(this.activePlayer) });
                 }
 
                 let html = template({
@@ -180,12 +181,14 @@ class Application {
             if (this.activeAward) {
                 this.calculateAward();
                 this.players.forEach((player) => player.showPlayer());
+            } else if (this.mistwood) {
+                this.players.forEach((player) => player.showPlayer());
                 this.activePlayer.showPlayer();
             }
         }
     }
 
-    chooseEffectCopy(cardname){
+    chooseEffectCopy(cardname) {
         $('#photographer_modal').modal('hide');
         this.activePlayer.photographerChoiceCardName = cardname;
         this.activePlayer.showPlayer();
@@ -301,7 +304,7 @@ class Application {
         let discoveryName = this.activePlayer.removeDiscovery(discoveryIndex);
         $("#discovery_" + discoveryName).removeClass("disabled");
     }
-    
+
     addVisitorToActivePlayer(visitorName) {
         this.activePlayer.visitors.push(visitors[visitorName]);
         this.vibrate(50);
@@ -331,6 +334,18 @@ class Application {
             player.garlandAchievemenPoints = 0;
             player.showPlayer();
         });
+    }
+
+    setPlayerpowerToActivePlayer(playerpowername){
+        this.activePlayer.playerpowername = playerpowername;
+        $("#playerpower_" + playerpowername).addClass("disabled");
+        this.activePlayer.showPlayer();
+    }
+    
+    removePlayerpowerFromActivePlayer(){
+        $("#playerpower_" + this.activePlayer.playerpowername).removeClass("disabled");
+        this.activePlayer.playerpowername = null;
+        this.activePlayer.showPlayer();
     }
 
     calculateAward() {
@@ -392,6 +407,7 @@ class Application {
         this.expeditions.sort((a, b) => { return getExpeditionName(a).localeCompare(getExpeditionName(b)); });
         this.discoveries.sort((a, b) => { return getDiscoveryName(a).localeCompare(getDiscoveryName(b)); });
         this.visitors.sort((a, b) => { return getVisitorName(a).localeCompare(getVisitorName(b)); });
+        this.playerpowers.sort((a, b) => { return getPlayerpowerName(a).localeCompare(getPlayerpowerName(b)); });
 
         let html = template({
             suits: suits,
@@ -403,7 +419,8 @@ class Application {
             adornments: this.adornments,
             expeditions: this.expeditions,
             discoveries: this.discoveries,
-            visitors: this.visitors
+            visitors: this.visitors,
+            playerpowers: this.playerpowers
         }, {
             allowProtoMethodsByDefault: true
         });

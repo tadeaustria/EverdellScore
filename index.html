@@ -73,6 +73,21 @@
                 </ul>
             </div>
         {{/if}}
+        {{#if playerpowers}}
+        <div class="card">
+            <div class="card-header" role="tab" id="playerpower-header" data-bs-toggle="collapse" data-bs-target="#playerpower"
+                data-bs-parent="#cards" href="#playerpower" aria-expanded="false" aria-controls="playerpower">
+                <img src="img/playerpower.png" width="32" height="32"><a data-i18n="gen.playerpower"></a>
+            </div>
+            <div id="playerpower" class="collapse" role="tabpanel" data-bs-parent="#cards" aria-labelledby="playerpower-header">
+                <ul class="list-group">
+                    {{#each playerpowers}}
+                    <li id="playerpower_{{name}}" class="list-group-item" onclick="app.setPlayerpowerToActivePlayer('{{name}}')"
+                        data-i18n="playerpower.{{name}}"></li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
         {{#each suits}}
         <div class="card">
             <div class="card-header" role="tab" id="{{@key}}-header" data-bs-toggle="collapse" data-bs-target="#{{@key}}"
@@ -222,6 +237,14 @@
                 </span>
             </div>
             <div class="d-flex flex-wrap">
+                {{#if playerpower}}
+                <h3 data-i18n="gen.playerpower" class="w-100"></h3>
+                <div class="playercard card w-100 p-2" role="tab" onclick="app.removePlayerpowerFromActivePlayer()">
+                    <div class="d-flex">
+                        <div class="flex-grow-1" data-i18n="playerpower.{{playerpower}}"></div>
+                    </div>
+                </div>
+                {{/if}}
                 <h3 data-i18n="gen.town" class="w-100"></h3>
                 {{#each cards}}
                 <div class="playercard card p-2 {{type}}" role="tab" onclick="app.removeFromActivePlayer('{{@index}}')">
@@ -390,7 +413,7 @@
                             </div>
                             <div class="form-check form-switch" onchange="app.updateExpansions()">
                                 <label class="form-check-label" for="flexSwitchCheckMistwood" data-i18n="expansion.mistwood">Mistwood</label>
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckMistwood" disabled>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckMistwood">
                             </div>
                             <div class="form-check form-switch" onchange="app.updateExpansions()">
                                 <label class="form-check-label" for="flexSwitchCheckNewleaf" data-i18n="expansion.newleaf">Newleaf</label>

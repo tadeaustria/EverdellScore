@@ -23,6 +23,8 @@ class Player {
     visitors = [];
     photographerChoiceCardName = null;
 
+    playerpowername = null;
+
     divName;
     #app;
 
@@ -33,9 +35,9 @@ class Player {
         Object.values(RESOURCES).forEach((val) => this.leftResources[val] = 0);
     }
 
-    getMaxSpace(){
-        //Unique main road extends the city by one space
-        return 15 + this.findCountCard(basecards['mainroad']);
+    getMaxSpace() {
+        //Unique main road extends the city by one space and each legendary card extends the city
+        return 15 + this.findCountCard(basecards['mainroad']) + this.findCountRarity(RARITY.legendary);
     }
 
     getOccupiedSpaces() {
@@ -53,8 +55,12 @@ class Player {
         return dict;
     }
 
+    getOtherPlayers(){    
+        return this.#app.players.filter((p) => p != this);
+    }
+
     compareByTypeAndLexicographically(cardA, cardB) {
-        if (cardA.type == cardB.type){
+        if (cardA.type == cardB.type) {
             return getCardName(cardA).localeCompare(getCardName(cardB));
         }
         let typeOrder = Object.keys(TYPES);
@@ -67,13 +73,13 @@ class Player {
         this.showPlayer();
     }
 
-    resortTown(){
+    resortTown() {
         this.town.sort(this.compareByTypeAndLexicographically);
     }
 
     removeTown(cardIndex) {
         let card = this.town.splice(cardIndex, 1)[0];
-        if(card.name == 'photographer')
+        if (card.name == 'photographer')
             this.photographerChoiceCardName = null;
         this.showPlayer();
         return card;
@@ -106,7 +112,7 @@ class Player {
         this.showPlayer();
         return value;
     }
-    
+
     removeWonder(wonderIndex) {
         let wonder = this.wonders.splice(wonderIndex, 1)[0];
         this.showPlayer();
@@ -118,13 +124,13 @@ class Player {
         this.showPlayer();
         return adornment.name;
     }
-    
+
     removeExpedition(expeditionIndex) {
         let expedition = this.expeditions.splice(expeditionIndex, 1)[0];
         this.showPlayer();
         return expedition.name;
     }
-    
+
     removeDiscovery(discoveryIndex) {
         let discovery = this.discoveries.splice(discoveryIndex, 1)[0];
         this.showPlayer();
@@ -161,23 +167,27 @@ class Player {
         return this.findCountFct((card) => { return card.name == cardToFind.name; });
     }
 
+    findCountHusbandMatches() {
+        return this.getWifeCount4AdditionalPoints() + this.findCountCard(basecards['mayberrymatriarch']);
+    }
+
     hasData() {
         return this.town.length > 0 ||
             this.basicEvents.length > 0 ||
-            this.specialEvents.length > 0 || 
-            this.journeys.length > 0 || 
-            this.wonders.length > 0 || 
-            this.adornments.length > 0 || 
-            this.expeditions.length > 0 || 
+            this.specialEvents.length > 0 ||
+            this.journeys.length > 0 ||
+            this.wonders.length > 0 ||
+            this.adornments.length > 0 ||
+            this.expeditions.length > 0 ||
             this.discoveries.length > 0 ||
             this.visitors.length > 0 ||
-            this.points > 0 || 
+            this.points > 0 ||
             Object.values(this.leftResources).reduce((prev, val) => prev || val > 0, false);
     }
 
-    getWifeCount(){
+    getWifeCount4AdditionalPoints() {
         let base = this.findCountCard(basecards['wife']);
-        if(this.photographerChoiceCardName == 'wife'){
+        if (this.photographerChoiceCardName == 'wife') {
             base++;
         }
         return base;
@@ -185,7 +195,8 @@ class Player {
 
     //minimal count of wife or husband is number of pairs
     getWifeHusbandPairs() {
-        return Math.min(this.findCountCard(basecards['husband']), this.getWifeCount());
+        // reduce husbands, if mayberrymatriarch is active, she always needs at least one husband
+        return Math.min(Math.max(this.findCountCard(basecards['husband']) - this.findCountCard(basecards['mayberrymatriarch']), 0), this.getWifeCount4AdditionalPoints());
     }
 
     getWifeAdditionalPoints() {
@@ -211,14 +222,14 @@ class Player {
         return this.town.includes(basecards['architect']) ||
             this.adornments.includes(adornments["scales"]) ||
             this.photographerChoiceCardName == 'architect' ||
-            this.visitors.includes(visitors['diggsdeepwell']) || 
-            this.visitors.includes(visitors['frinstickly']) || 
-            this.visitors.includes(visitors['piffquillglow']) || 
-            this.visitors.includes(visitors['sirtrivleqsmarqwill']) || 
+            this.visitors.includes(visitors['diggsdeepwell']) ||
+            this.visitors.includes(visitors['frinstickly']) ||
+            this.visitors.includes(visitors['piffquillglow']) ||
+            this.visitors.includes(visitors['sirtrivleqsmarqwill']) ||
             this.visitors.includes(visitors['wimblewuffle']);
     }
 
-    updateLeftOvers(){
+    updateLeftOvers() {
         Object.keys(this.leftResources).forEach((key) => {
             $("#value_" + key).val(this.leftResources[key]);
             $("#value_badge_" + key).html(this.leftResources[key]);
@@ -226,12 +237,12 @@ class Player {
         this.showLeftOvers();
     }
 
-    showLeftOvers(){
-        if (this.#app.pearlbrook){
+    showLeftOvers() {
+        if (this.#app.pearlbrook) {
             $("#leftOverArea").show();
             $("#area_pearl").show();
             $("#area_card").show();
-        }else{
+        } else {
             $("#area_pearl").hide();
             $("#area_card").hide();
             if (this.areLeftoversRequired())
@@ -265,11 +276,12 @@ class Player {
             discoveries: displayedDiscoveries,
             visitors: displayedVisitors,
             journeys: this.journeys,
-            award: this.#app.activeAward && this.garlandAchievemenPoints > 0 ? { 
+            award: this.#app.activeAward && this.garlandAchievemenPoints > 0 ? {
                 name: this.#app.activeAward.name,
                 points: this.garlandAchievemenPoints
-            } : null, 
+            } : null,
             nav: this.divName,
+            playerpower: this.playerpowername,
             photographerCardName: this.photographerChoiceCardName ? '(' + getCardName(basecards[this.photographerChoiceCardName]) + ')' : null
         });
 
