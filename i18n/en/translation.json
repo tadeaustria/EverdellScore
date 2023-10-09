@@ -23,7 +23,8 @@
         "adornments": "Adornments",
         "expeditions": "Expeditions",
         "discoveries": "Discoveries",
-        "visitors": "Visitors"
+        "visitors": "Visitors",
+        "playerpower": "Player Power"
     },
     "expansion" : {
         "bellfaire": "Bellfaire",
@@ -122,7 +123,24 @@
         "locomotive": "Locomotive",
         "mainroad": "Mainroad",
         "museum": "Museum",
-        "teahouse": "Teahouse"
+        "teahouse": "Teahouse",
+
+        "farmnospace": "Summer Farm (no space)",
+        "corrintheleader": "Corrin Evertail the Leader",
+        "corrintheking": "Corrin Evertail the King",
+        "corrinthewarrior": "Corrin Evertail the Warrior",
+        "corrinsfield": "Corrin Evertail's Field",
+        "corrinspath": "Corrin Evertail's Path",
+        "jorgoldwing": "Jor Goldwing",
+        "streysamt": "Strey Softpaw",
+        "terryhare": "Tarry Hare",
+        "mayberrymatriarch": "Mayberry Matriarch",
+        "chipterswipple": "Chipter Swipple",
+        "clickclacks": "Click Clack's",
+        "darkdeepprison": "Darkdeep Prison",
+        "everflametomb": "Everflame Tomb",
+        "kingnorthstreasury": "King North's Treasury",
+        "strongrootcastle": "Strongroot Castle"
     },
     "event": {
         "grandtour": "Grand Tour",
@@ -286,6 +304,9 @@
         "willowgreengrin": "Willow Greengrin",
         "wimblewuffle": "Wimble Wuffle",
         "yarabrunmayberry": "Yara & Brun Mayberry"
+    },
+    "playerpower":{
+        "pigs": "Pigs"
     },
     "text": {
         "cardlimit": "Card limit of town is reached",
