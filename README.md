@@ -9,23 +9,16 @@ The application also prevents that cards are multiple chosen, if not allowed (e.
 ## Personal Data
 Cookies for storing the chosen language.
 
-# Roadmap
-
-* [X] Implementing expansions
-  * [X] Bellfaire
-  * [X] Pearlbrook
-  * [X] Spirecrest
-* [ ] 2 Upcoming expansions
-  * [ ] Mistwood
-  * [X] Newleaf
-* [ ] QoL
-  * [ ] Statistics
-  * [ ] Export results
-  * [ ] (Adding picture to cards)
-
 # Updates
 
-## Version 1.4.0
+## Version 1.5.0
+* General
+  * Added google analytics for collecting data to improve app
+* Mistwood
+  * New town cards
+  * Playerskills - pigs
+
+### Version 1.4.0
 * General
   * Increased additional points to 50. (30 was not enough for Newleaf)
   * Added kind icons to cards in town
