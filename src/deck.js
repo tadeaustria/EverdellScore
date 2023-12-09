@@ -1109,8 +1109,8 @@ let basecards = {
         points: 4,
         maximum: 1,
         getAdditionalPoints: 
-            // Prosperity cards in other towns
-            (player) => player.getOtherPlayers().reduce((prev, pl) => prev + pl.findCountType(TYPES.prosperity), 0),
+            // Prosperity cards in one other town (obviously max then)
+            (player) => player.getOtherPlayers().reduce((prev, pl) => Math.max(prev, pl.findCountType(TYPES.prosperity)), 0),
         getOccupiedSpaces: space_one,
         related: [],
         getAvailability: available_mistwood
@@ -1234,7 +1234,7 @@ let basecards = {
     },
     'streysamt': {
         name: 'streysamt',
-        type: TYPES.production,
+        type: TYPES.destination,
         rarity: RARITY.legendary,
         kind: KINDS.critter,
         points: 4,

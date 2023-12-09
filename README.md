@@ -11,7 +11,12 @@ Cookies for storing the chosen language.
 
 # Updates
 
-## Version 1.5.0
+### Version 1.5.1
+* Mistwood
+  * Fix Corrin the king, to count only 1 town
+  * Fix Strey Samt to be destination type
+
+### Version 1.5.0
 * General
   * Added google analytics for collecting data to improve app
 * Mistwood
