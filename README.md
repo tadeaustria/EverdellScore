@@ -11,6 +11,10 @@ Cookies for storing the chosen language.
 
 # Updates
 
+## Version 1.5.2
+* General
+  * Dutch language for basic support (thanks to Jack Guo)
+
 ### Version 1.5.1
 * Mistwood
   * Fix Corrin the king, to count only 1 town
