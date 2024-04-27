@@ -184,18 +184,18 @@
         "sunkentreasurediscovered": "Odnalezienie zatopionego skarbu",
         "masqueradeinvitations": "Zaproszenie na bal przebierańców",
 
-        "scenicflight": "Scenic Flight",
-        "bigcity": "Bit City",
+        "scenicflight": "Bajeczny lot",
+        "bigcity": "Wielkie miasto",
 
-        "cityjubilee" : "City Jubilee",
-        "everwalltower" : "Ever Wall Tower Constructed",
-        "glowlightfestival" : "Glow Light Festival",
-        "hotairballoonrace" : "Hot Air Ballon Race",
-        "dancecontest" : "Juniper Jig Dance Contest",
-        "magicshow" : "Magic Show",
-        "royaltea" : "Royal Tea",
-        "stockmarketboom" : "Stock Market Boom",
-        "sunflowerparade" : "Sunflower Parade"
+        "cityjubilee" : "Miejski festyn",
+        "everwalltower" : "Budowa baszty Wiecznego Muru",
+        "glowlightfestival" : "Festiwal światła",
+        "hotairballoonrace" : "Wyścig balonów",
+        "dancecontest" : "Zawody tańca Gigsałki",
+        "magicshow" : "Magiczny śnieg",
+        "royaltea" : "Królewska herbata",
+        "stockmarketboom" : "Hossa",
+        "sunflowerparade" : "Parada słoneczników"
     },
 
     "award": {
