@@ -24,7 +24,7 @@
         "expeditions": "Wyprawa",
         "discoveries": "Odkrycia",
         "visitors": "Goście",
-        "playerpower": "Player Power"
+        "playerpower": "Zdolności robotników"
     },
     "expansion" : {
         "bellfaire": "Święto Lata",
@@ -125,22 +125,22 @@
         "museum": "Muzeum",
         "teahouse": "Herbaciarnia",
 
-        "farmnospace": "Summer Farm (no space)",
-        "corrintheleader": "Corrin Evertail the Leader",
-        "corrintheking": "Corrin Evertail the King",
-        "corrinthewarrior": "Corrin Evertail the Warrior",
-        "corrinsfield": "Corrin Evertail's Field",
-        "corrinspath": "Corrin Evertail's Path",
-        "jorgoldwing": "Jor Goldwing",
-        "streysamt": "Strey Softpaw",
-        "terryhare": "Tarry Hare",
-        "mayberrymatriarch": "Mayberry Matriarch",
-        "chipterswipple": "Chipter Swipple",
-        "clickclacks": "Click Clack's",
-        "darkdeepprison": "Darkdeep Prison",
-        "everflametomb": "Everflame Tomb",
-        "kingnorthstreasury": "King North's Treasury",
-        "strongrootcastle": "Strongroot Castle"
+        "farmnospace": "Farma latem II (nie zajmuje miejsca)",
+        "corrintheleader": "Przywódca Przemyszław Ogonek",
+        "corrintheking": "Król Przemyszław Ogonek",
+        "corrinthewarrior": "Wojownik Przemyszław Ogonek",
+        "corrinsfield": "Pole Przemyszława Ogonka",
+        "corrinspath": "Droga Przemyszława Ogonka",
+        "jorgoldwing": "Staś Koniuszko",
+        "streysamt": "Amelisa Bezszelestna",
+        "terryhare": "Zając Teodor",
+        "mayberrymatriarch": "Pani Majowa",
+        "chipterswipple": "Mysio Bijak",
+        "clickclacks": "Klik Klak",
+        "darkdeepprison": "Więzienie w Głębokiej Ciemnicy",
+        "everflametomb": "Grobowiec Wiecznego Płomienia",
+        "kingnorthstreasury": "Skarbiec króla Myszona",
+        "strongrootcastle": "Zamek Przodków"
     },
     "event": {
         "grandtour": "Rejs po rzece",
@@ -306,18 +306,18 @@
         "yarabrunmayberry": "Basia i Jaro Majowie"
     },
     "playerpower":{
-        "pigs": "Pigs"
+        "pigs": "Świnie"
     },
     "text": {
         "cardlimit": "Limit kart w mieście osiągnięty",
         "adornmentlimit": "Limit kart ozdób osiągnięty",
         "expeditionlimit": "Limit kafelków mapy okolicy osiągnięty",
         "discoverylimit": "Limit kart odkryć osiągnięty",
-        "data_loss_header": "Warning data loss",
-        "reset_content": "Are you sure you want to reset all players?",
-        "expansion_content": "Changing expansions will result in resetting all data. Do you want to proceed?",
-        "yes": "Yes",
-        "no": "No",
-        "photographer_modal_title": "Choose effect to copy"
+        "data_loss_header": "Uwaga! Utrata danych!",
+        "reset_content": "Na pewno chcesz zresetować wszystkich graczy?",
+        "expansion_content": "Zmiana dodatków spowoduje zresetowanie danych. Chcesz kontynuować?",
+        "yes": "Tak",
+        "no": "Nie",
+        "photographer_modal_title": "Wybierz efekt do skopiowania"
     }
 }
