@@ -22,7 +22,9 @@
         "wonders": "Cuda",
         "adornments": "Ozdoby",
         "expeditions": "Wyprawa",
-        "discoveries": "Odkrycia"
+        "discoveries": "Odkrycia",
+        "visitors": "Visitors",
+        "playerpower": "Player Power"
     },
     "expansion" : {
         "bellfaire": "Święto Lata",
@@ -96,7 +98,49 @@
         "harbor": "Przystań",
         "shipwright": "Cieśla okrętowy",
         "bridge": "Most",
-        "messenger": "Posłaniec"
+        "messenger": "Posłaniec",
+
+        "baker": "Baker",
+        "chipsmith": "Chipsmith",
+        "conductor": "Conductor",
+        "diplomat": "Diplomat",
+        "gardener": "Gardener",
+        "inventor": "Inventor",
+        "lamplighter": "Lamplighter",
+        "magician": "Magician",
+        "mayor": "Mayor",
+        "miller": "Miller",
+        "photographer": "Photographer {{card}}",
+        "poet": "Poet",
+        "airballoon": "Airballoon",
+        "bank": "Bank",
+        "cityhall": "Cityhall",
+        "everwall": "Everwall",
+        "freightcar":"Freightcar",
+        "greenhouse": "Greenhouse",
+        "hotel": "Hotel",
+        "library": "Library",
+        "locomotive": "Locomotive",
+        "mainroad": "Mainroad",
+        "museum": "Museum",
+        "teahouse": "Teahouse",
+
+        "farmnospace": "Summer Farm (no space)",
+        "corrintheleader": "Corrin Evertail the Leader",
+        "corrintheking": "Corrin Evertail the King",
+        "corrinthewarrior": "Corrin Evertail the Warrior",
+        "corrinsfield": "Corrin Evertail's Field",
+        "corrinspath": "Corrin Evertail's Path",
+        "jorgoldwing": "Jor Goldwing",
+        "streysamt": "Strey Softpaw",
+        "terryhare": "Tarry Hare",
+        "mayberrymatriarch": "Mayberry Matriarch",
+        "chipterswipple": "Chipter Swipple",
+        "clickclacks": "Click Clack's",
+        "darkdeepprison": "Darkdeep Prison",
+        "everflametomb": "Everflame Tomb",
+        "kingnorthstreasury": "King North's Treasury",
+        "strongrootcastle": "Strongroot Castle"
     },
     "event": {
         "grandtour": "Rejs po rzece",
@@ -122,6 +166,7 @@
         "flyingdoctorservice": "Usługi latającego doktora",
         
         "flowerfestival": "Festiwal kwiatów",
+
         "bednbreakfastguild": "Gildia hotelarzy",
         "cityholiday": "Miejskie wakacje",
         "architecturalrenaissance": "Renesans w architekturze",
@@ -137,7 +182,20 @@
         "riversideresort": "Nadrzeczny kurort",
         "xmarksthespot": "X wskazuje miejsce",
         "sunkentreasurediscovered": "Odnalezienie zatopionego skarbu",
-        "masqueradeinvitations": "Zaproszenie na bal przebierańców"
+        "masqueradeinvitations": "Zaproszenie na bal przebierańców",
+
+        "scenicflight": "Scenic Flight",
+        "bigcity": "Bit City",
+
+        "cityjubilee" : "City Jubilee",
+        "everwalltower" : "Ever Wall Tower Constructed",
+        "glowlightfestival" : "Glow Light Festival",
+        "hotairballoonrace" : "Hot Air Ballon Race",
+        "dancecontest" : "Juniper Jig Dance Contest",
+        "magicshow" : "Magic Show",
+        "royaltea" : "Royal Tea",
+        "stockmarketboom" : "Stock Market Boom",
+        "sunflowerparade" : "Sunflower Parade"
     },
 
     "award": {
@@ -213,10 +271,53 @@
         "serpentspass": "Wężowy Przesmyk",
         "distantshore": "Odległy Ląd"
     },
+    "visitor": {
+        "bimlittle": "Bim Little",
+        "bosleytedwardson": "Bosley Tedwardson",
+        "butterbellsweetpaw": "Butterbell Sweetpaw",
+        "diggsdeepwell": "Diggs Deepwell",
+        "cillweedquicksniff": "Dillweed Quicksniff",
+        "dimdustlight": "Dim Dustlight",
+        "dipdibble": "Dip Dibble",
+        "dunetarrington": "Dune Tarrington",
+        "dwellnorthwatch": "Dwell Northwatch",
+        "edvardtriptail": "Edvard Triptail",
+        "frinstickly": "Frin Stickly",
+        "glindilfrink": "Glindil Frink",
+        "iggysilverscale": "Iggy Silverscale",
+        "mossysteptoe": "Mossy Steptoe",
+        "orinnimblepaw": "Orin Nimblepaw",
+        "oscarlongtale": "Oscar Longtale",
+        "phillgurgle": "Phill Gurgle",
+        "piffquillglow": "Piff Quillglow",
+        "plumshortclaw": "Plum Shortclaw",
+        "quinncleanwhisker": "Quinn Cleanwhisker",
+        "reemysniggle": "Reemy Sniggle",
+        "rivilablacus": "Rivil Ablacus",
+        "rubydew": "Ruby Dew",
+        "sarisclearwhistle": "Saris Clearwhistle",
+        "sirtrivleqsmarqwill": "Sir Trivle Q. S. Marqwill III",
+        "skidshinysnout": "Skid Shinysnout",
+        "snoutpuddlehop": "Snout Puddlehop",
+        "trisspeske": "Triss Peske",
+        "wildellfamily": "Wildell Family",
+        "willowgreengrin": "Willow Greengrin",
+        "wimblewuffle": "Wimble Wuffle",
+        "yarabrunmayberry": "Yara & Brun Mayberry"
+    },
+    "playerpower":{
+        "pigs": "Pigs"
+    },
     "text": {
         "cardlimit": "Limit kart w mieście osiągnięty",
         "adornmentlimit": "Limit kart ozdób osiągnięty",
         "expeditionlimit": "Limit kafelków mapy okolicy osiągnięty",
-        "discoverylimit": "Limit kart odkryć osiągnięty"
+        "discoverylimit": "Limit kart odkryć osiągnięty",
+        "data_loss_header": "Warning data loss",
+        "reset_content": "Are you sure you want to reset all players?",
+        "expansion_content": "Changing expansions will result in resetting all data. Do you want to proceed?",
+        "yes": "Yes",
+        "no": "No",
+        "photographer_modal_title": "Choose effect to copy"
     }
 }
