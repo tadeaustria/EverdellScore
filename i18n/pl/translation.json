@@ -22,7 +22,9 @@
         "wonders": "Cuda",
         "adornments": "Ozdoby",
         "expeditions": "Wyprawa",
-        "discoveries": "Odkrycia"
+        "discoveries": "Odkrycia",
+        "visitors": "Goście",
+        "playerpower": "Zdolności robotników"
     },
     "expansion" : {
         "bellfaire": "Święto Lata",
@@ -96,7 +98,49 @@
         "harbor": "Przystań",
         "shipwright": "Cieśla okrętowy",
         "bridge": "Most",
-        "messenger": "Posłaniec"
+        "messenger": "Posłaniec",
+
+        "baker": "Piekarz",
+        "chipsmith": "Kowal",
+        "conductor": "Konduktor",
+        "diplomat": "Dyplomata",
+        "gardener": "Ogrodnik",
+        "inventor": "Wynalazca",
+        "lamplighter": "Latarnik",
+        "magician": "Magik",
+        "mayor": "Burmistrz",
+        "miller": "Młynarz",
+        "photographer": "Fotograf {{card}}",
+        "poet": "Poeta",
+        "airballoon": "Balon",
+        "bank": "Bank",
+        "cityhall": "Ratusz",
+        "everwall": "Wieczny Mur",
+        "freightcar":"Wagon towarowy",
+        "greenhouse": "Szklarnia",
+        "hotel": "Hotel",
+        "library": "Biblioteka",
+        "locomotive": "Lokomotywa",
+        "mainroad": "Główny trakt",
+        "museum": "Muzeum",
+        "teahouse": "Herbaciarnia",
+
+        "farmnospace": "Farma latem II (nie zajmuje miejsca)",
+        "corrintheleader": "Przywódca Przemyszław Ogonek",
+        "corrintheking": "Król Przemyszław Ogonek",
+        "corrinthewarrior": "Wojownik Przemyszław Ogonek",
+        "corrinsfield": "Pole Przemyszława Ogonka",
+        "corrinspath": "Droga Przemyszława Ogonka",
+        "jorgoldwing": "Staś Koniuszko",
+        "streysamt": "Amelisa Bezszelestna",
+        "terryhare": "Zając Teodor",
+        "mayberrymatriarch": "Pani Majowa",
+        "chipterswipple": "Mysio Bijak",
+        "clickclacks": "Klik Klak",
+        "darkdeepprison": "Więzienie w Głębokiej Ciemnicy",
+        "everflametomb": "Grobowiec Wiecznego Płomienia",
+        "kingnorthstreasury": "Skarbiec króla Myszona",
+        "strongrootcastle": "Zamek Przodków"
     },
     "event": {
         "grandtour": "Rejs po rzece",
@@ -122,6 +166,7 @@
         "flyingdoctorservice": "Usługi latającego doktora",
         
         "flowerfestival": "Festiwal kwiatów",
+
         "bednbreakfastguild": "Gildia hotelarzy",
         "cityholiday": "Miejskie wakacje",
         "architecturalrenaissance": "Renesans w architekturze",
@@ -137,7 +182,20 @@
         "riversideresort": "Nadrzeczny kurort",
         "xmarksthespot": "X wskazuje miejsce",
         "sunkentreasurediscovered": "Odnalezienie zatopionego skarbu",
-        "masqueradeinvitations": "Zaproszenie na bal przebierańców"
+        "masqueradeinvitations": "Zaproszenie na bal przebierańców",
+
+        "scenicflight": "Bajeczny lot",
+        "bigcity": "Wielkie miasto",
+
+        "cityjubilee" : "Miejski festyn",
+        "everwalltower" : "Budowa baszty Wiecznego Muru",
+        "glowlightfestival" : "Festiwal światła",
+        "hotairballoonrace" : "Wyścig balonów",
+        "dancecontest" : "Zawody tańca Gigsałki",
+        "magicshow" : "Magiczny śnieg",
+        "royaltea" : "Królewska herbata",
+        "stockmarketboom" : "Hossa",
+        "sunflowerparade" : "Parada słoneczników"
     },
 
     "award": {
@@ -213,10 +271,53 @@
         "serpentspass": "Wężowy Przesmyk",
         "distantshore": "Odległy Ląd"
     },
+    "visitor": {
+        "bimlittle": "Borys Kapselek",
+        "bosleytedwardson": "Jan Krabejko",
+        "butterbellsweetpaw": "Misia Miękkibrzusio",
+        "diggsdeepwell": "Fredzia Fretkowska",
+        "cillweedquicksniff": "Odoryk Niuchnik",
+        "dimdustlight": "Tomysz Półcień",
+        "dipdibble": "Kazio Karaś",
+        "dunetarrington": "Pif Pafnucy",
+        "dwellnorthwatch": "Janusz Pak",
+        "edvardtriptail": "Edward Żmijewssski",
+        "frinstickly": "Franklin Skorupko",
+        "glindilfrink": "Karol Uch",
+        "iggysilverscale": "Igor Srebrnołuski",
+        "mossysteptoe": "Mysia Piekarska",
+        "orinnimblepaw": "Jerzy Włóczykij",
+        "oscarlongtale": "Oskar Długosz",
+        "phillgurgle": "Kamil Ś. Limak",
+        "piffquillglow": "Gacław Mroczek",
+        "plumshortclaw": "Zdziś Dzióbek",
+        "quinncleanwhisker": "Gryzanna Zającówna",
+        "reemysniggle": "Fryderyk Szopen",
+        "rivilablacus": "Pan Cernik",
+        "rubydew": "Rudzia Orzech",
+        "sarisclearwhistle": "Sara Gołąbek",
+        "sirtrivleqsmarqwill": "Sir Ludwik I.S. Dostojny III",
+        "skidshinysnout": "O. Posowski",
+        "snoutpuddlehop": "Aksel Pyszczek",
+        "trisspeske": "Balbina Wibrysek",
+        "wildellfamily": "Rodzina Uszkowskich",
+        "willowgreengrin": "Witka Zieloneska",
+        "wimblewuffle": "Klemens Krecki",
+        "yarabrunmayberry": "Basia i Jaro Majowie"
+    },
+    "playerpower":{
+        "pigs": "Świnie"
+    },
     "text": {
         "cardlimit": "Limit kart w mieście osiągnięty",
         "adornmentlimit": "Limit kart ozdób osiągnięty",
         "expeditionlimit": "Limit kafelków mapy okolicy osiągnięty",
-        "discoverylimit": "Limit kart odkryć osiągnięty"
+        "discoverylimit": "Limit kart odkryć osiągnięty",
+        "data_loss_header": "Uwaga! Utrata danych!",
+        "reset_content": "Na pewno chcesz zresetować wszystkich graczy?",
+        "expansion_content": "Zmiana dodatków spowoduje zresetowanie danych. Chcesz kontynuować?",
+        "yes": "Tak",
+        "no": "Nie",
+        "photographer_modal_title": "Wybierz efekt do skopiowania"
     }
 }
