@@ -41,6 +41,9 @@ function space_zero(player, to_be_added) { return 0; }
 function space_one(player, to_be_added) { return 1; }
 
 function available_always(app) { return true; }
+function available_extraextra(app) { return app.extraextra; }
+function available_legends(app) { return app.legends; }
+function available_rugwort(app) { return app.rugwort; }
 function available_bellfaire(app) { return app.bellfaire; }
 function available_pearlbrook(app) { return app.pearlbrook; }
 function available_npearlbrook(app) { return !app.pearlbrook; }
@@ -620,6 +623,81 @@ let basecards = {
         getAvailability: available_always
     },
 
+
+    'carnival': {
+        name: 'carnival',
+        type: TYPES.production,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 1,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_extraextra
+    },
+    'juggler': {
+        name: 'juggler',
+        type: TYPES.traveler,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 0,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_extraextra
+    },
+    'scurrblestadium': {
+        name: 'scurrblestadium',
+        type: TYPES.destination,
+        rarity: RARITY.common,
+        kind: KINDS.building,
+        points: 2,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_extraextra
+    },
+    'scurrblechampion': {
+        name: 'scurrblechampion',
+        type: TYPES.prosperity,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 3,
+        getAdditionalPoints: function (player) { return (player.findCountBaseCard(basecards['scurrblechampion']) - 1) * 2; },
+        getOccupiedSpaces: function (player, to_be_added) {
+            var scurrbleChampCount = player.findCountBaseCard(basecards['scurrblechampion']);
+
+            if (to_be_added) {
+                return scurrbleChampCount === 0 ? 1 : 0;
+            } else {
+                return 1.0/scurrbleChampCount;
+            }
+        },
+        getAvailability: available_extraextra
+    },
+    'gazette': {
+        name: 'gazette',
+        type: TYPES.governance,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 3,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_extraextra
+    },
+    'towncrier': {
+        name: 'towncrier',
+        type: TYPES.production,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_extraextra
+    },
 
 
     'ferry': {
