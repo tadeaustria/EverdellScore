@@ -411,6 +411,18 @@
                             <!-- <li id="card_{{name}}" class="list-group-item" onclick="app.addToActivePlayer('{{name}}')"
                             data-i18n="card.{{name}}">{{name}}</li> -->
                             <div class="form-check form-switch" onchange="app.updateExpansions()">
+                                <label class="form-check-label" for="flexSwitchCheckExtraExtra" data-i18n="expansion.extraextra">Extra! Extra!</label>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckExtraExtra">
+                            </div>
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
+                                <label class="form-check-label" for="flexSwitchCheckLegends" data-i18n="expansion.legends">Legends</label>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckLegends" disabled>
+                            </div>
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
+                                <label class="form-check-label" for="flexSwitchCheckRugwort" data-i18n="expansion.rugwort">Rugwort Pack</label>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckRugwort" disabled>
+                            </div>
+                            <div class="form-check form-switch" onchange="app.updateExpansions()">
                                 <label class="form-check-label" for="flexSwitchCheckBellfaire" data-i18n="expansion.bellfaire">Bellfaire</label>
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckBellfaire">
                             </div>
