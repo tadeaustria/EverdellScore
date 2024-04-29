@@ -735,7 +735,7 @@ let basecards = {
         kind: KINDS.building,
         points: 3,
         maximum: 2,
-        // getAdditionalPoints: points_zero,
+        getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
         related: ['towncrier'],
         getAvailability: available_extraextra
