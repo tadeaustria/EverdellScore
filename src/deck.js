@@ -41,15 +41,16 @@ function space_zero(player, to_be_added) { return 0; }
 function space_one(player, to_be_added) { return 1; }
 
 function available_always(app) { return true; }
-function available_extraextra(app) { return app.extraextra; }
-function available_legends(app) { return app.legends; }
-function available_rugwort(app) { return app.rugwort; }
+function available_extraextra(app) { return app.extraextra || app.glimmergold; }
+function available_legends(app) { return app.legends || app.glimmergold; }
+function available_rugwort(app) { return app.rugwort || app.glimmergold; }
 function available_bellfaire(app) { return app.bellfaire; }
 function available_pearlbrook(app) { return app.pearlbrook; }
 function available_npearlbrook(app) { return !app.pearlbrook; }
 function available_spirecrest(app) { return app.spirecrest; }
 function available_newleaf(app) { return app.newleaf; }
 function available_mistwood(app) { return app.mistwood; }
+function available_kindergarten(app) { return app.kindergarten; }
 
 const RESOURCES = {
     twig: 'twig',
@@ -698,6 +699,192 @@ let basecards = {
         getAvailability: available_extraextra
     },
 
+    'poe': {
+        name: 'poe',
+        baseCardName: 'teacher',
+        type: TYPES.production,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_legends
+    },
+    'foresight': {
+        name: 'foresight',
+        baseCardName: 'historian',
+        type: TYPES.governance,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_legends
+    },
+    'amillaglistendew': {
+        name: 'amillaglistendew',
+        baseCardName: 'queen',
+        type: TYPES.destination,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 5,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_legends
+    },
+    'flynnnobletail': {
+        name: 'flynnnobletail',
+        baseCardName: 'king',
+        type: TYPES.prosperity,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 5,
+        maximum: 1,
+        getAdditionalPoints: (player) => player.basicEvents.length * 2 + player.specialEvents.length * 3,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_legends
+    },
+    'cirruswindfall': {
+        name: 'cirruswindfall',
+        baseCardName: 'postalpigeon',
+        type: TYPES.traveler,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_legends
+    },
+    
+    'thegreenacorn': {
+        name: 'thegreenacorn',
+        baseCardName: 'inn',
+        type: TYPES.destination,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_legends
+    },
+    'silverscalespring': {
+        name: 'silverscalespring',
+        baseCardName: 'ruins',
+        type: TYPES.traveler,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 2,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_legends
+    },
+    'oleandersoperahouse': {
+        name: 'oleandersoperahouse',
+        baseCardName: 'theater',
+        type: TYPES.prosperity,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: (player) => 2 * player.findCountRarityKind(RARITY.unique, KINDS.critter),
+        getOccupiedSpaces: space_one,
+        getAvailability: available_legends
+    },
+    'mcgregorsmarket': {
+        name: 'mcgregorsmarket',
+        baseCardName: 'farm',
+        type: TYPES.production,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_legends
+    },
+    'bridgeofthesky': {
+        name: 'bridgeofthesky',
+        baseCardName: 'crane',
+        type: TYPES.governance,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 0,
+        maximum: 1,
+        getAdditionalPoints: (player) => player.skybridgeChoiceCard == null ? 0 : player.skybridgeChoiceCard.points,
+        // Requires a space, if the card on top does not require a space
+        getOccupiedSpaces: (player, to_be_added) => player.skybridgeChoiceCard == null ? 1 : player.skybridgeChoiceCard.getOccupiedSpaces(player, false) > 0 ? 0 : 1,
+        getAvailability: available_legends,
+    },
+    
+    'rugtheruler': {
+        name: 'rugtheruler',
+        type: TYPES.prosperity,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 1,
+        getAdditionalPoints: (player) => player.getOtherPlayers().reduce((prev, player) => Math.max(prev, player.basicEvents.length + player.specialEvents.length), 0),
+        getOccupiedSpaces: space_one,
+        getAvailability: available_rugwort,
+    },
+    'rugtherobber': {
+        name: 'rugtherobber',
+        type: TYPES.traveler,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 0,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_rugwort,
+    },
+    'rugtherowdy': {
+        name: 'rugtherowdy',
+        type: TYPES.production,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 0,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_rugwort,
+    },
+
+    'kids': {
+        name: 'kids',
+        type: TYPES.production,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 1,
+        maximum: 4,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: function (player, to_be_added) {
+            if (player.hasKids)
+                return 0;
+            else{
+                player.hasKids = true;
+                return 1;
+            }
+        },
+        getAvailability: available_kindergarten,
+    },
+    'kindergarten': {
+        name: 'kindergarten',
+        type: TYPES.prosperity,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 1,
+        maximum: 2,
+        getAdditionalPoints: (player) => player.findCountBaseCard(basecards['kids']) * 2,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_kindergarten,
+    },
 
     'ferry': {
         name: 'ferry',

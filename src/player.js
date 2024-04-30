@@ -23,6 +23,8 @@ class Player {
     visitors = [];
     photographerChoiceCardName = null;
 
+    skybridgeChoiceCard = null;
+
     playerpowername = null;
 
     divName;
@@ -42,6 +44,7 @@ class Player {
 
     getOccupiedSpaces() {
         this.hasScurrblechampion = false;
+        this.hasKids = false;
         return this.town.reduce((prev, card) => prev + card.getOccupiedSpaces(this, false), 0);
     }
 
@@ -82,6 +85,12 @@ class Player {
         let card = this.town.splice(cardIndex, 1)[0];
         if (card.name == 'photographer')
             this.photographerChoiceCardName = null;
+        else if(card.name == 'bridgeofthesky'){
+            let connectedCardIdx = this.town.findIndex((val) => val == this.skybridgeChoiceCard);
+            if(connectedCardIdx != -1)
+                this.town.splice(connectedCardIdx, 1)[0];
+            this.skybridgeChoiceCard = null;
+        }
         this.showPlayer();
         return card;
     }
