@@ -666,12 +666,11 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: function (player) { return (player.findCountBaseCard(basecards['scurrblechampion']) - 1) * 2; },
         getOccupiedSpaces: function (player, to_be_added) {
-            var scurrbleChampCount = player.findCountBaseCard(basecards['scurrblechampion']);
-
-            if (to_be_added) {
-                return scurrbleChampCount === 0 ? 1 : 0;
+            if(player.hasScurrblechampion){
+                return 0;
             } else {
-                return 1.0/scurrbleChampCount;
+                player.hasScurrblechampion = true;
+                return 1;
             }
         },
         getAvailability: available_extraextra

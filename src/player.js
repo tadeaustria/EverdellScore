@@ -41,7 +41,8 @@ class Player {
     }
 
     getOccupiedSpaces() {
-        return Math.round(this.town.reduce((prev, card) => prev + card.getOccupiedSpaces(this, false), 0));
+        this.hasScurrblechampion = false;
+        return this.town.reduce((prev, card) => prev + card.getOccupiedSpaces(this, false), 0);
     }
 
     getTownOverview() {
