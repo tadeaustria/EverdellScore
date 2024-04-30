@@ -38,6 +38,7 @@ i18next
 class Application {
 
     constructor() {
+        this.glimmergold = false;
         this.extraextra = false;
         this.legends = false;
         this.rugwort = false;
@@ -46,6 +47,7 @@ class Application {
         this.spirecrest = false;
         this.mistwood = false;
         this.newleaf = false;
+        this.kindergarten = false;
 
         this.updateData();
 
@@ -60,7 +62,7 @@ class Application {
         window.onbeforeunload = function () { return 'Are you sure?' };
 
         Handlebars.registerHelper('isProsperityButNotWife', function (type, name) {
-            return type == TYPES.prosperity && name != basecards['wife'].name;
+            return type == TYPES.prosperity && name != basecards['wife'].name || name == basecards['bridgeofthesky'].name;
         });
     }
 
@@ -72,14 +74,16 @@ class Application {
     }
 
     updateData() {
-        this.extraextra = $('#flexSwitchCheckExtraExtra').is(':checked');
-        this.legends = $('#flexSwitchCheckLegends').is(':checked');
-        this.rugwort = $('#flexSwitchCheckRugwort').is(':checked');
+        this.glimmergold = $('#flexSwitchCheckGlimmergold').is(':checked');
+        this.extraextra = $('#flexSwitchCheckGlimmergold').is(':checked');
+        this.legends = $('#flexSwitchCheckGlimmergold').is(':checked');
+        this.rugwort = $('#flexSwitchCheckGlimmergold').is(':checked');
         this.bellfaire = $('#flexSwitchCheckBellfaire').is(':checked');
         this.pearlbrook = $('#flexSwitchCheckPearlbrook').is(':checked');
         this.spirecrest = $('#flexSwitchCheckSpirecrest').is(':checked');
         this.mistwood = $('#flexSwitchCheckMistwood').is(':checked');
         this.newleaf = $('#flexSwitchCheckNewleaf').is(':checked');
+        this.kindergarten = $('#flexSwitchCheckKindergarten').is(':checked');
 
         this.cards = [...Object.values(basecards)].filter((card) => card.getAvailability(this));
         this.basicEvents = [...Object.values(basicEvents)].filter((event) => event.getAvailability(this));
@@ -110,9 +114,10 @@ class Application {
 
     // Sets switches in UI to stored values
     reset_expansions_ui() {
-        $('#flexSwitchCheckExtraExtra').prop('checked', this.extraextra);
-        $('#flexSwitchCheckLegends').prop('checked', this.legends);
-        $('#flexSwitchCheckRugwort').prop('checked', this.rugwort);
+        $('#flexSwitchCheckGlimmergold').prop('checked', this.glimmergold);
+        // $('#flexSwitchCheckExtraExtra').prop('checked', this.extraextra);
+        // $('#flexSwitchCheckLegends').prop('checked', this.legends);
+        // $('#flexSwitchCheckRugwort').prop('checked', this.rugwort);
         $('#flexSwitchCheckBellfaire').prop('checked', this.bellfaire);
         $('#flexSwitchCheckPearlbrook').prop('checked', this.pearlbrook);
         $('#flexSwitchCheckSpirecrest').prop('checked', this.spirecrest);
@@ -185,12 +190,26 @@ class Application {
                 });
                 $('#photographer_modal_body').html(html).localize();
                 $('#photographer_modal').modal('show');
+            } else if(card == basecards['bridgeofthesky']) {
+                let constructions = this.cards.filter((card) => card.kind == KINDS.building);
+                constructions.sort((a, b) => { return getCardName(a).localeCompare(getCardName(b)); });
+
+                let template = Handlebars.compile($("#skybridge-template").html());
+                let html = template({
+                    cards: constructions,
+                }, {
+                    allowProtoMethodsByDefault: true
+                });
+                $('#photographer_modal_body').html(html).localize();
+                $('#photographer_modal').modal('show');
             }
 
             if (this.activeAward) {
                 this.calculateAward();
                 this.players.forEach((player) => player.showPlayer());
-            } else if (this.mistwood) {
+            } else if (this.mistwood || this.rugwort) {
+                // with mistwood ???? 
+                // with rugtheruler, another player can get points as well
                 this.players.forEach((player) => player.showPlayer());
                 this.activePlayer.showPlayer();
             }
@@ -200,6 +219,13 @@ class Application {
     chooseEffectCopy(cardname) {
         $('#photographer_modal').modal('hide');
         this.activePlayer.photographerChoiceCardName = cardname;
+        this.activePlayer.showPlayer();
+    }
+
+    setSkybridgeCard(cardname){
+        $('#photographer_modal').modal('hide');
+        this.activePlayer.skybridgeChoiceCard = basecards[cardname];
+        this.addToActivePlayer(cardname);
         this.activePlayer.showPlayer();
     }
 

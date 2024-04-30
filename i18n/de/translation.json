@@ -38,11 +38,13 @@
         "extraextra": "Extra! Extra!",
         "legends": "Legenden",
         "rugwort": "Fusselwürz",
+        "glimmergold": "Glimmergold",
         "bellfaire": "Bellfaire",
         "pearlbrook": "Pearlbrook",
         "spirecrest": "Spirecrest",
         "mistwood": "Mistwood",
-        "newleaf": "Newleaf"
+        "newleaf": "Newleaf",
+        "kindergarten": "Kindergarten Promo"
     },
     "card": {
         "inn": "Gasthaus",
@@ -93,6 +95,9 @@
         "teacher": "Lehrer",
         "theater": "Theater",
         "bard": "Barde",
+        
+        "kids": "Kinder",
+        "kindergarten": "Kindergarten",
 
         "ferry": "Fähre",
         "ferryferret": "Fährfrettchen",

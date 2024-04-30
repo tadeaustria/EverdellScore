@@ -30,11 +30,13 @@
         "extraextra": "Extra! Extra!",
         "legends": "Legends",
         "rugwort": "Rugwort",
+        "glimmergold": "Glimmergold",
         "bellfaire": "Bellfaire",
         "pearlbrook": "Pearlbrook",
         "spirecrest": "Spirecrest",
         "mistwood": "Mistwood",
-        "newleaf": "Newleaf"
+        "newleaf": "Newleaf",
+        "kindergarten": "Kindergarten Promo"
     },
     "res": {
         "twig": "Twig",
@@ -100,6 +102,24 @@
         "towncrier": "Town Crier",
         "scurrblestadium": "Scurrble Stadium",
         "scurrblechampion": "Scurrble Champion",
+
+        "poe": "Poe",
+        "foresight": "Foresight",
+        "amillaglistendew": "Amilla Glistendew",
+        "flynnnobletail": "Flynn Nobletail",
+        "cirruswindfall": "Cirrus Windfall",
+        "thegreenacorn": "The Green Acorn",
+        "silverscalespring": "Silver Scale Spring",
+        "oleandersoperahouse": "Oleander's Opera House",
+        "mcgregorsmarket": "McGregor's Market",
+        "bridgeofthesky": "Bridge of the Sky",
+        
+        "rugtheruler": "Rug the Ruler",
+        "rugtherobber": "Rug the Robber",
+        "rugtherowdy": "Rug the Rowdy",
+    
+        "kids": "Kids",
+        "kindergarten": "Kindergarten",
 
         "ferry": "Ferry",
         "ferryferret": "Ferry Ferret",
