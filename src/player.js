@@ -217,18 +217,6 @@ class Player {
                                             this.points + this.getWifeAdditionalPoints() + this.garlandAchievemenPoints + 2 * this.leftResources[RESOURCES.pearl])))))))));
     }
 
-    areLeftoversRequired() {
-        //If Architect is in town or scale as adornment or Architect is copied through photographer
-        return this.town.includes(basecards['architect']) ||
-            this.adornments.includes(adornments["scales"]) ||
-            this.photographerChoiceCardName == 'architect' ||
-            this.visitors.includes(visitors['diggsdeepwell']) ||
-            this.visitors.includes(visitors['frinstickly']) ||
-            this.visitors.includes(visitors['piffquillglow']) ||
-            this.visitors.includes(visitors['sirtrivleqsmarqwill']) ||
-            this.visitors.includes(visitors['wimblewuffle']);
-    }
-
     updateLeftOvers() {
         Object.keys(this.leftResources).forEach((key) => {
             $("#value_" + key).val(this.leftResources[key]);
@@ -239,16 +227,11 @@ class Player {
 
     showLeftOvers() {
         if (this.#app.pearlbrook) {
-            $("#leftOverArea").show();
             $("#area_pearl").show();
             $("#area_card").show();
         } else {
             $("#area_pearl").hide();
             $("#area_card").hide();
-            if (this.areLeftoversRequired())
-                $("#leftOverArea").show();
-            else
-                $("#leftOverArea").hide();
         }
     }
 

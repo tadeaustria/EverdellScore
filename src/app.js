@@ -86,12 +86,12 @@ class Application {
         this.visitors = this.newleaf ? [...Object.values(visitors)] : [];
         this.playerpowers = [...Object.values(playerpowers)].filter((playerpower) => playerpower.getAvailability(this));
 
+        this.buildLeftResources();
         this.reset();
         this.buildCards();
         this.setCardsDisable();
-        $("#main-left").localize();
 
-        this.buildLeftResources();
+        $("#main-left").localize();
         $("#leftOverArea").localize();
     }
 
