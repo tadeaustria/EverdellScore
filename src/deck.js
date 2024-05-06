@@ -762,7 +762,7 @@ let basecards = {
         points: 0,
         maximum: 3,
         getAdditionalPoints: points_zero,
-        getOccupiedSpaces: space_one,
+        getOccupiedSpaces: (player, to_be_added) => player.findCountKind(KINDS.building) > 0 ? 0 : 1,
         related: [],
         getAvailability: available_pearlbrook
     },
