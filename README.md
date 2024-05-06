@@ -11,7 +11,17 @@ Cookies for storing the chosen language.
 
 # Updates
 
-## Version 1.5.2
+## Version 1.5.3
+* General
+  * Always display left over ressources
+* Pearlbrook
+  * Fix Messenger occupancy
+* Newleaf
+  * Polish
+* Mistwood
+  * Polish
+
+### Version 1.5.2
 * General
   * Dutch language for basic support (thanks to Jack Guo)
 
