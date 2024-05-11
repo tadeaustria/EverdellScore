@@ -69,7 +69,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['innkeeper'],
         getAvailability: available_always
     },
     'innkeeper': {
@@ -81,7 +80,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'postoffice': {
@@ -93,7 +91,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['postal pigeon'],
         getAvailability: available_always
     },
     'postalpigeon': {
@@ -105,7 +102,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'cemetery': {
@@ -117,7 +113,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['undertaker'],
         getAvailability: available_always
     },
     'undertaker': {
@@ -129,7 +124,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'chapel': {
@@ -141,7 +135,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['shepherd'],
         getAvailability: available_always
     },
     'shepherd': {
@@ -153,7 +146,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'lookout': {
@@ -165,7 +157,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['wanderer'],
         getAvailability: available_always
     },
     'wanderer': {
@@ -177,7 +168,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_zero,
-        related: [],
         getAvailability: available_always
     },
     'monastery': {
@@ -189,7 +179,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['monk'],
         getAvailability: available_always
     },
     'monk': {
@@ -201,7 +190,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'university': {
@@ -213,7 +201,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['doctor'],
         getAvailability: available_always
     },
     'doctor': {
@@ -225,7 +212,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'ruins': {
@@ -237,7 +223,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['peddler'],
         getAvailability: available_always
     },
     'peddler': {
@@ -249,7 +234,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'fairgrounds': {
@@ -261,7 +245,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['fool'],
         getAvailability: available_always
     },
     'fool': {
@@ -273,7 +256,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'twigbarge': {
@@ -285,7 +267,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['bargetoad'],
         getAvailability: available_always
     },
     'bargetoad': {
@@ -297,7 +278,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'resinrefinery': {
@@ -309,7 +289,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['chipsweep'],
         getAvailability: available_always
     },
     'chipsweep': {
@@ -321,7 +300,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'mine': {
@@ -333,7 +311,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['minermole'],
         getAvailability: available_always
     },
     'minermole': {
@@ -345,7 +322,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'storehouse': {
@@ -357,7 +333,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['woodcarver'],
         getAvailability: available_always
     },
     'woodcarver': {
@@ -369,7 +344,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'farm': {
@@ -381,17 +355,17 @@ let basecards = {
         maximum: 8,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: function (player, to_be_added) {
-            if (player.findCountCard(basecards['greenhouse']) <= player.findCountCard(basecards['farm']) && 
+            if (player.findCountBaseCard(basecards['greenhouse']) <= player.findCountBaseCard(basecards['farm']) && 
                 player.playerpowername != 'pigs') {
                 return 1;
             }
             return 0;
         },
-        related: ['husband', 'wife'],
         getAvailability: available_always
     },
     'farmnospace': {
         name: 'farmnospace',
+        baseCardName: 'farm',
         type: TYPES.production,
         rarity: RARITY.common,
         kind: KINDS.building,
@@ -399,7 +373,6 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_zero,
-        related: ['husband', 'wife'],
         getAvailability: available_mistwood
     },
     'husband': {
@@ -411,12 +384,11 @@ let basecards = {
         maximum: 4,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: function (player, to_be_added) {
-            if (player.findCountCard(basecards['wife']) <= player.findCountCard(basecards['husband'])) {
+            if (player.findCountBaseCard(basecards['wife']) <= player.findCountBaseCard(basecards['husband'])) {
                 return 1;
             }
             return 0;
         },
-        related: ['wife'],
         getAvailability: available_always
     },
     'wife': {
@@ -430,13 +402,12 @@ let basecards = {
         getOccupiedSpaces: function (player, to_be_added) {
             // Wife requires 1 space if she should be added to town and town already has
             // as many wifes as husbands
-            if (player.findCountHusbandMatches() > player.findCountCard(basecards['husband']) ||
-                to_be_added && player.findCountHusbandMatches() == player.findCountCard(basecards['husband'])) {
+            if (player.findCountHusbandMatches() > player.findCountBaseCard(basecards['husband']) ||
+                to_be_added && player.findCountHusbandMatches() == player.findCountBaseCard(basecards['husband'])) {
                 return 1;
             }
             return 0;
         },
-        related: ['husband'],
         getAvailability: available_always
     },
     'generalstore': {
@@ -448,7 +419,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['shopkeeper'],
         getAvailability: available_always
     },
     'shopkeeper': {
@@ -460,7 +430,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'courthouse': {
@@ -472,7 +441,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['judge'],
         getAvailability: available_always
     },
     'judge': {
@@ -484,7 +452,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'clocktower': {
@@ -496,7 +463,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['historian'],
         getAvailability: available_always
     },
     'historian': {
@@ -508,7 +474,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'crane': {
@@ -520,7 +485,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['architect'],
         getAvailability: available_always
     },
     'architect': {
@@ -532,7 +496,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return Math.min(6, player.leftResources['pebble'] + player.leftResources['resin']); },
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'dungeon': {
@@ -544,7 +507,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['ranger'],
         getAvailability: available_always
     },
     'ranger': {
@@ -556,7 +518,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'evertree': {
@@ -568,7 +529,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return player.findCountType(TYPES.prosperity); },
         getOccupiedSpaces: space_one,
-        related: [''],
         getAvailability: available_always
     },
     'castle': {
@@ -580,7 +540,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return player.findCountRarityKind(RARITY.common, KINDS.building) },
         getOccupiedSpaces: space_one,
-        related: ['king'],
         getAvailability: available_always
     },
     'king': {
@@ -592,7 +551,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return player.basicEvents.length + player.specialEvents.length * 2; },
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'palace': {
@@ -604,7 +562,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return player.findCountRarityKind(RARITY.unique, KINDS.building) },
         getOccupiedSpaces: space_one,
-        related: ['queen'],
         getAvailability: available_always
     },
     'queen': {
@@ -616,7 +573,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'school': {
@@ -628,7 +584,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return player.findCountRarityKind(RARITY.common, KINDS.critter) },
         getOccupiedSpaces: space_one,
-        related: ['teacher'],
         getAvailability: available_always
     },
     'teacher': {
@@ -640,7 +595,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
     'theater': {
@@ -652,7 +606,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: function (player) { return player.findCountRarityKind(RARITY.unique, KINDS.critter) },
         getOccupiedSpaces: space_one,
-        related: ['bard'],
         getAvailability: available_always
     },
     'bard': {
@@ -664,7 +617,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_always
     },
 
@@ -679,7 +631,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['ferryferret'],
         getAvailability: available_pearlbrook
     },
     'ferryferret': {
@@ -691,7 +642,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_pearlbrook
     },
     'pirateship': {
@@ -703,7 +653,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['pirate'],
         getAvailability: available_pearlbrook
     },
     'pirate': {
@@ -715,7 +664,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_zero,
-        related: [],
         getAvailability: available_pearlbrook
     },
     'harbor': {
@@ -727,7 +675,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['shipwright'],
         getAvailability: available_pearlbrook
     },
     'shipwright': {
@@ -739,7 +686,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: (player) => player.findCountFct((card) => card.getAvailability == available_pearlbrook),
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_pearlbrook
     },
     'bridge': {
@@ -751,7 +697,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['messenger'],
         getAvailability: available_pearlbrook
     },
     'messenger': {
@@ -763,7 +708,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: (player, to_be_added) => player.findCountKind(KINDS.building) > 0 ? 0 : 1,
-        related: [],
         getAvailability: available_pearlbrook
     },
 
@@ -776,7 +720,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: (player) => Math.min(6, player.leftResources[RESOURCES.berry] * 2),
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'chipsmith': {
@@ -788,7 +731,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'conductor': {
@@ -800,7 +742,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'diplomat': {
@@ -812,7 +753,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'gardener': {
@@ -824,7 +764,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'inventor': {
@@ -836,7 +775,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'lamplighter': {
@@ -848,7 +786,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'magician': {
@@ -860,7 +797,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'mayor': {
@@ -872,7 +808,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'miller': {
@@ -884,7 +819,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'photographer': {
@@ -896,7 +830,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: (player) => player.photographerChoiceCardName == null ? 0 : basecards[player.photographerChoiceCardName].getAdditionalPoints(player),
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'poet': {
@@ -908,7 +841,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'airballoon': {
@@ -920,7 +852,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_zero,
-        related: [],
         getAvailability: available_newleaf
     },
     'bank': {
@@ -932,7 +863,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'cityhall': {
@@ -944,7 +874,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'everwall': {
@@ -956,7 +885,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: (player) => Math.floor((player.getOccupiedSpaces() / 5 * 2)),
         getOccupiedSpaces: space_zero,
-        related: [],
         getAvailability: available_newleaf
     },
     'freightcar': {
@@ -968,7 +896,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'greenhouse': {
@@ -982,14 +909,13 @@ let basecards = {
         getOccupiedSpaces: function (player, to_be_added) {
             // Greenhouse requires 1 space if she should be added to town and town already has
             // as many greenhouses as farms
-            if (player.findCountCard(basecards['greenhouse']) > player.findCountCard(basecards['farm']) || 
-                to_be_added && player.findCountCard(basecards['greenhouse']) == player.findCountCard(basecards['farm']) ||
+            if (player.findCountBaseCard(basecards['greenhouse']) > player.findCountBaseCard(basecards['farm']) || 
+                to_be_added && player.findCountBaseCard(basecards['greenhouse']) == player.findCountBaseCard(basecards['farm']) ||
                 player.playerpowername == 'pigs' ) {
                 return 1;
             }
             return 0;
         },
-        related: [],
         getAvailability: available_newleaf
     },
     'hotel': {
@@ -1001,7 +927,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'library': {
@@ -1013,7 +938,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: (player) => Object.entries(player.getTownOverview()).length,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'locomotive': {
@@ -1025,7 +949,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'mainroad': {
@@ -1037,7 +960,6 @@ let basecards = {
         maximum: 4,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_zero,
-        related: [],
         getAvailability: available_newleaf
     },
     'museum': {
@@ -1049,7 +971,6 @@ let basecards = {
         maximum: 2,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
     'teahouse': {
@@ -1061,7 +982,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_newleaf
     },
 
@@ -1074,7 +994,6 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_zero,
-        related: [],
         getAvailability: available_mistwood
     },
     'corrinsfield': {
@@ -1086,7 +1005,6 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_mistwood
     },
     'corrintheleader': {
@@ -1098,7 +1016,6 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_mistwood
     },
     'corrintheking': {
@@ -1112,7 +1029,6 @@ let basecards = {
             // Prosperity cards in one other town (obviously max then)
             (player) => player.getOtherPlayers().reduce((prev, pl) => Math.max(prev, pl.findCountType(TYPES.prosperity)), 0),
         getOccupiedSpaces: space_one,
-        related: [],
         getAvailability: available_mistwood
     },
     'corrinthewarrior': {
@@ -1124,12 +1040,12 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_zero,
-        related: [],
         getAvailability: available_mistwood
     },
 
     'chipterswipple': {
         name: 'chipterswipple',
+        baseCardName: 'chipsweep',
         type: TYPES.production,
         rarity: RARITY.legendary,
         kind: KINDS.critter,
@@ -1137,11 +1053,11 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['chipsweep'],
         getAvailability: available_mistwood
     },
     'clickclacks': {
         name: 'clickclacks',
+        baseCardName: 'generalstore',
         type: TYPES.production,
         rarity: RARITY.legendary,
         kind: KINDS.building,
@@ -1149,11 +1065,11 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['shopkeeper', 'generalstore'],
         getAvailability: available_mistwood
     },
     'darkdeepprison': {
         name: 'darkdeepprison',
+        baseCardName: 'dungeon',
         type: TYPES.traveler,
         rarity: RARITY.legendary,
         kind: KINDS.critter,
@@ -1161,11 +1077,11 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['dungeon', 'ranger'],
         getAvailability: available_mistwood
     },
     'everflametomb': {
         name: 'everflametomb',
+        baseCardName: 'cemetery',
         type: TYPES.destination,
         rarity: RARITY.legendary,
         kind: KINDS.building,
@@ -1173,11 +1089,11 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['cemetery', 'undertaker'],
         getAvailability: available_mistwood
     },
     'jorgoldwing': {
         name: 'jorgoldwing',
+        baseCardName: 'bard',
         type: TYPES.traveler,
         rarity: RARITY.legendary,
         kind: KINDS.critter,
@@ -1185,11 +1101,11 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['bard'],
         getAvailability: available_mistwood
     },
     'kingnorthstreasury': {
         name: 'kingnorthstreasury',
+        baseCardName: 'clocktower',
         type: TYPES.governance,
         rarity: RARITY.legendary,
         kind: KINDS.building,
@@ -1197,31 +1113,31 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['clocktower', 'historian'],
         getAvailability: available_mistwood
     },
     'mayberrymatriarch': {
         name: 'mayberrymatriarch',
+        baseCardName: 'wife',
         type: TYPES.prosperity,
         rarity: RARITY.legendary,
         kind: KINDS.critter,
         points: 5,
         maximum: 1,
-        getAdditionalPoints: (player) => player.findCountCard(basecards['husband']) >= 1 && player.findCountCard(basecards['farm']) >= 1 ? 5 : 0,
+        getAdditionalPoints: (player) => player.findCountBaseCard(basecards['husband']) >= 1 && player.findCountBaseCard(basecards['farm']) >= 1 ? 5 : 0,
         getOccupiedSpaces: function (player, to_be_added) {
             // Wife requires 1 space if she should be added to town and town already has
             // as many wifes as husbands
-            if (player.findCountHusbandMatches() > player.findCountCard(basecards['husband']) ||
-                to_be_added && player.findCountHusbandMatches() == player.findCountCard(basecards['husband'])) {
+            if (player.findCountHusbandMatches() > player.findCountBaseCard(basecards['husband']) ||
+                to_be_added && player.findCountHusbandMatches() == player.findCountBaseCard(basecards['husband'])) {
                 return 1;
             }
             return 0;
         },
-        related: ['wife', 'husband'],
         getAvailability: available_mistwood
     },
     'strongrootcastle': {
         name: 'strongrootcastle',
+        baseCardName: 'castle',
         type: TYPES.prosperity,
         rarity: RARITY.legendary,
         kind: KINDS.building,
@@ -1229,11 +1145,11 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: (player) => player.findCountRarityKind(RARITY.common, KINDS.building) * 2,
         getOccupiedSpaces: space_one,
-        related: ['castle', 'king'],
         getAvailability: available_mistwood
     },
     'streysamt': {
         name: 'streysamt',
+        baseCardName: 'ranger',
         type: TYPES.destination,
         rarity: RARITY.legendary,
         kind: KINDS.critter,
@@ -1241,11 +1157,11 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['ranger'],
         getAvailability: available_mistwood
     },
     'terryhare': {
         name: 'terryhare',
+        baseCardName: 'shopkeeper',
         type: TYPES.governance,
         rarity: RARITY.legendary,
         kind: KINDS.critter,
@@ -1253,7 +1169,6 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ['shopkeeper'],
         getAvailability: available_mistwood
     }
 }
