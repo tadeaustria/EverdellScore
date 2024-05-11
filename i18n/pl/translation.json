@@ -30,11 +30,13 @@
         "extraextra": "Więcej! Więcej!",
         "legends": "Legendy",
         "rugwort": "Krostawiec",
+        "glimmergold": "Glimmergold",
         "bellfaire": "Święto Lata",
         "pearlbrook": "Perłowy Potok",
         "spirecrest": "Zimowy Szczyt",
         "mistwood": "Mgielny Las",
-        "newleaf": "Stacja Nowoliść"
+        "newleaf": "Stacja Nowoliść",
+        "kindergarten": "Przedszkole w Everdell Promo"
     },
     "res": {
         "twig": "Gałązki",
@@ -100,6 +102,24 @@
         "towncrier": "Krzykacz miejski",
         "scurrblestadium": "Boisko do żołędziówki",
         "scurrblechampion": "Mistrz żołędziówki",
+
+        "poe": "Adam Krukiewicz",
+        "foresight": "Prorok",
+        "amillaglistendew": "Ogonilla",
+        "flynnnobletail": "Myszko Pierwszy",
+        "cirruswindfall": "Podniebny posłaniec",
+        "thegreenacorn": "Zielony Żołędź",
+        "silverscalespring": "Srebrzyste źródło",
+        "oleandersoperahouse": "Opera w Oleandrach",
+        "mcgregorsmarket": "Ryneczek",
+        "bridgeofthesky": "Niebiański most",
+
+        "rugtheruler": "Krostawiec Władca",
+        "rugtherobber": "Krostawiec Rabuś",
+        "rugtherowdy": "Krostawiec Awanturnik",
+
+        "kids": "Dzieci",
+        "kindergarten": "Przedszkole",
 
         "ferry": "Prom",
         "ferryferret": "Przewoźnik",
