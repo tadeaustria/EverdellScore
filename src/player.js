@@ -37,7 +37,7 @@ class Player {
 
     getMaxSpace() {
         //Unique main road extends the city by one space and each legendary card extends the city
-        return 15 + this.findCountCard(basecards['mainroad']) + this.findCountRarity(RARITY.legendary);
+        return 15 + this.findCountBaseCard(basecards['mainroad']) + this.findCountRarity(RARITY.legendary);
     }
 
     getOccupiedSpaces() {
@@ -167,8 +167,12 @@ class Player {
         return this.findCountFct((card) => { return card.name == cardToFind.name; });
     }
 
+    findCountBaseCard(cardToFind) {
+        return this.findCountFct((card) => { return card.name == cardToFind.name || card.baseCardName === cardToFind.name; });
+    }
+
     findCountHusbandMatches() {
-        return this.getWifeCount4AdditionalPoints() + this.findCountCard(basecards['mayberrymatriarch']);
+        return this.getWifeCount4AdditionalPoints() + this.findCountBaseCard(basecards['mayberrymatriarch']);
     }
 
     hasData() {
@@ -196,7 +200,7 @@ class Player {
     //minimal count of wife or husband is number of pairs
     getWifeHusbandPairs() {
         // reduce husbands, if mayberrymatriarch is active, she always needs at least one husband
-        return Math.min(Math.max(this.findCountCard(basecards['husband']) - this.findCountCard(basecards['mayberrymatriarch']), 0), this.getWifeCount4AdditionalPoints());
+        return Math.min(Math.max(this.findCountBaseCard(basecards['husband']) - this.findCountBaseCard(basecards['mayberrymatriarch']), 0), this.getWifeCount4AdditionalPoints());
     }
 
     getWifeAdditionalPoints() {
