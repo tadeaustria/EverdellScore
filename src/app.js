@@ -139,7 +139,7 @@ class Application {
 
     addToActivePlayer(cardName) {
         let card = this.findCardByName(cardName);
-        if (card.getOccupiedSpaces(this.activePlayer, true) + this.activePlayer.getOccupiedSpaces() > this.activePlayer.getMaxSpace()) {
+        if (this.activePlayer.getOccupiedSpaces() + card.occupancy.whenAdd(this.activePlayer, true) > this.activePlayer.getMaxSpace() + card.occupancy.spaceCreated()) {
             $("#alert-cardlimit").fadeTo(3000, 500).slideUp(500, function () {
                 $("#alert-cardlimit").slideUp(500);
             });
@@ -428,6 +428,7 @@ class Application {
     }
 
     getCardUsageCount(searchedCard) {
+        // TODO: cleanup
         return this.players.reduce((prev1, player) => player.town.reduce((prev2, card) => card == searchedCard ? ++prev2 : prev2, prev1), 0);
     }
 
