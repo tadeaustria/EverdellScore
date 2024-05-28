@@ -27,6 +27,9 @@
         "playerpower": "Player Power"
     },
     "expansion" : {
+        "extraextra": "Extra! Extra!",
+        "legends": "Legends",
+        "rugwort": "Rugwort",
         "bellfaire": "Bellfaire",
         "pearlbrook": "Pearlbrook",
         "spirecrest": "Spirecrest",
@@ -90,6 +93,13 @@
         "teacher": "Teacher",
         "theater": "Theater",
         "bard": "Bard",
+
+        "carnival": "Carnival",
+        "juggler": "Juggler",
+        "gazette": "Gazette",
+        "towncrier": "Town Crier",
+        "scurrblestadium": "Scurrble Stadium",
+        "scurrblechampion": "Scurrble Champion",
 
         "ferry": "Ferry",
         "ferryferret": "Ferry Ferret",

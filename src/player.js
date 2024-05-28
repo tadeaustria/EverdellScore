@@ -41,7 +41,7 @@ class Player {
     }
 
     getOccupiedSpaces() {
-        return this.town.reduce((prev, card) => prev + card.getOccupiedSpaces(this, false), 0);
+        return Math.round(this.town.reduce((prev, card) => prev + card.getOccupiedSpaces(this, false), 0));
     }
 
     getTownOverview() {
