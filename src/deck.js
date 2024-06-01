@@ -37,45 +37,89 @@ function points_six(player) { return 6; }
 function points_seven(player) { return 7; }
 function points_nine(player) { return 9; }
 
-function space_zero(player, to_be_added) { return 0; }
-function space_one(player, to_be_added) { return 1; }
-
 const OCCUPANCY = {
     NO_SPACE: {
-        spaceCreated: (player, card, countToAdd, countAdded) => 0,
-        whenAdd: (player, card, countToAdd, countAdded) => 0,
-        whenAdded: (player, card, countToAdd, countAdded) => 0
+        spaceCreated: () => 0,
+        whenAdd: (player, card, countToAdd) => 0,
+        whenAdded: (player, card) => 0
     },
     STANDARD_SPACE: {
-        spaceCreated: (player, card, countToAdd, countAdded) => 0,
-        whenAdd: (player, card, countToAdd, countAdded) => countToAdd,
-        whenAdded: (player, card, countToAdd, countAdded) => countAdded
+        spaceCreated: () => 0,
+        whenAdd: (player, card, countToAdd) => countToAdd,
+        whenAdded: (player, card) => player.findCountCard(card)
     },
-    LEGENDARY_SPACE: {
-        spaceCreated: (player, card, countToAdd, countAdded) => count,
-        whenAdd: (player, card, countToAdd, countAdded) => countToAdd,
-        whenAdded: (player, card, countToAdd, countAdded) => countAdded
+    CREATES_SPACE: {
+        spaceCreated: () => 1,
+        whenAdd: (player, card, countToAdd) => countToAdd,
+        whenAdded: (player, card) => player.findCountCard(card)
     },
-    SHARED_SPACE: {
-        spaceCreated: (player, card, countToAdd, countAdded) => 0,
-        whenAdd: (player, card, countToAdd, countAdded) => countAdded === 0 ? 1 : 0,
-        whenAdded: (player, card, countToAdd, countAdded) => 1
-    }
+    SHARED: {
+        WITH_SELF: {
+            spaceCreated: () => 0,
+            whenAdd: (player, card, countToAdd) => player.findCountBaseCard(card) === 0 ? 1 : 0,
+            whenAdded: (player, card) => 1
+        },
+        WITH_CARD: (otherCardName) => ({
+            spaceCreated: () => 0,
+            whenAdd: (player, card, countToAdd) => {
+                let thisCardCount = player.findCountBaseCard(card);
+                let otherCardCount = player.findCountBaseCard(basecards[otherCardName]);
 
-    // SHARED_WITH: function (other) {
-    //     return {
-    //         whenAdd: function (count) {
-    //         },
-    //         whenAdded: function (count) {
-    //         }
-    //     }
-    // }
-    // COMPLEX: function (other1, other2)
-    // CREATES_SPACE:
+                if (thisCardCount + countToAdd <= otherCardCount) {
+                    return 0;
+                } else if (thisCardCount > otherCardCount) {
+                    return countToAdd;
+                } else {
+                    return thisCardCount + countToAdd - otherCardCount;
+                }
+            },
+            whenAdded: (player, card) => {
+                let thisCardCount = player.findCountBaseCard(card);
+                let otherCardCount = player.findCountBaseCard(basecards[otherCardName]);
+                return thisCardCount > otherCardCount ? thisCardCount - otherCardCount : 0;
+            }
+        }),
+        BY_CARD: (otherCardName) => ({
+            // TODO: To be removed and replaced with OCCUPANCY.STANDARD when city limit implementation changed from hard limit to a soft limit with a warning
+            spaceCreated: () => 0,
+            whenAdd: (player, card, countToAdd) => {
+                let thisCardCount = card.baseCardName ? player.findCountBaseCard(basecards[card.baseCardName]) : player.findCountBaseCard(card);
+                let otherCardCount = player.findCountBaseCard(basecards[otherCardName]);
+
+                if (thisCardCount + countToAdd <= otherCardCount) {
+                    return 0;
+                } else if (thisCardCount > otherCardCount) {
+                    return countToAdd;
+                } else {
+                    return thisCardCount + countToAdd - otherCardCount;
+                }
+            },
+            whenAdded: (player, card) => player.findCountCard(card)
+        }),
+        WITH_CARD_KIND: (cardKind) => ({
+            spaceCreated: () => 0,
+            whenAdd: (player, card, countToAdd) => player.findCountKind(cardKind) > 0 ? 0 : countToAdd,
+            whenAdded: (player, card) => player.findCountKind(cardKind) > 0 ? 0 : player.findCountCard(card)
+        }),
+        WITH_PLAYER_POWER: (playerPowerName) => ({
+            spaceCreated: () => 0,
+            whenAdd: (player, card, countToAdd) => player.playerpowername === playerPowerName ? 0 : countToAdd,
+            whenAdded: (player, card) => player.playerpowername === playerPowerName ? 0 : player.findCountCard(card)
+        })
+    },
+    COMPLEX: (firstOccupancy, secondOccupancy) => ({
+        spaceCreated: () => Math.max(firstOccupancy.spaceCreated(), secondOccupancy.spaceCreated()),
+        whenAdd: (player, card, countToAdd) => Math.min(firstOccupancy.whenAdd(player, card, countToAdd), secondOccupancy.whenAdd(player, card, countToAdd)),
+        whenAdded: (player, card) => Math.min(firstOccupancy.whenAdded(player, card), secondOccupancy.whenAdded(player, card))
+    })
 }
 Object.freeze(OCCUPANCY);
 
+LEGENDARY_OCCUPANCY = OCCUPANCY.COMPLEX(OCCUPANCY.STANDARD_SPACE, OCCUPANCY.CREATES_SPACE);
+FARM_OCCUPANCY = OCCUPANCY.COMPLEX(OCCUPANCY.SHARED.BY_CARD('greenhouse'), OCCUPANCY.SHARED.WITH_PLAYER_POWER('pigs'));
+
 function available_always(app) { return true; }
+function available_never(app) { return false; }
 function available_bellfaire(app) { return app.bellfaire; }
 function available_pearlbrook(app) { return app.pearlbrook; }
 function available_npearlbrook(app) { return !app.pearlbrook; }
@@ -94,6 +138,31 @@ const RESOURCES = {
 Object.freeze(RESOURCES)
 
 let basecards = {
+    // TODO: needed for unit tests, remove when merging glimmerlock
+    'scurrblechampion': {
+        name: 'scurrblechampion',
+        type: TYPES.prosperity,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 3,
+        getAdditionalPoints: function (player) { return (player.findCountBaseCard(basecards['scurrblechampion']) - 1) * 2; },
+        occupancy: OCCUPANCY.SHARED.WITH_SELF,
+        getAvailability: available_never
+    },
+    'mcgregorsmarket': {
+        name: 'mcgregorsmarket',
+        baseCardName: 'farm',
+        type: TYPES.production,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        occupancy: OCCUPANCY.COMPLEX(FARM_OCCUPANCY, LEGENDARY_OCCUPANCY),
+        getAvailability: available_never
+    },
+    // end of TODO
 
     'inn': {
         name: 'inn',
@@ -389,13 +458,7 @@ let basecards = {
         points: 1,
         maximum: 8,
         getAdditionalPoints: points_zero,
-        occupancy: function (player, to_be_added) {
-            if (player.findCountBaseCard(basecards['greenhouse']) <= player.findCountBaseCard(basecards['farm']) && 
-                player.playerpowername != 'pigs') {
-                return 1;
-            }
-            return 0;
-        },
+        occupancy: FARM_OCCUPANCY,
         getAvailability: available_always
     },
     'farmnospace': {
@@ -407,7 +470,7 @@ let basecards = {
         points: 1,
         maximum: 1,
         getAdditionalPoints: points_zero,
-        occupancy: OCCUPANCY.NO_SPACE,
+        occupancy: OCCUPANCY.COMPLEX(FARM_OCCUPANCY, OCCUPANCY.NO_SPACE),
         getAvailability: available_mistwood
     },
     'husband': {
@@ -418,12 +481,7 @@ let basecards = {
         points: 2,
         maximum: 4,
         getAdditionalPoints: points_zero,
-        occupancy: function (player, to_be_added) {
-            if (player.findCountBaseCard(basecards['wife']) <= player.findCountBaseCard(basecards['husband'])) {
-                return 1;
-            }
-            return 0;
-        },
+        occupancy: OCCUPANCY.SHARED.WITH_CARD('wife'),
         getAvailability: available_always
     },
     'wife': {
@@ -434,15 +492,7 @@ let basecards = {
         points: 2,
         maximum: 4,
         getAdditionalPoints: points_zero,
-        occupancy: function (player, to_be_added) {
-            // Wife requires 1 space if she should be added to town and town already has
-            // as many wifes as husbands
-            if (player.findCountHusbandMatches() > player.findCountBaseCard(basecards['husband']) ||
-                to_be_added && player.findCountHusbandMatches() == player.findCountBaseCard(basecards['husband'])) {
-                return 1;
-            }
-            return 0;
-        },
+        occupancy: OCCUPANCY.STANDARD_SPACE,
         getAvailability: available_always
     },
     'generalstore': {
@@ -742,7 +792,7 @@ let basecards = {
         points: 0,
         maximum: 3,
         getAdditionalPoints: points_zero,
-        occupancy: (player, to_be_added) => player.findCountKind(KINDS.building) > 0 ? 0 : 1,
+        occupancy: OCCUPANCY.SHARED.WITH_CARD_KIND(KINDS.building),
         getAvailability: available_pearlbrook
     },
 
@@ -941,16 +991,7 @@ let basecards = {
         points: 2,
         maximum: 3,
         getAdditionalPoints: points_zero,
-        occupancy: function (player, to_be_added) {
-            // Greenhouse requires 1 space if she should be added to town and town already has
-            // as many greenhouses as farms
-            if (player.findCountBaseCard(basecards['greenhouse']) > player.findCountBaseCard(basecards['farm']) || 
-                to_be_added && player.findCountBaseCard(basecards['greenhouse']) == player.findCountBaseCard(basecards['farm']) ||
-                player.playerpowername == 'pigs' ) {
-                return 1;
-            }
-            return 0;
-        },
+        occupancy: OCCUPANCY.SHARED.WITH_CARD('farm'),
         getAvailability: available_newleaf
     },
     'hotel': {
@@ -1087,7 +1128,7 @@ let basecards = {
         points: 4,
         maximum: 1,
         getAdditionalPoints: points_zero,
-        occupancy: OCCUPANCY.LEGENDARY_SPACE,
+        occupancy: LEGENDARY_OCCUPANCY,
         getAvailability: available_mistwood
     },
     'clickclacks': {
@@ -1099,7 +1140,7 @@ let basecards = {
         points: 4,
         maximum: 1,
         getAdditionalPoints: points_zero,
-        occupancy: OCCUPANCY.LEGENDARY_SPACE,
+        occupancy: LEGENDARY_OCCUPANCY,
         getAvailability: available_mistwood
     },
     'darkdeepprison': {
@@ -1111,7 +1152,7 @@ let basecards = {
         points: 3,
         maximum: 1,
         getAdditionalPoints: points_zero,
-        occupancy: OCCUPANCY.LEGENDARY_SPACE,
+        occupancy: LEGENDARY_OCCUPANCY,
         getAvailability: available_mistwood
     },
     'everflametomb': {
@@ -1123,7 +1164,7 @@ let basecards = {
         points: 2,
         maximum: 1,
         getAdditionalPoints: points_zero,
-        occupancy: OCCUPANCY.LEGENDARY_SPACE,
+        occupancy: LEGENDARY_OCCUPANCY,
         getAvailability: available_mistwood
     },
     'jorgoldwing': {
@@ -1135,7 +1176,7 @@ let basecards = {
         points: 4,
         maximum: 1,
         getAdditionalPoints: points_zero,
-        occupancy: OCCUPANCY.LEGENDARY_SPACE,
+        occupancy: LEGENDARY_OCCUPANCY,
         getAvailability: available_mistwood
     },
     'kingnorthstreasury': {
@@ -1147,7 +1188,7 @@ let basecards = {
         points: 4,
         maximum: 1,
         getAdditionalPoints: points_zero,
-        occupancy: OCCUPANCY.LEGENDARY_SPACE,
+        occupancy: LEGENDARY_OCCUPANCY,
         getAvailability: available_mistwood
     },
     'mayberrymatriarch': {
@@ -1159,15 +1200,7 @@ let basecards = {
         points: 5,
         maximum: 1,
         getAdditionalPoints: (player) => player.findCountBaseCard(basecards['husband']) >= 1 && player.findCountBaseCard(basecards['farm']) >= 1 ? 5 : 0,
-        occupancy: function (player, to_be_added) {
-            // Wife requires 1 space if she should be added to town and town already has
-            // as many wifes as husbands
-            if (player.findCountHusbandMatches() > player.findCountBaseCard(basecards['husband']) ||
-                to_be_added && player.findCountHusbandMatches() == player.findCountBaseCard(basecards['husband'])) {
-                return 1;
-            }
-            return 0;
-        },
+        occupancy: LEGENDARY_OCCUPANCY,
         getAvailability: available_mistwood
     },
     'strongrootcastle': {
@@ -1179,7 +1212,7 @@ let basecards = {
         points: 4,
         maximum: 1,
         getAdditionalPoints: (player) => player.findCountRarityKind(RARITY.common, KINDS.building) * 2,
-        occupancy: OCCUPANCY.LEGENDARY_SPACE,
+        occupancy: LEGENDARY_OCCUPANCY,
         getAvailability: available_mistwood
     },
     'streysamt': {
@@ -1191,7 +1224,7 @@ let basecards = {
         points: 4,
         maximum: 1,
         getAdditionalPoints: points_zero,
-        occupancy: OCCUPANCY.LEGENDARY_SPACE,
+        occupancy: LEGENDARY_OCCUPANCY,
         getAvailability: available_mistwood
     },
     'terryhare': {
@@ -1203,7 +1236,7 @@ let basecards = {
         points: 4,
         maximum: 1,
         getAdditionalPoints: points_zero,
-        occupancy: OCCUPANCY.LEGENDARY_SPACE,
+        occupancy: LEGENDARY_OCCUPANCY,
         getAvailability: available_mistwood
     }
 }

@@ -139,7 +139,7 @@ class Application {
 
     addToActivePlayer(cardName) {
         let card = this.findCardByName(cardName);
-        if (this.activePlayer.getOccupiedSpaces() + card.occupancy.whenAdd(this.activePlayer, true) > this.activePlayer.getMaxSpace() + card.occupancy.spaceCreated()) {
+        if (this.activePlayer.getOccupiedSpaces() + card.occupancy.whenAdd(this.activePlayer, card, 1) > this.activePlayer.getMaxSpace() + card.occupancy.spaceCreated()) {
             $("#alert-cardlimit").fadeTo(3000, 500).slideUp(500, function () {
                 $("#alert-cardlimit").slideUp(500);
             });

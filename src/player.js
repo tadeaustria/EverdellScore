@@ -38,14 +38,14 @@ class Player {
     getMaxSpace() {
         return this.getUniqueTownCards()
             .map((cardName) => basecards[cardName])
-            .map((card) => card.occupancy.spaceCreated(this, card, 0, this.findCountBaseCard(card)))
+            .map((card) => card.occupancy.spaceCreated())
             .reduce((previousValue, currentValue) => previousValue + currentValue, 15);
     }
 
     getOccupiedSpaces() {
         return this.getUniqueTownCards()
             .map((cardName) => basecards[cardName])
-            .map((card) => card.occupancy.whenAdded(this, card, 0, this.findCountBaseCard(card)))
+            .map((card) => card.occupancy.whenAdded(this, card))
             .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
     }
 
