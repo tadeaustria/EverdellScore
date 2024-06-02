@@ -76,6 +76,156 @@ describe('Occupancy', function() {
     });
   });
 
+  describe('when checking occupancy for the Wife and the Husband', function () {
+    describe('if no special wives used', function () {
+      describe('if there are more wives than husbands', function () {
+        beforeEach(function () {
+          player.town.push(...Array(4).fill(basecards.wife));
+          player.town.push(...Array(3).fill(basecards.husband));
+        });
+
+        it('wives and husbands should share a space', function () {
+          expect(player.getOccupiedSpaces()).toEqual(4);
+          expect(basecards.wife.occupancy.whenAdded(player, basecards.wife)).toEqual(4);
+          expect(basecards.husband.occupancy.whenAdded(player, basecards.husband)).toEqual(0);
+        });
+
+        it('wives should require one space each', function () {
+          expect(basecards.wife.occupancy.whenAdd(player, basecards.wife, 1)).toEqual(1);
+        });
+
+        it('legendary wife should require one space', function () {
+          expect(basecards.mayberrymatriarch.occupancy.whenAdd(player, basecards.mayberrymatriarch, 1)).toEqual(1);
+        });
+
+        it('husbands should require no space', function () {
+          expect(basecards.husband.occupancy.whenAdd(player, basecards.husband, 1)).toEqual(0);
+        });
+      });
+
+      describe('if there are less wives than husbands', function () {
+        beforeEach(function () {
+          player.town.push(...Array(3).fill(basecards.wife));
+          player.town.push(...Array(4).fill(basecards.husband));
+        });
+
+        it('wives and husbands should share a space', function () {
+          expect(player.getOccupiedSpaces()).toEqual(4);
+          expect(basecards.wife.occupancy.whenAdded(player, basecards.wife)).toEqual(3);
+          expect(basecards.husband.occupancy.whenAdded(player, basecards.husband)).toEqual(1);
+        });
+
+        it('wives should require no space', function () {
+          expect(basecards.wife.occupancy.whenAdd(player, basecards.wife, 1)).toEqual(0);
+        });
+
+        it('legendary wife should require no space', function () {
+          expect(basecards.mayberrymatriarch.occupancy.whenAdd(player, basecards.mayberrymatriarch, 1)).toEqual(0);
+        });
+
+        it('husbands should require one space each', function () {
+          expect(basecards.husband.occupancy.whenAdd(player, basecards.husband, 1)).toEqual(1);
+        });
+      });
+
+      describe('if there are same number of wives as husbands', function () {
+        beforeEach(function () {
+          player.town.push(...Array(4).fill(basecards.wife));
+          player.town.push(...Array(4).fill(basecards.husband));
+        });
+
+        it('wives and husbands should share a space', function () {
+          expect(player.getOccupiedSpaces()).toEqual(4);
+          expect(basecards.wife.occupancy.whenAdded(player, basecards.wife)).toEqual(4);
+          expect(basecards.husband.occupancy.whenAdded(player, basecards.husband)).toEqual(0);
+        });
+
+        it('wives should require one space each', function () {
+          expect(basecards.wife.occupancy.whenAdd(player, basecards.wife, 1)).toEqual(1);
+        });
+
+        it('legendary wife should require one space', function () {
+          expect(basecards.mayberrymatriarch.occupancy.whenAdd(player, basecards.mayberrymatriarch, 1)).toEqual(1);
+        });
+
+        it('husbands should require one space each', function () {
+          expect(basecards.husband.occupancy.whenAdd(player, basecards.husband, 1)).toEqual(1);
+        });
+      });
+    });
+
+    describe('if one of the wives is legendary wife', function () {
+      describe('if there are more wives than husbands', function () {
+        beforeEach(function () {
+          player.town.push(...Array(3).fill(basecards.wife));
+          player.town.push(...Array(1).fill(basecards.mayberrymatriarch));
+          player.town.push(...Array(3).fill(basecards.husband));
+        });
+
+        it('wives and husbands should share a space', function () {
+          expect(player.getOccupiedSpaces()).toEqual(4);
+          expect(basecards.wife.occupancy.whenAdded(player, basecards.wife)).toEqual(3);
+          expect(basecards.mayberrymatriarch.occupancy.whenAdded(player, basecards.mayberrymatriarch)).toEqual(1);
+          expect(basecards.husband.occupancy.whenAdded(player, basecards.husband)).toEqual(0);
+        });
+
+        it('wives should require one space each', function () {
+          expect(basecards.wife.occupancy.whenAdd(player, basecards.wife, 1)).toEqual(1);
+        });
+
+        it('husbands should require no space', function () {
+          expect(basecards.husband.occupancy.whenAdd(player, basecards.husband, 1)).toEqual(0);
+        });
+      });
+
+      describe('if there are less wives than husbands', function () {
+        beforeEach(function () {
+          player.town.push(...Array(2).fill(basecards.wife));
+          player.town.push(...Array(1).fill(basecards.mayberrymatriarch));
+          player.town.push(...Array(4).fill(basecards.husband));
+        });
+
+        it('wives and husbands should share a space', function () {
+          expect(player.getOccupiedSpaces()).toEqual(4);
+          expect(basecards.wife.occupancy.whenAdded(player, basecards.wife)).toEqual(2);
+          expect(basecards.mayberrymatriarch.occupancy.whenAdded(player, basecards.mayberrymatriarch)).toEqual(1);
+          expect(basecards.husband.occupancy.whenAdded(player, basecards.husband)).toEqual(1);
+        });
+
+        it('wives should require no space', function () {
+          expect(basecards.wife.occupancy.whenAdd(player, basecards.wife, 1)).toEqual(0);
+        });
+
+        it('husbands should require one space each', function () {
+          expect(basecards.husband.occupancy.whenAdd(player, basecards.husband, 1)).toEqual(1);
+        });
+      });
+
+      describe('if there are same number of wives as husbands', function () {
+        beforeEach(function () {
+          player.town.push(...Array(3).fill(basecards.wife));
+          player.town.push(...Array(1).fill(basecards.mayberrymatriarch));
+          player.town.push(...Array(4).fill(basecards.husband));
+        });
+
+        it('wives and husbands should share a space', function () {
+          expect(player.getOccupiedSpaces()).toEqual(4);
+          expect(basecards.wife.occupancy.whenAdded(player, basecards.wife)).toEqual(3);
+          expect(basecards.mayberrymatriarch.occupancy.whenAdded(player, basecards.mayberrymatriarch)).toEqual(1);
+          expect(basecards.husband.occupancy.whenAdded(player, basecards.husband)).toEqual(0);
+        });
+
+        it('wives should require one space each', function () {
+          expect(basecards.wife.occupancy.whenAdd(player, basecards.wife, 1)).toEqual(1);
+        });
+
+        it('husbands should require one space each', function () {
+          expect(basecards.husband.occupancy.whenAdd(player, basecards.husband, 1)).toEqual(1);
+        });
+      });
+    });
+  });
+
   describe('when checking occupancy for the Farm and the Greenhouse', function () {
     describe('if no player powers or special farms used', function () {
       describe('if there are more farms than greenhouses', function () {

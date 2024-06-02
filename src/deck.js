@@ -492,7 +492,7 @@ let basecards = {
         points: 2,
         maximum: 4,
         getAdditionalPoints: points_zero,
-        occupancy: OCCUPANCY.STANDARD_SPACE,
+        occupancy: OCCUPANCY.SHARED.BY_CARD('husband'),
         getAvailability: available_always
     },
     'generalstore': {
@@ -1200,7 +1200,7 @@ let basecards = {
         points: 5,
         maximum: 1,
         getAdditionalPoints: (player) => player.findCountBaseCard(basecards['husband']) >= 1 && player.findCountBaseCard(basecards['farm']) >= 1 ? 5 : 0,
-        occupancy: LEGENDARY_OCCUPANCY,
+        occupancy: OCCUPANCY.COMPLEX(LEGENDARY_OCCUPANCY, OCCUPANCY.SHARED.BY_CARD('husband')),
         getAvailability: available_mistwood
     },
     'strongrootcastle': {
