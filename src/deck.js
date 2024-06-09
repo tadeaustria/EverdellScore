@@ -1180,7 +1180,6 @@ let basecards = {
         maximum: 3,
         getAdditionalPoints: (player) => (player.findCountCard(basecards["scurrblechampion"]) - 1) * 2)),
         getOccupiedSpaces: space_zero,
-        related: [],
         getAvailability: available_bellfaire
     }
 }
