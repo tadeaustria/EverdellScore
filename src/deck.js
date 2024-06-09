@@ -1223,7 +1223,7 @@ let basecards = {
     "Kids": {
         name: "kids",
         baseCardName: "kids"
-        type: TYPES.growth,
+        type: TYPES.production,
         rarity: RARITY.common,
         kind: KINDS.critter,
         points: 1,
