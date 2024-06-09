@@ -1213,7 +1213,7 @@ let basecards = {
         name: "kindergarten",
         type: TYPES.prosperity,
         rarity: RARITY.legendary,
-        kind: KINDS.construction,
+        kind: KINDS.building,
         points: 1,
         maximum: 1,
         getAdditionalPoints: (player) => player.findCountCard(basecards["kids"]) * 2,
