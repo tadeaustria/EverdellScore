@@ -1222,7 +1222,7 @@ let basecards = {
     },
     "Kids": {
         name: "kids",
-        baseCardName: "kids"
+        baseCardName: "kids",
         type: TYPES.production,
         rarity: RARITY.common,
         kind: KINDS.critter,
