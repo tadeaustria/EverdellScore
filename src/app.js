@@ -43,7 +43,8 @@ class Application {
         this.spirecrest = false;
         this.mistwood = false;
         this.newleaf = false;
-
+        this.kindergarten = false;
+        
         this.updateData();
 
         $('#nav-p1-tab').on('click', (e) => { this.activePlayer = this.players[0]; this.updatePlayerOutput(); });
@@ -74,6 +75,7 @@ class Application {
         this.spirecrest = $('#flexSwitchCheckSpirecrest').is(':checked');
         this.mistwood = $('#flexSwitchCheckMistwood').is(':checked');
         this.newleaf = $('#flexSwitchCheckNewleaf').is(':checked');
+        this.kindergarten = $('#flexSwitchCheckKindergarten').is('checked');
 
         this.cards = [...Object.values(basecards)].filter((card) => card.getAvailability(this));
         this.basicEvents = [...Object.values(basicEvents)].filter((event) => event.getAvailability(this));
@@ -109,6 +111,7 @@ class Application {
         $('#flexSwitchCheckSpirecrest').prop('checked', this.spirecrest);
         $('#flexSwitchCheckMistwood').prop('checked', this.mistwood);
         $('#flexSwitchCheckNewleaf').prop('checked', this.newleaf);
+        $('#flexSwitchCheckKindergarten').prop('checked', this.kindergarten);
     }
 
     btn_reset() {
