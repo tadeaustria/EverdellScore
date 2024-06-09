@@ -1216,7 +1216,7 @@ let basecards = {
         kind: KINDS.construction,
         points: 1,
         maximum: 1,
-        getAdditionalPoints: player.findCountCard(basecards["kids"]) * 2
+        getAdditionalPoints: player.findCountCard(basecards["kids"]) * 2,
         getOccupiedSpaces: space_one,
         getAvailability: available_kindergarten
     },
