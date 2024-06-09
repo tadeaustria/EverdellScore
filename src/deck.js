@@ -47,6 +47,8 @@ function available_npearlbrook(app) { return !app.pearlbrook; }
 function available_spirecrest(app) { return app.spirecrest; }
 function available_newleaf(app) { return app.newleaf; }
 function available_mistwood(app) { return app.mistwood; }
+function available_kindergarten(app) { return app.kindergarten; }
+
 
 const RESOURCES = {
     twig: 'twig',
@@ -1173,7 +1175,7 @@ let basecards = {
     },
     "scurrblechampion": {
         name: "scurrblechampion",
-        "baseCardName" : "scurrblechampion",
+        baseCardName : "scurrblechampion",
         type: TYPES.prosperity,
         rarity: RARITY.common,
         kind: KINDS.critter,
@@ -1206,6 +1208,29 @@ let basecards = {
         getOccupiedSpaces: space_one,
         related: ["school", "teacher"],
         getAvailability: available_newleaf
+    },
+    "kindergarten": {
+        name: "kindergarten",
+        type: TYPES.prosperity,
+        rarity: RARITY.legendary,
+        kind: KINDS.construction,
+        points: 1,
+        maximum: 1,
+        getAdditionalPoints: player.findCountCard(basecards["kids"]) * 2
+        getOccupiedSpaces: space_one,
+        getAvailability: available_kindergarten
+    },
+    "Kids": {
+        name: "kids",
+        baseCardName: "kids"
+        type: TYPES.growth,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 1,
+        maximum: 4,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_kindergarten
     }
 }
 
