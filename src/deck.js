@@ -1173,14 +1173,39 @@ let basecards = {
     },
     "scurrblechampion": {
         name: "scurrblechampion",
+        "baseCardName" : "scurrblechampion",
         type: TYPES.prosperity,
         rarity: RARITY.common,
         kind: KINDS.critter,
         points: 2,
         maximum: 3,
-        getAdditionalPoints: (player) => (player.findCountCard(basecards["scurrblechampion"]) - 1) * 2)),
-        getOccupiedSpaces: space_zero,
+        getAdditionalPoints: (player) => (player.findCountCard(basecards["scurrblechampion"]) - 1) * 2,
+        getOccupiedSpaces: space_one,
         getAvailability: available_bellfaire
+    },
+    "amilliaglistendew": {
+        name: "amilliaglistendew",
+        type: TYPES.destination,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 5,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ["palace","queen"],
+        getAvailability: available_newleaf
+    },
+    "poe": {
+        name: "poe",
+        type: TYPES.production,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        related: ["school", "teacher"],
+        getAvailability: available_newleaf
     }
 }
 
