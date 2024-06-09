@@ -1220,7 +1220,7 @@ let basecards = {
         getOccupiedSpaces: space_one,
         getAvailability: available_kindergarten
     },
-    "Kids": {
+    "kids": {
         name: "kids",
         baseCardName: "kids",
         type: TYPES.production,
