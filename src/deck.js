@@ -1170,6 +1170,18 @@ let basecards = {
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
         getAvailability: available_mistwood
+    },
+    "scurrblechampion": {
+        name: "scurrblechampion",
+        type: TYPES.prosperity,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 3,
+        getAdditionalPoints: (player) => (player.findCountCard(basecards["scurrblechampion"]) - 1) * 2)),
+        getOccupiedSpaces: space_zero,
+        related: [],
+        getAvailability: available_bellfaire
     }
 }
 
