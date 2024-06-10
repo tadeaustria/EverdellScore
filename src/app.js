@@ -76,7 +76,7 @@ class Application {
         this.spirecrest = $('#flexSwitchCheckSpirecrest').is(':checked');
         this.mistwood = $('#flexSwitchCheckMistwood').is(':checked');
         this.newleaf = $('#flexSwitchCheckNewleaf').is(':checked');
-        this.glimmergold = $('#flexSwitchCheckglimmergold).is(':checked');
+        this.glimmergold = $('#flexSwitchCheckglimmergold').is(':checked');
         this.kindergarten = $('#flexSwitchCheckKindergarten').is(':checked');
 
         this.cards = [...Object.values(basecards)].filter((card) => card.getAvailability(this));
