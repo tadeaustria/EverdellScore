@@ -43,6 +43,7 @@ class Application {
         this.spirecrest = false;
         this.mistwood = false;
         this.newleaf = false;
+        this.glimmergold = false;
         this.kindergarten = false;
         
         this.updateData();
@@ -75,6 +76,7 @@ class Application {
         this.spirecrest = $('#flexSwitchCheckSpirecrest').is(':checked');
         this.mistwood = $('#flexSwitchCheckMistwood').is(':checked');
         this.newleaf = $('#flexSwitchCheckNewleaf').is(':checked');
+        this.glimmergold = $('#flexSwitchCheckglimmergold).is(':checked');
         this.kindergarten = $('#flexSwitchCheckKindergarten').is(':checked');
 
         this.cards = [...Object.values(basecards)].filter((card) => card.getAvailability(this));
@@ -111,6 +113,7 @@ class Application {
         $('#flexSwitchCheckSpirecrest').prop('checked', this.spirecrest);
         $('#flexSwitchCheckMistwood').prop('checked', this.mistwood);
         $('#flexSwitchCheckNewleaf').prop('checked', this.newleaf);
+        $('#flexSwitchCheckglimmergold').prop('checked', this.glimmergold);
         $('#flexSwitchCheckKindergarten').prop('checked', this.kindergarten);
     }
 
