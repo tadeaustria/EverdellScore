@@ -1185,6 +1185,66 @@ let basecards = {
         getOccupiedSpaces: space_one,
         getAvailability: available_bellfaire
     },
+    "scurrblestadium": {
+        name: "scurrblestadium",
+        baseCardName : "scurrblestadium",
+        type: TYPES.destination,
+        rarity: RARITY.common,
+        kind: KINDS.building,
+        points: 2,
+        maximum: 3,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_bellfaire
+    },
+    "gazette": {
+        name: "gazette",
+        baseCardName : "gazette",
+        type: TYPES.governance,
+        rarity: RARITY.common,
+        kind: KINDS.building,
+        points: 3,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_bellfaire
+    },
+    "towncrier": {
+        name: "towncrier",
+        baseCardName : "towncrier",
+        type: TYPES.production,
+        rarity: RARITY.unique,
+        kind: KINDS.critter,
+        points: 2,
+        maximum: 2,
+        getAdditionalPoints: poimts_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_bellfaire
+    },
+    "juggler": {
+        name: "juggler",
+        baseCardName : "juggler",
+        type: TYPES.traveler,
+        rarity: RARITY.common,
+        kind: KINDS.critter,
+        points: 0,
+        maximum: 3,
+        getAdditionalPoints: poimts_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_bellfaire
+    },
+     "carnival": {
+        name: "carnival",
+        baseCardName : "carnival",
+        type: TYPES.procuction,
+        rarity: RARITY.unique,
+        kind: KINDS.building,
+        points: 1,
+        maximum: 2,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_one,
+        getAvailability: available_bellfaire
+    },
     "amilliaglistendew": {
         name: "amilliaglistendew",
         type: TYPES.destination,
@@ -1212,7 +1272,7 @@ let basecards = {
     "kindergarten": {
         name: "kindergarten",
         type: TYPES.prosperity,
-        rarity: RARITY.legendary,
+        rarity: RARITY.unique,
         kind: KINDS.building,
         points: 1,
         maximum: 1,
