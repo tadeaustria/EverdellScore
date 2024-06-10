@@ -1229,7 +1229,7 @@ let basecards = {
         kind: KINDS.critter,
         points: 0,
         maximum: 3,
-        getAdditionalPoints: poimts_zero,
+        getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
         getAvailability: available_bellfaire
     },
