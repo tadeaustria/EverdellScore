@@ -1254,11 +1254,11 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ["palace","queen"],
         getAvailability: available_newleaf
     },
     "poe": {
         name: "poe",
+        baseCardName : "teacher",
         type: TYPES.production,
         rarity: RARITY.legendary,
         kind: KINDS.critter,
@@ -1266,19 +1266,67 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        related: ["school", "teacher"],
         getAvailability: available_newleaf
     },
-    "kindergarten": {
-        name: "kindergarten",
-        type: TYPES.prosperity,
-        rarity: RARITY.unique,
+    "greenacorn": {
+        name: "greenacorn",
+        baseCardName : "inn",
+        type: TYPES.destination,
+        rarity: RARITY.legendary,
         kind: KINDS.building,
-        points: 1,
+        points: 4,
         maximum: 1,
-        getAdditionalPoints: (player) => player.findCountCard(basecards["kids"]) * 2,
+        getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        getAvailability: available_kindergarten
+        getAvailability: available_newleaf
+    },
+    "oleanderoperahouse": {
+        name: "oleanderoperahouse",
+        baseCardName : "theater",
+        type: TYPES.prosperity,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: function (player) { return player.findCountRarityKind(RARITY.unique, KINDS.critter) *2 },
+        getOccupiedSpaces: space_one,
+        getAvailability: available_newleaf
+    },
+    'bridgeofthesky': {
+        name: 'bridgeofthesky',
+        baseCardName : "crane",
+        type: TYPES.governance,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 0,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_zero,
+        getAvailability: available_newleaf
+    },
+    'mcgregorsmarket': {
+        name: 'mcgregorsmarket',
+        baseCardName: 'farm',
+        type: TYPES.production,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_zero,
+        getAvailability: available_newleaf
+    },
+       'silverscalespring': {
+        name: 'silverscalespring',
+        baseCardName : "ruins",
+        type: TYPES.trav,
+        rarity: RARITY.legendary,
+        kind: KINDS.building,
+        points: 0,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_zero,
+        getAvailability: available_newleaf
     },
     "kids": {
         name: "kids",
