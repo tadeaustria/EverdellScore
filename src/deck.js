@@ -1246,6 +1246,18 @@ let basecards = {
         getOccupiedSpaces: space_one,
         getAvailability: available_bellfaire
     },
+     'fynnnobletail': {
+        name: 'fynnnobletail',
+         baseCardName : "king",
+        type: TYPES.prosperity,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 5,
+        maximum: 1,
+        getAdditionalPoints: function (player) { return player.basicEvents.length *2 + player.specialEvents.length * 3; },
+        getOccupiedSpaces: space_zero
+        getAvailability: available_glimmergold
+    },
     "amilliaglistendew": {
         name: "amilliaglistendew",
         type: TYPES.destination,
@@ -1254,8 +1266,8 @@ let basecards = {
         points: 5,
         maximum: 1,
         getAdditionalPoints: points_zero,
-        getOccupiedSpaces: space_one,
-        getAvailability: available_newleaf
+        getOccupiedSpaces: space_zero,
+        getAvailability: available_glimmergold
     },
     "poe": {
         name: "poe",
@@ -1267,7 +1279,7 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        getAvailability: available_newleaf
+        getAvailability: available_glimmergold
     },
     "greenacorn": {
         name: "greenacorn",
@@ -1279,7 +1291,7 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_one,
-        getAvailability: available_newleaf
+        getAvailability: available_glimmergold
     },
     "oleanderoperahouse": {
         name: "oleanderoperahouse",
@@ -1291,7 +1303,7 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: function (player) { return player.findCountRarityKind(RARITY.unique, KINDS.critter) *2 },
         getOccupiedSpaces: space_one,
-        getAvailability: available_newleaf
+        getAvailability: available_glimmergold
     },
     'bridgeofthesky': {
         name: 'bridgeofthesky',
@@ -1303,7 +1315,7 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_zero,
-        getAvailability: available_newleaf
+        getAvailability: available_glimmergold
     },
     'mcgregorsmarket': {
         name: 'mcgregorsmarket',
@@ -1315,7 +1327,7 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_zero,
-        getAvailability: available_newleaf
+        getAvailability: available_glimmergold
     },
        'silverscalespring': {
         name: 'silverscalespring',
@@ -1327,7 +1339,31 @@ let basecards = {
         maximum: 1,
         getAdditionalPoints: points_zero,
         getOccupiedSpaces: space_zero,
-        getAvailability: available_newleaf
+        getAvailability: available_glimmergold
+    },
+     'cirruswindfall': {
+        name: 'cirruswindfal',
+        baseCardName : "postalpigeon",
+        type: TYPES.traveler,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_zero,
+        getAvailability: available_glimmergold
+    },
+    'foresight': {
+        name: 'foresight',
+        baseCardName : "historian",
+        type: TYPES.governance,
+        rarity: RARITY.legendary,
+        kind: KINDS.critter,
+        points: 4,
+        maximum: 1,
+        getAdditionalPoints: points_zero,
+        getOccupiedSpaces: space_zero,
+        getAvailability: available_glimmergold
     },
     "kids": {
         name: "kids",
