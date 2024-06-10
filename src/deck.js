@@ -47,6 +47,7 @@ function available_npearlbrook(app) { return !app.pearlbrook; }
 function available_spirecrest(app) { return app.spirecrest; }
 function available_newleaf(app) { return app.newleaf; }
 function available_mistwood(app) { return app.mistwood; }
+function available_glimmergold(app) { return app.glimmergold; }
 function available_kindergarten(app) { return app.kindergarten; }
 
 
