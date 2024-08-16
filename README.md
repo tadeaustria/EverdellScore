@@ -11,7 +11,11 @@ Cookies for storing the chosen language.
 
 # Updates
 
-## Version 1.5.3
+## Version 1.5.4
+* Newleaf
+  * Spanish
+
+### Version 1.5.3
 * General
   * Always display left over ressources
 * Pearlbrook
