@@ -17,7 +17,8 @@
         "points": "Fichas de Puntuación",
         "journey": "Viaje",
         "leftovers": "Recursos en la Reserva Personal",
-        "expansions": "Expansiones"
+        "expansions": "Expansiones",
+        "visitors": "Visitantes"
     },
     "expansion" : {
         "bellfaire": "Bellfaire",
@@ -81,7 +82,32 @@
         "school": "Escuela",
         "teacher": "Profesor",
         "theater": "Teatro",
-        "bard": "Bardo"
+        "bard": "Bardo",
+        
+        "baker": "Panadero",
+        "chipsmith": "Roedor Herrero",
+        "conductor": "Maquinista",
+        "diplomat": "Diplomático",
+        "gardener": "Jardinero",
+        "inventor": "Inventor",
+        "lamplighter": "Farolero",
+        "magician": "Mago",
+        "mayor": "Alcalde",
+        "miller": "Molinero",
+        "photographer": "Fotógrafo {{card}}",
+        "poet": "Poeta",
+        "airballoon": "Globo Aerostático",
+        "bank": "Banco",
+        "cityhall": "Ayuntamiento",
+        "everwall": "Muralla Eterna",
+        "freightcar":"Vagón de Carga",
+        "greenhouse": "Invernadero",
+        "hotel": "Hotel",
+        "library": "Biblioteca",
+        "locomotive": "Locomotora",
+        "mainroad": "Camino Principal",
+        "museum": "Museo",
+        "teahouse": "Casa de Té"
     },
     "event": {
         "grandtour": "La Gran Travesía",
@@ -104,13 +130,27 @@
         "theeverdellgames": "Los Juegos de Everdell",
         "ancientscrollsdiscovered": "Antiguos Manuscritos Descubiertos",
         "aneveningoffireworks": "Noche de Fuegos Artificiales",
-        "flyingdoctorservice": "Servicio Médico Aéreo"
+        "flyingdoctorservice": "Servicio Médico Aéreo",
+
+        "scenicflight": "Vuelo Panorámico",
+        "bigcity": "Gran Ciudad",
+
+	    "cityjubilee" : "Jubileo de la Ciudad",
+        "everwalltower" : "Torre de la Muralla Eterna Construida",
+        "glowlightfestival" : "Festival de la Luz Fulgurante",
+        "hotairballoonrace" : "Carrera de Aerostatos",
+        "dancecontest" : "Concurso de Baile de la Giga del Enebro",
+        "magicshow" : "Espectáculo de Magia",
+        "royaltea" : "Té Real",
+        "stockmarketboom" : "Mercado de Valores en Auge",
+        "sunflowerparade" : "Desfile de Girasoles"
     },
     "text": {
         "cardlimit": "Límite de Ciudad alcanzado",
         "reset_content": "¿Estás seguro de reiniciar todas las ciudades?",
         "expansion_content": "Cambiar de expansión traerá consigo la perdida de todos los datos. ¿seguro que quieres hacerlo?",
         "yes": "Sì",
-        "no": "No"
+        "no": "No",
+        "photographer_modal_title": "Elige que carta de Prosperidad copiar"
     }
 }
