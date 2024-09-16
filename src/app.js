@@ -38,6 +38,9 @@ i18next
 class Application {
 
     constructor() {
+        this.extraextra = false;
+        this.legends = false;
+        this.rugwort = false;
         this.bellfaire = false;
         this.pearlbrook = false;
         this.spirecrest = false;
@@ -69,6 +72,9 @@ class Application {
     }
 
     updateData() {
+        this.extraextra = $('#flexSwitchCheckExtraExtra').is(':checked');
+        this.legends = $('#flexSwitchCheckLegends').is(':checked');
+        this.rugwort = $('#flexSwitchCheckRugwort').is(':checked');
         this.bellfaire = $('#flexSwitchCheckBellfaire').is(':checked');
         this.pearlbrook = $('#flexSwitchCheckPearlbrook').is(':checked');
         this.spirecrest = $('#flexSwitchCheckSpirecrest').is(':checked');
@@ -104,6 +110,9 @@ class Application {
 
     // Sets switches in UI to stored values
     reset_expansions_ui() {
+        $('#flexSwitchCheckExtraExtra').prop('checked', this.extraextra);
+        $('#flexSwitchCheckLegends').prop('checked', this.legends);
+        $('#flexSwitchCheckRugwort').prop('checked', this.rugwort);
         $('#flexSwitchCheckBellfaire').prop('checked', this.bellfaire);
         $('#flexSwitchCheckPearlbrook').prop('checked', this.pearlbrook);
         $('#flexSwitchCheckSpirecrest').prop('checked', this.spirecrest);

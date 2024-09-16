@@ -27,6 +27,9 @@
         "playerpower": "Zdolności robotników"
     },
     "expansion" : {
+        "extraextra": "Więcej! Więcej!",
+        "legends": "Legendy",
+        "rugwort": "Krostawiec",
         "bellfaire": "Święto Lata",
         "pearlbrook": "Perłowy Potok",
         "spirecrest": "Zimowy Szczyt",
@@ -90,6 +93,13 @@
         "teacher": "Nauczyciel",
         "theater": "Teatr",
         "bard": "Bard",
+
+        "carnival": "Wesołe miasteczko",
+        "juggler": "Żongler",
+        "gazette": "Sklepik z gazetami",
+        "towncrier": "Krzykacz miejski",
+        "scurrblestadium": "Boisko do żołędziówki",
+        "scurrblechampion": "Mistrz żołędziówki",
 
         "ferry": "Prom",
         "ferryferret": "Przewoźnik",
