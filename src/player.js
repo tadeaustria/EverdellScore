@@ -36,12 +36,17 @@ class Player {
     }
 
     getMaxSpace() {
-        //Unique main road extends the city by one space and each legendary card extends the city
-        return 15 + this.findCountBaseCard(basecards['mainroad']) + this.findCountRarity(RARITY.legendary);
+        return this.getUniqueTownCards()
+            .map((cardName) => basecards[cardName])
+            .map((card) => card.occupancy.spaceCreated())
+            .reduce((previousValue, currentValue) => previousValue + currentValue, 15);
     }
 
     getOccupiedSpaces() {
-        return this.town.reduce((prev, card) => prev + card.getOccupiedSpaces(this, false), 0);
+        return this.getUniqueTownCards()
+            .map((cardName) => basecards[cardName])
+            .map((card) => card.occupancy.whenAdded(this, card))
+            .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
     }
 
     getTownOverview() {
@@ -53,6 +58,11 @@ class Player {
                 dict[card.type] = 1;
         });
         return dict;
+    }
+
+    getUniqueTownCards() {
+        let townCardsNames = this.town.map(card => card.name);
+        return townCardsNames.filter((value, index, array) => townCardsNames.indexOf(value) === index);
     }
 
     getOtherPlayers(){    
