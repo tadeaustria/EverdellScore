@@ -139,7 +139,7 @@ class Application {
 
     addToActivePlayer(cardName) {
         let card = this.findCardByName(cardName);
-        if (card.getOccupiedSpaces(this.activePlayer, true) + this.activePlayer.getOccupiedSpaces() > this.activePlayer.getMaxSpace()) {
+        if (card.rarity != RARITY.legendary && card.getOccupiedSpaces(this.activePlayer, true) + this.activePlayer.getOccupiedSpaces() > this.activePlayer.getMaxSpace()) {
             $("#alert-cardlimit").fadeTo(3000, 500).slideUp(500, function () {
                 $("#alert-cardlimit").slideUp(500);
             });
@@ -148,6 +148,10 @@ class Application {
 
             this.activePlayer.addTown(card);
             this.setCardDisable(card);
+
+            if (card.rarity == RARITY.legendary){
+                this.setCardsDisable();
+            }
 
             //Special handling photographer
             if (card == basecards['photographer']) {
@@ -197,6 +201,9 @@ class Application {
     removeFromActivePlayer(cardIndex) {
         let card = this.activePlayer.removeTown(cardIndex);
         this.setCardDisable(card);
+        if (card.rarity == RARITY.legendary){
+            this.setCardsDisable();
+        }
     }
 
     addEventToActivePlayer(eventName) {
@@ -434,6 +441,10 @@ class Application {
     isCardAvailable(card) {
         if (card.rarity == RARITY.unique && this.activePlayer.town.includes(card)
             || this.getCardUsageCount(card) >= card.maximum) {
+            return false;
+        // Each player can only have exactly one legendary cards per kind
+        } else if (card.rarity == RARITY.legendary && 
+            this.activePlayer.findCountRarityKind(RARITY.legendary, card.kind) + this.activePlayer.findCountRarity(RARITY.legendary) >= 2){
             return false;
         }
         return true;
