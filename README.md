@@ -11,6 +11,10 @@ Cookies for storing the chosen language.
 
 # Updates
 
+## Version 1.5.5
+* New language
+  * Portuguese Brasil
+
 ## Version 1.5.4
 * Newleaf
   * Spanish
