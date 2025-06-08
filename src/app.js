@@ -155,11 +155,11 @@ class Application {
                 for (let player of this.players) {
                     if (player == this.activePlayer)
                         continue;
-                    player.town.filter((card) => card.type == TYPES.prosperity).forEach(prosperitiesInOtherTowns.add, prosperitiesInOtherTowns);
+                    player.town.filter((card) => (card.type == TYPES.prosperity) && (card.rarity != RARITY.legendary) ).forEach(prosperitiesInOtherTowns.add, prosperitiesInOtherTowns);
                 }
                 // If any other has also photographer, add cards of own town as well
                 if (prosperitiesInOtherTowns.has(basecards['photographer'])) {
-                    this.activePlayer.town.filter((card) => card.type == TYPES.prosperity).forEach(prosperitiesInOtherTowns.add, prosperitiesInOtherTowns);
+                    this.activePlayer.town.filter((card) => (card.type == TYPES.prosperity) && (card.rarity != RARITY.legendary)).forEach(prosperitiesInOtherTowns.add, prosperitiesInOtherTowns);
                 }
                 prosperitiesInOtherTowns.delete(basecards['photographer']);
 
