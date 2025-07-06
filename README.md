@@ -11,11 +11,19 @@ Cookies for storing the chosen language.
 
 # Updates
 
-## Version 1.5.5
+## Version 1.6.0
+* New Miniexpansions
+  * Kindergarden
+  * Glimmergold
+* Mistwood
+  * Fixes legendary cards, such they can always be added
+  * Photographer is not allowed to copy legendary cards
+
+### Version 1.5.5
 * New language
   * Portuguese Brasil
 
-## Version 1.5.4
+### Version 1.5.4
 * Newleaf
   * Spanish
 
