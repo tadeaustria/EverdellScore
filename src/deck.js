@@ -1630,12 +1630,12 @@ let specialEvents = {
     },
     "flyingdoctorservice": {
         name: "flyingdoctorservice",
-        input: true,
+        input: false,
         value: 0,
-        inputMax: 3,
+        inputMax: 0,
         inputFactor: 3,
         points: 0,
-        getPoints: function (app, player) { return this.value * this.inputFactor; },
+        getPoints: function (app, player) { return app.players.reduce((prev, player, _) => prev + player.getWifeHusbandPairs(), 0) * this.inputFactor; },
         getAvailability: available_always
     },
 
