@@ -781,7 +781,7 @@ let basecards = {
         points: 2,
         maximum: 1,
         getAdditionalPoints: points_zero,
-        getOccupiedSpaces: space_one,
+        getOccupiedSpaces: space_zero,
         getAvailability: available_legends
     },
     'oleandersoperahouse': {
