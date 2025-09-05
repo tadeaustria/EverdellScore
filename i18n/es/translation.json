@@ -107,7 +107,29 @@
         "locomotive": "Locomotora",
         "mainroad": "Camino Principal",
         "museum": "Museo",
-        "teahouse": "Casa de Té"
+        "teahouse": "Casa de Té",
+
+        "carnival": "Carnaval",
+        "juggler": "Malabarista",
+        "gazette": "Gaceta",
+        "towncrier": "Pregonero",
+        "scurrblestadium": "Estadio de Scurrble",
+        "scurrblechampion": "Campeón",
+
+        "poe": "Poe",
+        "foresight": "Clarividencio",
+        "amillaglistendew": "Amilla Gotabrillante",
+        "flynnnobletail": "Fynn Colanoble",
+        "cirruswindfall": "Cirrus Vientobajo",
+        "thegreenacorn": "La Bellota Verde",
+        "silverscalespring": "Manantial de Plata",
+        "oleandersoperahouse": "Ópera de las Adelfas",
+        "mcgregorsmarket": "Mercado McGregor",
+        "bridgeofthesky": "Puente del Cielo",
+        
+        "rugtheruler": "Rugwort el Regente",
+        "rugtherobber": "Rugwort el Ratero",
+        "rugtherowdy": "Rugwort el Ruidoso"
     },
     "event": {
         "grandtour": "La Gran Travesía",
