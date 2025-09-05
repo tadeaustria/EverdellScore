@@ -11,7 +11,11 @@ Cookies for storing the chosen language.
 
 # Updates
 
-## Version 1.6.1
+## Version 1.6.2
+* More spanish translations
+  * Glimmergold
+
+### Version 1.6.1
 * Bugfixes
   * Occupancy of legendary Silver Scale Spring
   * Automatic caluclation of Special Event Flying Doctor Service
