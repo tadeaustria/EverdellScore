@@ -11,7 +11,11 @@ Cookies for storing the chosen language.
 
 # Updates
 
-## Version 1.6.2
+## Version 1.6.3
+* Newleaf
+  * Deepdarkprison is now correctly a building
+
+### Version 1.6.2
 * More spanish translations
   * Glimmergold
 
