@@ -1336,7 +1336,7 @@ let basecards = {
         baseCardName: 'dungeon',
         type: TYPES.traveler,
         rarity: RARITY.legendary,
-        kind: KINDS.critter,
+        kind: KINDS.building,
         points: 3,
         maximum: 1,
         getAdditionalPoints: points_zero,
